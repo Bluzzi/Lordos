@@ -2,7 +2,7 @@ const DISCORD = require("discord.js");
 global.CLIENT = new DISCORD.Client({disableMentions: true});
 
 CLIENT.on("message", (message) => {
-    if(message.content.includes("tgm")){
+    if(message.content.includes("ping")){
         message.reply("ok");
     }
 });
