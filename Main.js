@@ -1,5 +1,5 @@
 const DISCORD = require("discord.js");
-global.CLIENT = new DISCORD.Client();
+global.CLIENT = new DISCORD.Client({disableMentions: true});
 
 CLIENT.on("message", (message) => {
     if(message.content.includes("tgm")){
