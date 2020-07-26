@@ -17,35 +17,40 @@ class Url extends COMMAND {
         super("url")
     }
 
-    execute(args, message){
+    async execute(args, message){
         let config = JSON.parse(FS.readFileSync(
             __dirname + "/../../resources/configs/url.json"), 
             {encoding:"utf8"}
         );
 
         args = args.map(value => value.toLowerCase());
-        subCommand = args.shift();
+        var subCommand = args.shift();
 
         // Isset not argument sent, send the command usage, else if get the sub command :
-        if(!subCommand || subCommand === "help" || !Object.keys(SUB_COMMANDS).includes(subCommand)){
-            sendHelp(message.channel);
+        if(!subCommand || subCommand === "help"){
+            this.sendHelp(message.channel);
         } else {
-            let subCommandPath = __dirname + "/url_sb/" + subCommand;
+            let subCommandPath = __dirname + "/url_sb/" + subCommand + ".js";
             
-            if(FS.existsSync(subCommandPath)){
+            if(Object.keys(SUB_COMMANDS).includes(subCommand) && FS.existsSync(subCommandPath)){
                 // Execute the sub command :
                 let subCommandClass = require(subCommandPath);
 
-                subCommand.execute(args, message, config);
+                subCommandClass.execute(args, message, config);
             } else {
                 // Check if the link exist, otherwise send the help message :
                 if(config.links[subCommand]){
                     let text = subCommand.charAt(0).toUpperCase() + subCommand.slice(1);
 
                     MP.parser(config.links[subCommand], (error, result) => {
-                        EMBED.send("__**[" + text + "](" + config.links[subCommand] +
-                        ")**__\n\n" + result["meta"]["description"], message.channel);
-                    })     
+                        text = "__**[" + text + "](" + config.links[subCommand] + ")**__";
+
+                        text = result && result["meta"]["description"] ? text + "\n\n" + result["meta"]["description"] : text;
+
+                        EMBED.send(text, message.channel);
+                    });
+                    
+                    return;
                 } else {
                     for(var key in config.aliases){ //TODO: optimize this ?
                         if(config.aliases[key].includes(subCommand)){
@@ -64,13 +69,13 @@ class Url extends COMMAND {
                 // Send help message :
                 EMBED.send("Le lien nommé **" + subCommand + "** n'est pas enregistré.", message.channel);
 
-                sendHelp(message.channel);
+                this.sendHelp(message.channel);
             }
         }
     }
 
     sendHelp(channel){
-        let text = "Voici les différentes commandes :"
+        let text = "Voici les différentes commandes :\n"
 
         for(let [subCommandName, description] of Object.entries(SUB_COMMANDS)){
             text += "\n" + CONSTANTS.prefix + "url " + subCommandName + " : " + description;

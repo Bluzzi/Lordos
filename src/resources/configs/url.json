@@ -3,10 +3,10 @@
         "help": "Faites la commande: **{p}url help** pour plus d'informations.",
         "commands": "Voici les différentes commandes:\n{p}url\n-----<nom ou alias du lien>\n-----list\n-----add <nom> <url | alias (to update aliases)> <aliases...>\n-----del <nom> <url | alias (to delete only aliases)>",
         "basic": "Vous devez faire {p}url (list | url)``.",
-        "exist_name": "Le lien nommé **%v%** existe déja.",
-        "exist_alias": "L'alias nommé **%v%** existe déja.",
+        "exist_name": "Le lien nommé **{v}** existe déja.",
+        "exist_alias": "L'alias nommé **{v}** existe déja.",
         "noturl": "L'url semble ne pas en être un.",
-        "existnot": "Le lien nommé **%v%** n'existe pas."
+        "existnot": "Le lien nommé **{v}** n'existe pas."
     },
     "links": {
         "codingame": "https://www.codingame.com/multiplayer/clashofcode",
@@ -15,13 +15,12 @@
         "fortnite": "https://1v1.lol/",
         "skribbl": "https://skribbl.io/",
         "paper": "https://paper-io.com/",
-        "wikipedia": "https://fr.wikipedia.org/wiki/Sp%C3%A9cial:Page_au_hasard",
         "geoguessr": "https://www.geoguessr.com/",
         "youtube": "http://youtube.com",
         "pornhub": "https://pornhub.com/",
         "atlar": "https://atlar.fr/",
-        "horion": "https://www.horionbeta.club/static/",
-        "sasa": "http://wikipedia/"
+        "horion": "http://wikipedia*",
+        "wikipedia": "https://wikipedia"
     },
     "aliases": {
         "codingame": [
