@@ -1,9 +1,9 @@
 const FS = require("fs");
-const CONSTANTS = require("../utils/Constants");
 
 CLIENT.on("message", (message) => {
     if(message.author.bot) return;
-    if(!message.content.startsWith(CONSTANTS.prefix)) return;
+    if(message.channel.type == "dm") return;
+    if(!message.content.startsWith(CLIENT.CONSTANTS.prefix)) return;
 
     let args = message.content.substring(1).split(" ");
     let command = args.shift().toLowerCase();
@@ -12,7 +12,12 @@ CLIENT.on("message", (message) => {
         if(command === className.toLowerCase()){
             let commandClass = require(__dirname + "/../commands/" + className);
 
-            commandClass.execute(args, message);
+            if(typeof commandClass.execute == "function") { //prevent invalid commands
+                commandClass.execute(args, message);
+                CLIENT.LOGGER.info(`${message.author.tag} executed command: ${className.toLowerCase()}`);
+            } else {
+                CLIENT.LOGGER.warn(`Missing 'execute' method in ${className}`);
+            }
         }
     });
 });
