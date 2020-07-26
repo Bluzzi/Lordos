@@ -22,13 +22,15 @@ FS.readdirSync("./src/events/").forEach(eventName => {
 //Command loader:
 let count = 0;
 FS.readdirSync("./src/commands/list").forEach(commandName => {
-    let commandClass = new(require("./src/commands/list/"+commandName))();
-    if (commandClass instanceof COMMAND) {
-        CLIENT.LOGGER.notice("Loaded command: " + commandName);
-        CLIENT.COMMANDMANAGER.add(commandClass);
-        count++;
-    } else {
-        CLIENT.LOGGER.warn("Cannot load: (not a Command instance) " + commandName);
+    if(commandName.split(".").pop() == "js") {
+        let commandClass = new(require("./src/commands/list/"+commandName))();
+        if (commandClass instanceof COMMAND) {
+            CLIENT.LOGGER.notice("Loaded command: " + commandName);
+            CLIENT.COMMANDMANAGER.add(commandClass);
+            count++;
+        } else {
+            CLIENT.LOGGER.warn("Cannot load: (not a Command instance) " + commandName);
+        }
     }
 });
 
