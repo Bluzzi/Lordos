@@ -6,9 +6,8 @@ class Logger {
      * @description print a warn message in the console
      */
 
-
     warn(message){
-        this.log(message, 'red');
+        this.log(message, 'WARN', 'red');
     }
 
     /**
@@ -17,7 +16,7 @@ class Logger {
      */
 
     info(message){
-        this.log(message, 'blue');
+        this.log(message, 'INFO', 'blue');
     }
 
     /**
@@ -26,7 +25,7 @@ class Logger {
      */
 
     notice(message) {
-        this.log(message, 'green');
+        this.log(message, 'NOTICE', 'green');
     }
     
     getDate(){
@@ -34,8 +33,9 @@ class Logger {
         return `${date.getHours() > 9 ? date.getHours() : "0"+date.getHours()}:${date.getMinutes() > 9 ? date.getMinutes() : "0"+date.getMinutes()}:${date.getSeconds() > 9 ? date.getSeconds() : "0"+date.getSeconds()}`;
     }
 
-    log(message, color) {
-        console.log(COLORS[color](`[${this.getDate()}] : ${message}`));
+    log(message, type, color) {
+        let finalMessage = `[${this.getDate()}][${type}]: ${message}`;
+        console.log(COLORS[color](finalMessage));
     }
 }
 

@@ -17,14 +17,15 @@ const COMMAND = require("./src/commands/Command");
 // Auto load all events :
 FS.readdirSync("./src/events/").forEach(eventName => {
     require("./src/events/" + eventName);
+    CLIENT.LOGGER.notice("Loaded event: " + eventName);
 });
 
 //Command loader:
 let count = 0;
 FS.readdirSync("./src/commands/list").forEach(commandName => {
-    if(commandName.split(".").pop() == "js") {
+    if(commandName.split(".").pop() == "js"){
         let commandClass = new(require("./src/commands/list/"+commandName))();
-        if (commandClass instanceof COMMAND) {
+        if(commandClass instanceof COMMAND){
             CLIENT.LOGGER.notice("Loaded command: " + commandName);
             CLIENT.COMMANDMANAGER.add(commandClass);
             count++;
