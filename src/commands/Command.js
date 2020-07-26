@@ -3,14 +3,14 @@ class Command {
     /**
      * @param {String} name 
      * @param {String} usage 
-     * @param {Array} aliases 
+     * @param {String} alias 
      * @param {Array} permissions 
      */
 
-    constructor(name, usage = "", aliases = [], permissions = []) {
+    constructor(name, usage = "", alias = "", permissions = []) {
         this.name = name;
         this.usage = usage;
-        this.aliases = aliases;
+        this.alias = alias;
         this.permissions = permissions;
     }
 
@@ -23,26 +23,27 @@ class Command {
     }
 
     /**
-     * @returns {Array}
+     * @returns {String}
      */
 
-    getAliases(){
-        return this.aliases;
+    getUsage(){
+        return `Utilisation : ${CLIENT.CONSTANTS.prefix}${this.getName()} ${this.usage}`;
     }
 
     /**
      * @returns {String}
      */
 
-    getUsage(){
-        return this.usage;
+    getAlias(){
+        return this.alias;
     }
+
 
     /**
      * @returns {Array}
      */
 
-    getPermission(){
+    getPermissions(){
         return this.permissions;
     }
 }

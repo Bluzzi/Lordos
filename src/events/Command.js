@@ -1,3 +1,5 @@
+const EMBED = require("../utils/Embed");
+
 CLIENT.on("message", (message) => {
     if(message.author.bot) return;
     if(message.channel.type == "dm") return;
@@ -8,7 +10,15 @@ CLIENT.on("message", (message) => {
     let command = CLIENT.COMMANDMANAGER.get(commandName);
 
     if (command) {
-        command.execute(args, message);
+        if(!message.member.permissions.has(command.getPermissions())) {
+            return EMBED.send("Vous n'avez pas accès à cette commande !", message.channel, 'RED');
+        }
+
+        let execute = command.execute(args, message);
+        if(execute == false) {
+            EMBED.send(command.getUsage(), message.channel, 'RED');
+        }
+
         CLIENT.LOGGER.info(`${message.author.tag} executed command: ${commandName.toLowerCase()}`);
     }
 });
