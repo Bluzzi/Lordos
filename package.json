@@ -20,6 +20,7 @@
   "dependencies": {
     "colors": "^1.4.0",
     "discord.js": "^12.2.0",
-    "fs": "0.0.1-security"
+    "fs": "0.0.1-security",
+    "ping": "^0.2.3"
   }
 }
