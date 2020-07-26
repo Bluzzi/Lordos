@@ -19,6 +19,7 @@
   "dependencies": {
     "colors": "^1.4.0",
     "discord.js": "^12.2.0",
-    "fs": "0.0.1-security"
+    "fs": "0.0.1-security",
+    "html-metadata-parser": "^1.0.3"
   }
 }
