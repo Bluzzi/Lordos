@@ -1,8 +1,8 @@
 {
     "usages": {
-        "help": "Faites la commande: **%p%url help** pour plus d'informations.",
-        "commands": "Voici les différentes commandes:\n%p%url\n-----<nom ou alias du lien>\n-----list\n-----add <nom> <url | alias (to update aliases)> <aliases...>\n-----del <nom> <url | alias (to delete only aliases)>",
-        "basic": "Vous devez faire %p%url (list | url)``.",
+        "help": "Faites la commande: **{p}url help** pour plus d'informations.",
+        "commands": "Voici les différentes commandes:\n{p}url\n-----<nom ou alias du lien>\n-----list\n-----add <nom> <url | alias (to update aliases)> <aliases...>\n-----del <nom> <url | alias (to delete only aliases)>",
+        "basic": "Vous devez faire {p}url (list | url)``.",
         "exist_name": "Le lien nommé **%v%** existe déja.",
         "exist_alias": "L'alias nommé **%v%** existe déja.",
         "noturl": "L'url semble ne pas en être un.",
