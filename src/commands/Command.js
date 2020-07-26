@@ -5,13 +5,15 @@ class Command {
      * @param {String} usage 
      * @param {String} alias 
      * @param {Array} permissions 
+     * @param {String} description
      */
 
-    constructor(name, usage = "", alias = "", permissions = []) {
+    constructor(name, usage = "", alias = "", permissions = [], description = "") {
         this.name = name;
         this.usage = usage;
         this.alias = alias;
         this.permissions = permissions;
+        this.description = description;
     }
 
     /**
@@ -45,6 +47,14 @@ class Command {
 
     getPermissions(){
         return this.permissions;
+    }
+
+    /**
+     * @returns {String}
+     */
+
+    getDescription(){
+        return this.description;
     }
 }
 
