@@ -1,11 +1,15 @@
-const EMBED = require("../utils/Embed");
-const CONSTANTS = require("../utils/Constants");
+const COMMAND = require("../Command");
+const EMBED = require("../../utils/Embed");
+const CONSTANTS = require("../../utils/Constants");
 
 var numbers = {};
 
-class ChoiceNumber {
+class ChoiceNumber extends COMMAND {
+    constructor() {
+        super("choicenumber");
+    }
 
-    static execute(args, message){
+    execute(args, message){
         if(!args[0]){
             EMBED.send("Vous devez faire ``" + CONSTANTS.prefix + " (votre nombre)``.", message.channel);
             return;

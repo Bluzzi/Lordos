@@ -1,10 +1,14 @@
-const EMBED = require("../utils/Embed");
+const COMMAND = require("../Command");
+const EMBED = require("../../utils/Embed");
 const CHOICE_NUMBER = require("./ChoiceNumber");
-const CONSTANTS = require("../utils/Constants");
+const CONSTANTS = require("../../utils/Constants");
 
-class Numbers {
-
-    static execute(args, message){
+class Numbers extends COMMAND {
+    constructor() {
+        super("numbers");
+    }
+    
+    execute(args, message){
         let list = "";
 
         if(Object.keys(CHOICE_NUMBER.numbers).length !== 0){

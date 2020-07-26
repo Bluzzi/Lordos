@@ -1,9 +1,14 @@
-const EMBED = require('../utils/Embed');
+const COMMAND = require("../Command");
+const EMBED = require("../../utils/Embed");
 
 var voters = [];
 
-class VoteMute {
-    static execute(args, message) {
+class VoteMute extends COMMAND {
+    constructor() {
+        super("votemute");
+    }
+
+    execute(args, message) {
         let member = message.member;
         if(!member.roles.cache.map(r => r.name).includes('Noble')){
             EMBED.send(`Cette commande ne peut-être utilisée par un membre du tiers état...`, message.channel, 'RED');
@@ -15,7 +20,7 @@ class VoteMute {
                 
                 //unmute:
                 lastTarget = message.guild.members.cache.get(lastTarget);
-                if(lastTarget && getVoteCount(lastTarget) <= 4) {
+                if(lastTarget && getVoteCount(lastTarget) <= 4 && lastTarget.voice.mute) {
                     lastTarget.voice.setMute(false);
                     EMBED.send(`**${lastTarget.user.username}** a été unmute car il n'y avait plus assez de votes contre lui !`, message.channel, 'GREEN');
                 }
@@ -30,7 +35,7 @@ class VoteMute {
                 voters[member.user.id] = target.user.id;
                 let voteCount = getVoteCount(target.user.id)
                 if (voteCount <= 4) {
-                    EMBED.send(`**${target.user.username}** a désormais ${voteCount} vote(s) !`, message.channel);
+                    EMBED.send(`**${target.user.username}** a désormais ${voteCount} vote(s) !`, message.channel, 'RED');
                 } else {
                     target.voice.setMute(true);
                     EMBED.send(`**${target.user.username}** a été mute !`, message.channel, 'GREEN');

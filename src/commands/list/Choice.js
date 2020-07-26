@@ -1,7 +1,12 @@
-const EMBED = require('../utils/Embed');
+const COMMAND = require("../Command");
+const EMBED = require("../../utils/Embed");
 
-class Choice {
-    static execute(args, message){
+class Choice extends COMMAND {
+    constructor() {
+        super("choice");
+    }
+
+    execute(args, message){
         if(!args[1]) {
             EMBED.send(`Utilisation invalide ! Essayez : ${CLIENT.CONSTANTS.prefix}choice <choix 1> <choix 2>...`, message.channel, 'RED');
         } else {

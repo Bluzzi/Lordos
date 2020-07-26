@@ -1,7 +1,11 @@
-const EMBED = require("../utils/Embed");
+const COMMAND = require("../Command");
+const EMBED = require("../../utils/Embed");
 const FS = require("fs");
 
-class CommandCount {
+class CommandCount extends COMMAND {
+    constructor() {
+        super("commandcount");
+    }
 
     static execute(args, message){
         let commandCount = FS.readdirSync(__dirname).length;
