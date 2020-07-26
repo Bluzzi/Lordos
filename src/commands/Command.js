@@ -16,6 +16,10 @@ class Command {
         this.description = description;
     }
 
+    execute() {
+        throw new Error('execute must be defined');
+    }
+
     /**
      * @returns {String}
      */
