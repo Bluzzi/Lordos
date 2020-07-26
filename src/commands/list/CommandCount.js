@@ -7,7 +7,7 @@ class CommandCount extends COMMAND {
         super("commandcount");
     }
 
-    static execute(args, message){
+    async execute(args, message){
         let commandCount = FS.readdirSync(__dirname).length;
         let objective = 200;
 

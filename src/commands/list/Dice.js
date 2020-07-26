@@ -6,7 +6,7 @@ class Dice extends COMMAND {
         super("dice", "<nombre>", "des");
     }
 
-    execute(args, message) {
+    async execute(args, message) {
         if (!args[0]) {
             return false;
         } else {   

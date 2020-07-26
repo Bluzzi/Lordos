@@ -7,7 +7,7 @@ class RandomNumber extends COMMAND {
         super("randomnumber");
     }
 
-    execute(args, message){
+    async execute(args, message){
         if(args.length < 2 || parseInt(args[0]) > parseInt(args[1])){
             EMBED.send("Vous devez faire ``" + CONSTANTS.prefix + "randomnumber (min) (max)``.", message.channel);
             return;
