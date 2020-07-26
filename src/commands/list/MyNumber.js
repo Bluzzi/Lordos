@@ -1,8 +1,12 @@
-const EMBED = require("../utils/Embed");
+const COMMAND = require("../Command");
+const EMBED = require("../../utils/Embed");
 const CHOICE_NUMBER = require("./ChoiceNumber");
-const CONSTANTS = require("../utils/Constants");
+const CONSTANTS = require("../../utils/Constants");
 
-class MyNumber {
+class MyNumber extends COMMAND {
+    constructor() {
+        super("mynumber");
+    }
 
     static execute(args, message){
         if(CHOICE_NUMBER.numbers[message.author.id]){

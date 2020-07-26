@@ -4,7 +4,8 @@
   "description": "The Discord bot of Royaume server.",
   "main": "Main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node Main.js"
   },
   "repository": {
     "type": "git",
