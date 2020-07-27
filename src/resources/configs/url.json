@@ -20,7 +20,9 @@
         "pornhub": "https://pornhub.com/",
         "atlar": "https://atlar.fr/",
         "horion": "http://wikipedia*",
-        "wikipedia": "https://wikipedia"
+        "wikipedia": "https://wikipedia",
+        "youporn": "https://youporn.com",
+        "twitter": "https://twitter.com"
     },
     "aliases": {
         "codingame": [
@@ -32,6 +34,16 @@
         "pornhub": [
             "<@!251006302946328577>",
             "test"
+        ],
+        "youporn": [
+            "<@!233351173665456129>"
+        ],
+        "twitter": [
+            "site",
+            "pour",
+            "les",
+            "enfants",
+            "et"
         ]
     }
 }
