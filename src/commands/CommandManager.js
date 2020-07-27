@@ -1,3 +1,5 @@
+const COMMAND = require("./Command");
+
 class CommandManager {
     constructor(){
         this.commands = [];
@@ -6,6 +8,7 @@ class CommandManager {
     /**
      * @param {Command} command 
      * @description add a command
+     * @returns {void}
      */
 
     add(command){
@@ -15,7 +18,7 @@ class CommandManager {
     /**
      * @param {String} commandName the command name
      * @description get a command
-     * @returns {Command}
+     * @returns {COMMAND}
      */
 
     get(commandName){
@@ -27,6 +30,15 @@ class CommandManager {
         }
         
         return this.commands[index];
+    }
+
+    /**
+     * @description get all registered commands
+     * @returns {Array<COMMAND>}
+     */
+
+    all(){
+        return this.commands;
     }
 }
 

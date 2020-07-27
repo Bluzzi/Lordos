@@ -1,11 +1,11 @@
 class Command {
 
     /**
-     * @param {String} name 
-     * @param {String} usage 
-     * @param {String} alias 
-     * @param {Array} permissions 
-     * @param {String} description
+     * @param {String} name command name
+     * @param {String} usage command usage
+     * @param {String} alias alias of the command
+     * @param {Array} permissions list of permissions
+     * @param {String} description description of the command
      */
 
     constructor(name, usage = "", alias = "", permissions = [], description = "") {
