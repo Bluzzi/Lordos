@@ -28,6 +28,33 @@ class CoolDiscordThings {
             return "**" + char + "** ";
         });
     }
+
+    static getMemberIdFromStringMention(text){
+        let potentialStart = false;
+        let started = false;
+    
+        let memberId = "";
+
+        for(let key in text.split("")){
+            let char = text.charAt(key);
+
+            if(started){
+                if(char === ">"){
+                    break;
+                } else {
+                    memberId += char;
+                }
+            } else {
+                if(potentialStart){
+                    started = char === "@";
+                } else {
+                    if(char === "<") potentialStart = true;
+                }
+            }
+        }
+
+        return memberId;
+    }
 }
 
 module.exports = CoolDiscordThings;

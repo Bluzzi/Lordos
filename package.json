@@ -27,6 +27,7 @@
     "fs": "0.0.1-security",
     "gamedig": "^2.0.21",
     "html-metadata-parser": "^1.0.3",
+    "jimp": "^0.14.0",
     "opusscript": "0.0.7",
     "ping": "^0.2.3",
     "weather-js": "^2.0.0",
