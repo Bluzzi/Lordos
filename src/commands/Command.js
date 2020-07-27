@@ -16,8 +16,8 @@ class Command {
         this.description = description;
     }
 
-    execute() {
-        throw new Error('execute must be defined');
+    execute(){
+        throw new Error("execute must be defined");
     }
 
     /**
@@ -33,7 +33,7 @@ class Command {
      */
 
     getUsage(){
-        return `Utilisation : ${CLIENT.CONSTANTS.prefix}${this.getName()} ${this.usage}`;
+        return "Vous devez faire ``" + CLIENT.CONSTANTS.prefix + this.getName() + " " + this.usage + "`` !";
     }
 
     /**
