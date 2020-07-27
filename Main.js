@@ -16,14 +16,16 @@ CLIENT = new DISCORD.Client({disableMentions: "true"});
 CLIENT.CONSTANTS = CONSTANTS;
 CLIENT.LOGGER = LOGGER;
 CLIENT.COMMANDMANAGER = COMMANDMANAGER;
-CLIENT.CLI = CLI.start(); //CLI
+
+//CLI:
+CLIENT.CLI = CLI.start();
+CLIENT.LOGGER.notice("Started the Command Line Interface");
 
 global.CLIENT = CLIENT;
 
 
 
 // Startup log:
-CLIENT.LOGGER.notice("Initializing...");
 CLIENT.LOGGER.notice("Actual version: " + require("./package.json").version);
 CLIENT.LOGGER.notice("External packages list: " + Object.keys(require("./package.json").dependencies).join(", "));
 
