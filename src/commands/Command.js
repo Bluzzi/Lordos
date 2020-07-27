@@ -41,7 +41,7 @@ class Command {
      */
 
     getAlias(){
-        return this.alias;
+        return this.alias === "" ? null : this.alias;
     }
 
 
