@@ -1,0 +1,10 @@
+Du data, ce sont des données qui peuvent être modifier dirrectement par le code selon les actions des utilisateurs.
+A la différence d'une simple configuration qui elle sera fix et permet d'acceder à des informations permettant la configuration simple du projet.
+
+Donc :
+/Lordos/resources/configs/ = les configuration
+/Lordos/resources/configs/data/ = les données qui sont modifiers directement via le code
+
+C'est aussi simple que ça :p
+
+Ah oui ! Et on utilisera principalement du JSON ou SQLite pour ce projet.

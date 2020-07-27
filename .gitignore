@@ -1,3 +1,9 @@
+# All nodes modules :
 node_modules/*
-logs/*
+
+# The secret token :
 settings.json
+
+# All data without what-is-data.txt :
+resources/configs/data/*
+!resources/configs/data/what-is-data.txt
