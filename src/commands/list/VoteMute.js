@@ -5,7 +5,7 @@ var voters = [];
 
 class VoteMute extends COMMAND {
     constructor() {
-        super("votemute");
+        super("votemute", "<@membre>", "Permet de voter pour le mute d'un utilisateur");
     }
 
     async execute(args, message) {

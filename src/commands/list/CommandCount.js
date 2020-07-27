@@ -4,7 +4,7 @@ const FS = require("fs");
 
 class CommandCount extends COMMAND {
     constructor() {
-        super("commandcount");
+        super("commandcount", "", "Vous donne le nombre de commandes enregistrées sur le bot");
     }
 
     async execute(args, message){

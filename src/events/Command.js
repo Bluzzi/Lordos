@@ -1,6 +1,6 @@
 const EMBED = require("../utils/Embed");
 
-CLIENT.on("message", (message) => {
+CLIENT.on("message", async (message) => {
     if(message.author.bot) return;
     if(message.channel.type == "dm") return;
     if(!message.content.startsWith(CLIENT.CONSTANTS.prefix)) return;
@@ -14,7 +14,7 @@ CLIENT.on("message", (message) => {
             return EMBED.send("Vous n'avez pas accès à cette commande !\nPermission(s) requise(s) : `" + command.getPermissions().join("`, `") + "`", message.channel, 'RED');
         }
 
-        let execute = command.execute(args, message);
+        let execute = await command.execute(args, message);
         if(execute == false) {
             EMBED.send(command.getUsage(), message.channel, 'RED');
         }

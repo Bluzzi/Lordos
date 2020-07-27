@@ -5,7 +5,7 @@ const CONSTANTS = require("../../utils/Constants");
 
 class MyNumber extends COMMAND {
     constructor() {
-        super("mynumber");
+        super("mynumber", "", "Affiche votre nombre");
     }
 
     execute(args, message){
