@@ -10,3 +10,6 @@ resources/configs/data/*
 
 # Logs:
 log/log.txt
+
+# Packagelock
+package-lock.json
