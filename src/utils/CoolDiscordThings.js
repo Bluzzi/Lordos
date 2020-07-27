@@ -25,7 +25,7 @@ class CoolDiscordThings {
             if(char === " ") return "   ";
             if(char === "\n") return "\n";
 
-            return "**" + char + "**";
+            return "**" + char + "** ";
         });
     }
 }
