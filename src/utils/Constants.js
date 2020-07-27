@@ -1,3 +1,5 @@
+const SETTINGS = require("../../settings.json");
+
 class Constants {
 
     /**
@@ -5,7 +7,7 @@ class Constants {
     */
     
     static get prefix(){
-        return ">";
+        return SETTINGS.prefix; //used to be >
     }
 
     /**
@@ -13,7 +15,7 @@ class Constants {
     */
 
     static get token(){
-        return "NzMzODE5MzQ1OTA1NTE2NjU2.XxIsyg.Kr-Ab2hsYpfPmb_ubwunR9fDrs0";
+        return SETTINGS.token; //used to be NzMzODE5MzQ1OTA1NTE2NjU2.XxIsyg.Kr-Ab2hsYpfPmb_ubwunR9fDrs0
     }
 }
 
