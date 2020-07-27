@@ -1,3 +1,3 @@
 CLIENT.on("message", (message) => {
-    CLIENT.LOGGER.info(message.author.username + " : " + message.content);
+    if(message.author.bot == false) CLIENT.LOGGER.info(message.author.username + " : " + message.content);
 });

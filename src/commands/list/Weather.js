@@ -4,7 +4,7 @@ const WEATHER = require('weather-js');
 
 class Weather extends COMMAND {
     constructor(){
-        super("weather", "<lieu>", "meteo", [], "Donne la météo d'une position");
+        super("weather", "<lieu>", "Donne la météo d'une position", [], "meteo");
     }
 
     execute(args, message) {
