@@ -5,7 +5,13 @@ const COOL_DISCORD_THINGS = require("../../utils/CoolDiscordThings");
 class EmojiAnnonce extends COMMAND {
 
     constructor(){
-        super("emojiannonce", "(votre message)", "ea");
+        super(
+            "emojiannonce", 
+            "(votre message)", 
+            "Permet d'envoyer une annonce sous forme d'emoji.", 
+            [], 
+            "ea"
+        );
     }
     
     async execute(args, message){

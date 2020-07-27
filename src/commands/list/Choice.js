@@ -3,12 +3,12 @@ const EMBED = require("../../utils/Embed");
 
 class Choice extends COMMAND {
     constructor() {
-        super("choice");
+        super("choice", "<choix 1> <choix 2>...", "Permet de demander au bot de faire un choix");
     }
 
     async execute(args, message){
         if(!args[1]) {
-            EMBED.send(`Utilisation invalide ! Essayez : ${CLIENT.CONSTANTS.prefix}choice <choix 1> <choix 2>...`, message.channel, 'RED');
+            return false;
         } else {
             let percent = Math.round(1/args.length*100);
             let choice = args[Math.floor(Math.random()*(args.length - 0))];

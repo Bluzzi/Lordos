@@ -13,7 +13,7 @@ class Help extends COMMAND {
         } else {
             let command = CLIENT.COMMANDMANAGER.get(args[0]);
             if (command) {
-                EMBED.send(`**Informations sur la commande** \`${command.getName()}\` :\n\n**Alias** : \`${command.getAlias()}\`\n**Utilisation** : \`${command.getUsage()}\`\n**Description** : \`${command.getDescription() || "Pas de description"}\`\n**Permissions** : \`${command.getPermissions().join("`, `") || "Pas de permissions"}\``, message.channel, 'GREEN');
+                EMBED.send(`**Informations sur la commande** \`${command.getName()}\` :\n\n**Alias** : \`${command.getAlias()}\`\n**Utilisation** : \`${command.getUsage() || "Pas d'utilisation particulière"}\`\n**Description** : \`${command.getDescription() || "Pas de description"}\`\n**Permissions** : \`${command.getPermissions().join("`, `") || "Pas de permissions"}\``, message.channel, 'GREEN');
             } else {
                 EMBED.send(`Cette commande est introuvable !`, message.channel, 'RED');
             }

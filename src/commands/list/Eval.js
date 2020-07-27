@@ -4,7 +4,7 @@ const EMBED = require("../../utils/Embed");
 
 class Eval extends COMMAND {
     constructor(){
-        super("eval", "<query>", "execute", ["ADMINISTRATOR"]);
+        super("eval", "<query>", "Execute une évaluation", ["ADMINISTRATOR"]);
     }
 
     async execute(args, message){

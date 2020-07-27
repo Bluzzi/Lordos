@@ -4,13 +4,12 @@ const CONSTANTS = require("../../utils/Constants");
 
 class RandomNumber extends COMMAND {
     constructor() {
-        super("randomnumber");
+        super("randomnumber", "<min> <max>", "Génére un nombre aléatoire");
     }
 
     async execute(args, message){
         if(args.length < 2 || parseInt(args[0]) > parseInt(args[1])){
-            EMBED.send("Vous devez faire ``" + CONSTANTS.prefix + "randomnumber (min) (max)``.", message.channel);
-            return;
+            return false;
         }
 
         args = args.map(num => parseInt(num));

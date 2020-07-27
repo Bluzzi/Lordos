@@ -3,12 +3,12 @@ class Command {
     /**
      * @param {String} name command name
      * @param {String} usage command usage
-     * @param {String} alias alias of the command
-     * @param {Array<String>} permissions list of permissions
      * @param {String} description description of the command
+     * @param {Array<String>} permissions list of permissions
+     * @param {String} alias alias of the command
      */
 
-    constructor(name, usage = "", alias = "", permissions = [], description = "") {
+    constructor(name, usage = "", description = "", permissions = [], alias = "") {
         this.name = name;
         this.usage = usage;
         this.alias = alias;
@@ -17,11 +17,11 @@ class Command {
     }
 
     execute(){
-        throw new Error("execute must be defined");
+        throw new Error("execute must be defined (command name: " + this.getName() + ")");
     }
 
     /**
-     * @returns {String}
+     * @returns {String} name
      */
 
     getName(){
@@ -29,15 +29,15 @@ class Command {
     }
 
     /**
-     * @returns {String}
+     * @returns {String} usage
      */
 
     getUsage(){
-        return "Vous devez faire ``" + CLIENT.CONSTANTS.prefix + this.getName() + " " + this.usage + "`` !";
+        return "Vous devez faire `" + CLIENT.CONSTANTS.prefix + this.getName() + " " + this.usage + "` !";
     }
 
     /**
-     * @returns {String}
+     * @returns {String} alias
      */
 
     getAlias(){
@@ -46,7 +46,7 @@ class Command {
 
 
     /**
-     * @returns {Array}
+     * @returns {Array} permissions
      */
 
     getPermissions(){
@@ -54,7 +54,7 @@ class Command {
     }
 
     /**
-     * @returns {String}
+     * @returns {String} description
      */
 
     getDescription(){
