@@ -15,7 +15,7 @@ class Embed {
         embed.setDescription(message);
         embed.setColor(color);
 
-        channel.send(embed);
+        return channel.send(embed);
     }
 }
 
