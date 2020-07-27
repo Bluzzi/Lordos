@@ -1,6 +1,6 @@
 {
   "name": "lord",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "The Discord bot of Royaume server.",
   "main": "Main.js",
   "scripts": {
@@ -19,6 +19,7 @@
   "homepage": "https://github.com/Royal-Royaume/Lord#readme",
   "dependencies": {
     "@discordjs/opus": "^0.3.2",
+    "child_process": "^1.0.2",
     "colors": "^1.4.0",
     "discord.js": "^12.2.0",
     "ffmpeg": "0.0.4",
