@@ -11,7 +11,7 @@ CLIENT.on("message", (message) => {
 
     if (command) {
         if(!message.member.permissions.has(command.getPermissions())) {
-            return EMBED.send("Vous n'avez pas accès à cette commande !", message.channel, 'RED');
+            return EMBED.send("Vous n'avez pas accès à cette commande !\nPermission(s) requise(s) : `" + command.getPermissions().join("`, `") + "`", message.channel, 'RED');
         }
 
         let execute = command.execute(args, message);

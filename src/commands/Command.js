@@ -4,7 +4,7 @@ class Command {
      * @param {String} name command name
      * @param {String} usage command usage
      * @param {String} alias alias of the command
-     * @param {Array} permissions list of permissions
+     * @param {Array<String>} permissions list of permissions
      * @param {String} description description of the command
      */
 
@@ -15,6 +15,7 @@ class Command {
         this.permissions = permissions;
         this.description = description;
     }
+
 
     execute() {
         throw new Error('execute must be defined');
