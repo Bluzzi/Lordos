@@ -1,0 +1,18 @@
+const COMMAND = require("../Command");
+const EMBED = require("../../utils/Embed");
+const COOL_DISCORD_THINGS = require("../../utils/CoolDiscordThings");
+
+class EmojiAnnonce extends COMMAND {
+
+    constructor(){
+        super("emojiannonce", "(votre message)", "ea");
+    }
+    
+    async execute(args, message){
+        if(!args[0]) return EMBED.send(this.getUsage(), message.channel);
+
+        EMBED.send(COOL_DISCORD_THINGS.messageToEmoji(args.join(" ")), message.channel);
+    }
+}
+
+module.exports = EmojiAnnonce;
