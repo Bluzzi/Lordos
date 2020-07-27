@@ -8,7 +8,7 @@ class MyNumber extends COMMAND {
         super("mynumber");
     }
 
-    static execute(args, message){
+    execute(args, message){
         if(CHOICE_NUMBER.numbers[message.author.id]){
             EMBED.send("Votre nombre est : " + CHOICE_NUMBER.numbers[message.author.id], message.channel);
         } else {

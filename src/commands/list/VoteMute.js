@@ -8,7 +8,7 @@ class VoteMute extends COMMAND {
         super("votemute");
     }
 
-    execute(args, message) {
+    async execute(args, message) {
         let member = message.member;
         if(!member.roles.cache.map(r => r.name).includes('Noble')){
             EMBED.send(`Cette commande ne peut-être utilisée par un membre du tiers état...`, message.channel, 'RED');

@@ -8,7 +8,7 @@ class Numbers extends COMMAND {
         super("numbers");
     }
     
-    execute(args, message){
+    async execute(args, message){
         let list = "";
 
         if(Object.keys(CHOICE_NUMBER.numbers).length !== 0){

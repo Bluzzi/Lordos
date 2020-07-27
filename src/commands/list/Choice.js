@@ -6,7 +6,7 @@ class Choice extends COMMAND {
         super("choice");
     }
 
-    execute(args, message){
+    async execute(args, message){
         if(!args[1]) {
             EMBED.send(`Utilisation invalide ! Essayez : ${CLIENT.CONSTANTS.prefix}choice <choix 1> <choix 2>...`, message.channel, 'RED');
         } else {

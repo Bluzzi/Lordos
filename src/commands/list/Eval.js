@@ -7,7 +7,7 @@ class Eval extends COMMAND {
         super("eval", "<query>", "execute", ["ADMINISTRATOR"]);
     }
 
-    execute(args, message){
+    async execute(args, message){
         if(!args[0]) {
             return false;
         } else {

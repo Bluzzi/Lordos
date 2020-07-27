@@ -9,7 +9,7 @@ class ChoiceNumber extends COMMAND {
         super("choicenumber");
     }
 
-    execute(args, message){
+    async execute(args, message){
         if(!args[0]){
             EMBED.send("Vous devez faire ``" + CONSTANTS.prefix + " (votre nombre)``.", message.channel);
             return;
