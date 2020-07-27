@@ -15,7 +15,7 @@ class EmojiAnnonce extends COMMAND {
     }
     
     async execute(args, message){
-        if(!args[0]) return EMBED.send(this.getUsage(), message.channel);
+        if(!args[0]) return false;
 
         EMBED.send(COOL_DISCORD_THINGS.messageToEmoji(args.join(" ")), message.channel);
     }
