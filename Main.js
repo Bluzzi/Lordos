@@ -1,18 +1,20 @@
-const CONSTANTS = require("./src/utils/Constants");
 const LOGGER = new(require('./src/utils/Logger'))();
 const COMMANDMANAGER = new(require('./src/commands/CommandManager'))();
-
-// Create discord client :
-const DISCORD = require("discord.js");
-CLIENT = new DISCORD.Client({disableMentions: "true"});
-CLIENT.CONSTANTS = CONSTANTS;
-CLIENT.LOGGER = LOGGER;
-CLIENT.COMMANDMANAGER = COMMANDMANAGER;
-global.CLIENT = CLIENT;
 
 // Packadges :
 const FS = require("fs");
 const COMMAND = require("./src/commands/Command");
+const CONSTANTS = require("./src/utils/Constants");
+const DISCORD = require("discord.js");
+
+// Create discord client and save it and others things in a global :
+CLIENT = new DISCORD.Client({disableMentions: "true"});
+
+CLIENT.CONSTANTS = CONSTANTS;
+CLIENT.LOGGER = LOGGER;
+CLIENT.COMMANDMANAGER = COMMANDMANAGER;
+
+global.CLIENT = CLIENT;
 
 // Auto load all events :
 FS.readdirSync("./src/events/").forEach(eventName => {
@@ -20,14 +22,17 @@ FS.readdirSync("./src/events/").forEach(eventName => {
     CLIENT.LOGGER.notice("Loaded event: " + eventName);
 });
 
-//Command loader:
+//Command loader :
 let count = 0;
+
 FS.readdirSync("./src/commands/list").forEach(commandName => {
     if(commandName.split(".").pop() == "js"){
         let commandClass = new(require("./src/commands/list/"+commandName))();
+
         if(commandClass instanceof COMMAND){
             CLIENT.LOGGER.notice("Loaded command: " + commandName);
             CLIENT.COMMANDMANAGER.add(commandClass);
+
             count++;
         } else {
             CLIENT.LOGGER.warn("Cannot load: (not a Command instance) " + commandName);
@@ -35,7 +40,7 @@ FS.readdirSync("./src/commands/list").forEach(commandName => {
     }
 });
 
-CLIENT.LOGGER.notice(`${count} commands loaded !`);
+CLIENT.LOGGER.notice(count + " commands loaded !");
 
 // Connect the client :
 CLIENT.login(CONSTANTS.token);
