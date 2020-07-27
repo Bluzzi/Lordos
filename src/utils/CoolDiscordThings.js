@@ -22,10 +22,10 @@ class CoolDiscordThings {
 
             if(alphabet.includes(char)) return ":regional_indicator_" + char + ":";
             if(numbers.includes(char)) return ":" + numbersName[char] + ":";
-            if(char === " ") return " ";
+            if(char === " ") return "   ";
             if(char === "\n") return "\n";
 
-            return "**" + char + "**";
+            return "**" + char + "** ";
         });
     }
 }
