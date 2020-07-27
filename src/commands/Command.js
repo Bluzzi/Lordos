@@ -17,7 +17,7 @@ class Command {
     }
 
     execute(){
-        throw new Error("execute must be defined (command name: " + this.getName() + ")");
+        throw new Error("execute must be defined");
     }
 
     /**
@@ -46,7 +46,7 @@ class Command {
 
 
     /**
-     * @returns {Array} permissions
+     * @returns {Array<String>} permissions
      */
 
     getPermissions(){

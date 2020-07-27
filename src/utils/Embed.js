@@ -1,5 +1,7 @@
 const DISCORD = require("discord.js");
 
+const COLOR_GREEN = "#20A765";
+
 class Embed {
 
     /**
@@ -9,7 +11,7 @@ class Embed {
      * @returns {void} void
      */
 
-    static send(message, channel, color = "#20A765"){
+    static send(message, channel, color = COLOR_GREEN){
         let embed = new DISCORD.MessageEmbed();
 
         embed.setDescription(message);
@@ -20,3 +22,5 @@ class Embed {
 }
 
 module.exports = Embed;
+
+module.exports.COLOR_GREEN = COLOR_GREEN;

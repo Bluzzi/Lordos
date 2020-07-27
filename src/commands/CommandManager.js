@@ -1,8 +1,11 @@
 const COMMAND = require("./Command");
+const CLICOMMAND = require("../../cli/commands/CliCommand");
+
 
 class CommandManager {
     constructor(){
-        this.commands = [];
+        this._commands = [];
+        this._cliCommands = [];
     }
 
     /**
@@ -11,34 +14,39 @@ class CommandManager {
      * @returns {void}
      */
 
-    add(command){
-        this.commands.push(command);
+    add(command, cli = false){
+        if(!cli) {
+            this._commands.push(command);
+        } else {
+            this._cliCommands.push(command);
+        }
     }
 
     /**
      * @param {String} commandName the command name
      * @description get a command
-     * @returns {COMMAND}
+     * @returns {COMMAND|CLICOMMAND}
      */
 
-    get(commandName){
-        let list = this.commands.map(command => command.getName());
+    get(commandName, cli = false){
+        let commands = cli == false ? this._commands : this._cliCommands;
+        let list = commands.map(command => command.getName());
         let index = list.indexOf(commandName);
         if (index < 0) {
-            list = this.commands.map(command => command.getAlias());
+            list = commands.map(command => command.getAlias());
             index = list.indexOf(commandName);
         }
         
-        return this.commands[index];
+        return commands[index];
     }
 
     /**
      * @description get all registered commands
-     * @returns {Array<COMMAND>}
+     * @returns {Array<COMMAND|CLICOMMAND>}
      */
 
-    all(){
-        return this.commands;
+    all(cli = false){
+        return cli == false ? this._commands : this._cliCommands;
     }
 }
 
