@@ -31,9 +31,11 @@ class Loader {
         let count = 0;
 
         FS.readdirSync(path).forEach(eventName => {
-            require("../events/" + eventName);
-            CLIENT.LOGGER.notice("Loaded event: " + eventName);
-            count++;
+            if(eventName.split(".").pop() == "js"){
+                require("../events/" + eventName);
+                CLIENT.LOGGER.notice("Loaded event: " + eventName);
+                count++;
+            }
         });
 
         return count;
