@@ -1,14 +1,16 @@
 const CLICOMMAND = require("../CliCommand");
-const CHILD_PROCESS = require("child_process");
+const STYLE = require("../../utils/Style");
 
-class Restart extends CLICOMMAND {
+class Reload extends CLICOMMAND {
     constructor(){
-        super("restart", "", "restart the bot")
+        super("reload", "", "Reload commands & events")
     }
 
     execute(args){
-        CLIENT.LOGGER.cli("NOT AVAILABLE");
+        CLIENT.LOGGER.cli(STYLE.createTitle("RELOAD", "*"));
+        CLIENT.LOGGER.cli(CLIENT.COMMANDMANAGER.reload() + " MODULES RELOADED");
+        CLIENT.LOGGER.cli(STYLE.createTitle("RELOAD COMPLETE", "*"));
     }
 }
 
-module.exports = Restart;
+module.exports = Reload;
