@@ -50,13 +50,17 @@ class Git {
         CLIENT.LOGGER.cli("Added files!");
         await GIT.commit(commitMessage).then(async (commit) => {
             CLIENT.LOGGER.cli("Commited changes ! (ID: " + commit.commit + ")");
-            await GIT.push(remoteName, branchName).then(push => {
-                if(push.pushed){
-                    CLIENT.LOGGER.cli("Pushed changes!" + push.remoteMessages.all.join("\n"));
-                } else { 
-                    CLIENT.LOGGER.cli("Error during pushing!" + push.remoteMessages.all.join("\n"));
-                }
-            }).catch(error => CLIENT.LOGGER.warn(error));
+            if(commit.commit.length > 0){
+                await GIT.push(remoteName, branchName).then(push => {
+                    if(push.pushed.length > 0){
+                        CLIENT.LOGGER.cli("Pushed changes! Ref: " + push.ref.local);
+                    } else { 
+                        CLIENT.LOGGER.cli("Error during pushing!");
+                    }
+                }).catch(error => CLIENT.LOGGER.warn(error));
+            } else {
+                CLIENT.LOGGER.cli("Nothing to push!");
+            }
         }).catch(error => CLIENT.LOGGER.warn(error));
     }
 }
