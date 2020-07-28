@@ -36,18 +36,25 @@ class Git {
         }
     }
 
-    static async push(commitMessage, remoteName, ){
+    /**
+     * 
+     * @param {String} commitMessage 
+     * @param {String} remoteName 
+     * @param {String} branchName 
+     */
+
+    static async push(commitMessage, remoteName, branchName){
         await GIT.add(".").catch(error => CLIENT.LOGGER.warn(error));
         CLIENT.LOGGER.cli("Added files!");
         await GIT.commit(commitMessage).then(async (commit) => {
-            CLIENT.LOGGER.cli("Commited changes ! " + commit.commit);
+            CLIENT.LOGGER.cli("Commited changes ! (ID: " + commit.commit + ")");
             await GIT.push(remoteName, branchName).then(push => {
                 if(push.pushed){
-                    CLIENT.LOGGER.cli("Pushed changes!" + push.remoteMessages.all);
+                    CLIENT.LOGGER.cli("Pushed changes!" + push.remoteMessages.all.join("\n"));
                 } else { 
-                    CLIENT.LOGGER.cli("Error during pushing!" + push.remoteMessages.all);
+                    CLIENT.LOGGER.cli("Error during pushing!" + push.remoteMessages.all.join("\n"));
                 }
-            });
+            }).catch(error => CLIENT.LOGGER.warn(error));
         }).catch(error => CLIENT.LOGGER.warn(error));
     }
 }

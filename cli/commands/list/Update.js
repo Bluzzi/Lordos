@@ -20,7 +20,7 @@ class Update extends CLICOMMAND {
             }
 
             CLIENT.LOGGER.cli("Trying to push local changes...");
-            await GIT.push();
+            await GIT.push("CLI UPDATE", remote, branch);
         } else {
             CLIENT.LOGGER.cli("This remote does not exist, there is the remote list in this project: " + remoteList);
         }
