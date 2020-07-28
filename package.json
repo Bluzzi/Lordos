@@ -31,6 +31,7 @@
     "jimp": "^0.14.0",
     "opusscript": "0.0.7",
     "ping": "^0.2.3",
+    "simple-git": "^2.15.0",
     "weather-js": "^2.0.0",
     "ytdl-core": "^3.1.3"
   }

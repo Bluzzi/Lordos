@@ -2,7 +2,7 @@ const CLICOMMAND = require("../CliCommand");
 
 class Help extends CLICOMMAND {
     constructor(){
-        super("help", "", "Give you command list");
+        super("help", "", "Give you the command list");
     }
 
     execute(args){
