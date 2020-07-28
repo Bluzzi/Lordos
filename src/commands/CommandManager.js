@@ -61,17 +61,20 @@ class CommandManager extends LOADER {
         let count = 0;
         this._commands = [];
         this._cliCommands = [];
+        CLIENT.removeAllListeners(); //UNREGISTER ALL EVENTS
 
         //CLEAR MODULES:
         count += this.clear("./src/commands/list", "./list/");
         count += this.clear("./src/utils/", "../utils/");
         count += this.clear("./src/game/", "../game/");
+        count += this.clear("./src/events/", "../events/");
         count += this.clear("./cli/commands/list", "../../cli/commands/list/");
         count += this.clear("./cli/utils", "../../cli/utils/");
 
         //LOAD COMMANDS:
         this.loadCommands(true);
         this.loadCommands(false);
+        this.loadEvents();
 
         return count; //COUNT OF CLEARED MODULES
     }

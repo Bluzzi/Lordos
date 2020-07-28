@@ -10,15 +10,21 @@ class Loader {
         let count = 0;
 
         FS.readdirSync(path).forEach(commandName => {
-            if(commandName.split(".").pop() == "js"){
-                let cliCommandClass = new(require(pathTwo + commandName))();
-                if(cliCommandClass instanceof classType){
-                    let type = cli == false ? "bot" : "CLI";
-                    CLIENT.LOGGER.notice("Loaded " + type + " command: " + commandName);
-                    CLIENT.COMMANDMANAGER.add(cliCommandClass, cli);
-                    count++;
+            if(commandName.split(".").pop() == "js"){ //only reads JS files
+                let commandClass = require(pathTwo + commandName);
+                let type = cli == false ? "bot" : "CLI";
+
+                if(typeof commandClass == "function") { //prevents 'not a constructor' error
+                    commandClass = new commandClass();
+                    if(commandClass instanceof classType){ //only register commands
+                        CLIENT.LOGGER.notice("Loaded " + type + " command: " + commandName);
+                        CLIENT.COMMANDMANAGER.add(commandClass, cli);
+                        count++;
+                    } else {
+                        CLIENT.LOGGER.warn("Cannot load" + type + " command: " + commandName + "(not a command instance)");
+                    }
                 } else {
-                    CLIENT.LOGGER.warn("Cannot load: (not a Command instance) " + commandName);
+                    CLIENT.LOGGER.warn("Cannot load " + type + " command: " + commandName + " (missing exports?)");
                 }
             }
         });
@@ -31,9 +37,11 @@ class Loader {
         let count = 0;
 
         FS.readdirSync(path).forEach(eventName => {
-            require("../events/" + eventName);
-            CLIENT.LOGGER.notice("Loaded event: " + eventName);
-            count++;
+            if(eventName.split(".").pop() == "js"){
+                require("../events/" + eventName);
+                CLIENT.LOGGER.notice("Loaded event: " + eventName);
+                count++;
+            }
         });
 
         return count;

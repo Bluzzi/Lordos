@@ -1,9 +1,17 @@
 const READLINE = require("readline");
-const READER = READLINE.createInterface(process.stdin, process.stdout);
+const COLORS = require("colors");
+const COMPLETER = function(line) {
+    let completions = CLIENT.COMMANDMANAGER.all(true).map(command => command.getName());
+    let find = completions.filter((c) => c.startsWith(line));
+
+    return [find.length ? find : completions, line];
+}
+const READER = READLINE.createInterface(process.stdin, process.stdout, COMPLETER);
 
 function start(){
     initPrompt();
 
+    // COMMAND:
     READER.on("line", async (input) => {
         let args = input.toLowerCase().split(" ");
         let commandName = args[0];
@@ -15,12 +23,25 @@ function start(){
             if(execute == false){
                 CLIENT.LOGGER.cli("Invalid usage, try : " + command.getUsage());
             }
-        } else {
-            CLIENT.LOGGER.cli("Undefined command, try 'help' to get the command list");
+        } else if(commandName.length > 0) {
+            CLIENT.LOGGER.cli("Undefined command, try 'help' or TAB to get the command list");
         }
 
         initPrompt();
     });
+
+
+    // PREVENT UNDESIRED CLOSE:
+    READER.on("SIGINT", () => {
+        READER.question(COLORS.red("You are about to close this session, are you sure ? (no/YES) : "), (answer) => {
+            if(answer == "no"){
+                READER.resume();
+            } else {
+                READER.close();
+                process.exit(0);
+            }
+        })
+    })
 
     return READER;
 }

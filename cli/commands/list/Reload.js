@@ -3,7 +3,7 @@ const STYLE = require("../../utils/Style");
 
 class Reload extends CLICOMMAND {
     constructor(){
-        super("reload", "", "Reload commands & events")
+        super("reload", "", "Reload all project modules")
     }
 
     execute(args){

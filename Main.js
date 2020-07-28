@@ -1,4 +1,4 @@
-const LOGGER = new(require('./log/Logger'))();
+const LOGGER = new(require('./src/utils/Logger'))();
 const COMMANDMANAGER = new(require('./src/commands/CommandManager'))();
 
 // Packages :
@@ -11,6 +11,7 @@ CLIENT = new DISCORD.Client({disableMentions: "true"});
 CLIENT.CONSTANTS = CONSTANTS;
 CLIENT.LOGGER = LOGGER;
 CLIENT.COMMANDMANAGER = COMMANDMANAGER;
+
 
 // Start CLI:
 CLIENT.CLI = CLI.start();

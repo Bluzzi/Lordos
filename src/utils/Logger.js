@@ -1,6 +1,5 @@
 const COLORS = require("colors");
-const CONFIG = require("../src/utils/Config");
-
+const CONFIG = require("./Config");
 
 class Logger {
     /**
@@ -45,13 +44,13 @@ class Logger {
     }
 
     log(message, type, color){
-        let finalMessage = `[${this.getDate()}][${type}]: ${message}`;
+        let finalMessage = type != 'CLI' ? `[${this.getDate()}][${type}]: ${message}` : message;
         CLIENT.CLI.setPrompt("");
-        CLIENT.CLI.prompt(false);
+        CLIENT.CLI.prompt(true);
         console.log(COLORS[color](finalMessage));
         CLIENT.CLI.setPrompt("> ");
         CLIENT.CLI.prompt(true);
-        CONFIG.writeText(__dirname+"/log.txt", finalMessage);
+        CONFIG.writeText("./log/log.txt", finalMessage);
     }
 }
 
