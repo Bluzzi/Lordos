@@ -36,11 +36,18 @@ class Git {
         }
     }
 
-    static async push(commitMessage){
+    static async push(commitMessage, remoteName, ){
         await GIT.add(".").catch(error => CLIENT.LOGGER.warn(error));
         CLIENT.LOGGER.cli("Added files!");
-        await GIT.commit(commitMessage).then(commit => {
-            CLIENT.LOGGER.cli("Commited changes! " + commit.summary.changes)
+        await GIT.commit(commitMessage).then(async (commit) => {
+            CLIENT.LOGGER.cli("Commited changes ! " + commit.commit);
+            await GIT.push(remoteName, branchName).then(push => {
+                if(push.pushed){
+                    CLIENT.LOGGER.cli("Pushed changes!" + push.remoteMessages.all);
+                } else { 
+                    CLIENT.LOGGER.cli("Error during pushing!" + push.remoteMessages.all);
+                }
+            });
         }).catch(error => CLIENT.LOGGER.warn(error));
     }
 }
