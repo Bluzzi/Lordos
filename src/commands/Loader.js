@@ -14,9 +14,9 @@ class Loader {
                 let commandClass = require(pathTwo + commandName);
                 let type = cli == false ? "bot" : "CLI";
 
-                if(typeof commandClass == "function") { //prevent 'no exports'
+                if(typeof commandClass == "function") { //prevents 'not a constructor' error
                     commandClass = new commandClass();
-                    if(commandClass instanceof classType){ //prevent 'no command class'
+                    if(commandClass instanceof classType){ //only register commands
                         CLIENT.LOGGER.notice("Loaded " + type + " command: " + commandName);
                         CLIENT.COMMANDMANAGER.add(commandClass, cli);
                         count++;

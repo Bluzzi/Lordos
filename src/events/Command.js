@@ -1,5 +1,4 @@
 const EMBED = require("../utils/Embed");
-const DISCORD = require("discord.js")
 
 CLIENT.on("message", async (message) => {
     if(message.author.bot) return;
