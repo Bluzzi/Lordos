@@ -46,10 +46,12 @@ class Logger {
 
     log(message, type, color){
         let finalMessage = `[${this.getDate()}][${type}]: ${message}`;
+        CLIENT.CLI.setPrompt("");
+        CLIENT.CLI.prompt(false);
         console.log(COLORS[color](finalMessage));
-        CONFIG.writeText(__dirname+"/log.txt", finalMessage);
         CLIENT.CLI.setPrompt("> ");
         CLIENT.CLI.prompt(true);
+        CONFIG.writeText(__dirname+"/log.txt", finalMessage);
     }
 }
 

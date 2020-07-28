@@ -18,7 +18,7 @@ function start(){
         } else {
             CLIENT.LOGGER.cli("Undefined command, try 'help' to get the command list");
         }
-    
+
         initPrompt();
     });
 
