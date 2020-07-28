@@ -1,5 +1,5 @@
 const COLORS = require("colors");
-const CONFIG = require("../src/utils/Config");
+const CONFIG = require("./Config");
 
 class Logger {
     /**
@@ -50,7 +50,7 @@ class Logger {
         console.log(COLORS[color](finalMessage));
         CLIENT.CLI.setPrompt("> ");
         CLIENT.CLI.prompt(true);
-        CONFIG.writeText(__dirname+"/log.txt", finalMessage);
+        CONFIG.writeText("./log/log.txt", finalMessage);
     }
 }
 

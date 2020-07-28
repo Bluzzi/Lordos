@@ -1,4 +1,4 @@
-const LOGGER = new(require('./log/Logger'))();
+const LOGGER = new(require('./src/utils/Logger'))();
 const COMMANDMANAGER = new(require('./src/commands/CommandManager'))();
 
 // Packages :
