@@ -14,9 +14,9 @@ class Update extends CLICOMMAND {
 
         let remote = args[0];
         let branch = args[1];
-        let commitMessage = args.slice(1, args.length);
+        let commitMessage = args.slice(2, args.length).join(" ");
         let remoteList = await GIT.getRemotes();
-        
+
         if(remoteList.includes(remote)){
             //PULL :
             CLIENT.LOGGER.cli(STYLE.createTitle("PULL"));
