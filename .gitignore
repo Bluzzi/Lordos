@@ -13,3 +13,6 @@ log/log.txt
 
 # Packagelock
 package-lock.json
+
+#temp files
+resources/temp/*

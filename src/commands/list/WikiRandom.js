@@ -7,7 +7,7 @@ var numbers = {};
 
 class ChoiceNumber extends COMMAND {
     constructor() {
-        super("wikirandom","wikir",">wikirandom");
+        super("wikirandom","wikir","Renvoie un lien vers une page aléatoire wikipedia.", [], "wikir");
     }
 
     async execute(args, message){
