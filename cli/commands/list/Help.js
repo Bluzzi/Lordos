@@ -1,4 +1,5 @@
 const CLICOMMAND = require("../CliCommand");
+const STYLE = require("../../utils/Style");
 
 class Help extends CLICOMMAND {
     constructor(){
@@ -6,7 +7,7 @@ class Help extends CLICOMMAND {
     }
 
     execute(args){
-        CLIENT.LOGGER.cli("\n*************\n  HELP PAGE\n*************\n"+CLIENT.COMMANDMANAGER.all(true).map(command => "["+command.getName() + "] | " + command.getUsage() + "| " + command.getDescription()).join("\n"));
+        CLIENT.LOGGER.cli(STYLE.createTitle("HELP PAGE")+"\n"+CLIENT.COMMANDMANAGER.all(true).map(command => "["+command.getName() + "] | " + command.getUsage() + " | " + command.getDescription()).join("\n"));
     }
 }
 

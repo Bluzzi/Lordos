@@ -6,7 +6,7 @@ class Clear extends CLICOMMAND {
     }
 
     execute(args){
-        process.stdout.write("\x1Bc");
+        CLIENT.CLI.write("\x1Bc");
         CLIENT.LOGGER.cli("Cleared!");
     }
 }
