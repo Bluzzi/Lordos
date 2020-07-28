@@ -1,7 +1,6 @@
 const COLORS = require("colors");
 const CONFIG = require("../src/utils/Config");
 
-
 class Logger {
     /**
      * @param {string} message the message to print
