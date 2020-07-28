@@ -7,3 +7,9 @@ settings.json
 # All data without what-is-data.txt :
 resources/configs/data/*
 !resources/configs/data/what-is-data.txt
+
+# Logs:
+log/log.txt
+
+# Packagelock
+package-lock.json

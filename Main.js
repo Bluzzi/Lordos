@@ -1,46 +1,36 @@
-const LOGGER = new(require('./src/utils/Logger'))();
+const LOGGER = new(require('./log/Logger'))();
 const COMMANDMANAGER = new(require('./src/commands/CommandManager'))();
 
-// Packadges :
-const FS = require("fs");
-const COMMAND = require("./src/commands/Command");
+// Packages :
 const CONSTANTS = require("./src/utils/Constants");
 const DISCORD = require("discord.js");
+const CLI = require("./cli/Main.js");
 
 // Create discord client and save it and others things in a global :
 CLIENT = new DISCORD.Client({disableMentions: "true"});
-
 CLIENT.CONSTANTS = CONSTANTS;
 CLIENT.LOGGER = LOGGER;
 CLIENT.COMMANDMANAGER = COMMANDMANAGER;
 
+// Start CLI:
+CLIENT.CLI = CLI.start();
+CLIENT.LOGGER.notice("Started Command Line Interface");
+
 global.CLIENT = CLIENT;
 
-// Auto load all events :
-FS.readdirSync("./src/events/").forEach(eventName => {
-    require("./src/events/" + eventName);
-    CLIENT.LOGGER.notice("Loaded event: " + eventName);
-});
+// Startup logs:
+CLIENT.LOGGER.notice("Actual version: " + require("./package.json").version);
+CLIENT.LOGGER.notice("External packages list: " + Object.keys(require("./package.json").dependencies).join(", "));
 
-//Command loader :
-let count = 0;
+// Events loader :
+CLIENT.LOGGER.notice(CLIENT.COMMANDMANAGER.loadEvents() + " events loaded !");
 
-FS.readdirSync("./src/commands/list").forEach(commandName => {
-    if(commandName.split(".").pop() == "js"){
-        let commandClass = new(require("./src/commands/list/"+commandName))();
+// Bot commands loader :
+CLIENT.LOGGER.notice(CLIENT.COMMANDMANAGER.loadCommands(false) + " bot commands loaded !");
 
-        if(commandClass instanceof COMMAND){
-            CLIENT.LOGGER.notice("Loaded command: " + commandName);
-            CLIENT.COMMANDMANAGER.add(commandClass);
-
-            count++;
-        } else {
-            CLIENT.LOGGER.warn("Cannot load: (not a Command instance) " + commandName);
-        }
-    }
-});
-
-CLIENT.LOGGER.notice(count + " commands loaded !");
+// Cli commands loader :
+CLIENT.LOGGER.notice(CLIENT.COMMANDMANAGER.loadCommands(true) + " CLI commands loaded !");
 
 // Connect the client :
 CLIENT.login(CONSTANTS.token);
+

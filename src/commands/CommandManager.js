@@ -1,8 +1,12 @@
 const COMMAND = require("./Command");
+const CLICOMMAND = require("../../cli/commands/CliCommand");
+const LOADER = require("./Loader");
 
-class CommandManager {
+class CommandManager extends LOADER {
     constructor(){
-        this.commands = [];
+        super();
+        this._commands = [];
+        this._cliCommands = [];
     }
 
     /**
@@ -11,34 +15,65 @@ class CommandManager {
      * @returns {void}
      */
 
-    add(command){
-        this.commands.push(command);
+    add(command, cli = false){
+        if(!cli) {
+            this._commands.push(command);
+        } else {
+            this._cliCommands.push(command);
+        }
     }
 
     /**
      * @param {String} commandName the command name
      * @description get a command
-     * @returns {COMMAND}
+     * @returns {COMMAND|CLICOMMAND}
      */
 
-    get(commandName){
-        let list = this.commands.map(command => command.getName());
+    get(commandName, cli = false){
+        let commands = cli == false ? this._commands : this._cliCommands;
+        let list = commands.map(command => command.getName());
         let index = list.indexOf(commandName);
         if (index < 0) {
-            list = this.commands.map(command => command.getAlias());
+            list = commands.map(command => command.getAlias());
             index = list.indexOf(commandName);
         }
         
-        return this.commands[index];
+        return commands[index];
     }
 
     /**
      * @description get all registered commands
-     * @returns {Array<COMMAND>}
+     * @returns {Array<COMMAND|CLICOMMAND>}
      */
 
-    all(){
-        return this.commands;
+    all(cli = false){
+        return cli == false ? this._commands : this._cliCommands;
+    }
+
+    /**
+     * @description reload all modules
+     * @returns {Number} count of cleared modules
+     */
+
+    reload(){
+        //DO NOT RELOAD THIS PATH AND THESES CLASSES ./Command AND ./CliCommand
+
+        let count = 0;
+        this._commands = [];
+        this._cliCommands = [];
+
+        //CLEAR MODULES:
+        count += this.clear("./src/commands/list", "./list/");
+        count += this.clear("./src/utils/", "../utils/");
+        count += this.clear("./src/game/", "../game/");
+        count += this.clear("./cli/commands/list", "../../cli/commands/list/");
+        count += this.clear("./cli/utils", "../../cli/utils/");
+
+        //LOAD COMMANDS:
+        this.loadCommands(true);
+        this.loadCommands(false);
+
+        return count; //COUNT OF CLEARED MODULES
     }
 }
 
