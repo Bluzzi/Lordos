@@ -1,4 +1,5 @@
 const CLICOMMAND = require("../CliCommand");
+const STYLE = require("../../utils/Style");
 
 class Info extends CLICOMMAND {
     constructor(){
@@ -6,7 +7,7 @@ class Info extends CLICOMMAND {
     }
 
     execute(args){
-        CLIENT.LOGGER.cli("\n*****************\n   Information   \n*****************\n[CPU USAGE]: " + process.cpuUsage().system+ " X??\n[MEMORY USAGE]: " + (process.memoryUsage().heapUsed/8)+ " bytes\n[GUILD SIZE]: " + CLIENT.guilds.cache.size);
+        CLIENT.LOGGER.cli(STYLE.createTitle("INFORMATION") + "\n[CPU USAGE]: " + process.cpuUsage().system+ " X??\n[MEMORY USAGE]: " + (process.memoryUsage().heapUsed/8)+ " bytes\n[GUILD SIZE]: " + CLIENT.guilds.cache.size);
     }
 }
 

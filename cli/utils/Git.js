@@ -15,7 +15,7 @@ class Git {
             .catch(error => {
                 resolve([]);
                 CLIENT.LOGGER.warn(error);
-            })
+            });
         });
     }
 
@@ -29,10 +29,12 @@ class Git {
     static async pull(remoteName, branchName){
         let state = await GIT.pull(remoteName, branchName).catch(error => CLIENT.LOGGER.warn(error));    
           
-        if(state.files.length < 1){
-            return false;
-        } else {
-            return JSON.stringify(state.files);
+        if(state != undefined){
+            if(state.files.length < 1){
+                CLIENT.LOGGER.cli("Already up to date");
+            } else {
+                CLIENT.LOGGER.cli("Pulled! Updated files: " + "\n-"+state.files.join("\n-"));
+            }
         }
     }
 
