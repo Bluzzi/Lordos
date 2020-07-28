@@ -19,7 +19,7 @@ class Url extends COMMAND {
 
     async execute(args, message){
         let config = JSON.parse(FS.readFileSync(
-            __dirname + "/../../resources/configs/url.json"), 
+            __dirname + "/../../../resources/configs/url.json"), 
             {encoding:"utf8"}
         );
 

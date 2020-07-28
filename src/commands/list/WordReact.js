@@ -17,7 +17,6 @@ class WordReact extends COMMAND {
         let word = args[1].toLowerCase();
 
         for(let letter of word){
-            console.log(letter.charCodeAt(0), letter)
             if(letter.charCodeAt(0) < 97 || letter.charCodeAt(0) > 122){
                 EMBED.send("Les caractères ne peuvent être que des lettres sans accents.", message.channel)
                 return;

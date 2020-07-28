@@ -18,7 +18,7 @@ class Delete {
             }
             
             //Update the config :
-            FS.writeFile(__dirname + "/../../../resources/configs/url.json", JSON.stringify(config, null, 4), (err) => { if(err) return console.log(err) });
+            FS.writeFile(__dirname + "/../../../../resources/configs/url.json", JSON.stringify(config, null, 4), (err) => { if(err) return console.log(err) });
 
 
             EMBED.send("Deleted " + args[0], message.channel)

@@ -7,7 +7,7 @@ var numbers = {};
 
 class ChoiceNumber extends COMMAND {
     constructor() {
-        super("wikirandom",">wikirandom","wikir");
+        super("wikirandom","wikir",">wikirandom");
     }
 
     async execute(args, message){

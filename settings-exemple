@@ -1,7 +1,0 @@
-{
-    "token": "BOT TOKEN",
-    "prefix": "PREFIX"
-}
-
-Après avoir complèté cette configuration, renommez le fichier en : settings.json
-/!\ UN CARACTERE UNIQUEMENT POUR LE PREFIX

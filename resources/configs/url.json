@@ -21,8 +21,7 @@
         "atlar": "https://atlar.fr/",
         "horion": "http://wikipedia*",
         "wikipedia": "https://wikipedia",
-        "youporn": "https://youporn.com",
-        "twitter": "https://twitter.com"
+        "youporn": "https://youporn.com"
     },
     "aliases": {
         "codingame": [
@@ -37,13 +36,6 @@
         ],
         "youporn": [
             "<@!233351173665456129>"
-        ],
-        "twitter": [
-            "site",
-            "pour",
-            "les",
-            "enfants",
-            "et"
         ]
     }
 }

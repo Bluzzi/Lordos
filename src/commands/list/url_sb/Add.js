@@ -41,7 +41,7 @@ class Add {
         }
 
         // Update the config :
-        FS.writeFile(__dirname + "/../../../resources/configs/url.json", JSON.stringify(config, null, 4), err => { if(err) return console.log(err) });
+        FS.writeFile(__dirname + "/../../../../resources/configs/url.json", JSON.stringify(config, null, 4), err => { if(err) return console.log(err) });
 
         EMBED.send("Done with " + error.filter((bool) => !bool).length + " bad alias.", message.channel);
     }
