@@ -20,8 +20,8 @@ class Dice extends COMMAND {
             }
 
             let i = 1;
-            dices = dices.map(dice => `Dès N°${i++} > **${dice}**`);
-            EMBED.send("Les dès ont été lancés !\n"+dices.join("\n"), message.channel);
+            dices = dices.map(dice => `Dé N°${i++} > **${dice}**`);
+            EMBED.send("Le(s) dé(s) a/ont été lancé !\n"+dices.join("\n"), message.channel);
         }
     }
 }
