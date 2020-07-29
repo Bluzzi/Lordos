@@ -9,7 +9,7 @@ resources/configs/data/*
 !resources/configs/data/what-is-data.txt
 
 # Logs:
-log/*.txt
+log/log.txt
 
 # Packagelock
 package-lock.json
