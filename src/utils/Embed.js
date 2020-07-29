@@ -11,12 +11,17 @@ class Embed {
      * @returns {void} void
      */
 
-    static send(message, channel, color = COLOR_GREEN){
+    static send(message, channel, options = {}){
         let embed = new DISCORD.MessageEmbed();
 
         embed.setDescription(message);
-        embed.setColor(color);
+        
+        if(options["color"]) embed.setColor(options["color"]);
+        
 
+        if(options["image"]){
+            embed.setImage(options["image"]);
+        }
         return channel.send(embed);
     }
 }
