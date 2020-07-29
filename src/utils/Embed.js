@@ -18,8 +18,8 @@ class Embed {
         embed.setDescription(message);
         
         //prevent older uses:
-        new Erro
-        if(typeof options == String) options = {color: options, image: null};
+        if(typeof options == 'string') options = {color: options, image: null};
+        
 
         if(options["color"]) embed.setColor(options["color"]);
         if(options["image"]) embed.setImage(options["image"]);
