@@ -5,7 +5,7 @@ const EMBED = require("../../utils/Embed");
 class Avatar extends COMMAND {
 
     constructor() {
-        super("avatar");
+        super("avatar", "<user>", "Show the profil picture of the given user.");
     }
 
     async execute(args, message){
