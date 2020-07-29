@@ -17,10 +17,14 @@ class Embed {
 
         embed.setDescription(message);
         
-        //prevent older uses:
-        if(typeof options == 'string') options = {color: options, image: null};
         
+        // Prevent older uses:
+        if(typeof options == 'string') options = {color: options, image: null};
 
+        // Set default color :
+        embed.setColor(COLOR_GREEN);
+
+        // Set options :
         if(options["color"]) embed.setColor(options["color"]);
         if(options["image"]) embed.setImage(options["image"]);
 
