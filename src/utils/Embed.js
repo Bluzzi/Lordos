@@ -16,6 +16,7 @@ class Embed {
 
         embed.setDescription(message);
         
+        embed.setColor(COLOR_GREEN);
         if(options["color"]) embed.setColor(options["color"]);
         
 
