@@ -6,24 +6,29 @@ class Embed {
 
     /**
      * @param {String} message message to send
-     * @param {Object} channel channel
-     * @param {String} color embed color
+     * @param {DISCORD.Channel} channel a discord channel
+     * @param {{color: String, image: String}|String} options embed color
      * @returns {void} void
+     * @deprecated Options should be an object, String usage is deprecated
      */
 
-    static send(message, channel, options = {}){
+    static send(message, channel, options = {color: null, image: null}){
         let embed = new DISCORD.MessageEmbed();
 
         embed.setDescription(message);
         
-        embed.setColor(COLOR_GREEN);
-        if(options["color"]) embed.setColor(options["color"]);
         
+        // Prevent older uses:
+        if(typeof options == String) options = {color: options, image: null};
 
-        if(options["image"]){
-            embed.setImage(options["image"]);
-        }
-        return channel.send(embed);
+        // Set default color :
+        embed.setColor(COLOR_GREEN);
+
+        // Set options :
+        if(options["color"]) embed.setColor(options["color"]);
+        if(options["image"]) embed.setImage(options["image"]);
+
+        channel.send(embed);
     }
 }
 
