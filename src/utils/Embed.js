@@ -17,9 +17,8 @@ class Embed {
 
         embed.setDescription(message);
         
-        
         // Prevent older uses:
-        if(typeof options == 'string') options = {color: options, image: null};
+        if(typeof options == "string") options = {color: options, image: null};
 
         // Set default color :
         embed.setColor(COLOR_GREEN);
@@ -28,7 +27,7 @@ class Embed {
         if(options["color"]) embed.setColor(options["color"]);
         if(options["image"]) embed.setImage(options["image"]);
 
-        channel.send(embed);
+        return channel.send(embed);
     }
 }
 
