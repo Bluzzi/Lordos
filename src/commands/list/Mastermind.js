@@ -2,7 +2,7 @@ const COMMAND = require("../Command");
 const EMBED = require("../../utils/Embed");
 const DISCORD = require("discord.js");
 
-let emojis = ["⬜","🟧","🟥","🟦","🟫","🟪","🟩","🟨","⬛","◀️","▶️","✅"];
+let emojis = ["⬜","🟧","🟥","🟦","🟫","🟪","🟩","🟨","◀️","▶️","✅"];
 
 
 
@@ -135,7 +135,7 @@ class Mastermind extends COMMAND{
 
     // Generate code function :
     createCode(){
-        let colors = ["⬜","🟧","🟥","🟦","🟫","🟪","🟩","🟨","⬛"];
+        let colors = ["⬜","🟧","🟥","🟦","🟫","🟪","🟩","🟨"];
 
         let code = []
         for(let i = 0; i < 5; i++){
