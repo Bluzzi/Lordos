@@ -39,7 +39,7 @@ class Mastermind extends COMMAND{
         let debug = "";
         let attempt = 0;
 
-        EMBED.send(codeToFind.join("")+ "\n" + text + previousCodes + "__Code actuel :__\n" + currentCode.join("") + "\n" + arrow.join("") + debug, message.channel).then((msg) =>{
+        EMBED.send(text + previousCodes + "__Code actuel :__\n" + currentCode.join("") + "\n" + arrow.join("") + debug, message.channel).then((msg) =>{
 
             //Add reactions to the message :
             for(let em of emojis) msg.react(em);
