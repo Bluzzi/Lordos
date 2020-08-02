@@ -59,7 +59,7 @@ class Precision extends COMMAND {
         
         // Create and send the image :
         let id = ""
-        message.channel.send(this.createImage(turnWords.join(" "), turn)).then((msg) => id=msg.id);
+        message.channel.send(this.createImage(turnWords.join(" "), turn)).then((msg) => id = msg.id);
         
         setTimeout(() => {
             let winner = ""
