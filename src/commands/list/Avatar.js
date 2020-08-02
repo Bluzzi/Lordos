@@ -1,27 +1,22 @@
 const COMMAND = require("../Command");
-const DISCORD = require("discord.js");
 const EMBED = require("../../utils/Embed");
 
 class Avatar extends COMMAND {
 
-    constructor() {
-        super("avatar", "<user>", "Show the profil picture of the given user.");
+    constructor(){
+        super("avatar", "<user>", "Voir la photo de profil d'une personne");
     }
 
     async execute(args, message){
-        let mentions = message.mentions;
-        
-        let image;
-
-        console.log(mentions)
-        if(!mentions.users.first()){ 
-            image = message.author.displayAvatarURL();
-        }
-        else{
-            image = mentions.users.first().displayAvatarURL();
-        }
-
-        EMBED.send("", message.channel, {"image" : image})
+        EMBED.send(
+            "", 
+            message.channel, 
+            {
+                "image": message.mentions.users.first() ? 
+                    message.mentions.users.first().displayAvatarURL() 
+                    : message.author.displayAvatarURL()
+            }
+        );
     }
 }
 
