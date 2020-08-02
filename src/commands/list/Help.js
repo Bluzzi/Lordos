@@ -3,7 +3,14 @@ const EMBED = require("../../utils/Embed");
 
 class Help extends COMMAND {
     constructor() {
-        super("help", "[commande]", "aide", [], "Donne des informations sur une commande ou la liste de celles-ci");
+        super(
+            "help",
+            "<commande>", 
+            "Obtenir la liste des commandes ou voir des informations sur une commande précise", 
+            [], 
+            "Donne des informations sur une commande ou la liste de celles-ci", 
+            "commands"
+        );
     }
 
     execute(args, message){

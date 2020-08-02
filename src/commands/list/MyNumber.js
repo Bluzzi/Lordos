@@ -4,6 +4,7 @@ const CHOICE_NUMBER = require("./ChoiceNumber");
 const CONSTANTS = require("../../utils/Constants");
 
 class MyNumber extends COMMAND {
+    
     constructor() {
         super("mynumber", "", "Affiche votre nombre");
     }
