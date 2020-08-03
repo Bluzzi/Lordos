@@ -7,8 +7,8 @@ class Test extends COMMAND {
         super("test", "tkt", "Tester quelque chose.", [], "t");
     }
 
-    execute(args, message) {
-        //for tests...
+    execute(args, message){
+        message.channel.send("Ceci est un test !");
     }
 }
 
