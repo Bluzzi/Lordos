@@ -48,7 +48,7 @@
 - [x] horn -> joue un son de horn dans votre salon
 
 #### Fun :
-- [ ] gif (list de mot clé) -> envoie un gif via l'api de https://giphy.com/
+- [x] gif (list de mot clé) -> envoie un gif via l'api de https://giphy.com/
 - [ ] foodporn -> envoie des images de bouffe qui donne envie
 - [x] choice (mot 1) (mot 2) ...(mot) -> le bot choisi un mot aléatoirement
 - [x] choicenumber (votre nombre) -> choisir un nombre
