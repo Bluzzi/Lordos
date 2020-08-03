@@ -4,11 +4,19 @@ let separator = "\n\n";
 
 class Information {
 
+    /**
+     * @param {string} header 
+     */
     constructor(header){
         this.header = header + " :";
         this.information = [];
     }
 
+    /**
+     * 
+     * @param {string} type Information name
+     * @param {string} info Information 
+     */
     addInformation(type, info){
         this.information.push("**" + type + " : **" + info);
     }
