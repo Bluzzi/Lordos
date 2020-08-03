@@ -7,8 +7,8 @@ class Test extends COMMAND {
         super("test", "tkt", "Tester quelque chose.", [], "t");
     }
 
-    execute(args, message) {
-        EMBED.send("Test", message.channel, {color: 'RED', footer: "lol", title: "hey", timestamp: Date.now()});
+    execute(args, message){
+        message.channel.send("Ceci est un test !");
     }
 }
 

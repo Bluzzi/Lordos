@@ -7,11 +7,15 @@ settings.json
 # All data without what-is-data.txt :
 resources/configs/*
 
-# Logs:
+# Logs :
 log/log.txt
 
-# Packagelock
+# Packagelock :
 package-lock.json
 
-#temp files
+# Temp files :
 resources/temp/*
+
+# PHP Storm user config :
+*.xml
+*.iml

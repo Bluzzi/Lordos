@@ -30,8 +30,9 @@ class CoolDiscordThings {
     }
 
     static getMemberIdFromStringMention(text){
-        let potentialStart = false;
         let started = false;
+
+        let lastChar = "";
     
         let memberId = "";
 
@@ -42,18 +43,29 @@ class CoolDiscordThings {
                 if(char === ">"){
                     break;
                 } else {
-                    memberId += char;
+                    if(char !== "!") memberId += char;
                 }
             } else {
-                if(potentialStart){
-                    started = char === "@";
-                } else {
-                    if(char === "<") potentialStart = true;
-                }
+                started = lastChar === "<" && char === "@";
             }
+
+            lastChar = char;
         }
 
         return memberId;
+    }
+
+    static numberToDigitEmojis(number){
+        let numbers = [['◻️◻️◻️', '◻️⬛◻️', '◻️⬛◻️', '◻️⬛◻️', '◻️◻️◻️'], ['⬛⬛◻️', '⬛◻️◻️', '◻️⬛◻️', '⬛⬛◻️', '⬛⬛◻️'], ['◻️◻️◻️', '⬛⬛◻️', '◻️◻️◻️', '◻️⬛⬛', '◻️◻️◻️'], ['◻️◻️◻️', '⬛⬛◻️', '◻️◻️◻️', '⬛⬛◻️', '◻️◻️◻️'], ['◻️⬛◻️', '◻️⬛◻️', '◻️◻️◻️', '⬛⬛◻️', '⬛⬛◻️'], ['◻️◻️◻️', '◻️⬛⬛', '◻️◻️◻️', '⬛⬛◻️', '◻️◻️◻️'], ['◻️⬛⬛', '◻️⬛⬛', '◻️◻️◻️', '◻️⬛◻️', '◻️◻️◻️'], ['◻️◻️◻️', '⬛⬛◻️', '⬛⬛◻️', '⬛⬛◻️', '⬛⬛◻️'], ['◻️◻️◻️', '◻️⬛◻️', '◻️◻️◻️', '◻️⬛◻️', '◻️◻️◻️'], ['◻️◻️◻️', '◻️⬛◻️', '◻️◻️◻️', '⬛⬛◻️', '⬛⬛◻️']];
+        let separator = "⬛";
+        let text = "";
+
+        for(let a = 0; a < 5; a++){
+            for(let i of number) text += numbers[i][a] + separator;
+            text += "\n";
+        }
+
+        return text;
     }
 }
 
