@@ -8,7 +8,7 @@ class Test extends COMMAND {
     }
 
     execute(args, message) {
-        //for tests...
+        EMBED.send("Test", message.channel, {color: 'RED', footer: "lol", title: "hey", timestamp: Date.now()});
     }
 }
 

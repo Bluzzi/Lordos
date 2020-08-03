@@ -38,8 +38,8 @@ class Voice {
      * @returns {void}
      */
 
-    static playYoutube(connection, link, options = {volume: 100, seek: 0, bitrate: 184}){
-        connection.play(YTDL(link, options));
+    static playYoutube(connection, link, options = {}){
+        connection.play(YTDL(link, options), options);
     }
 }
 

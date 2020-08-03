@@ -7,9 +7,9 @@ class Embed {
     /**
      * @param {String} message message to send
      * @param {DISCORD.Channel} channel a discord channel
-     * @param {{color: String, image: String, title: String, footer: String, thumbnail: String}|String} options embed color
+     * @param {{color: String, image: String, title: String, footer: String, thumbnail: String, timestamp: String}|String} options embed color
      * @returns {void} void
-     * @deprecated Options should be an object, String usage is deprecated
+     * @deprecated options should be an object, String usage is deprecated
      */
 
     static send(message, channel, options = {}){
@@ -27,6 +27,7 @@ class Embed {
         if(options["color"]) embed.setColor(options["color"]);
         if(options["image"]) embed.setImage(options["image"]);
         if(options["thumbnail"]) embed.setThumbnail(options["thumbnail"]);
+        if(options["timestamp"]) embed.setTimestamp(options["timestamp"]);
 
         channel.send(embed);
     }
