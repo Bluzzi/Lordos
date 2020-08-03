@@ -72,7 +72,7 @@
 #### Jeux :
 - [ ] shifumi (pierre, feuille ou ciseaux) -> lancé une partie de shifumi contre le bot
 - [ ] findnumber (min ou "stop") (max) -> trouver le nombre entre le minimum et le maximum, tout le salon peux joué dans le salon et des que le nombre est trouver le jeu s'arreter en annoncant le vainqueur
-- [ ] mastermind -> joué au mastermind (il faut trouver un code couleur)
+- [x] mastermind -> joué au mastermind (il faut trouver un code couleur)
 - [x] precision -> vous donne une série de trois mots dans le salon, vous avez 15 secondes pour les écrire, le premier qui a fini gagne
 - [x] puissance4 -> jouer au puissance 4 avec un autre joueur
 - [x] tictactoe -> jouer au tic tac toe avec un autre joueur
