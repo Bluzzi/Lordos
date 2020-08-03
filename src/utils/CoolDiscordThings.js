@@ -61,7 +61,7 @@ class CoolDiscordThings {
         let text = "";
 
         for(let a = 0; a < 5; a++){
-            for(let i of number) text += numbers[i][a] + separator;
+            for(let i of number.toString()) text += numbers[i][a] + separator;
             text += "\n";
         }
 
