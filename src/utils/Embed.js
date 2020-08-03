@@ -12,11 +12,7 @@ class Embed {
      * @deprecated Options should be an object, String usage is deprecated
      */
 
-<<<<<<< HEAD
     static send(message, channel, options = {color: null, image: null, thumbnail: null}){
-=======
-    static send(message, channel, options = {color: null, image: null, title: null, attachment: null}){
->>>>>>> fd5082a754de8c7f242456e30645048e60f2cb1b
         let embed = new DISCORD.MessageEmbed();
 
         embed.setDescription(message);
