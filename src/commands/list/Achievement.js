@@ -28,7 +28,6 @@ class Achievement extends COMMAND {
             return;
         }
 
-        message.channel.send(text.length);
         message.channel.send(this.createImage(text));
     }
 
