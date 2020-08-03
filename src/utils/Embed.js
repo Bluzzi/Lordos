@@ -12,7 +12,7 @@ class Embed {
      * @deprecated Options should be an object, String usage is deprecated
      */
 
-    static send(message, channel, options = {color: null, image: null}){
+    static send(message, channel, options = {color: null, image: null, title: null, attachment: null}){
         let embed = new DISCORD.MessageEmbed();
 
         embed.setDescription(message);
@@ -26,6 +26,15 @@ class Embed {
         // Set options :
         if(options["color"]) embed.setColor(options["color"]);
         if(options["image"]) embed.setImage(options["image"]);
+        if(options["title"]) embed.setTitle(options["title"]);
+
+        // A laisser en dernier : ("return")
+        if(options["attachment"]){
+            embed.setImage("attachment://" + options.attachment.name);
+            return channel.send({ files: [options.attachment], embed: embed });
+        }
+        
+
 
         return channel.send(embed);
     }
