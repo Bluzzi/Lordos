@@ -8,7 +8,7 @@ let emojiNumbers = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️
 
 let playersSymbols = {};
 
-let three = "❌";
+let cross = "❌";
 let circle = "⭕";
 
 class TicTacToe extends COMMAND {
@@ -59,7 +59,7 @@ class TicTacToe extends COMMAND {
         }
 
         // Send the start message :
-        EMBED.send(PREFIX + "La partie entre <@" + playerOne.id + "> (" + three + ") et <@" + playerTwo.id + "> (" + circle + ") commence...", channel);
+        EMBED.send(PREFIX + "La partie entre <@" + playerOne.id + "> (" + cross + ") et <@" + playerTwo.id + "> (" + circle + ") commence...", channel);
 
         // Create the grid :
         let grid = this.createGrid(emojiNumbers);
@@ -78,7 +78,7 @@ class TicTacToe extends COMMAND {
             if(!playersSymbols[channel.guild.id]) playersSymbols[channel.guild.id] = [];
             if(!playersSymbols[channel.guild.id][message.id]) playersSymbols[channel.guild.id][message.id] = []; 
 
-            playersSymbols[channel.guild.id][message.id][playerOne.id] = three;
+            playersSymbols[channel.guild.id][message.id][playerOne.id] = cross;
             playersSymbols[channel.guild.id][message.id][playerTwo.id] = circle;
 
             // Add the message to indicate the player must play :
@@ -104,7 +104,7 @@ class TicTacToe extends COMMAND {
             }
 
             // Check if this emoji is a valid number reaction and remove all reaction of this number :
-            if(emojisOfGrid.includes(reaction.emoji.name) && ![three, circle].includes(reaction.emoji.name)){
+            if(emojisOfGrid.includes(reaction.emoji.name) && ![cross, circle].includes(reaction.emoji.name)){
                 reaction.remove();
             } else {
                 return;
