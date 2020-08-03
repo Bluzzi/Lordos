@@ -15,7 +15,7 @@ class Calcul extends COMMAND {
             // Define authorized calculation characters :
             let authorizedChars = [...Array(10).keys()].map(char => char.toString());
 
-            authorizedChars.push("*", "+", "-", "%", "/", "(", ")", "%");
+            authorizedChars.push("*", "+", "-", "%", "/", "(", ")", "%", ".");
 
             // Calculate and send the result or error :
             let calcul = args.join("").split("").filter(char => authorizedChars.includes(char)).join("");
