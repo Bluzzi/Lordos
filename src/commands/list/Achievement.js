@@ -6,7 +6,7 @@ const EMBED = require("../../utils/Embed");
 
 CANVAS.registerFont(__dirname + "/../../../resources/fonts/minecraftia.ttf", {family: "Minecraftia"});
 
-const CHARACTER_LIMIT = 30;
+const CHARACTER_LIMIT = 28;
 
 class Achievement extends COMMAND {
     
@@ -28,7 +28,6 @@ class Achievement extends COMMAND {
             return;
         }
 
-        message.channel.send(text.length);
         message.channel.send(this.createImage(text));
     }
 
@@ -47,13 +46,12 @@ class Achievement extends COMMAND {
         baseImage.drawImage(image, 0, 0, image.width, image.height);
 
         // Add the text :
-        let pixel = text.length > 18 ? 10 : 16;
-        console.log(pixel);
-
         let textContext = canvas.getContext("2d");
 
-        textContext.fillStyle = "#FFFFFF";
+        let pixel = text.length > 18 ? 13 : 16;
+
         textContext.font = pixel + "px Minecraftia";
+        textContext.fillStyle = "#FFFFFF";
 
         textContext.fillText(text, 59, (canvas.height / 2) + 15);
 
