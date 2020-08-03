@@ -15,6 +15,13 @@ class Constants {
     static get token(){
         return SETTINGS.token;
     }
+
+    /**
+     * @returns {string} key
+     */
+    static get giffy_key(){
+        return SETTINGS.giffykey;
+    }
 }
 
 module.exports = Constants;
