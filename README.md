@@ -4,6 +4,7 @@
 - [ ] Changer le parametre alias des commandes, faire en sorte qu'il prenne une array d'alias.
 - [ ] Ajouter le paramtre "category" dans le constructeur des commandes, pour pouvoir mieux les classés.
 - [ ] Diviser les commandes dans plusieurs dossier nommé par type de catégorie et faire un auto loader effiace pour ce systeme.
+- [ ] Changer le constructeur des commandes : (nom de la commande, description, categorie), et ajouter les methodes setUsage(), setAliases() et setPermission()
 
 ### Commandes
 #### Configuration :
@@ -88,7 +89,6 @@
 - [ ] toplevel -> voir le classement des levels
 
 > help : ranger les commandes via leur catégories
-> precision : fix le fait de pouvoir édité les messages
 > url : adapté aux multi serveur
 > eval : ne pas définir de permission mais donner la possibilité de l'utilisé que aux développeurs du bot
 > calul : trouver des failles, amélioré le systeme
