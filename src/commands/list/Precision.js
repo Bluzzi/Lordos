@@ -96,11 +96,11 @@ class Precision extends COMMAND {
         background.fillStyle = "#FFFFFF";
         background.fillRect(0, 0, canvas.width, canvas.height);
 
-        // Add blue rectangle in the center :
-        let blueRectangle = canvas.getContext("2d");
+        // Add green rectangle in the center :
+        let greenRectangle = canvas.getContext("2d");
 
-        blueRectangle.fillStyle = EMBED.COLOR_GREEN;
-        blueRectangle.fillRect(25, 25, canvas.width - 50, canvas.height - 50);
+        greenRectangle.fillStyle = EMBED.COLOR_GREEN;
+        greenRectangle.fillRect(25, 25, canvas.width - 50, canvas.height - 50);
 
         // Add the text :
         let textContext = canvas.getContext("2d");
@@ -119,4 +119,5 @@ class Precision extends COMMAND {
         return new DISCORD.MessageAttachment(canvas.toBuffer(), "precision.png");
     }
 }
+
 module.exports = Precision;
