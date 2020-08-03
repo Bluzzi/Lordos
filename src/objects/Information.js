@@ -22,7 +22,7 @@ class Information {
     }
 
     send(channel){
-        EMBED.send(this.toString, channel);
+        EMBED.send(this.toString(), channel);
     }
 }
 
