@@ -4,7 +4,7 @@ const DISCORD = require("discord.js");
 const FS = require("fs");
 const EMBED = require("../../../utils/Embed");
 
-CANVAS.registerFont(__dirname + "/../../../resources/fonts/minecraftia.ttf", {family: "Minecraftia"});
+CANVAS.registerFont(__dirname + "/../../../../resources/fonts/minecraftia.ttf", {family: "Minecraftia"});
 
 const CHARACTER_LIMIT = 28;
 
