@@ -4,7 +4,8 @@ const EMBED = require("../../utils/Embed");
 
 class Eval extends COMMAND {
     constructor(){
-        super("eval", "<query>", "Execute une évaluation", []);
+        super("eval", "ADMIN ONLY", "admin");
+        this.setPermissions(["BOT.ADMINISTRATOR"]);
     }
 
     async execute(args, message){

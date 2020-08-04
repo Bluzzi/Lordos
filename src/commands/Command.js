@@ -2,18 +2,17 @@ class Command {
 
     /**
      * @param {String} name command name
-     * @param {String} usage command usage
      * @param {String} description description of the command
-     * @param {Array<String>} permissions list of permissions
-     * @param {String} alias alias of the command
+     * @param {String} category
      */
 
-    constructor(name, usage = "", description = "", permissions = [], alias = "") {
+    constructor(name, description, category) {
         this.name = name;
-        this.usage = usage;
-        this.alias = alias;
-        this.permissions = permissions;
         this.description = description;
+        this.category = category;
+        this.usage = "";
+        this.aliases = [];
+        this.permissions = [];
     }
 
     execute(){
@@ -29,6 +28,22 @@ class Command {
     }
 
     /**
+     * @returns {String} category
+     */
+
+    getCategory(){
+        return this.category;
+    }
+
+    /**
+     * @returns {String} description
+     */
+
+    getDescription(){
+        return this.description;
+    }
+
+    /**
      * @returns {String} usage
      */
 
@@ -40,8 +55,8 @@ class Command {
      * @returns {String} alias
      */
 
-    getAlias(){
-        return this.alias === "" ? null : this.alias;
+    getAliases(){
+        return this.aliases;
     }
 
 
@@ -54,11 +69,21 @@ class Command {
     }
 
     /**
-     * @returns {String} description
+     * 
+     * @param {Array<String>} permissions 
      */
 
-    getDescription(){
-        return this.description;
+    setPermissions(permissions){
+        this.permissions = permissions;
+    }
+
+
+    /**
+     * @param {Array<String>} aliases
+     */
+
+    setAliases(aliases){
+        this.aliases = aliases;
     }
 }
 
