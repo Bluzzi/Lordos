@@ -21,8 +21,8 @@ class CliCommand {
         return this.#description;
     }
 
-    getAlias(){
-        return this.#name;
+    getAliases(){
+        return [this.#name];
     }
 }
 
