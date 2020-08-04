@@ -13,7 +13,7 @@ class Calcul extends COMMAND {
 
     execute(args, message){
         if(!args[0]){
-            EMBED.send("Vous devez faire ``" + CONSTANTS.prefix + this.name + " (votre calcul)`` pour obtenir le resultat.", message.channel);
+            return false;
         } else {
             // Define authorized calculation characters :
             let authorizedChars = [...Array(10).keys()].map(char => char.toString());
