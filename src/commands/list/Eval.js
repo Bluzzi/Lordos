@@ -1,6 +1,7 @@
 const { inspect } = require("util");
 const COMMAND = require("../Command");
 const EMBED = require("../../utils/Embed");
+const VOICE = require("../../utils/Voice");
 
 class Eval extends COMMAND {
     constructor(){

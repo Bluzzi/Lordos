@@ -36,8 +36,21 @@ class CommandManager extends LOADER {
             command = commands.filter(command => command.getAliases().includes(commandName))[0];
         }
         
-        console.log(command);
         return command;
+    }
+
+    /**
+     * @description get all registered commands by category
+     * @returns {Array<COMMAND>}
+     */
+
+    getCategory(categoryName){
+        var list = [];
+        this._commands.forEach(command => {
+            if(command.getCategory() == categoryName) list.push(command);
+        });
+
+        return list;
     }
 
     /**
