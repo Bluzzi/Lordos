@@ -1,6 +1,6 @@
-const COMMAND = require("../Command");
-const EMBED = require("../../utils/Embed");
-const CONSTANTS = require("../../utils/Constants");
+const COMMAND = require("../../Command");
+const EMBED = require("../../../utils/Embed");
+const CONSTANTS = require("../../../utils/Constants");
 const GIPHY = require("giphy-api")(CONSTANTS.giffyKey);
 
 class Gif extends COMMAND {

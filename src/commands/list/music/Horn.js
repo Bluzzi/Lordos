@@ -1,6 +1,6 @@
-const COMMAND = require("../Command");
-const VOICE = require("../../utils/Voice");
-const EMBED = require("../../utils/Embed");
+const COMMAND = require("../../Command");
+const VOICE = require("../../../utils/Voice");
+const EMBED = require("../../../utils/Embed");
 
 class Horn extends COMMAND {
     constructor(){

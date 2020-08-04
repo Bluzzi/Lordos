@@ -1,7 +1,7 @@
-const COMMAND = require("../Command");
-const EMBED = require("../../utils/Embed");
+const COMMAND = require("../../Command");
+const EMBED = require("../../../utils/Embed");
 const CHOICE_NUMBER = require("./ChoiceNumber");
-const CONSTANTS = require("../../utils/Constants");
+const CONSTANTS = require("../../../utils/Constants");
 
 class Numbers extends COMMAND {
     constructor() {
