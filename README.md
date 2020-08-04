@@ -99,3 +99,7 @@
 > minecraftquery : ajouter le support des serveurs Java
 > parsecheatcode : changer le nom de la commande
 > votemute : unmute la personne automatiquement après 5 minutes
+> taquin : finir les regles du jeu
+> help : deplacer les informations précise d'une commande dans une autre commande puis mettre des pages avec les catégories
+> wikirandom : fixer pour les personnes sur téléphone
+> votemute : réadapter la commande pour qu'elle soit fonctionnelle sur tout les serveurs

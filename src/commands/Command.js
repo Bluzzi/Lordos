@@ -6,11 +6,10 @@ class Command {
      * @param {String} category
      */
 
-    constructor(name, description, category) {
+    constructor(name, description, category, usage) {
         this.name = name;
         this.description = description;
         this.category = category;
-        this.usage = "";
         this.aliases = [];
         this.permissions = [];
     }
@@ -84,6 +83,14 @@ class Command {
 
     setAliases(aliases){
         this.aliases = aliases;
+    }
+
+    /**
+     * @param {String} usage
+     */
+
+    setUsage(usage){
+        this.usage = usage;
     }
 }
 
