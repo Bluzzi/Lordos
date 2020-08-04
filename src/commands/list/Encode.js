@@ -1,4 +1,3 @@
-const base64 = require("Base64");
 const COMMAND = require("../Command");
 const EMBED = require("../../utils/Embed");
 
