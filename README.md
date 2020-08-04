@@ -81,7 +81,7 @@
 
 #### Générateur de meme :
 - [ ] bon toutou (pseudo) (couleurs) -> un meme bon toutou avec le pseudo de la personne
-- [x] achivement (phrase) -> la banniere achivement de Minecraft avec la phrase voulu
+- [x] achievement (phrase) -> la banniere achivement de Minecraft avec la phrase voulu
 - [ ] compability (mention) (mention, par default : vous) -> créé une image avec les photos de profil des deux personnes séparé par un pourcentage d'amour et une image selon ce pourcentage
 - [ ] trigerred (mention, par default : vous) -> envoie votre photo de profil en mode trigerred
 
