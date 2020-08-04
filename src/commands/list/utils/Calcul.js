@@ -1,5 +1,6 @@
 const EMBED = require("../../../utils/Embed");
 const CONSTANTS = require("../../../utils/Constants");
+const COMMAND = require("../../Command");
 
 class Calcul extends COMMAND {
 
