@@ -16,7 +16,7 @@
 - [x] avatar (mention, par default : vous) -> envoie l'avatar de la personne dans un embed
 - [x] calcul (votre calcul) -> calculer une opération
 - [ ] translate (lang) (phrase) -> traduit une phrase
-- [ ] encode (base64, binaire) (phrase) -> encode une phrase
+- [x] encode (base64, binaire) (phrase) -> encode une phrase
 - [ ] hash (sha256, md5) (phrase) -> hash une phrase
 - [ ] invite -> ???? (invite manager)
 - [ ] heure (zone géographique) -> obtenir l'heure
