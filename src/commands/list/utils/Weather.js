@@ -1,5 +1,5 @@
-const COMMAND = require("../Command");
-const EMBED = require("../../utils/Embed");
+const COMMAND = require("../../Command");
+const EMBED = require("../../../utils/Embed");
 const WEATHER = require('weather-js');
 
 class Weather extends COMMAND {

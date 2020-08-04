@@ -1,6 +1,6 @@
-const COMMAND = require("../Command");
-const PARSER = require("../../utils/CheatCodeParser");
-const EMBED = require("../../utils/Embed");
+const COMMAND = require("../../Command");
+const PARSER = require("../../../utils/CheatCodeParser");
+const EMBED = require("../../../utils/Embed");
 
 class ParseCheatCode extends COMMAND {
     constructor() {

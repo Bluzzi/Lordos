@@ -1,4 +1,4 @@
-const EMBED = require("../../../utils/Embed");
+const EMBED = require("../../../../utils/Embed");
 const URL = require("../Url");
 const FS = require("fs");
 

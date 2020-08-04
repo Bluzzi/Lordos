@@ -1,6 +1,6 @@
-const COMMAND = require("../Command");
-const EMBED = require("../../utils/Embed");
-const COOL_DISCORD_THINGS = require("../../utils/CoolDiscordThings");
+const COMMAND = require("../../Command");
+const EMBED = require("../../../utils/Embed");
+const COOL_DISCORD_THINGS = require("../../../utils/CoolDiscordThings");
 
 class EmojiAnnonce extends COMMAND {
 
