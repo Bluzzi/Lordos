@@ -5,14 +5,22 @@ const CONSTANTS = require("../../utils/Constants");
 
 class MyNumber extends COMMAND {
     
-    constructor() {
-        super("mynumber", "", "Affiche votre nombre");
+    constructor(){
+        super(
+            "mynumber",
+            "",
+            "Affiche votre nombre"
+            );
     }
 
     execute(args, message){
-        if(CHOICE_NUMBER.numbers[message.author.id]){
-            EMBED.send("Votre nombre est : " + CHOICE_NUMBER.numbers[message.author.id], message.channel);
+        if(CHOICE_NUMBER.numbers[message.guild.id]){
+            if(CHOICE_NUMBER.numbers[message.guild.id][message.author.id]){
+
+                EMBED.send("Votre nombre est : " + CHOICE_NUMBER.numbers[message.guild.id][message.author.id], message.channel);
+            }
         } else {
+
             EMBED.send("Utilisez la commande ``" + CONSTANTS.prefix + "choicenumber`` pour définir votre nombre !", message.channel);
         }
     }
