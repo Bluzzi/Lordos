@@ -19,6 +19,7 @@
   "homepage": "https://github.com/Royal-Royaume/Lord#readme",
   "dependencies": {
     "@discordjs/opus": "^0.3.2",
+    "ascii-art": "^2.5.0",
     "canvas": "^2.6.1",
     "child_process": "^1.0.2",
     "colors": "^1.4.0",
@@ -30,6 +31,7 @@
     "gamedig": "^2.0.21",
     "giphy-api": "^2.0.1",
     "html-metadata-parser": "^1.0.3",
+    "imgur": "^0.3.1",
     "jimp": "^0.14.0",
     "opusscript": "0.0.7",
     "ping": "^0.2.3",

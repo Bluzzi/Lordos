@@ -1,4 +1,5 @@
 const FUNCTION_PLUS = require("./FunctionPlus");
+const ASCII = require("ascii-art");
 
 class CoolDiscordThings {
 
@@ -65,6 +66,18 @@ class CoolDiscordThings {
             text += "\n";
         }
 
+        return text;
+    }
+
+    static messageToAscii(message){
+        let text = "";
+        ASCII.font(message, "Doom", (error, response) => {
+            if (error){
+                console.log(error);
+            } else {
+                text =  "``" + response + "``";
+            }
+        });
         return text;
     }
 }
