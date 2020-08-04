@@ -1,6 +1,6 @@
-const COMMAND = require("../Command");
-const INFORMATION = require("../../objects/Information");
-const EMBED = require("../../utils/Embed");
+const COMMAND = require("../../Command");
+const INFORMATION = require("../../../objects/Information");
+const EMBED = require("../../../utils/Embed");
 
 class ServerInfo extends COMMAND {
 

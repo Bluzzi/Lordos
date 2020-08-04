@@ -1,5 +1,5 @@
-const COMMAND = require("../Command");
-const EMBED = require("../../utils/Embed");
+const COMMAND = require("../../Command");
+const EMBED = require("../../../utils/Embed");
 const GAMEDIG = require("gamedig");
 
 class MinecraftQuery extends COMMAND {

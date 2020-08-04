@@ -1,7 +1,7 @@
-const COMMAND = require("../Command");
-const EMBED = require("../../utils/Embed");
-const CONSTANTS = require("../../utils/Constants");
-const Embed = require("../../utils/Embed");
+const COMMAND = require("../../Command");
+const EMBED = require("../../../utils/Embed");
+const CONSTANTS = require("../../../utils/Constants");
+const Embed = require("../../../utils/Embed");
 
 var numbers = {};
 

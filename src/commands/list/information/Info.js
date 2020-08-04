@@ -1,5 +1,5 @@
-const COMMAND = require("../Command");
-const INFORMATION = require("../../objects/Information");
+const COMMAND = require("../../Command");
+const INFORMATION = require("../../../objects/Information");
 
 class Info extends COMMAND {
 
