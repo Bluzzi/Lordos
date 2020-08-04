@@ -13,14 +13,10 @@ let circle = "⭕";
 
 class TicTacToe extends COMMAND {
 
-    constructor() {
-        super(
-            "tictactoe",
-            "", 
-            "Faire une parti de TicTocToe contre un autre joueur.", 
-            [], 
-            "ttt"
-        );
+    constructor(){
+        super("tictactoe", "Faire une partie de TicTacToe contre un autre joueur", "game");
+
+        this.setAliases(["ttt"]);
     }
 
     async execute(args, message){

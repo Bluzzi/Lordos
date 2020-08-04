@@ -6,11 +6,7 @@ var numbers = {};
 class ChoiceNumber extends COMMAND {
 
     constructor(){
-        super(
-            "choicenumber",
-            "(votre nombre)",
-            "Choisir un nombre"
-        );
+        super("choicenumber", "Choisir un nombre", "fun");
     }
 
     async execute(args, message){

@@ -5,8 +5,11 @@ var voters = [];
 
 class VoteMute extends COMMAND {
 
-    constructor() {
-        super("votemute", "(mention)", "Permet de voter pour le mute d'un utilisateur");
+    constructor(){
+        super("votemute", "Permet de voter pour le mute d'un utilisateur du vocal", "utils");
+        
+        this.setUsage("<mention>");
+        this.setAliases(["vm"]);
     }
 
     async execute(args, message){
@@ -22,7 +25,7 @@ class VoteMute extends COMMAND {
 
                 EMBED.send("Vous avez supprimé votre vote !", message.channel, "RED");
                 
-                // UnMute :
+                 // UnMute :
                 lastTarget = message.guild.members.cache.get(lastTarget);
 
                 if(lastTarget && this.getVoteCount(lastTarget) <= 4 && lastTarget.voice.mute) {

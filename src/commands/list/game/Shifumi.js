@@ -1,5 +1,5 @@
-const COMMAND = require("../Command");
-const EMBED = require("../../utils/Embed");
+const COMMAND = require("../../Command");
+const EMBED = require("../../../utils/Embed");
 const CANVAS = require("canvas");
 const DISCORD = require("discord.js");
 
@@ -10,7 +10,7 @@ const EMOJIS = ["✌️", "🤚", "👊"];
 class Shifumi extends COMMAND {
 
     constructor(){
-        super("shifumi", "number", "Jouer au shifumi contre Lordos.", [], "t");
+        super("shifumi", "Jouer au shifumi contre le bot", "game");
     }
 
     execute(args, message){

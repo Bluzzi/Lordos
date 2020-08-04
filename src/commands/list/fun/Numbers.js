@@ -4,8 +4,9 @@ const CHOICE_NUMBER = require("./ChoiceNumber");
 const CONSTANTS = require("../../../utils/Constants");
 
 class Numbers extends COMMAND {
-    constructor() {
-        super("numbers");
+
+    constructor(){
+        super("numbers", "Voir la liste des nombres choisis", "fun");
     }
     
     async execute(args, message){

@@ -9,7 +9,7 @@ const EMOJIS = ["1️⃣","2️⃣","3️⃣","4️⃣","5️⃣","6️⃣","7�
 class Puissance4 extends COMMAND {
 
     constructor(){
-        super("puissance4", "play | help", "Jouer au puissance 4.");
+        super("puissance4", "Jouer au puissance 4 contre un autre membre du discord", "game");
     }
 
     execute(args, message) {

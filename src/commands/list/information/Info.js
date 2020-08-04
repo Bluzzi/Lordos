@@ -4,13 +4,9 @@ const INFORMATION = require("../../../objects/Information");
 class Info extends COMMAND {
 
     constructor(){
-        super(
-            "info",
-            "<mention>",
-            "Affiche les informations d'une personne",
-            [],
-            "userinfo"
-        );
+        super("info", "Affiche les informations d'un membre de ce serveur", "information");
+
+        this.setUsage("<mention>");
     }
 
     async execute(args, message){

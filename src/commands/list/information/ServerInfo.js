@@ -5,13 +5,7 @@ const EMBED = require("../../../utils/Embed");
 class ServerInfo extends COMMAND {
 
     constructor(){
-        super(
-            "serverinfo",
-            "",
-            "Obtenir des informations sur le serveur Discord.",
-            [],
-            "si"
-        );
+        super("serverinfo", "Obtenir des informations sur le serveur", "information");
     }
 
     async execute(args, message){

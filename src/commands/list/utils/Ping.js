@@ -4,7 +4,9 @@ const PING = require("ping");
 
 class Ping extends COMMAND {
     constructor(){
-        super("ping", "<adresse>", "Permet de ping une adresse");
+        super("ping", "Permet de ping une adresse", "utils");
+
+        this.setUsage("<adresse> ['numeric']");
     }
 
     async execute(args, message){

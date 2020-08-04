@@ -2,15 +2,9 @@ const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
 
 class Help extends COMMAND {
-    constructor() {
-        super(
-            "help",
-            "<commande>", 
-            "Obtenir la liste des commandes ou voir des informations sur une commande précise", 
-            [], 
-            "Donne des informations sur une commande ou la liste de celles-ci", 
-            "commands"
-        );
+
+    constructor(){
+        super("help", "Obtenir la liste des commandes du bot", "information");
     }
 
     execute(args, message){

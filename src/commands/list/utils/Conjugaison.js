@@ -1,5 +1,5 @@
-const COMMAND = require("../Command");
-const EMBED = require("../../utils/Embed");
+const COMMAND = require("../../Command");
+const EMBED = require("../../../utils/Embed");
 const CONJ = require("conjugation-fr");
 
 // See : https://www.npmjs.com/package/conjugation-fr
@@ -8,7 +8,10 @@ let help = "__**infinitive: infinitif**__\n\n   -infinitive-present: infinitif p
 class Conjugaison extends COMMAND {
 
     constructor(){
-        super("conjugaison", "verbe mode temps", "Renvoie la conjugaison d'un verbe.", [], "conj");
+        super("conjugaison", "Renvoie la conjugaison d'un verbe", "utils");
+
+        this.setUsage("help");
+        this.setAliases(['conj']);
     }
 
     execute(args, message){

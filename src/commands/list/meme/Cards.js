@@ -9,10 +9,10 @@ COMMANDE EN PAUSE
 
 
 
-const COMMAND = require("../Command");
-const EMBED = require("../../utils/Embed");
-const CONSTANTS = require("../../utils/Constants");
-const Embed = require("../../utils/Embed");
+const COMMAND = require("../../Command");
+const EMBED = require("../../../utils/Embed");
+const CONSTANTS = require("../../../utils/Constants");
+const Embed = require("../../../utils/Embed");
 const DISCORD = require("discord.js");
 const CANVAS = require("canvas");
 
@@ -26,8 +26,10 @@ let help = [
 
 class Cards extends COMMAND {
 
-    constructor() {
-        super("cards","<type | help> {option} {option} {...");
+    constructor(){
+        super("cards", "Créé une carte pokémon customiser", "meme");
+
+        this.setUsage("<help ou type>");
     }
 
     async execute(args, message){

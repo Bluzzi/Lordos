@@ -1,15 +1,11 @@
-const COMMAND = require("../Command");
-const EMBED = require("../../utils/Embed");
+const COMMAND = require("../../Command");
+const EMBED = require("../../../utils/Embed");
 
 
 class Flip extends COMMAND {
 
-    constructor() {
-        super(
-            "flip",
-            "",
-            "Lance une pièce"
-        )
+    constructor(){
+        super("flip", "Lance une pièce", "fun");
     }
 
     async execute(args, message){

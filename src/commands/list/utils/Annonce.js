@@ -4,11 +4,9 @@ const EMBED = require("../../../utils/Embed");
 class Annonce extends COMMAND {
 
     constructor() {
-        super(
-            "annonce",
-            "(votre annonce)", 
-            "Envoyer une annonce sous forme d'embleme."
-        );
+        super("annonce", "Envoyer une annonce sous forme d'embed", "utils");
+
+        this.setUsage("<texte>");
     }
 
     async execute(args, message){

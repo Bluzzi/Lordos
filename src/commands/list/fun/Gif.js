@@ -6,11 +6,9 @@ const GIPHY = require("giphy-api")(CONSTANTS.giffyKey);
 class Gif extends COMMAND {
 
     constructor(){
-        super(
-            "gif",
-            "(recherche)",
-            "Affiche des gifs"
-        );
+        super("gif", "Affiche un gif aléatoire selon votre recherche", "fun");
+
+        this.setUsage("<recherche>");
     }
 
     async execute(args, message){

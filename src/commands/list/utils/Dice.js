@@ -3,7 +3,9 @@ const EMBED = require("../../../utils/Embed");
 
 class Dice extends COMMAND {
     constructor() {
-        super("dice", "<nombre>", "des");
+        super("dice", "Lance un certain nombre de dès", "utils");
+        
+        this.setUsage("<nombre>");
     }
 
     async execute(args, message) {

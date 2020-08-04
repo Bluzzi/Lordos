@@ -3,10 +3,12 @@ const EMBED = require("../../../utils/Embed");
 const DISCORD = require("discord.js");
 const COOL_DISCORD_THINGS = require("../../../utils/CoolDiscordThings");
 
-
 class Countdown extends COMMAND {
-    constructor() {
-        super("countdown", "time (seconds)", "Créé un minuteur.");
+
+    constructor(){
+        super("countdown", "Créé un minuteur", "fun");
+
+        this.setUsage("<secondes>");
     }
 
     async execute(args, message){

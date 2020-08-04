@@ -6,13 +6,10 @@ const PREFIX = "**<Find the Number>** ";
 class FindNumber extends COMMAND {
 
     constructor(){
-        super(
-            "bingo",
-            "(min) (max)",
-            "Lance le jeu du trouver le nombre dans le salon",
-            ["ADMINISTRATOR"],
-            "fn"
-        );
+        super("bingo", "Tout les personnes présent dans le salon sont les joueurs et ils doivent trouver le nombre aléaoirement choisi", "game");
+
+        this.setUsage("<min> <max>");
+        this.setAliases(["fn"]);
     }
 
     async execute(args, message){

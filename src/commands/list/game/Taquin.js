@@ -1,5 +1,5 @@
-const COMMAND = require("../Command");
-const EMBED = require("../../utils/Embed");
+const COMMAND = require("../../Command");
+const EMBED = require("../../../utils/Embed");
 
 const PREFIX = "**<TAQUIN>** ";
 
@@ -7,12 +7,12 @@ const EMOJIS = ["1️⃣","2️⃣","3️⃣","4️⃣","5️⃣","6️⃣","7�
 
 const ARROWS = ["◀️", "🔼", "🔽", "▶️"];
 
-
-
 class Taquin extends COMMAND {
 
     constructor(){
-        super("taquin", "play | help", "Jouer au taquin.", []);
+        super("taquin", "Jouer au taquin, un casse tête ou vous devez remettre les lettres dans le bonne ordre", "game");
+
+        this.setUsage("<play ou règles>");
     }
 
     execute(args, message){
@@ -26,7 +26,8 @@ class Taquin extends COMMAND {
                     this.newRound(msg, message.author, grid);
                 })
                 break;
-            case "help":
+            case "règles":
+                //TODO
                 break;
             default:
                 EMBED.send(this.getUsage(), message.channel);

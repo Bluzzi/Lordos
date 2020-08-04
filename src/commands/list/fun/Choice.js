@@ -2,8 +2,11 @@ const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
 
 class Choice extends COMMAND {
-    constructor() {
-        super("choice", "<choix 1> <choix 2>...", "Permet de demander au bot de faire un choix");
+
+    constructor(){
+        super("choice", "Permet de demander au bot de faire un choix", "fun");
+
+        this.setUsage("<choix 1> <choix 2> ...[choix]");
     }
 
     async execute(args, message){

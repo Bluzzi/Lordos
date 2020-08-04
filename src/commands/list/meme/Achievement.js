@@ -11,11 +11,9 @@ const CHARACTER_LIMIT = 28;
 class Achievement extends COMMAND {
     
     constructor(){
-        super(
-            "achievement",
-            "(texte)",
-            "Affiche une achievement Minecraft personnalisé"
-        );
+        super("achievement", "Affiche un achivement Minecraft personnalisé", "meme");
+
+        this.setUsage("<texte>");
     }
 
     async execute(args, message){

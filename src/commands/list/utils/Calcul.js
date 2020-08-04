@@ -4,7 +4,10 @@ const CONSTANTS = require("../../../utils/Constants");
 class Calcul extends COMMAND {
 
     constructor() {
-        super("calcul");
+        super("calcul", "Calcul une suite aritméthique", "utils");
+
+        this.setUsage("<calcul>");
+        this.setAliases(['calc']);
     }
 
     execute(args, message){

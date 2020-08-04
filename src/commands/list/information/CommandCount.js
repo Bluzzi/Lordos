@@ -1,10 +1,12 @@
 const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
-const FS = require("fs");
 
 class CommandCount extends COMMAND {
-    constructor() {
-        super("commandcount", "(bot | cli, par défaut: bot)", "Vous donne le nombre de commandes enregistrées sur le bot");
+    
+    constructor(){
+        super("commandcount", "Vous donne le nombre de commandes existante sur le bot ainsi que son objectif", "information");
+
+        this.setUsage("<bot ou cli, par default : bot>");
     }
 
     async execute(args, message){

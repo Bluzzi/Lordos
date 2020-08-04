@@ -6,8 +6,11 @@ const Embed = require("../../../utils/Embed");
 var numbers = {};
 
 class ChoiceNumber extends COMMAND {
-    constructor() {
-        super("wikirandom","wikir","Renvoie un lien vers une page aléatoire wikipedia.", [], "wikir");
+
+    constructor(){
+        super("wikirandom", "Renvoie un lien vers une page wikipédia aléatoire", "information");
+
+        this.setAliases(["wikir"]);
     }
 
     async execute(args, message){

@@ -5,7 +5,10 @@ const GAMEDIG = require("gamedig");
 class MinecraftQuery extends COMMAND {
 
     constructor(){
-        super("minecraftquery", "(adresse) (port, par défault: 19132) (gametype, par défaut: minecraftbe)", "Permet de faire une requête à un serveur Minecraft BE.", [], "mquery");
+        super("minecraftquery", "Permet de faire une requête à un serveur Minecraft BE", "information");
+
+        this.setUsage("<adresse> [port, par default : 19132] [mc:java ou mc:be, par default : mc:be]");
+        this.setAliases(["mquery"]);
     }
 
     execute(args, message){

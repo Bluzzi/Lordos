@@ -4,7 +4,10 @@ const EMBED = require("../../../utils/Embed");
 
 class ParseCheatCode extends COMMAND {
     constructor() {
-        super("pcc", "(console) (code)", "Permet d'avoir plus d'informations à propos d'un cheat code");
+        super("parsecheatcode", "Permet d'avoir plus d'informations à propos d'un cheat code", "utils");
+
+        this.setUsage("<console> <code>");
+        this.setAliases(['pcc']);
     }
 
     async execute(args, msg){

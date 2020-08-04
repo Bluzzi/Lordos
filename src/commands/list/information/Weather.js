@@ -3,8 +3,11 @@ const EMBED = require("../../../utils/Embed");
 const WEATHER = require('weather-js');
 
 class Weather extends COMMAND {
+
     constructor(){
-        super("weather", "<lieu>", "Donne la météo d'une position", [], "meteo");
+        super("weather", "Donne la météo d'une position", "information");
+
+        this.setAliases(["meteo", "météo"]);
     }
 
     execute(args, message) {

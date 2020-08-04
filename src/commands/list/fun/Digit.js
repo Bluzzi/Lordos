@@ -4,8 +4,11 @@ const COOL_DISCORD_THINGS = require("../../../utils/CoolDiscordThings");
 
 
 class Digit extends COMMAND {
-    constructor() {
-        super("digit", "number(< 999999)", "");
+
+    constructor(){
+        super("digit", "Affiche un nombre en emoji géant", "fun");
+
+        this.setUsage("<nombre>");
     }
 
     async execute(args, message){

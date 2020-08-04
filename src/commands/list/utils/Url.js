@@ -14,7 +14,9 @@ const SUB_COMMANDS = {
 class Url extends COMMAND {
 
     constructor(){
-        super("url", "<action> <donnée>", "Enregistre une URL")
+        super("url", "Enregistre une URL", "utils")
+
+        this.setUsage("<add/del/list> <donnée>");
     }
 
     async execute(args, message){

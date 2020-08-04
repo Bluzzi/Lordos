@@ -3,14 +3,11 @@ const EMBED = require("../../../utils/Embed");
 
 class EightBall extends COMMAND {
 
-    constructor() {
-        super(
-            "8ball",
-            "(votre question), votre question doit contenir un point d'interogation", 
-            "Obtenir une réponse aléatoire à votre question.", 
-            [], 
-            "8b"
-        );
+    constructor(){
+        super("8ball", "Obtenir une réponse \"oui\" ou \"non\" à votre question", "fun");
+
+        this.setUsage("<votre question>, votre question doit contenir un point d'interogation");
+        this.setAliases(["8b"]);
     }
 
     async execute(args, message){

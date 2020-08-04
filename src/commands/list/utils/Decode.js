@@ -5,7 +5,9 @@ const EMBED = require("../../../utils/Embed");
 class Encode extends COMMAND {
 
     constructor(){
-        super("decode", "base64 | binary", "Décoder une phrase.", []);
+        super("decode", "Décode une phrase", "utils");
+
+        this.setUsage("<texte>");
     }
 
     execute(args, message){

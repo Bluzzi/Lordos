@@ -1,16 +1,14 @@
-const COMMAND = require("../Command");
+const COMMAND = require("../../Command");
 const REQUEST = require("request");
 const AXIOS = require("axios");
-const EMBED = require("../../utils/Embed");
+const EMBED = require("../../../utils/Embed");
 
 class McSkin extends COMMAND {
 
     constructor(){
-        super(
-            "mcskin",
-            "(pseudo)",
-            "Vous donne le skin d'un joueur Minecraft (java)"
-        );
+        super("mcskin", "Vous donne le skin d'un joueur Minecraft version Java", "information");
+
+        this.setUsage("<pseudo du joueur>");
     }
 
     async execute(args, message){

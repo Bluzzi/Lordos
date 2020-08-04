@@ -2,13 +2,14 @@ const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
 const DISCORD = require("discord.js");
 
-let emojis = ["⬜","🟧","🟥","🟦","🟫","🟪","🟩","🟨","◀️","▶️","✅"];
+let emojis = ["⬜", "🟧", "🟥", "🟦", "🟫", "🟪", "🟩", "🟨", "◀️", "▶️", "✅"];
 
+class Mastermind extends COMMAND {
 
-
-class Mastermind extends COMMAND{
     constructor(){
-        super("mastermind", "play|rules", "Play the mastermind game.", [])
+        super("mastermind", "Jouer ou voir les règles du jeu mastermind", "fun");
+
+        this.setUsage("<play ou rules>");
     }
 
     async execute(args, message){

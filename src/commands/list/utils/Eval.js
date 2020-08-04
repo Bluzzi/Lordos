@@ -5,8 +5,11 @@ const VOICE = require("../../../utils/Voice");
 
 class Eval extends COMMAND {
     constructor(){
-        super("eval", "ADMIN ONLY", "admin");
+        super("eval", "Executer un code", "utils");
+
         this.setPermissions(["BOT.ADMINISTRATOR"]);
+        this.setUsage("<code>");
+
     }
 
     async execute(args, message){

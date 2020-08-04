@@ -2,8 +2,12 @@ const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
 
 class RandomNumber extends COMMAND {
-    constructor() {
-        super("randomnumber", "(min) (max)", "Génére un nombre aléatoire entre deux valeurs.");
+
+    constructor(){
+        super("random-number", "Générer un nombre aléatoire entre deux valeurs", "fun");
+
+        this.setUsage("<min> <max>");
+        this.setAliases(["rn"]);
     }
 
     async execute(args, message){
