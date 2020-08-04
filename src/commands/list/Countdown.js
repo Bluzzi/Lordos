@@ -19,7 +19,7 @@ class Countdown extends COMMAND {
         EMBED.send(COOL_DISCORD_THINGS.numberToDigitEmojis(time), message.channel).then((msg) => {
             let interval = setInterval(()=>{
                 time -= 1;
-                text = CoolDiscordThings.numberToDigitEmojis(time);
+                text = COOL_DISCORD_THINGS.numberToDigitEmojis(time);
                 
                 if(time == 0) clearInterval(interval);
                 

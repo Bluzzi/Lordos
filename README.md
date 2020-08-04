@@ -16,7 +16,7 @@
 - [x] avatar (mention, par default : vous) -> envoie l'avatar de la personne dans un embed
 - [x] calcul (votre calcul) -> calculer une opération
 - [ ] translate (lang) (phrase) -> traduit une phrase
-- [ ] encode (base64, binaire) (phrase) -> encode une phrase
+- [x] encode (base64, binaire) (phrase) -> encode une phrase
 - [ ] hash (sha256, md5) (phrase) -> hash une phrase
 - [ ] invite -> ???? (invite manager)
 - [ ] heure (zone géographique) -> obtenir l'heure
@@ -48,7 +48,7 @@
 - [x] horn -> joue un son de horn dans votre salon
 
 #### Fun :
-- [ ] gif (list de mot clé) -> envoie un gif via l'api de https://giphy.com/
+- [x] gif (list de mot clé) -> envoie un gif via l'api de https://giphy.com/
 - [ ] foodporn -> envoie des images de bouffe qui donne envie
 - [x] choice (mot 1) (mot 2) ...(mot) -> le bot choisi un mot aléatoirement
 - [x] choicenumber (votre nombre) -> choisir un nombre
@@ -73,6 +73,7 @@
 #### Jeux :
 - [ ] shifumi (pierre, feuille ou ciseaux) -> lancé une partie de shifumi contre le bot
 - [x] findnumber (min ou "stop") (max) -> trouver le nombre entre le minimum et le maximum, tout le salon peux joué dans le salon et des que le nombre est trouver le jeu s'arreter en annoncant le vainqueur
+- [ ] pendu (play) -> faire le jeu du pendu avec un ascii-art
 - [x] mastermind -> joué au mastermind (il faut trouver un code couleur)
 - [x] precision -> vous donne une série de trois mots dans le salon, vous avez 15 secondes pour les écrire, le premier qui a fini gagne
 - [x] puissance4 -> jouer au puissance 4 avec un autre joueur
@@ -80,7 +81,7 @@
 
 #### Générateur de meme :
 - [ ] bon toutou (pseudo) (couleurs) -> un meme bon toutou avec le pseudo de la personne
-- [ ] achivement (phrase) -> la banniere achivement de Minecraft avec la phrase voulu
+- [x] achievement (phrase) -> la banniere achivement de Minecraft avec la phrase voulu
 - [ ] compability (mention) (mention, par default : vous) -> créé une image avec les photos de profil des deux personnes séparé par un pourcentage d'amour et une image selon ce pourcentage
 - [ ] trigerred (mention, par default : vous) -> envoie votre photo de profil en mode trigerred
 

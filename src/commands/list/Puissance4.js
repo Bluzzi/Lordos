@@ -4,7 +4,7 @@ const DISCORD = require("discord.js");
 
 const PREFIX = "**<Puissance 4>** ";
 
-let emojis = ["1️⃣","2️⃣","3️⃣","4️⃣","5️⃣","6️⃣","7️⃣"]
+const EMOJIS = ["1️⃣","2️⃣","3️⃣","4️⃣","5️⃣","6️⃣","7️⃣"]
 
 class Puissance4 extends COMMAND {
 
@@ -59,7 +59,7 @@ class Puissance4 extends COMMAND {
         // Send game message, then start game :
         let grid = this.createGrid();
         message.channel.send(this.gridToText(grid)).then((message) => {
-            for(let i of emojis) message.react(i);
+            for(let i of EMOJIS) message.react(i);
             EMBED.send(PREFIX + "Au tour de ...", message.channel).then(subMessage => {
                 // Play the first round :
                 this.playRound(player1, player2, message, subMessage, grid, symbols);
@@ -86,13 +86,13 @@ class Puissance4 extends COMMAND {
             }
 
             // Modify grid to play :
-            grid = this.addPawn(grid, emojis.indexOf(reaction.emoji.name), symbols[player.id]);
+            grid = this.addPawn(grid, EMOJIS.indexOf(reaction.emoji.name), symbols[player.id]);
 
             // Stop collector, delete last reaction :
             collector.stop("stop");
 
             // Remove reaction or end game :
-            switch(this.isColumnFull(grid, emojis.indexOf(reaction.emoji.name))){
+            switch(this.isColumnFull(grid, EMOJIS.indexOf(reaction.emoji.name))){
                 case 0:
                     EMBED.send("Egalité ! Toutes les cases ont été rempli sans faire puissance 4.", message.channel);
                     collector.stop("stop");
@@ -177,7 +177,7 @@ class Puissance4 extends COMMAND {
         for(let i of grid){
             text += i.join("") + "\n";
         }
-        text += emojis.join("") + "\n";
+        text += EMOJIS.join("") + "\n";
         return text;
     }
 

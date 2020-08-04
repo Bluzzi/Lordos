@@ -23,6 +23,14 @@ class Constants {
     static get admins(){
         return require("../../resources/configs/admins.json").admins;
     }
+
+    /**
+     *@returns {string} key
+     */
+    
+    static get giffy_key(){
+        return SETTINGS.giffykey;
+    }
 }
 
 module.exports = Constants;

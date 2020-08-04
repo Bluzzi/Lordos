@@ -1,6 +1,7 @@
 {
     "token": "YOUR TOKEN",
-    "prefix": "YOUR PREFIX"
+    "prefix": "YOUR PREFIX",
+    "giffykey": "YOUR KEY"
 }
 
 ** DO NOT RENAME THIS FILE **

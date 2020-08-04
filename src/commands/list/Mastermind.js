@@ -79,12 +79,12 @@ class Mastermind extends COMMAND{
                                 // Win verification :
                                 if(currentCode.join("") === codeToFind.join("")){
                                     debug = "```arm\nVous avez gagné en ```" + attempt + "essai(s) !```";
-                                    collector.stop()
+                                    collector.stop("stop")
                                 }
                                 else{
                                     if(attempt == 10){
                                         debug = "```arm\nVous avez perdu car vous n'avez pas réussi en 10 essais !```";
-                                        collector.stop()
+                                        collector.stop("stop")
                                     }
                                 }
                                 // Reply text constructor :
@@ -127,8 +127,10 @@ class Mastermind extends COMMAND{
 
             // If collector ends by time's up :
             collector.on('end', (collected, reason) => {
-                let newEmbd = new DISCORD.MessageEmbed().setDescription("**<MASTERMIND>**\n```arm\nLe jeu est fini, vous avez perdu car vous avez passé le temps réglementaire de 30 minutes.```");
-                msg.edit(newEmbd);
+                if(reason != "stop"){
+                    let newEmbd = new DISCORD.MessageEmbed().setDescription("**<MASTERMIND>**\n```arm\nLe jeu est fini, vous avez perdu car vous avez passé le temps réglementaire de 30 minutes.```");
+                    msg.edit(newEmbd);
+                }
               });
         })
     }
