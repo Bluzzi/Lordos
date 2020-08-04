@@ -5,8 +5,7 @@ node_modules/*
 settings.json
 
 # All data without what-is-data.txt :
-resources/configs/data/*
-!resources/configs/data/what-is-data.txt
+resources/configs/*
 
 # Logs :
 log/log.txt

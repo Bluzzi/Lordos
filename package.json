@@ -23,6 +23,7 @@
     "canvas": "^2.6.1",
     "child_process": "^1.0.2",
     "colors": "^1.4.0",
+    "conjugation-fr": "^0.1.2",
     "discord.js": "^12.2.0",
     "ffmpeg": "0.0.4",
     "ffmpeg-static": "^4.2.6",

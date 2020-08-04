@@ -7,9 +7,7 @@ class Annonce extends COMMAND {
         super(
             "annonce",
             "(votre annonce)", 
-            "Envoyer une annonce sous forme d'embleme.", 
-            ["ADMINISTRATOR"],
-            "a"
+            "Envoyer une annonce sous forme d'embleme."
         );
     }
 

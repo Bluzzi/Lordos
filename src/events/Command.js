@@ -9,9 +9,15 @@ CLIENT.on("message", async (message) => {
     let commandName = args.shift().toLowerCase();
     let command = CLIENT.COMMANDMANAGER.get(commandName);
 
-    if (command) {
-        if(!message.member.permissions.has(command.getPermissions())) {
-            return EMBED.send("Vous n'avez pas accès à cette commande !\nPermission(s) requise(s) : `" + command.getPermissions().join("`, `") + "`", message.channel, 'RED');
+    if(command){
+        if(command.getPermissions().includes("BOT.ADMINISTRATOR")){
+            if(!CLIENT.CONSTANTS.admins.includes(message.author.id)){
+                return EMBED.send("Vous n'avez pas accès à cette commande !\nPermission(s) requise(s) : `" + command.getPermissions().join("`, `") + "`", message.channel, 'RED');
+            }
+        } else {
+            if(!message.member.permissions.has(command.getPermissions())){
+                return EMBED.send("Vous n'avez pas accès à cette commande !\nPermission(s) requise(s) : `" + command.getPermissions().join("`, `") + "`", message.channel, 'RED');
+            }
         }
 
         let execute = await command.execute(args, message);

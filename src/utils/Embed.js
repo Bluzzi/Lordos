@@ -9,7 +9,7 @@ class Embed {
      * @param {DISCORD.Channel} channel a discord channel
      * @param {{color: String, image: String, title: String , attachment : MessageAttachment, thumbnail: String}|String} options embed color
      * @returns {void} void
-     * @deprecated Options should be an object, String usage is deprecated
+     * @deprecated options should be an object, String usage is deprecated
      */
 
     static send(message, channel, options = {color: null, image: null, title: null, attachment: null, thumbnail: null}){
@@ -24,6 +24,8 @@ class Embed {
         embed.setColor(COLOR_GREEN);
 
         // Set options :
+        if(options["title"]) embed.setTitle(options["title"]);
+        if(options["footer"]) embed.setFooter(options["footer"]);
         if(options["color"]) embed.setColor(options["color"]);
         if(options["image"]) embed.setImage(options["image"]);
         if(options["title"]) embed.setTitle(options["title"]);
