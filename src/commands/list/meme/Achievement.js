@@ -1,8 +1,8 @@
-const COMMAND = require("../Command");
+const COMMAND = require("../../Command");
 const CANVAS = require("canvas");
 const DISCORD = require("discord.js");
 const FS = require("fs");
-const EMBED = require("../../utils/Embed");
+const EMBED = require("../../../utils/Embed");
 
 CANVAS.registerFont(__dirname + "/../../../resources/fonts/minecraftia.ttf", {family: "Minecraftia"});
 

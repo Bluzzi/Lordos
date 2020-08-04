@@ -1,6 +1,6 @@
 const DISCORD = require("discord.js");
-const COMMAND = require("../Command");
-const EMBED = require("../../utils/Embed");
+const COMMAND = require("../../Command");
+const EMBED = require("../../../utils/Embed");
 const FS = require("fs");
 const CANVAS = require("canvas");
 
