@@ -1,5 +1,5 @@
-const COMMAND = require("../Command");
-const EMBED = require("../../utils/Embed");
+const COMMAND = require("../../Command");
+const EMBED = require("../../../utils/Embed");
 
 const PREFIX = "**<Find the Number>** ";
 
@@ -7,7 +7,7 @@ class FindNumber extends COMMAND {
 
     constructor(){
         super(
-            "findnumber",
+            "bingo",
             "(min) (max)",
             "Lance le jeu du trouver le nombre dans le salon",
             ["ADMINISTRATOR"],
