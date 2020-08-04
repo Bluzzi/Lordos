@@ -12,7 +12,7 @@ class MinecraftQuery extends COMMAND {
         if(!args[0]) return false;
 
         let address = args[0];
-        let port = parseInt(args[1]) || 19132;
+        let port = parseInt(args[1]) ? parseInt(args[1]) : 19132;
         let gametype = args[2] == "minecraft" ? "minecraft" : "minecraftbe";
 
         GAMEDIG.query({
