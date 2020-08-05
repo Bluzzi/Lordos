@@ -9,7 +9,7 @@ const EMOJIS = ["1️⃣","2️⃣","3️⃣","4️⃣","5️⃣","6️⃣","7�
 class Puissance4 extends COMMAND {
 
     constructor(){
-        super("puissance4", "play | help", "Jouer au puissance 4.");
+        super("puissance4", "play | help", "Jouer au puissance 4.", [], "p4");
     }
 
     execute(args, message) {
@@ -114,7 +114,8 @@ class Puissance4 extends COMMAND {
                 // Edit the message a last time :
                 message.edit(this.gridToText(grid));
                 // Send victory message :
-                EMBED.send("<@" + player + "> a gagné la partie contre <@" + waiter + "> !", message.channel);
+                EMBED.edit(subMessage, "<@" + player + "> a gagné la partie contre <@" + waiter + "> !", message.channel);
+                EMBED.send("<@" + player + "> a gagné la partie de " + PREFIX + "contre <@" + waiter + "> !", message.channel);
             }
             else{
                 // Play others rounds :
@@ -163,7 +164,7 @@ class Puissance4 extends COMMAND {
             if(i[column] == "🔳") return 1;
         }
 
-        for(let i of gris){
+        for(let i of grid){
             for(let a of i){
                 if(a == "🔳") return 2;
             }
