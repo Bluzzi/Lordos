@@ -7,7 +7,7 @@ class Embed {
     /**
      * @param {String} message message to send
      * @param {DISCORD.Channel} channel a discord channel
-     * @param {{color: String, image: String, title: String , attachment : MessageAttachment, thumbnail: String}|String} options embed color
+     * @param {{color: String, image: String, title: String , attachment: MessageAttachment, thumbnail: String, footer: String}|String} options embed color
      * @returns {void} void
      * @deprecated options should be an object, String usage is deprecated
      */
