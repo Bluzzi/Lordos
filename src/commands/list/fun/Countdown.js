@@ -13,8 +13,7 @@ class Countdown extends COMMAND {
 
     async execute(args, message){
         if(isNaN(args[0])){
-            EMBED.send(this.getUsage(), message.channel);
-            return;
+            return false;
         }
         let time = args[0];
         let text = "";
