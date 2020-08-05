@@ -11,11 +11,13 @@ class Shifumi extends COMMAND {
 
     constructor(){
         super("shifumi", "Jouer au shifumi contre le bot", "game");
+
+        this.setUsage("<number (< 10)>");
     }
 
     execute(args, message){
         // Verify if args[0] is a number or not :
-        if(isNaN(args[0])) return false;
+        if(isNaN(args[0]) || args[0] > 10) return false;
 
         // Send the start message, then start :
         let file = new DISCORD.MessageAttachment(__dirname + "/../../../../resources/images/shifumi/shifumi.png", "shifumi.png");

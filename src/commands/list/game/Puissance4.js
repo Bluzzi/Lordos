@@ -5,50 +5,56 @@ const DISCORD = require("discord.js");
 const PREFIX = "**<Puissance 4>** ";
 
 const EMOJIS = ["1️⃣","2️⃣","3️⃣","4️⃣","5️⃣","6️⃣","7️⃣"]
+const RULES = [
+    PREFIX,
+    "\n__Règles :__\n\n*But du jeu :*",
+    "\nLe but est d'aligner 4 des ses pions à l'horizontal, à la verticale ou en diagonale avant l'adversaire.",
+    "\n\n*Jouer un tour :*",
+    "\n Tour à tour, cliquez sur la réaction correspondant à la colonne sur laquelle vous voulez jouer."
+]
 
 class Puissance4 extends COMMAND {
 
     constructor(){
         super("puissance4", "Jouer au puissance 4 contre un autre membre du discord", "game");
+
         this.setAliases(["p4"]);
+        this.setUsage("<play | rules>");
     }
 
     execute(args, message) {
-        // Verify if args[0] exists or not :
-        if(!args[0]){
-            EMBED.send(this.getUsage(), message.channel);
-            return;
-        }
-
         switch(args[0]){
             case "play":
-                // Send message to ask for a game :
-                EMBED.send(PREFIX + " Clickez sur la réaction pour affronter <@" + message.author + "> en duel !", message.channel).then((msg) => {
-                    msg.react("⚔️");
-
-                    let collector = msg.createReactionCollector((reac) => true, {time:60000});
-                    collector.on('collect', (reaction, user) => {
-                        // Get the second player :
-                        if(!user.bot & user.id != message.author.id){
-                            collector.stop("stop");
-                            EMBED.send(PREFIX + " La partie entre <@"+ message.author +"> (🔵) et <@"+ user +"> (🔴) commence...", message.channel);
-                            this.playGame(message.author, user, message);
-                        }
-                    })
-
-                    collector.on('end', (collected, reason) => {
-                        if(reason != "stop"){
-                            let newEmbd = new DISCORD.MessageEmbed().setDescription(PREFIX +"\n```yaml\nPartie expirée.```");
-                            msg.edit(newEmbd);
-                        }
-                    });
-                });
-                break;
-            case "help":
-                EMBED.send(PREFIX + "\n__Règles :__\n\n*But du jeu :*\nLe but est d'aligner 4 des ses pions à l'horizontal, à la verticale ou en diagonale.\n\n*Jouer un tour :*\n Tour à tour, cliquez sur une réaction correspondant à la colonne sur laquelle vous voulez jouer.", message.channel);
-                break;
-
+                return this.game(args, message);
+            case "rules":
+                return EMBED.send(RULES.join(""), message.channel);
+            default:
+                return false;
         }
+    }
+
+    game(args, message){
+        // Send message to ask for a game :
+        EMBED.send(PREFIX + " Clickez sur la réaction pour affronter <@" + message.author + "> en duel !", message.channel).then((msg) => {
+            msg.react("⚔️");
+
+            let collector = msg.createReactionCollector((reac) => true, {time:60000});
+            collector.on('collect', (reaction, user) => {
+                // Get the second player :
+                if(!user.bot & user.id != message.author.id){
+                    collector.stop("stop");
+                    EMBED.send(PREFIX + " La partie entre <@"+ message.author +"> (🔵) et <@"+ user +"> (🔴) commence...", message.channel);
+                    this.playGame(message.author, user, message);
+                }
+            })
+
+            collector.on('end', (collected, reason) => {
+                if(reason != "stop"){
+                    let newEmbd = new DISCORD.MessageEmbed().setDescription(PREFIX +"\n```yaml\nPartie expirée.```");
+                    msg.edit(newEmbd);
+                }
+            });
+        });
     }
 
     playGame(player1, player2, message){

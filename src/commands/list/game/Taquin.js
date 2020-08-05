@@ -4,34 +4,41 @@ const EMBED = require("../../../utils/Embed");
 const PREFIX = "**<TAQUIN>** ";
 
 const EMOJIS = ["1️⃣","2️⃣","3️⃣","4️⃣","5️⃣","6️⃣","7️⃣","8️⃣","9️⃣"];
-
 const ARROWS = ["◀️", "🔼", "🔽", "▶️"];
+const RULES = [
+    PREFIX,
+    "\n__Règles :__\n\n*But du jeu :*",
+    "\nLe but est de remettre la grille dans le bot ordre, en allant de gauche à droite et de bas en haut.",
+    "\n\n*Jouer un tour :*",
+    "\nCliquer sur une flèche fera bouger une dalle vers le sens de la flèche et vous permettra ainsi deretrouver la grille ordonnée."
+]
 
 class Taquin extends COMMAND {
 
     constructor(){
         super("taquin", "Jouer au taquin, un casse tête ou vous devez remettre les lettres dans le bonne ordre", "game");
 
-        this.setUsage("<play ou règles>");
+        this.setUsage("<play | rules>");
     }
 
     execute(args, message){
-        
         switch(args[0]){
             case "play":
-                let grid = this.createGrid();
+                return this.game(args, message);
+            case "rules":
+                return EMBED.send(RULES.join(""), message.channel);
+            default:
+                return false;
+        }
+    }
+
+    game(args, message){
+        let grid = this.createGrid();
                 EMBED.send(PREFIX + "\n\n <@" + message.author + "> a commencé une partie de taquin.", message.channel);
                 message.channel.send(this.grid2Text(grid)).then((msg) => {
                     for(let i of ARROWS) msg.react(i);
                     this.newRound(msg, message.author, grid);
                 })
-                break;
-            case "règles":
-                //TODO
-                break;
-            default:
-                return false;
-        }
     }
 
     newRound(message, player, grid){
