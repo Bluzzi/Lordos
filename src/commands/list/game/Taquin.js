@@ -30,7 +30,7 @@ class Taquin extends COMMAND {
                 //TODO
                 break;
             default:
-                EMBED.send(this.getUsage(), message.channel);
+                return false;
         }
     }
 
