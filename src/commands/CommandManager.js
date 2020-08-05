@@ -3,11 +3,8 @@ const CLICOMMAND = require("../../cli/commands/CliCommand");
 const LOADER = require("./Loader");
 
 class CommandManager extends LOADER {
-    constructor(){
-        super();
-        this._commands = [];
-        this._cliCommands = [];
-    }
+    #commands = [];
+    #cliCommands = [];
 
     /**
      * @param {Command} command 
@@ -17,9 +14,9 @@ class CommandManager extends LOADER {
 
     add(command, cli = false){
         if(!cli) {
-            this._commands.push(command);
+            this.#commands.push(command);
         } else {
-            this._cliCommands.push(command);
+            this.#cliCommands.push(command);
         }
     }
 
@@ -30,7 +27,7 @@ class CommandManager extends LOADER {
      */
 
     get(commandName, cli = false){
-        var commands = cli == false ? this._commands : this._cliCommands;
+        var commands = cli == false ? this.#commands : this.#cliCommands;
         var command = commands.filter(command => command.getName() == commandName)[0];
         if(!command){
             command = commands.filter(command => command.getAliases().includes(commandName))[0];
@@ -46,7 +43,7 @@ class CommandManager extends LOADER {
 
     getCategory(categoryName){
         var list = [];
-        this._commands.forEach(command => {
+        this.#commands.forEach(command => {
             if(command.getCategory() == categoryName) list.push(command);
         });
 
@@ -59,7 +56,7 @@ class CommandManager extends LOADER {
      */
 
     all(cli = false){
-        return cli == false ? this._commands : this._cliCommands;
+        return cli == false ? this.#commands : this.#cliCommands;
     }
 
     /**
@@ -68,20 +65,20 @@ class CommandManager extends LOADER {
      */
 
     reload(){
-        //DO NOT RELOAD THIS PATH AND THESES CLASSES ./Command AND ./CliCommand
+        //DO NOT RELOAD THESES FILES: ./Command, ./CommandManager, ./CliCommand, ./Main
 
         let count = 0;
-        this._commands = [];
-        this._cliCommands = [];
+        this.#commands = [];
+        this.#cliCommands = [];
         CLIENT.removeAllListeners(); //UNREGISTER ALL EVENTS
 
         //CLEAR MODULES:
-        count += this.clear("./src/commands/list", "./list/");
+        count += this.clear("./src/commands/list/", "./list/");
         count += this.clear("./src/utils/", "../utils/");
         count += this.clear("./src/events/", "../events/");
-        count += this.clear("./cli/commands/list", "../../cli/commands/list/");
-        count += this.clear("./cli/utils", "../../cli/utils/");
-        count += this.clear("./resources/configs", "../../resources/configs/");
+        count += this.clear("./cli/commands/list/", "../../cli/commands/list/");
+        count += this.clear("./cli/utils/", "../../cli/utils/");
+        count += this.clear("./resources/configs/", "../../resources/configs/");
         count += this.clear("./src/objects/", "../objects/");
 
         //LOAD COMMANDS:

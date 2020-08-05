@@ -65,7 +65,7 @@ class Loader {
                 CLIENT.LOGGER.notice("Cleared module: " + moduleName);
                 count++;
             } else {
-                if(FS.lstatSync(path + "/" + moduleName).isDirectory()) this.clear(path + "/" + moduleName + "/", pathTwo + "/" + moduleName + "/");
+                if(FS.lstatSync(path + moduleName + "/").isDirectory()) count += this.clear(path + moduleName + "/", pathTwo + moduleName + "/");
             }
         });
 
