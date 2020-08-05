@@ -18,7 +18,7 @@ class Shifumi extends COMMAND {
         if(isNaN(args[0])) return false;
 
         // Send the start message, then start :
-        let file = new DISCORD.MessageAttachment(__dirname + "/../../../resources/images/shifumi/shifumi.png", "shifumi.png");
+        let file = new DISCORD.MessageAttachment(__dirname + "/../../../../resources/images/shifumi/shifumi.png", "shifumi.png");
         
         EMBED.send(
             "<@" + message.author.id + "> a commencé un shifumi contre Lordos !",
@@ -126,7 +126,7 @@ class Shifumi extends COMMAND {
         };
 
         for(let [key, info] of Object.entries(players)){
-            let image = await CANVAS.loadImage(__dirname + "/../../../resources/images/shifumi/" + tools[info.choice] + (key == 1 ? "2" : "") + ".png");
+            let image = await CANVAS.loadImage(__dirname + "/../../../../resources/images/shifumi/" + tools[info.choice] + (key == 1 ? "2" : "") + ".png");
 
             if(key == 1) /* TODO : good rotate */;
 

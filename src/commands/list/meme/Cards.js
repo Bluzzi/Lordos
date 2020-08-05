@@ -66,12 +66,12 @@ class Cards extends COMMAND {
         ctx.drawImage(avatar, 25, 40, 220, 150);
 
         // Add card :
-        let path = "/../../../resources/images/pokemon/" + args[0] + ".png";
+        let path = "/../../../../resources/images/pokemon/" + args[0] + ".png";
         let image = await CANVAS.loadImage(__dirname + path);
         ctx.drawImage(image, 0, 0, 270, 380);
 
         // Add Lordos avatar :
-        path = "/../../../resources/images/new-royaume-logo-circle.png";
+        path = "/../../../../resources/images/new-royaume-logo-circle.png";
         image = await CANVAS.loadImage(__dirname + path);
         ctx.drawImage(image, 14, 25, 33, 33);
 
