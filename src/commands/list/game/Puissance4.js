@@ -10,6 +10,7 @@ class Puissance4 extends COMMAND {
 
     constructor(){
         super("puissance4", "Jouer au puissance 4 contre un autre membre du discord", "game");
+        this.setAliases(["p4"]);
     }
 
     execute(args, message) {
