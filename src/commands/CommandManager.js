@@ -3,6 +3,7 @@ const CLICOMMAND = require("../../cli/commands/CliCommand");
 const LOADER = require("./Loader");
 
 class CommandManager extends LOADER {
+
     #commands = [];
     #cliCommands = [];
 
@@ -11,9 +12,8 @@ class CommandManager extends LOADER {
      * @description add a command
      * @returns {void}
      */
-
     add(command, cli = false){
-        if(!cli) {
+        if(!cli){
             this.#commands.push(command);
         } else {
             this.#cliCommands.push(command);
@@ -25,13 +25,11 @@ class CommandManager extends LOADER {
      * @description get a command
      * @returns {COMMAND|CLICOMMAND}
      */
-
     get(commandName, cli = false){
-        var commands = cli == false ? this.#commands : this.#cliCommands;
-        var command = commands.filter(command => command.getName() == commandName)[0];
-        if(!command){
-            command = commands.filter(command => command.getAliases().includes(commandName))[0];
-        }
+        let commands = cli == false ? this.#commands : this.#cliCommands;
+        let command = commands.filter(command => command.getName() == commandName)[0];
+
+        if(!command) command = commands.filter(command => command.getAliases().includes(commandName))[0];
         
         return command;
     }
@@ -40,11 +38,25 @@ class CommandManager extends LOADER {
      * @description get all registered commands by category
      * @returns {Array<COMMAND>}
      */
-
     getCategory(categoryName){
-        var list = [];
+        let list = [];
+
         this.#commands.forEach(command => {
             if(command.getCategory() == categoryName) list.push(command);
+        });
+
+        return list;
+    }
+
+    /**
+     * @description get all registered category
+     * @return {Array<COMMAND>}
+     */
+    getCategoryList(){
+        let list = [];
+
+        this.#commands.forEach(command => {
+            if(!list.includes(command.getCategory())) list.push(command.getCategory());
         });
 
         return list;
@@ -54,7 +66,6 @@ class CommandManager extends LOADER {
      * @description get all registered commands
      * @returns {Array<COMMAND|CLICOMMAND>}
      */
-
     all(cli = false){
         return cli == false ? this.#commands : this.#cliCommands;
     }
@@ -63,7 +74,6 @@ class CommandManager extends LOADER {
      * @description reload all modules
      * @returns {Number} count of cleared modules
      */
-
     reload(){
         //DO NOT RELOAD THESES FILES: ./Command, ./CommandManager, ./CliCommand, ./Main
 
