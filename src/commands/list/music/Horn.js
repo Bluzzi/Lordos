@@ -4,7 +4,7 @@ const EMBED = require("../../../utils/Embed");
 
 class Horn extends COMMAND {
     constructor(){
-        super("horn");
+        super("horn", "Joue un son de Horn", "music");
     }
 
     async execute(args, message){

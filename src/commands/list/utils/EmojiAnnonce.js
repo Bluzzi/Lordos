@@ -14,6 +14,9 @@ class EmojiAnnonce extends COMMAND {
     async execute(args, message){
         if(!args[0]) return false;
 
+        EMBED.send("Commande en maintenance.", message.channel);
+        return;
+
         // Get the annonce content :
         let annonce = args.join(" ");
 

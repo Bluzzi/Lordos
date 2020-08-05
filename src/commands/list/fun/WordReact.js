@@ -6,7 +6,7 @@ var letters = "🇦,🇧,🇨,🇩,🇪,🇫,🇬,🇭,🇮,🇯,🇰,🇱,🇲,
 class WordReact extends COMMAND {
     
     constructor(){
-        super("worldreact", "Permet de réagir à un message via son id avec un mot.", "fun");
+        super("worldreact", "Permet de réagir à un message via son id avec un mot", "fun");
 
         this.setUsage("<id du message> <word>");
         this.setAliases(["wr"]);

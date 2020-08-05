@@ -16,7 +16,7 @@ class Conjugaison extends COMMAND {
 
     execute(args, message){
         if(args[0] == "help"){
-            EMBED.send(this.getUsage() + "\n\nUtilisez le mot anglais !\n\n" + help, message.channel);
+            EMBED.send(this.getUsageDescription() + "\n\nUtilisez le mot anglais !\n\n" + help, message.channel);
             return;
         }
         else{

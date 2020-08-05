@@ -13,10 +13,8 @@ class Mastermind extends COMMAND {
     }
 
     async execute(args, message){
-        if(!args[0]){
-            EMBED.send(this.getUsage(),message.channel);
-            return;
-        }
+        if(!args[0]) return false;
+        
         switch(args[0]){
             case "play":
                 this.start_game(message);

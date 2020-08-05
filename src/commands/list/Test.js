@@ -4,7 +4,7 @@ const EMBED = require("../../utils/Embed");
 class Test extends COMMAND {
 
     constructor(){
-        super("test", "tkt", "Tester quelque chose.", [], "t");
+        super("test", "tkt", "utils");
     }
 
     execute(args, message){

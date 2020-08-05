@@ -52,6 +52,14 @@ class Command {
      */
 
     getUsage(){
+        return this.#usage;
+    }
+
+    /**
+     * @returns {String} usage formatted
+     */
+
+    getUsageDescription(){
         return "Vous devez faire `" + CLIENT.CONSTANTS.prefix + this.getName() + " " + this.#usage + "` !";
     }
 
