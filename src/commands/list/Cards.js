@@ -19,46 +19,48 @@ const CANVAS = require("canvas");
 let help = [
     "__**Pokemon card**__",
     "-types: fire, water, grass, fairy, dark, fighting, lighting, psy, basic, team",
-    "-options: name, attack_name, attack_description, story, avatar",
-    "\n**Exemple:**",
-    ">cards fire\nname:BOB\nattack_description\n<@"+ 733819345905516656 + ">"
+    "\n__Exemple :__",
+    ">cards fire",
+    "Loupio......[this is the name]",
+    "@Lordos#6371......[this is the discord's user avatar to display]",
+    "Eating......[this is the attack's name]",
+    "Attack the opponent, then eat his brain.......[this is the attack's description] ",
+    "\n\nIf you want to ignore just go to the line and write nothing (ignore the image will show your avatar)"
 ]
 
 class Cards extends COMMAND {
 
     constructor() {
-        super("cards","<type | help> {option} {option} {...");
+        super("cards","help");
     }
 
     async execute(args, message){
+        // Split the args as card's parameters :
         args = args.join(" ").split("\n");
-        console.log(args)
 
-        if(args[0] == "help"){
-            EMBED.send(help.join("\n"), message.channel);
-            return;
-        }
-        if(!args[0] || !["fire","team","water","psy","lightning","grass","fairy","dark","basic","fighting"].includes(args[0])){
-            EMBED.send(this.getUsage(), message.channel);
-            return;
-        }
-        
+        // Send help :
+        if(args[0] == "help") return EMBED.send(help, message.channel);
+
+        // Verify args[0] and type :
+        if(!args[0] || !["fire","team","water","psy","lightning","grass","fairy","dark","basic","fighting"].includes(args[0])) return false;
         
         //this.createImage(args, message);
         this.createImage(args, message);
     }
 
-
-
+    // Main function, create the card and send it :
     async createImage(args, message){
-        console.log(args)
+
+        // Set "" if parameter is undefined :
+        for(let i = 0; i < 6; i++) args[i] = (args[i] == undefined) ? "" : args[i];
 
         // Create canvas :
         const canvas = CANVAS.createCanvas(270, 380);
         const ctx = canvas.getContext('2d');
 
         // Add avatar :
-        let avatar = await CANVAS.loadImage(message.author.displayAvatarURL({ format: 'jpg' }));
+        let avatar = (args[2] == "") ? message.author : message.mentions.users.first();
+        avatar = await CANVAS.loadImage(avatar.displayAvatarURL({format : "jpg"}));
         ctx.drawImage(avatar, 25, 40, 220, 150);
 
         // Add card :
@@ -67,63 +69,64 @@ class Cards extends COMMAND {
         ctx.drawImage(image, 0, 0, 270, 380);
 
         // Add Lordos avatar :
-        path = "/../../../resources/images/lordos_avatar_circle.png";
+        path = "/../../../resources/images/new-royaume-logo-circle.png";
         image = await CANVAS.loadImage(__dirname + path);
         ctx.drawImage(image, 14, 25, 33, 33);
 
         // Add name :
         let textContext = canvas.getContext("2d");
         textContext.fillStyle = "#000000";
-        textContext.font = "15px Arial";
+        textContext.font = "17px Arial";
         
         if(ctx.measureText(args[1]).width > 117){
             EMBED.send("Le nom du pokemon est trop long.", message.channel);
             return;
         }
 
-        textContext.fillText(args[1], 65, 28);
+        textContext.fillText(args[1], 67, 28);
 
-        //Add attack name :
+        // Add attack name :
         textContext = canvas.getContext("2d");
 
         textContext.fillStyle = "#000000";
-        textContext.font = "15px Arial";
+        textContext.font = "18px Arial";
         
-        if(ctx.measureText(args[2]).width > 200){
+        if(ctx.measureText(args[3]).width > 200){
             EMBED.send("Le nom du pokemon est trop long.", message.channel);
             return;
         }
 
-        textContext.fillText(args[2], 30, 220);
+        textContext.fillText(args[3], 30, 220);
 
-         //Add attack's description :
+         // Add attack's description :
          textContext = canvas.getContext("2d");
 
          textContext.fillStyle = "#000000";
-         textContext.font = "15px Arial";
+         textContext.font = "12px Arial";
          
-         if(ctx.measureText(args[3]).width > 200){
-             EMBED.send("La description de l'attaque est trop longue.", message.channel);
-             return;
+         if(ctx.measureText(args[4]).width > 680){
+             return EMBED.send("La description de l'attaque est trop longue.", message.channel);
          }
+         
+         let text = []
+         let line = "";
+         for(let i of args[4].split(" ")){
+             line += i + " ";
+             if(ctx.measureText(line).width > 170){
+                 text.push(line)
+                 line = "";
+             }
+         }
+         text.push(line);
 
-         textContext.fillText(args[3], 30, 240);
+         text.forEach((txt)=>{
+            textContext.fillText(txt, 30, 240 + 20 * text.indexOf(txt));
+         })
 
 
         // Send the message :
         const attachment = new DISCORD.MessageAttachment(canvas.toBuffer(), 'card.png');
         message.channel.send(attachment);
-    }
-
-    getOption(option, args){
-        let regex = new RegExp(option + ".*:.*?");
-        if(args.match(regex)){
-            args = args.split(":");
-            return args[1];
-        }
-        else{
-            return false;
-        }
     }
 }
 
