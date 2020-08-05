@@ -3,28 +3,32 @@ const COMMAND = require("./Command");
 const CLICOMMAND = require('../../cli/commands/CliCommand');
 
 class Loader {
-    loadCommands(cli = false){
-        let path = cli == false ? "./src/commands/list/" : "./cli/commands/list/";
-        let pathTwo = cli == false ? "./list/" : "../../cli/commands/list/";
+    loadCommands(cli = false, path = null, pathTwo = null){
+        if(path == null) path = cli == false ? "./src/commands/list/" : "./cli/commands/list/";
+        if(pathTwo == null) pathTwo = cli == false ? "./list/" : "../../cli/commands/list/";
         let classType = cli == false ? COMMAND : CLICOMMAND;
         let count = 0;
 
-        FS.readdirSync(path).forEach(commandName => {
-            if(commandName.split(".").pop() == "js"){ //only reads JS files
-                let commandClass = require(pathTwo + commandName);
+        FS.readdirSync(path).forEach((moduleName) => {
+            if(moduleName.split(".").pop() == "js"){ //READ JS FILES
+                let commandClass = require(pathTwo + moduleName);
                 let type = cli == false ? "bot" : "CLI";
-
-                if(typeof commandClass == "function") { //prevents 'not a constructor' error
+                
+                if(typeof commandClass == "function"){ //prevents 'not a constructor' error
                     commandClass = new commandClass();
                     if(commandClass instanceof classType){ //only register commands
-                        CLIENT.LOGGER.notice("Loaded " + type + " command: " + commandName);
+                        CLIENT.LOGGER.notice("Loaded " + type + " command: " + moduleName);
                         CLIENT.COMMANDMANAGER.add(commandClass, cli);
                         count++;
                     } else {
-                        CLIENT.LOGGER.warn("Cannot load" + type + " command: " + commandName + "(not a command instance)");
+                        CLIENT.LOGGER.warn("Cannot load " + type + " command: " + moduleName + " (not a command instance)");
                     }
                 } else {
-                    CLIENT.LOGGER.warn("Cannot load " + type + " command: " + commandName + " (missing exports?)");
+                    CLIENT.LOGGER.warn("Cannot load " + type + " command: " + moduleName + " (missing exports?)");
+                }
+            } else { //READ DIRECTORIES
+                if(!cli){
+                    if(FS.lstatSync(path + "/" + moduleName).isDirectory()) this.loadCommands(false, path + "/" + moduleName + "/", pathTwo + "/" + moduleName + "/");
                 }
             }
         });
@@ -60,6 +64,8 @@ class Loader {
                 delete require.cache[require.resolve(pathTwo+moduleName)];
                 CLIENT.LOGGER.notice("Cleared module: " + moduleName);
                 count++;
+            } else {
+                if(FS.lstatSync(path + "/" + moduleName).isDirectory()) this.clear(path + "/" + moduleName + "/", pathTwo + "/" + moduleName + "/");
             }
         });
 

@@ -30,15 +30,27 @@ class CommandManager extends LOADER {
      */
 
     get(commandName, cli = false){
-        let commands = cli == false ? this._commands : this._cliCommands;
-        let list = commands.map(command => command.getName());
-        let index = list.indexOf(commandName);
-        if (index < 0) {
-            list = commands.map(command => command.getAlias());
-            index = list.indexOf(commandName);
+        var commands = cli == false ? this._commands : this._cliCommands;
+        var command = commands.filter(command => command.getName() == commandName)[0];
+        if(!command){
+            command = commands.filter(command => command.getAliases().includes(commandName))[0];
         }
         
-        return commands[index];
+        return command;
+    }
+
+    /**
+     * @description get all registered commands by category
+     * @returns {Array<COMMAND>}
+     */
+
+    getCategory(categoryName){
+        var list = [];
+        this._commands.forEach(command => {
+            if(command.getCategory() == categoryName) list.push(command);
+        });
+
+        return list;
     }
 
     /**
@@ -69,6 +81,8 @@ class CommandManager extends LOADER {
         count += this.clear("./src/events/", "../events/");
         count += this.clear("./cli/commands/list", "../../cli/commands/list/");
         count += this.clear("./cli/utils", "../../cli/utils/");
+        count += this.clear("./resources/configs", "../../resources/configs/");
+        count += this.clear("./src/objects/", "../objects/");
 
         //LOAD COMMANDS:
         this.loadCommands(true);
