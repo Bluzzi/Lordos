@@ -7,7 +7,7 @@ let emojis = ["⬜", "🟧", "🟥", "🟦", "🟫", "🟪", "🟩", "🟨", "�
 class Mastermind extends COMMAND {
 
     constructor(){
-        super("mastermind", "Jouer ou voir les règles du jeu mastermind", "fun");
+        super("mastermind", "Jouer ou voir les règles du jeu mastermind", "game");
 
         this.setUsage("<play ou rules>");
     }
