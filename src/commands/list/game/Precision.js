@@ -55,10 +55,10 @@ class Precision extends COMMAND {
             });
         });
 
-        setTimeout(() => this.#playing(message.channel, words), 5000);
+        setTimeout(() => this.playing(message.channel, words), 5000);
     }
 
-    #playing = (channel, words) => {
+    playing(channel, words){
         let sentence = words.join(" ");
 
         // Create and send the image with 3 words :

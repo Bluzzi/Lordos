@@ -8,10 +8,11 @@ CLIENT.on("message", async (message) => {
     let args = message.content.substring(1).split(" ");
     let commandName = args.shift().toLowerCase();
     let command = CLIENT.COMMANDMANAGER.get(commandName);
+    let admins = await CLIENT.CONSTANTS.getAdmins();
 
     if(command){
         if(command.getPermissions().includes("BOT.ADMINISTRATOR")){
-            if(!CLIENT.CONSTANTS.admins.includes(message.author.id)){
+            if(!admins.includes(message.author.id)){
                 return EMBED.send("Vous n'avez pas accès à cette commande !\nPermission(s) requise(s) : `" + command.getPermissions().join("`, `") + "`", message.channel, 'RED');
             }
         } else {

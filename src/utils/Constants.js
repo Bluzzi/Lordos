@@ -1,7 +1,6 @@
 const SETTINGS = require("../../settings.json");
 
 class Constants {
-
     /**
      * @returns {String} prefix
     */
@@ -20,8 +19,9 @@ class Constants {
      * @returns {Array<String>} admin
      */
 
-    static get admins(){
-        return require("../../resources/configs/admins.json").admins;
+    static async getAdmins(){
+        let app = await CLIENT.fetchApplication();
+        return app.owner.members.map(m => m.id);
     }
 
     /**
