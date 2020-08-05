@@ -13,8 +13,7 @@ class Digit extends COMMAND {
 
     async execute(args, message){
         if(isNaN(args[0]) || args[0].length > 6){
-            EMBED.send(this.getUsage(), message.channel);
-            return;
+            return false;
         }
         let text = COOL_DISCORD_THINGS.numberToDigitEmojis(args[0]);
         

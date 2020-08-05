@@ -12,9 +12,7 @@ class Encode extends COMMAND {
 
     execute(args, message){
         if(!args[1]) {
-            EMBED.send(this.getUsage(), message.channel);
-            console.log("bug")
-            return;
+            return false;
         }
         
         let mode = args[0];
@@ -31,7 +29,7 @@ class Encode extends COMMAND {
                 EMBED.send(text, message.channel)
                 break;
             default:
-                EMBED.send(this.getUsage(), message.channel);
+                return false;
         }
     }
 
