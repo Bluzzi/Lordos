@@ -19,9 +19,9 @@ class Say extends CLICOMMAND {
             CLIENT.LOGGER.cli("Message sent in: " + channel.name);
         } else if(user){
             user.send(message.join(" "));
-            CLIENT.LOGGER.cli("Message sent a: " + user.tag);
+            CLIENT.LOGGER.cli("Message sent to: " + user.tag);
         } else {
-            CLIENT.LOGGER.cli("Cannot find channel " + channel);
+            CLIENT.LOGGER.cli("Cannot find channel/user: " + ID);
         }
     }
 }
