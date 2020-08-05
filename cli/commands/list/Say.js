@@ -2,22 +2,26 @@ const CLICOMMAND = require("../CliCommand");
 
 class Say extends CLICOMMAND {
     constructor(){
-        super("say", "<channelID> <message>", "Send a discord message")
+        super("say", "<channelID/userID> <message>", "Send a discord message")
     }
 
     async execute(args){
-        var channelID = args[0];
+        var ID = args[0];
         var message = args.slice(1, args.length);
-        if(!channelID || !message){
+        if(!ID || !message){
             return false;
         }
 
-        var channel = CLIENT.channels.cache.get(channelID);
+        var channel = CLIENT.channels.cache.get(ID);
+        var user = CLIENT.users.cache.get(ID)
         if(channel){
             channel.send(message.join(" "));
             CLIENT.LOGGER.cli("Message sent in: " + channel.name);
+        } else if(user){
+            user.send(message.join(" "));
+            CLIENT.LOGGER.cli("Message sent to: " + user.tag);
         } else {
-            CLIENT.LOGGER.cli("Cannot find channel " + channelID);
+            CLIENT.LOGGER.cli("Cannot find channel/user: " + ID);
         }
     }
 }

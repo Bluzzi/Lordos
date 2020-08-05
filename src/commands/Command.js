@@ -1,17 +1,22 @@
 class Command {
 
+    #name;
+    #description;
+    #category;
+    #usage = "";
+    #aliases = [];
+    #permissions = [];
+
     /**
      * @param {String} name command name
      * @param {String} description description of the command
      * @param {String} category
      */
 
-    constructor(name, description, category, usage) {
-        this.name = name;
-        this.description = description;
-        this.category = category;
-        this.aliases = [];
-        this.permissions = [];
+    constructor(name, description, category) {
+        this.#name = name;
+        this.#description = description;
+        this.#category = category;
     }
 
     execute(){
@@ -23,7 +28,7 @@ class Command {
      */
 
     getName(){
-        return this.name;
+        return this.#name;
     }
 
     /**
@@ -31,7 +36,7 @@ class Command {
      */
 
     getCategory(){
-        return this.category;
+        return this.#category;
     }
 
     /**
@@ -39,7 +44,7 @@ class Command {
      */
 
     getDescription(){
-        return this.description;
+        return this.#description;
     }
 
     /**
@@ -47,7 +52,7 @@ class Command {
      */
 
     getUsage(){
-        return "Vous devez faire `" + CLIENT.CONSTANTS.prefix + this.getName() + " " + this.usage + "` !";
+        return "Vous devez faire `" + CLIENT.CONSTANTS.prefix + this.getName() + " " + this.#usage + "` !";
     }
 
     /**
@@ -55,7 +60,7 @@ class Command {
      */
 
     getAliases(){
-        return this.aliases;
+        return this.#aliases;
     }
 
 
@@ -64,7 +69,7 @@ class Command {
      */
 
     getPermissions(){
-        return this.permissions;
+        return this.#permissions;
     }
 
     /**
@@ -73,7 +78,7 @@ class Command {
      */
 
     setPermissions(permissions){
-        this.permissions = permissions;
+        this.#permissions = permissions;
     }
 
 
@@ -82,7 +87,7 @@ class Command {
      */
 
     setAliases(aliases){
-        this.aliases = aliases;
+        this.#aliases = aliases;
     }
 
     /**
@@ -90,7 +95,7 @@ class Command {
      */
 
     setUsage(usage){
-        this.usage = usage;
+        this.#usage = usage;
     }
 }
 
