@@ -18,8 +18,8 @@ class Info extends COMMAND {
 
         let monthsList = [
             "janvier", "fevrier", "mars", 
-            "avril", "mais", "juin", 
-            "juillet", "aout", "septembre", 
+            "avril", "mai", "juin", 
+            "juillet", "août", "septembre", 
             "octobre", "novembre", "decembre"
         ];
 
