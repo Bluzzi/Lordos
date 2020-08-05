@@ -6,7 +6,7 @@ var voters = [];
 class VoteMute extends COMMAND {
 
     constructor(){
-        super("votemute", "Permet de voter pour le mute d'un utilisateur du vocal", "utils");
+        super("votemute", "Permet de voter pour le mute d'un utilisateur du vocal", "moderation");
         
         this.setUsage("<mention>");
         this.setAliases(["vm"]);
