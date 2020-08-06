@@ -9,7 +9,11 @@ let playingChannels = {};
 class Precision extends COMMAND {
 
     constructor(){
-        super("precision", "Un jeu de rapidité ou toutes les personnes présentes dans le salon doivent réecrire le plus rapidement possible des séries de mots.", "game");
+        super(
+            "precision", 
+            "Un jeu de rapidité ou toutes les personnes présentes dans le salon doivent réecrire le plus rapidement possible des séries de mots.", 
+            "game"
+        );
     }
     
     async execute(args, message){
