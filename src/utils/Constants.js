@@ -21,6 +21,7 @@ class Constants {
 
     static async getAdmins(){
         let app = await CLIENT.fetchApplication();
+        
         return app.owner.members.map(m => m.id);
     }
 

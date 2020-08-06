@@ -2,38 +2,43 @@ const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
 const DISCORD = require("discord.js");
 
-let emojis = ["⬜", "🟧", "🟥", "🟦", "🟫", "🟪", "🟩", "🟨", "◀️", "▶️", "✅"];
+const PREFIX = "**<Mastermind>** "
+
+const EMOJIS = ["⬜", "🟧", "🟥", "🟦", "🟫", "🟪", "🟩", "🟨", "◀️", "▶️", "✅"];
+const RULES = [
+    PREFIX,
+    "\n__Règles :__\n\n*But du jeu :*",
+    "\nLe but est de retrouver le code de 5 couleurs généré aléatoirement par Lordos.",
+    "\n\n*Jouer un tour :*",
+    "\nA chaque tour, vous pouvez proposer un code de 5 couleurs.\nLe bot vous indiquera pour chaque couleur:\n-un drapeau rouge si la couleur est à la bonne place dans le code.\n-un drapeau blanc si la couleur existe dans le code mais n'est pas à la bonne place.\n-rien si la couleur n'est pas dans le code.\n\nTemps maximum : 30 minutes\nEssais maximum : 10"
+]
 
 class Mastermind extends COMMAND {
 
     constructor(){
         super("mastermind", "Jouer ou voir les règles du jeu mastermind", "game");
 
-        this.setUsage("<play ou rules>");
+        this.setUsage("<play | rules>");
     }
 
     async execute(args, message){
-        if(!args[0]){
-            EMBED.send(this.getUsage(),message.channel);
-            return;
-        }
         switch(args[0]){
             case "play":
-                this.start_game(message);
-                break;
+                return this.game(args, message);
             case "rules":
-                this.showRules(message);
-                break;
+                return EMBED.send(RULES.join(""), message.channel);
+            default:
+                return false;
         }
     }
 
     // Play the game :
-    start_game(message){
+    game(args, message){
 
         // Variables : previous codes / the code to find / simple text for the message / the current code / list to manage the moving arrow / ...
         let previousCodes = "";
         let codeToFind = this.createCode();
-        let text = "**<MASTERMIND>** \nVous devez trouver le code généré par Lordos\n__Codes précédents :__\n";
+        let text = PREFIX + "\nVous devez trouver le code généré par Lordos\n__Codes précédents :__\n";
         let currentCode = ["🔲","🔲","🔲","🔲","🔲"];
         let arrow = ["⬆️","✴️","✴️","✴️","✴️"]
         let currentCodeIndex = 0;
@@ -43,17 +48,17 @@ class Mastermind extends COMMAND {
         EMBED.send(text + previousCodes + "__Code actuel :__\n" + currentCode.join("") + "\n" + arrow.join("") + debug, message.channel).then((msg) =>{
 
             //Add reactions to the message :
-            for(let em of emojis) msg.react(em);
+            for(let em of EMOJIS) msg.react(em);
             
 
             // Create ReactionCollector :
-            let filter = (reaction, user) => {return emojis.includes(reaction.emoji.name) && user.id === message.author.id;}
+            let filter = (reaction, user) => {return EMOJIS.includes(reaction.emoji.name) && user.id === message.author.id;}
             let collector = msg.createReactionCollector(filter, {time:1800000}) //temps maximum de 30 minutes
 
             // Get Reaction on react, then edit the message :
             collector.on('collect', (reaction, reactionCollector) => {
                 debug = "";
-                if(emojis.includes(reaction.emoji.name)){
+                if(EMOJIS.includes(reaction.emoji.name)){
                     if(!currentCode.includes(reaction.emoji.name)){
                         switch(reaction.emoji.name){
                             case "◀️":
@@ -147,11 +152,6 @@ class Mastermind extends COMMAND {
             colors.splice(index, 1);
         }
         return code
-    }
-
-    //Show the mastermind's rules :
-    showRules(message){
-        EMBED.send("**<MASTERMIND>**\n__Règles :__\n\n*But du jeu :*\nLe but est de trouver le code constitué de 5 couleurs généré par Lordos.\n\n*Jouer un tour :*\n A chaque tour, vous pouvez proposer un code.\n\nA la fin du tour, le bot renvoie pour chaque couleur,\n-un drapeau rouge si la couleur est à la bonne place dans le code.\n-un drapeau blanc si la couleur existe dans le code mais n'est pas à la bonne place.\n-rien si la couleur n'est pas dans le code.\n\nTemps maximum : 30 minutes\nEssais maximum : 10", message.channel)
     }
 }
 

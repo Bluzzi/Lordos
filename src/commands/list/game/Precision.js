@@ -25,7 +25,7 @@ class Precision extends COMMAND {
         playingChannels[message.guild.id].push(message.channel.id);
 
         // Read the french words list :
-        let allWords = FS.readFileSync(__dirname + "/../../../resources/configs/liste_francais.txt", "utf8").split(":");
+        let allWords = FS.readFileSync(__dirname + "/../../../../resources/configs/liste_francais.txt", "utf8").split(":");
 
         // Shuffle all words :
         allWords = allWords.sort(() => Math.random() - 0.5); 

@@ -22,8 +22,9 @@ CLIENT.on("message", async (message) => {
         }
 
         let execute = await command.execute(args, message);
+
         if(execute == false) {
-            EMBED.send(command.getUsage(), message.channel, 'RED');
+            EMBED.send(command.getUsageDescription(), message.channel, "RED");
         }
 
         CLIENT.LOGGER.info(`${message.author.tag} executed command: ${commandName.toLowerCase()}`);

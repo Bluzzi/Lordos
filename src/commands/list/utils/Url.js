@@ -14,14 +14,14 @@ const SUB_COMMANDS = {
 class Url extends COMMAND {
 
     constructor(){
-        super("url", "Enregistre une URL", "utils")
+        super("url", "Enregistre une URL", "utils");
 
         this.setUsage("<add/del/list> <donnée>");
     }
 
     async execute(args, message){
         let config = JSON.parse(FS.readFileSync(
-            __dirname + "/../../../resources/configs/url.json"), 
+            __dirname + "/../../../../resources/configs/url.json"), 
             {encoding:"utf8"}
         );
 
