@@ -1,5 +1,6 @@
 const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
+const DISCORD = require("discord.js");
 
 var voters = [];
 
@@ -12,6 +13,10 @@ class VoteMute extends COMMAND {
         this.setAliases(["vm"]);
     }
 
+    /**
+     * @param {string[]} args 
+     * @param {DISCORD.Message} message 
+     */
     async execute(args, message){
         let member = message.member;
 

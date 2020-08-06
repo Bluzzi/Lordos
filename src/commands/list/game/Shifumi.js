@@ -15,6 +15,10 @@ class Shifumi extends COMMAND {
         this.setUsage("<number (< 10)>");
     }
 
+    /**
+     * @param {string[]} args 
+     * @param {DISCORD.Message} message 
+     */
     execute(args, message){
         // Verify if args[0] is a number or not :
         if(isNaN(args[0]) || args[0] > 10) return false;

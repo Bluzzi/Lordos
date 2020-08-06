@@ -1,6 +1,7 @@
 const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
 const COOL_DISCORD_THINGS = require("../../../utils/CoolDiscordThings");
+const DISCORD = require("discord.js");
 
 class Digit extends COMMAND {
 
@@ -10,6 +11,10 @@ class Digit extends COMMAND {
         this.setUsage("<nombre>");
     }
 
+    /**
+     * @param {string[]} args 
+     * @param {DISCORD.Message} message 
+     */
     async execute(args, message){
         if(isNaN(args[0]) || args[0].length > 6) return false;
 

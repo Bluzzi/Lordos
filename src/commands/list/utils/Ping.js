@@ -1,14 +1,20 @@
 const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
 const PING = require("ping");
+const DISCORD = require("discord.js");
 
 class Ping extends COMMAND {
+    
     constructor(){
         super("ping", "Permet de ping une adresse", "utils");
 
         this.setUsage("<adresse> ['numeric']");
     }
 
+    /**
+     * @param {string[]} args 
+     * @param {DISCORD.Message} message 
+     */
     async execute(args, message){
         if (!args[0]) {
             return false;

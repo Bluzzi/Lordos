@@ -1,11 +1,8 @@
 const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
-const CONSTANTS = require("../../../utils/Constants");
-const Embed = require("../../../utils/Embed");
+const DISCORD = require("discord.js");
 
-var numbers = {};
-
-class ChoiceNumber extends COMMAND {
+class WikiRandom extends COMMAND {
 
     constructor(){
         super("wikirandom", "Renvoie un lien vers une page wikipédia aléatoire", "information");
@@ -13,8 +10,12 @@ class ChoiceNumber extends COMMAND {
         this.setAliases(["wikir"]);
     }
 
+    /**
+     * @param {string[]} args 
+     * @param {DISCORD.Message} message 
+     */
     async execute(args, message){
-        Embed.send("[Découvrir une information !](https://fr.wikipedia.org/wiki/Sp%C3%A9cial:Page_au_hasard)", message.channel)
+        EMBED.send("[Découvrir une information !](https://fr.wikipedia.org/wiki/Sp%C3%A9cial:Page_au_hasard)", message.channel)
     }
 }
-module.exports = ChoiceNumber;
+module.exports = WikiRandom;

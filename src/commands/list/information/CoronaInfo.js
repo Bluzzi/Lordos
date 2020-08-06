@@ -2,6 +2,7 @@ const COMMAND = require("../../Command");
 const AXIOS = require("axios");
 const EMBED = require("../../../utils/Embed");
 const INFORMATION = require("../../../objects/Information");
+const DISCORD = require("discord.js");
 
 class CoronaInfo extends COMMAND {
     
@@ -11,8 +12,11 @@ class CoronaInfo extends COMMAND {
         this.setUsage("<pays/ISO code>");
     }
 
+    /**
+     * @param {string[]} args 
+     * @param {DISCORD.Message} message 
+     */
     async execute(args, message){
-
         // Define days and months translations :
         let daysList = [
             "Lundi", "Mardi", "Mercredi", "Jeudi", 

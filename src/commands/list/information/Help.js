@@ -2,6 +2,7 @@ const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
 const DISCORD = require("discord.js");
 const FS = require("fs");
+const DISCORD = require("discord.js");
 
 const CONTROLER = ["◀️", "▶️", "🚫"];
 
@@ -11,6 +12,10 @@ class Help extends COMMAND {
         super("help", "Obtenir la liste des commandes du bot", "information");
     }
 
+    /**
+     * @param {string[]} args 
+     * @param {DISCORD.Message} message 
+     */
     async execute(args, message){
         message.channel.send(this.getHelpEmbed(args[0])).then(msg => this.helpUpdater(msg, args[0]));
     }

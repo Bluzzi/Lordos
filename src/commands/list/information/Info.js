@@ -1,5 +1,6 @@
 const COMMAND = require("../../Command");
 const INFORMATION = require("../../../objects/Information");
+const DISCORD = require("discord.js");
 
 class Info extends COMMAND {
 
@@ -9,6 +10,10 @@ class Info extends COMMAND {
         this.setUsage("<mention>");
     }
 
+    /**
+     * @param {string[]} args 
+     * @param {DISCORD.Message} message 
+     */
     async execute(args, message){
         // Define days and months translations :
         let daysList = [

@@ -2,6 +2,7 @@ const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
 const DISCORD = require("discord.js");
 const COOL_DISCORD_THINGS = require("../../../utils/CoolDiscordThings");
+const DISCORD = require("discord.js");
 
 class Countdown extends COMMAND {
 
@@ -11,6 +12,10 @@ class Countdown extends COMMAND {
         this.setUsage("<secondes>");
     }
 
+    /**
+     * @param {string[]} args 
+     * @param {DISCORD.Message} message 
+     */
     async execute(args, message){
         if(isNaN(args[0])) return false;
 

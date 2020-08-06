@@ -8,6 +8,10 @@ class Flip extends COMMAND {
         super("flip", "Lance une pièce", "fun");
     }
 
+    /**
+     * @param {string[]} args 
+     * @param {DISCORD.Message} message 
+     */
     async execute(args, message){
         let possibilities = ["pile", "face"];
         let result = possibilities[Math.floor(Math.random() * Math.floor(2))];

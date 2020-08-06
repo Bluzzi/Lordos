@@ -25,6 +25,10 @@ class Mastermind extends COMMAND {
         this.setUsage("<play | rules>");
     }
 
+    /**
+     * @param {string[]} args 
+     * @param {DISCORD.Message} message 
+     */
     async execute(args, message){
         switch(args[0]){
             case "play":

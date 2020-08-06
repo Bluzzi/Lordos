@@ -1,5 +1,6 @@
 const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
+const DISCORD = require("discord.js");
 
 const PREFIX = "**<Find the Number>** ";
 
@@ -12,6 +13,10 @@ class FindNumber extends COMMAND {
         this.setAliases(["fn"]);
     }
 
+    /**
+     * @param {string[]} args 
+     * @param {DISCORD.Message} message 
+     */
     async execute(args, message){
         if(args.length < 2 || parseInt(args[0]) > parseInt(args[1])) return false;
 

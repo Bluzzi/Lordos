@@ -1,15 +1,20 @@
 const EMBED = require("../../../utils/Embed");
 const COMMAND = require("../../Command");
+const DISCORD = require("discord.js");
 
 class Calcul extends COMMAND {
 
-    constructor() {
+    constructor(){
         super("calcul", "Calcul une suite aritméthique", "utils");
 
         this.setUsage("<calcul>");
         this.setAliases(['calc']);
     }
 
+    /**
+     * @param {string[]} args 
+     * @param {DISCORD.Message} message 
+     */
     execute(args, message){
         if(!args[0]){
             return false;

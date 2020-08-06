@@ -1,5 +1,6 @@
 const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
+const DISCORD = require("discord.js");
 
 class Choice extends COMMAND {
 
@@ -9,6 +10,10 @@ class Choice extends COMMAND {
         this.setUsage("<choix 1> <choix 2> ...[choix]");
     }
 
+    /**
+     * @param {string[]} args 
+     * @param {DISCORD.Message} message 
+     */
     async execute(args, message){
         if(!args[1]) return false;
 

@@ -1,5 +1,6 @@
 const COMMAND= require("../../Command");
 const EMBED = require("../../../utils/Embed");
+const DISCORD = require("discord.js");
 
 class Reverse extends COMMAND {
 
@@ -9,6 +10,10 @@ class Reverse extends COMMAND {
         this.setUsage("<texte>");
     }
 
+    /**
+     * @param {string[]} args 
+     * @param {DISCORD.Message} message 
+     */
     async execute(args, message){
         if(!args[0]) return false;
 

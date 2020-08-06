@@ -1,12 +1,18 @@
 const COMMAND = require("../../Command");
 const VOICE = require("../../../utils/Voice");
 const EMBED = require("../../../utils/Embed");
+const DISCORD = require("discord.js");
 
 class Horn extends COMMAND {
+
     constructor(){
         super("horn", "Joue un son de Horn", "music");
     }
 
+    /**
+     * @param {string[]} args 
+     * @param {DISCORD.Message} message 
+     */
     async execute(args, message){
         let voiceChannel = message.member.voice.channel;
         if(voiceChannel){

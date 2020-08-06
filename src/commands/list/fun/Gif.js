@@ -2,6 +2,7 @@ const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
 const CONSTANTS = require("../../../utils/Constants");
 const GIPHY = require("giphy-api")(CONSTANTS.giffyKey);
+const DISCORD = require("discord.js");
 
 class Gif extends COMMAND {
 
@@ -11,6 +12,10 @@ class Gif extends COMMAND {
         this.setUsage("<recherche>");
     }
 
+    /**
+     * @param {string[]} args 
+     * @param {DISCORD.Message} message 
+     */
     async execute(args, message){
         if(!args[0]) return false;
 

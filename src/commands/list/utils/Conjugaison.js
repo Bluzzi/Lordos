@@ -1,6 +1,7 @@
 const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
 const CONJ = require("conjugation-fr");
+const DISCORD = require("discord.js");
 
 // See : https://www.npmjs.com/package/conjugation-fr
 
@@ -14,22 +15,23 @@ class Conjugaison extends COMMAND {
         this.setAliases(['conj']);
     }
 
+    /**
+     * @param {string[]} args 
+     * @param {DISCORD.Message} message 
+     */
     execute(args, message){
         if(args[0] == "help"){
             EMBED.send(this.getUsageDescription() + "\n\nUtilisez le mot anglais !\n\n" + help, message.channel);
             return;
-        }
-        else{
-            try{
+        } else {
+            try {
                 let conj = CONJ.conjugate(args[0], args[1], args[2])
                 let text = "__Conjugaison de **" + args[0] + "** :__\n";
-                for(let person of conj){
-                    text += "\n -" + person.pronoun + " " + person.verb;
-                }
+
+                for(let person of conj) text += "\n -" + person.pronoun + " " + person.verb;
+                
                 EMBED.send(text, message.channel);
-            }
-            catch(error){
-                console.log(error)
+            } catch(error){
                 EMBED.send("Vérifiez si le verbe, le mode et le temps existent et correspondent. __>conj help__", message.channel);
             }
         }

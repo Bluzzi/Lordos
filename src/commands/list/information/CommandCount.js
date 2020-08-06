@@ -1,5 +1,6 @@
 const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
+const DISCORD = require("discord.js");
 
 class CommandCount extends COMMAND {
     
@@ -9,6 +10,10 @@ class CommandCount extends COMMAND {
         this.setUsage("<bot ou cli, par default : bot>");
     }
 
+    /**
+     * @param {string[]} args 
+     * @param {DISCORD.Message} message 
+     */
     async execute(args, message){
         let type = args[0] == "cli" ? "cli" : "bot";
         let commandCount = type == "cli" ? CLIENT.COMMANDMANAGER.all(true).length : CLIENT.COMMANDMANAGER.all().length;

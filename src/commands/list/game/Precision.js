@@ -16,6 +16,10 @@ class Precision extends COMMAND {
         );
     }
     
+    /**
+     * @param {string[]} args 
+     * @param {DISCORD.Message} message 
+     */
     async execute(args, message){
         if(!playingChannels[message.guild.id]) playingChannels[message.guild.id] = [];
         

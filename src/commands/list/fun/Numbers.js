@@ -2,6 +2,7 @@ const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
 const CHOICE_NUMBER = require("./ChoiceNumber");
 const CONSTANTS = require("../../../utils/Constants");
+const DISCORD = require("discord.js");
 
 class Numbers extends COMMAND {
 
@@ -9,6 +10,10 @@ class Numbers extends COMMAND {
         super("numbers", "Voir la liste des nombres choisis", "fun");
     }
     
+    /**
+     * @param {string[]} args 
+     * @param {DISCORD.Message} message 
+     */
     async execute(args, message){
         let list = "";
 

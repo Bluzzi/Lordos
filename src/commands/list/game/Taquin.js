@@ -1,5 +1,6 @@
 const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
+const DISCORD = require("discord.js");
 
 const PREFIX = "**<TAQUIN>** ";
 
@@ -22,6 +23,10 @@ class Taquin extends COMMAND {
         this.setUsage("<play | rules>");
     }
 
+    /**
+     * @param {string[]} args 
+     * @param {DISCORD.Message} message 
+     */
     execute(args, message){
         switch(args[0]){
             case "play":
@@ -160,7 +165,7 @@ class Taquin extends COMMAND {
                 break;
             }
         }
-        
+
         return grid;
     }
 }

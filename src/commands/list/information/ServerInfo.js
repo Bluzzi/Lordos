@@ -1,6 +1,7 @@
 const COMMAND = require("../../Command");
 const INFORMATION = require("../../../objects/Information");
 const EMBED = require("../../../utils/Embed");
+const DISCORD = require("discord.js");
 
 class ServerInfo extends COMMAND {
 
@@ -8,6 +9,10 @@ class ServerInfo extends COMMAND {
         super("serverinfo", "Obtenir des informations sur le serveur", "information");
     }
 
+    /**
+     * @param {string[]} args 
+     * @param {DISCORD.Message} message 
+     */
     async execute(args, message){
 
          // Define days and months translations :

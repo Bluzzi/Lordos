@@ -4,15 +4,8 @@ COMMANDE EN PAUSE
 
 
 
-
-
-
-
-
 const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
-const CONSTANTS = require("../../../utils/Constants");
-const Embed = require("../../../utils/Embed");
 const DISCORD = require("discord.js");
 const CANVAS = require("canvas");
 
@@ -36,6 +29,10 @@ class Cards extends COMMAND {
         this.setUsage("<help ou type>");
     }
 
+    /**
+     * @param {string[]} args 
+     * @param {DISCORD.Message} message 
+     */
     async execute(args, message){
         // Split the args as card's parameters :
         args = args.join(" ").split("\n");
