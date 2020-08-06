@@ -1,8 +1,8 @@
 const DISCORD = require("discord.js");
 const YTDL = require("ytdl-core");
 
-/** @type {DISCORD.VoiceConnection[]} */
-var connections = [];
+let queue = {};
+let nowPlaying = {};
 
 class Voice {
     
@@ -15,9 +15,7 @@ class Voice {
         var connection = null;
 
         if(voiceChannel instanceof DISCORD.VoiceChannel){
-            await voiceChannel.join().then(conn => connection = conn).catch(error => MAIN.LOGGER.warn(error));
-            
-            connections[voiceChannel.guild.id] = connection;
+            await voiceChannel.join().then(conn => connection = conn).catch(error => CLIENT.LOGGER.warn(error));
         }
 
         return connection;
@@ -34,11 +32,74 @@ class Voice {
     /**
      * Play a youtube music in a voice channel
      * @param {DISCORD.VoiceConnection} connection 
-     * @param {String} link youtube link 
+     * @param {string} link youtube link 
+     * @param {Object} videoInfo
      * @param {volume: int, seek: int, bitrate: int} options stream options
+     * @returns {DISCORD.StreamDispatcher}
      */
-    static playYoutube(connection, link, options = {}){
-        connection.play(YTDL(link, options), options);
+    static playYoutube(connection, link, videoInfo = {}, options = {}){
+        nowPlaying[connection.channel.guild.id] = videoInfo;
+
+        return connection.play(YTDL(link, options), options);
+    }
+
+    /**
+     * Get the connection in a guild
+     * @param {DISCORD.Guild} guild
+     * @returns {?DISCORD.VoiceConnection}
+     */
+    static getConnection(guild){
+        return this.getConnections().filter(voiceConnection => voiceConnection.channel.guild.id === guild.id).first();
+    }
+
+    /**
+     * Get all connections
+     * @returns {DISCORD.Collection<string, DISCORD.VoiceConnection>}
+     */
+    static getConnections(){
+        return CLIENT.voice.connections;
+    }
+
+    /**
+     * Get information about the played video
+     * @param {DISCORD.Guild} guild 
+     * @returns {?Object}
+     */
+    static getVideoPlayed(guild){
+        return nowPlaying[guild.id];
+    }
+
+    /**
+     * @param {DISCORD.Guild} guild 
+     * @returns {object[]}
+     */
+    static getQueue(guild){
+        if(!queue[guild.id]) queue[guild.id] = [];
+
+        return queue[guild.id];
+    }
+
+    /**
+     * @param {DISCORD.Guild} guild 
+     * @param {Object} videoInfo 
+     */
+    static addToQueue(guild, videoInfo){
+        if(!queue[guild.id]) queue[guild.id] = [];
+
+        queue[guild.id].push(videoInfo);
+    }
+
+    /**
+     * 
+     * @param {DISCORD.Guild} guild 
+     * @param {string} videoId 
+     */
+    static removeFromQueue(guild, videoId){
+        if(queue[guild.id]){
+            for(let key in queue[guild.id]){
+                if(queue[guild.id][key].id === videoId) delete queue[guild.id][key];
+            }
+        }
     }
 }
 

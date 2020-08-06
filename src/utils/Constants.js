@@ -17,6 +17,10 @@ class Constants {
         return SETTINGS.token;
     }
 
+    static get youtubeKey(){
+        return SETTINGS["youtube-key"];
+    }
+
     /**
      * @returns {string[]} admin
      */
@@ -24,13 +28,6 @@ class Constants {
         let app = await MAIN.CLIENT.fetchApplication();
         
         return app.owner.members.map(m => m.id);
-    }
-
-    /**
-     * @returns {string} key
-     */
-    static get giffy_key(){
-        return SETTINGS.giffykey;
     }
 }
 
