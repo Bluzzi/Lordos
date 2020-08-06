@@ -1,11 +1,5 @@
 ## LORDOS
 
-### A faire
-- [ ] Changer le parametre alias des commandes, faire en sorte qu'il prenne une array d'alias.
-- [ ] Ajouter le paramtre "category" dans le constructeur des commandes, pour pouvoir mieux les classés.
-- [ ] Diviser les commandes dans plusieurs dossier nommé par type de catégorie et faire un auto loader effiace pour ce systeme.
-- [ ] Changer le constructeur des commandes : (nom de la commande, description, categorie), et ajouter les methodes setUsage(), setAliases() et setPermission()
-
 ### Commandes
 #### Configuration :
 - [ ] prefix -> changer le prefix des commandes pour ce serveur
@@ -27,11 +21,12 @@
 - [ ] rename (user mention) (new name)
 
 #### Musique :
-- [ ] play (titre, lien youtube ou spotify) -> permert de jouer une musique dans le salon vocal
-- [ ] stop -> stop la musique dans votre salon
-- [ ] nowplaying -> voir le titre, le lien et le temps restant de la musique en cours
+- [x] play (titre, lien youtube ou spotify) -> permert de jouer une musique dans le salon vocal
+- [x] stop -> stop la musique dans votre salon
+- [x] nowplaying -> voir le titre, le lien et le temps restant de la musique en cours
 - [ ] skip -> passé à la musique suivante
-- [ ] queue -> voir la liste des musique qui vont être joué
+- [x] queue -> voir la liste des musique qui vont être joué
+- [ ] clear -> clear
 
 #### Fun :
 - [ ] foodporn -> envoie des images de bouffe qui donne envie
@@ -69,3 +64,5 @@
 > votemute : réadapter la commande pour qu'elle soit fonctionnelle sur tout les serveurs
 > emojiannonce : lance une boucle infini
 > reverse : ajouter la possibilité de mentionné.
+> np : ajouter le temps jouer
+> play : ajouter le support de spotify
