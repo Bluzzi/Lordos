@@ -1,3 +1,3 @@
-CLIENT.on("messageReactionAdd", (messageReaction, user) => {
-    if(user.id === CLIENT.user.id) return;
+MAIN.CLIENT.on("messageReactionAdd", (messageReaction, user) => {
+    if(user.id === MAIN.CLIENT.user.id) return;
 });

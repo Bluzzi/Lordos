@@ -1,4 +1,4 @@
-CLIENT.on("ready", () => {
-    CLIENT.user.setActivity('Lordos');
-    CLIENT.LOGGER.notice("Client connected as " + CLIENT.user.tag);
+MAIN.CLIENT.on("ready", () => {
+    MAIN.CLIENT.user.setActivity('Lordos');
+    MAIN.LOGGER.notice("Client connected as " + MAIN.CLIENT.user.tag);
 })

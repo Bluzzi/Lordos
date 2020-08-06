@@ -1,16 +1,22 @@
 const LOGGER = new(require('./src/utils/Logger'))();
-const COMMANDMANAGER = new(require('./src/commands/CommandManager'))();
+const COMMAND_MANAGER = new(require('./src/commands/CommandManager'))();
 
 // Packages :
 const CONSTANTS = require("./src/utils/Constants");
 const DISCORD = require("discord.js");
 const CLI = require("./cli/Main.js");
 
-// Create discord client and save it and others things in a global :
-CLIENT = new DISCORD.Client({disableMentions: "true"});
-CLIENT.CONSTANTS = CONSTANTS;
-CLIENT.LOGGER = LOGGER;
-CLIENT.COMMANDMANAGER = COMMANDMANAGER;
+// Create discord MAIN.CLIENT and save it and others things in a global :
+MAIN = {};
+
+const CLIENT = new DISCORD.Client({disableMentions: "true"});
+
+MAIN.CLIENT = CLIENT;
+MAIN.CONSTANTS = CONSTANTS;
+MAIN.LOGGER = LOGGER;
+MAIN.COMMAND_MANAGER = COMMAND_MANAGER;
+
+global.MAIN = MAIN;
 
 // Projects global variables :
 PROJECT = {};
@@ -20,24 +26,23 @@ PROJECT.WORDS = [];
 global.PROJECT = PROJECT;
 
 // Start CLI:
-CLIENT.CLI = CLI.start();
-CLIENT.LOGGER.notice("Started Command Line Interface");
+MAIN.CLIENT.CLI = CLI.start();
+LOGGER.notice("Started Command Line Interface");
 
-global.CLIENT = CLIENT;
 
 // Startup logs:
-CLIENT.LOGGER.notice("Actual version: " + require("./package.json").version);
-CLIENT.LOGGER.notice("External packages list: " + Object.keys(require("./package.json").dependencies).join(", "));
+LOGGER.notice("Actual version: " + require("./package.json").version);
+LOGGER.notice("External packages list: " + Object.keys(require("./package.json").dependencies).join(", ") + "\nExternal packages count: " + Object.keys(require("./package.json").dependencies).length);
 
 // Events loader :
-CLIENT.LOGGER.notice(CLIENT.COMMANDMANAGER.loadEvents() + " events loaded !");
+LOGGER.notice(COMMAND_MANAGER.loadEvents() + " events loaded !");
 
 // Bot commands loader :
-CLIENT.LOGGER.notice(CLIENT.COMMANDMANAGER.loadCommands(false) + " bot commands loaded !");
+LOGGER.notice(COMMAND_MANAGER.loadCommands(false) + " bot commands loaded !");
 
 // Cli commands loader :
-CLIENT.LOGGER.notice(CLIENT.COMMANDMANAGER.loadCommands(true) + " CLI commands loaded !");
+LOGGER.notice(COMMAND_MANAGER.loadCommands(true) + " CLI commands loaded !");
 
-// Connect the client :
+// Connect the MAIN.CLIENT :
 CLIENT.login(CONSTANTS.token);
 

@@ -7,7 +7,7 @@ class Help extends CLICOMMAND {
     }
 
     execute(args){
-        CLIENT.LOGGER.cli(STYLE.createTitle("HELP PAGE")+"\n"+CLIENT.COMMANDMANAGER.all(true).map(command => "["+command.getName() + "] | " + command.getUsage() + " | " + command.getDescription()).join("\n"));
+        MAIN.LOGGER.cli(STYLE.createTitle("HELP PAGE")+"\n"+MAIN.COMMAND_MANAGER.all(true).map(command => "["+command.getName() + "] | " + command.getUsage() + " | " + command.getDescription()).join("\n"));
     }
 }
 

@@ -8,7 +8,7 @@ class Logger {
      */
 
     warn(message){
-        this.log(message, 'WARN', 'red');
+        this.#log(message, 'WARN', 'red');
     }
 
     /**
@@ -17,7 +17,7 @@ class Logger {
      */
 
     info(message){
-        this.log(message, 'INFO', 'blue');
+        this.#log(message, 'INFO', 'blue');
     }
 
     /**
@@ -26,7 +26,7 @@ class Logger {
      */
 
     notice(message){
-        this.log(message, 'NOTICE', 'green');
+        this.#log(message, 'NOTICE', 'green');
     }
 
     /**
@@ -35,7 +35,7 @@ class Logger {
      */
 
     cli(message){
-        this.log(message, 'CLI', 'yellow');
+        this.#log(message, 'CLI', 'yellow');
     }
     
     getDate(){
@@ -43,16 +43,16 @@ class Logger {
         return `${date.getHours() > 9 ? date.getHours() : "0"+date.getHours()}:${date.getMinutes() > 9 ? date.getMinutes() : "0"+date.getMinutes()}:${date.getSeconds() > 9 ? date.getSeconds() : "0"+date.getSeconds()}`;
     }
 
-    log(message, type, color){
+    #log = function(message, type, color){
         let finalMessage = type != 'CLI' ? `[${this.getDate()}][${type}]: ${message}` : message;
 
-        CLIENT.CLI.setPrompt("");
-        CLIENT.CLI.prompt(true);
+        MAIN.CLIENT.CLI.setPrompt("");
+        MAIN.CLIENT.CLI.prompt(true);
 
         console.log(COLORS[color](finalMessage));
         
-        CLIENT.CLI.setPrompt("> ");
-        CLIENT.CLI.prompt(true);
+        MAIN.CLIENT.CLI.setPrompt("> ");
+        MAIN.CLIENT.CLI.prompt(true);
         
         CONFIG.writeText("./log/log.txt", finalMessage);
     }

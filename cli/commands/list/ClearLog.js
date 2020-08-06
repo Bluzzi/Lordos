@@ -9,12 +9,12 @@ class ClearLog extends CLICOMMAND {
     execute(args){
         if(FS.existsSync("./log/log.txt")) {
             FS.unlinkSync("./log/log.txt", (error) => {
-                if(error) CLIENT.LOGGER.warn(error);
+                if(error) MAIN.LOGGER.warn(error);
             });
 
-            CLIENT.LOGGER.notice("Cleared log file!");
+            MAIN.LOGGER.notice("Cleared log file!");
         } else {
-            CLIENT.LOGGER.notice("There is not log file to clear");
+            MAIN.LOGGER.notice("There is not log file to clear");
         }
     }
 }

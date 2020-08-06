@@ -38,6 +38,7 @@
     "ping": "^0.2.3",
     "simple-git": "^2.15.0",
     "weather-js": "^2.0.0",
+    "yt-search": "^2.1.8",
     "ytdl-core": "^3.1.3"
   }
 }

@@ -17,18 +17,18 @@ class Loader {
                 if(typeof commandClass == "function"){ //prevents 'not a constructor' error
                     commandClass = new commandClass();
                     if(commandClass instanceof classType){ //only register commands
-                        CLIENT.LOGGER.notice("Loaded " + type + " command: " + moduleName);
-                        CLIENT.COMMANDMANAGER.add(commandClass, cli);
+                        MAIN.LOGGER.notice("Loaded " + type + " command: " + moduleName);
+                        MAIN.COMMAND_MANAGER.add(commandClass, cli);
                         count++;
                     } else {
-                        CLIENT.LOGGER.warn("Cannot load " + type + " command: " + moduleName + " (not a command instance)");
+                        MAIN.LOGGER.warn("Cannot load " + type + " command: " + moduleName + " (not a command instance)");
                     }
                 } else {
-                    CLIENT.LOGGER.warn("Cannot load " + type + " command: " + moduleName + " (missing exports?)");
+                    MAIN.LOGGER.warn("Cannot load " + type + " command: " + moduleName + " (missing exports?)");
                 }
             } else { //READ DIRECTORIES
                 if(!cli){
-                    if(FS.lstatSync(path + "/" + moduleName).isDirectory()) this.loadCommands(false, path + "/" + moduleName + "/", pathTwo + "/" + moduleName + "/");
+                    if(FS.lstatSync(path + "/" + moduleName).isDirectory()) count += this.loadCommands(false, path + "/" + moduleName + "/", pathTwo + "/" + moduleName + "/");
                 }
             }
         });
@@ -43,7 +43,7 @@ class Loader {
         FS.readdirSync(path).forEach(eventName => {
             if(eventName.split(".").pop() == "js"){
                 require("../events/" + eventName);
-                CLIENT.LOGGER.notice("Loaded event: " + eventName);
+                MAIN.LOGGER.notice("Loaded event: " + eventName);
                 count++;
             }
         });
@@ -62,7 +62,7 @@ class Loader {
         FS.readdirSync(path).forEach(moduleName => {
             if(moduleName.split(".").pop() == "js"){
                 delete require.cache[require.resolve(pathTwo+moduleName)];
-                CLIENT.LOGGER.notice("Cleared module: " + moduleName);
+                MAIN.LOGGER.notice("Cleared module: " + moduleName);
                 count++;
             } else {
                 if(FS.lstatSync(path + moduleName + "/").isDirectory()) count += this.clear(path + moduleName + "/", pathTwo + moduleName + "/");

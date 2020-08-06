@@ -1,0 +1,24 @@
+const COMMAND = require("../../Command");
+const DISCORD = require("discord.js");
+
+class {fileName} extends COMMAND {
+
+    constructor(){
+        super("{name}", "{desc}", "{category}");
+
+        this.setAliases([{aliases}]);
+        this.setPermissions([{permissions}]);
+        this.setUsage("{usage}");
+    }
+
+    /**
+     * @param {string[]} args 
+     * @param {DISCORD.Message} message 
+     */
+     
+    async execute(args, message){
+        
+    }
+}
+
+module.exports = {fileName};
