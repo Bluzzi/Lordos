@@ -25,7 +25,7 @@ class Help extends COMMAND {
 
         // Create collector for updates :
         let collector = message.createReactionCollector(
-            (reaction, user) => CONTROLER.includes(reaction.emoji.name) && user.id == message.author.id, 
+            (reaction, user) => CONTROLER.includes(reaction.emoji.name) && user.id != MAIN.CLIENT.user.id, 
             {time: 1000 * 60 * 5}
         );
 
