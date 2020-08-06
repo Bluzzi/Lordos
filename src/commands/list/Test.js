@@ -1,6 +1,7 @@
 const COMMAND = require("../Command");
 const EMBED = require("../../utils/Embed");
 const DISCORD = require("discord.js");
+const VOICE = require("../../utils/Voice");
 
 class Test extends COMMAND {
 
@@ -12,8 +13,8 @@ class Test extends COMMAND {
      * @param {string[]} args 
      * @param {DISCORD.Message} message 
      */
-    execute(args, message){
-        message.channel.send("Ceci est un test !");
+    async execute(args, message){
+        console.log(await VOICE.info("https://www.youtube.com/watch?v=tzVJPgCn-Z8"));
     }
 }
 
