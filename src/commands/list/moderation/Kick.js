@@ -35,7 +35,7 @@ class Kick extends COMMAND {
         }
 
         user.kick(args.join(" ")).catch(() =>{
-            return EMBED.send("**" + author + "**,vous ne pouvez pas kick cet utilisateur.", message.channel);
+            return EMBED.send("**" + author + "**, vous ne pouvez pas kick cet utilisateur.", message.channel);
         });
         
         EMBED.send("<@!" + user + "> a bien été kick du discord !");

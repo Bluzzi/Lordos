@@ -1,7 +1,6 @@
 const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
 const COOL_DISCORD_THINGS = require("../../../utils/CoolDiscordThings");
-const DISCORD = require("discord.js");
 const COLOR = require("../../../utils/Color");
 
 class Countdown extends COMMAND {
