@@ -15,7 +15,11 @@ class Achievement extends COMMAND {
 
         this.setUsage("<texte>");
     }
-
+    
+    /**
+     * @param {string[]} args 
+     * @param {DISCORD.Message} message 
+     */
     async execute(args, message){
         if(!args[0]) return false;
 

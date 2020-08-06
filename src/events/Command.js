@@ -1,4 +1,5 @@
 const EMBED = require("../utils/Embed");
+const COLOR = require("../utils/Color");
 
 CLIENT.on("message", async (message) => {
     if(message.author.bot) return;
@@ -22,9 +23,8 @@ CLIENT.on("message", async (message) => {
         }
 
         let execute = await command.execute(args, message);
-        if(execute == false) {
-            EMBED.send(command.getUsage(), message.channel, 'RED');
-        }
+
+        if(execute == false) EMBED.send(command.getUsageDescription(), message.channel, COLOR.RED);
 
         CLIENT.LOGGER.info(`${message.author.tag} executed command: ${commandName.toLowerCase()}`);
     }

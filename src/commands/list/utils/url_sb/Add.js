@@ -5,6 +5,8 @@ const FS = require("fs");
 class Add {
 
     static execute(args, message, config){
+        
+        if(!args[0]) return;
         // Verify if name is a banned name or not :
         if(args[0].includes(Object.keys[URL.SUB_COMMANDS])){
             EMBED.send("Vous ne pouvez pas enregistrer de lien à ce nom.");
@@ -41,7 +43,7 @@ class Add {
         }
 
         // Update the config :
-        FS.writeFile(__dirname + "/../../../../resources/configs/url.json", JSON.stringify(config, null, 4), err => { if(err) return console.log(err) });
+        FS.writeFile(__dirname + "/../../../../../resources/configs/url.json", JSON.stringify(config, null, 4), err => { if(err) return console.log(err) });
 
         EMBED.send("Done with " + error.filter((bool) => !bool).length + " bad alias.", message.channel);
     }

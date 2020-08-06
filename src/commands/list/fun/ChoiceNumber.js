@@ -1,5 +1,6 @@
 const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
+const DISCORD = require("discord.js");
 
 var numbers = {};
 
@@ -9,6 +10,10 @@ class ChoiceNumber extends COMMAND {
         super("choicenumber", "Choisir un nombre", "fun");
     }
 
+    /**
+     * @param {string[]} args 
+     * @param {DISCORD.Message} message 
+     */
     async execute(args, message){
         if(!args[0] || isNaN(args[0])) return false;
 

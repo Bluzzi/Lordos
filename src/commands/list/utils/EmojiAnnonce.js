@@ -1,6 +1,7 @@
 const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
 const COOL_DISCORD_THINGS = require("../../../utils/CoolDiscordThings");
+const DISCORD = require("discord.js");
 
 class EmojiAnnonce extends COMMAND {
 
@@ -11,8 +12,15 @@ class EmojiAnnonce extends COMMAND {
         this.setUsage("<texte>");
     }
     
+    /**
+     * @param {string[]} args 
+     * @param {DISCORD.Message} message 
+     */
     async execute(args, message){
         if(!args[0]) return false;
+
+        EMBED.send("Commande en maintenance.", message.channel);
+        return;
 
         // Get the annonce content :
         let annonce = args.join(" ");

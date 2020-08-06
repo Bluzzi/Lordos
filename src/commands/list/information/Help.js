@@ -1,5 +1,10 @@
 const COMMAND = require("../../Command");
-const EMBED = require("../../../utils/Embed");
+const DISCORD = require("discord.js");
+const FS = require("fs");
+const DISCORD = require("discord.js");
+const COLOR = require("../../../utils/Color");
+
+const CONTROLER = ["◀️", "▶️", "🚫"];
 
 class Help extends COMMAND {
 
@@ -7,18 +12,106 @@ class Help extends COMMAND {
         super("help", "Obtenir la liste des commandes du bot", "information");
     }
 
-    execute(args, message){
-        if(!args[0]) { //send command list
-            let commandList = CLIENT.COMMANDMANAGER.all().map(command => command.getName());
-            EMBED.send(`**Liste des commandes :**\n\n\`${commandList.join("`, `")}\`\n\nPour obtenir plus d'informations sur une commande faites **${CLIENT.CONSTANTS.prefix}help [commande]**`, message.channel, 'GREEN');
-        } else {
-            let command = CLIENT.COMMANDMANAGER.get(args[0]);
-            if (command) {
-                EMBED.send(`**Informations sur la commande** \`${command.getName()}\` :\n\n**Alias** : \`${command.getAliases()}\`\n**Utilisation** : \`${command.getUsage() || "Pas d'utilisation particulière"}\`\n**Description** : \`${command.getDescription() || "Pas de description"}\`\n**Permissions** : \`${command.getPermissions().join("`, `") || "Pas de permissions"}\``, message.channel, 'GREEN');
-            } else {
-                EMBED.send(`Cette commande est introuvable !`, message.channel, 'RED');
+    /**
+     * @param {string[]} args 
+     * @param {DISCORD.Message} message 
+     */
+    async execute(args, message){
+        message.channel.send(this.getHelpEmbed(args[0])).then(msg => this.helpUpdater(msg, args[0]));
+    }
+
+    helpUpdater(message, category = null){
+        // Add controler reactions :
+        CONTROLER.forEach(emoji => message.react(emoji));
+
+        // Create collector for updates :
+        let collector = message.createReactionCollector(
+            (reaction, user) => CONTROLER.includes(reaction.emoji.name) && user.id !== CLIENT.user.id, 
+            {time: 1000 * 60 * 5}
+        );
+
+        collector.on("collect", (reaction, user) => {
+            collector.stop();
+
+            // Emoji for close the help :
+            if(reaction.emoji.name === "🚫"){
+                message.delete();
+                return;
             }
+
+            // Remove the reaction :
+            message.reactions.resolve(reaction.emoji.name).users.remove(user);
+
+            // Get the new page :
+            let categories = CLIENT.COMMANDMANAGER.getCategoryList();
+            let newCategory = category ? categories.indexOf(category) : null;
+
+            if(newCategory !== null){
+                newCategory = reaction.emoji.name === "◀️" ? categories[newCategory - 1] : categories[newCategory + 1];
+            } else {
+                newCategory = reaction.emoji.name === "◀️" ? categories[categories.length - 1] : categories[0];
+            }
+
+            // Update the message :
+            message.edit(this.getHelpEmbed(newCategory)).then(msg => this.helpUpdater(msg, newCategory));
+        });
+
+        collector.on("end", (collection, reason) => {
+            if(reason === "time") message.delete();
+        });
+    }
+
+    getHelpEmbed(category = null){
+        let prefix = CLIENT.CONSTANTS.prefix;
+
+        // Create base of embed :
+        let embed = new DISCORD.MessageEmbed();
+
+        embed.setColor(COLOR.GREEN);
+        
+        // Add content of the first page :
+        if(!category || !CLIENT.COMMANDMANAGER.getCategoryList().includes(category)){
+            embed.setTitle("Fonctionnement et liste des catégorie de commande");
+
+            embed.setDescription(
+                "Pour utiliser une commande, vous devez écrire ``" + prefix + "`` suivi du nom de la commande.\n\n"
+                + "Pour voir les commandes disponibles, faites ``" + prefix + "help <nom de la catégorie de commande>`` "
+                + "ou utilisé les réactions ci-dessous.\n\n"
+                + "Voici la liste des catégories de commande : ``" + CLIENT.COMMANDMANAGER.getCategoryList().join("``, ``") + "``."
+            );
+        } else {
+            embed.setTitle("Catégorie " + (category.charAt(0).toUpperCase() + category.slice(1)));
+
+            CLIENT.COMMANDMANAGER.getCategory(category).forEach(command => {
+                embed.addField(
+                    "``" + prefix + command.getName() + " " + command.getUsage() + "``",
+                    command.getDescription()
+                );
+            });
+
+            /*let iconPath = __dirname + "/../../../../resources/images/command_category/" + category + ".png";
+
+            if(FS.existsSync(iconPath)){ //TODO: fix that
+                embed.setThumbnail("attachment://" + category + ".png");
+                embed.attachFiles(new DISCORD.MessageAttachment(iconPath, category + ".png"));
+            }*/
         }
+
+        // Add the footer with current page :
+        let categories = CLIENT.COMMANDMANAGER.getCategoryList();
+
+        categories.splice(0, 0, "page d'aide");
+
+        categories = categories.join(" - ");
+
+        let replace = category !== null ? category : "page d'aide";
+        
+        categories = categories.replace(replace, replace.toUpperCase());
+
+        embed.setFooter(categories);
+
+        // Return the embed :
+        return embed;
     }
 }
 

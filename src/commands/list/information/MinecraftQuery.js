@@ -1,6 +1,7 @@
 const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
 const GAMEDIG = require("gamedig");
+const DISCORD = require("discord.js");
 
 class MinecraftQuery extends COMMAND {
 
@@ -11,6 +12,10 @@ class MinecraftQuery extends COMMAND {
         this.setAliases(["mquery"]);
     }
 
+    /**
+     * @param {string[]} args 
+     * @param {DISCORD.Message} message 
+     */
     execute(args, message){
         if(!args[0]) return false;
 

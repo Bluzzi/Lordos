@@ -1,7 +1,7 @@
 const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
 const COOL_DISCORD_THINGS = require("../../../utils/CoolDiscordThings");
-
+const DISCORD = require("discord.js");
 
 class Digit extends COMMAND {
 
@@ -11,13 +11,14 @@ class Digit extends COMMAND {
         this.setUsage("<nombre>");
     }
 
+    /**
+     * @param {string[]} args 
+     * @param {DISCORD.Message} message 
+     */
     async execute(args, message){
-        if(isNaN(args[0]) || args[0].length > 6){
-            return false;
-        }
-        let text = COOL_DISCORD_THINGS.numberToDigitEmojis(args[0]);
-        
-        EMBED.send(text, message.channel);
+        if(isNaN(args[0]) || args[0].length > 6) return false;
+
+        EMBED.send(COOL_DISCORD_THINGS.numberToDigitEmojis(args[0]), message.channel);
     }
 }
 

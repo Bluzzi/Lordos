@@ -1,5 +1,6 @@
 const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
+const DISCORD = require("discord.js");
 
 class EightBall extends COMMAND {
 
@@ -10,6 +11,10 @@ class EightBall extends COMMAND {
         this.setAliases(["8b"]);
     }
 
+    /**
+     * @param {string[]} args 
+     * @param {DISCORD.Message} message 
+     */
     async execute(args, message){
         if(!args[0] || !args.join(" ").includes("?")) return false;
 
@@ -22,8 +27,6 @@ class EightBall extends COMMAND {
         ];
 
         let response = responses[Math.floor(Math.random() * (responses.length - 1))];
-
-        if(question.startsWith("Bluzzi est meilleur que")) response = "Oui"; // :)
 
         EMBED.send(
             "**Question (de " + message.member.displayName + ") : **" + question + 

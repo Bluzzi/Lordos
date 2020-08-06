@@ -1,5 +1,6 @@
 const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
+const DISCORD = require("discord.js");
 
 class Avatar extends COMMAND {
 
@@ -9,6 +10,10 @@ class Avatar extends COMMAND {
         this.setUsage("[mention]");
     }
 
+    /**
+     * @param {string[]} args 
+     * @param {DISCORD.Message} message 
+     */
     async execute(args, message){
         EMBED.send(
             "", 

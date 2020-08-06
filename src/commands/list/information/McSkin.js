@@ -1,7 +1,7 @@
 const COMMAND = require("../../Command");
-const REQUEST = require("request");
 const AXIOS = require("axios");
 const EMBED = require("../../../utils/Embed");
+const DISCORD = require("discord.js");
 
 class McSkin extends COMMAND {
 
@@ -11,6 +11,10 @@ class McSkin extends COMMAND {
         this.setUsage("<pseudo du joueur>");
     }
 
+    /**
+     * @param {string[]} args 
+     * @param {DISCORD.Message} message 
+     */
     async execute(args, message){
         if(!args[0]) return false;
 

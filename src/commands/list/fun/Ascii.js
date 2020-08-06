@@ -1,6 +1,7 @@
 const COMMAND = require("../../Command");
 const COOL_DISCORD_THINGS = require("../../../utils/CoolDiscordThings");
 const EMBED = require("../../../utils/Embed");
+const DISCORD = require("discord.js");
 
 class Ascii extends COMMAND {
 
@@ -10,6 +11,10 @@ class Ascii extends COMMAND {
         this.setUsage("<votre texte>");
     }
 
+    /**
+     * @param {string[]} args 
+     * @param {DISCORD.Message} message 
+     */
     async execute(args, message){
         if(!args[0]) return false;
 

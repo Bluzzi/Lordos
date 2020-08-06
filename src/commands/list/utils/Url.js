@@ -1,6 +1,7 @@
 const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
 const CONSTANTS = require("../../../utils/Constants");
+const DISCORD = require("discord.js");
 
 const FS = require("fs");
 const MP = require("html-metadata-parser");
@@ -14,14 +15,18 @@ const SUB_COMMANDS = {
 class Url extends COMMAND {
 
     constructor(){
-        super("url", "Enregistre une URL", "utils")
+        super("url", "Enregistre une URL", "utils");
 
         this.setUsage("<add/del/list> <donnée>");
     }
 
+    /**
+     * @param {string[]} args 
+     * @param {DISCORD.Message} message 
+     */
     async execute(args, message){
         let config = JSON.parse(FS.readFileSync(
-            __dirname + "/../../../resources/configs/url.json"), 
+            __dirname + "/../../../../resources/configs/url.json"), 
             {encoding:"utf8"}
         );
 

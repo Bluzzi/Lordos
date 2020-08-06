@@ -1,15 +1,21 @@
 const COMMAND = require("../../Command");
 const PARSER = require("../../../utils/CheatCodeParser");
 const EMBED = require("../../../utils/Embed");
+const DISCORD = require("discord.js");
 
 class ParseCheatCode extends COMMAND {
-    constructor() {
+
+    constructor(){
         super("parsecheatcode", "Permet d'avoir plus d'informations à propos d'un cheat code", "utils");
 
         this.setUsage("<console> <code>");
         this.setAliases(['pcc']);
     }
 
+    /**
+     * @param {string[]} args 
+     * @param {DISCORD.Message} message 
+     */
     async execute(args, msg){
         let cons = args.shift() || undefined;
         let code = args.join(" ");

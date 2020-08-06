@@ -11,14 +11,20 @@ class Shifumi extends COMMAND {
 
     constructor(){
         super("shifumi", "Jouer au shifumi contre le bot", "game");
+
+        this.setUsage("<number (< 10)>");
     }
 
+    /**
+     * @param {string[]} args 
+     * @param {DISCORD.Message} message 
+     */
     execute(args, message){
         // Verify if args[0] is a number or not :
-        if(isNaN(args[0])) return false;
+        if(isNaN(args[0]) || args[0] > 10) return false;
 
         // Send the start message, then start :
-        let file = new DISCORD.MessageAttachment(__dirname + "/../../../resources/images/shifumi/shifumi.png", "shifumi.png");
+        let file = new DISCORD.MessageAttachment(__dirname + "/../../../../resources/images/shifumi/shifumi.png", "shifumi.png");
         
         EMBED.send(
             "<@" + message.author.id + "> a commencé un shifumi contre Lordos !",
@@ -27,7 +33,13 @@ class Shifumi extends COMMAND {
         ).then((msg) => this.newRound(msg, message, [0, 0], args[0]));
     }
 
-    // Play round funcion :
+    /**
+     * Play round function
+     * @param {DISCORD.Message} msg 
+     * @param {DISCORD.Message} message 
+     * @param {int[]} score 
+     * @param {int} rounds 
+     */
     newRound(msg, message, score, rounds){
         // Decrease one to total round :
         rounds -= 1;
@@ -87,7 +99,9 @@ class Shifumi extends COMMAND {
             })
         });
 
-        // If collector timeout :
+        /**
+         * If collector timeout
+         */
         collector.on("end", (collected, reason) => {
             if(reason !== "user"){
                 let newEmbd = new DISCORD.MessageEmbed().setDescription(PREFIX + "\n```yaml\nPartie expirée.```");
@@ -97,7 +111,11 @@ class Shifumi extends COMMAND {
         });
     }
 
-    // Create the image with the two tools, return an attachment :
+    /**
+     * Create the image with the two tools, return an attachment
+     * @param {int} playerTool choice
+     * @param {int} botTool choice
+     */
     async createImage(playerTool, botTool){
         let tools = ["ciseaux", "feuille", "pierre"];
 
@@ -126,7 +144,7 @@ class Shifumi extends COMMAND {
         };
 
         for(let [key, info] of Object.entries(players)){
-            let image = await CANVAS.loadImage(__dirname + "/../../../resources/images/shifumi/" + tools[info.choice] + (key == 1 ? "2" : "") + ".png");
+            let image = await CANVAS.loadImage(__dirname + "/../../../../resources/images/shifumi/" + tools[info.choice] + (key == 1 ? "2" : "") + ".png");
 
             if(key == 1) /* TODO : good rotate */;
 
@@ -137,8 +155,11 @@ class Shifumi extends COMMAND {
         return new DISCORD.MessageAttachment(canvas.toBuffer(), "test.png");
     }
 
-
-    // Tell wich of the player won the round :
+    /**
+     * Tell wich of the player won the round
+     * @param {int} playerTool 
+     * @param {int} botTool 
+     */
     getWinner(playerTool, botTool){
         if(playerTool == botTool) return 0;
 
@@ -147,7 +168,11 @@ class Shifumi extends COMMAND {
         if((botTool == 0 & playerTool == 1) | (botTool == 1 & playerTool == 2) | (botTool == 2 & playerTool == 0)) return 2;
     }
 
-    // Tell wich player won the game :
+    /**
+     * Tell wich player won the game
+     * @param {int[]} score 
+     * @param {DISCORD.User} player 
+     */
     getFinalWinner(score, player){
         if(score[0] === score[1]) return "\n\nIl n'y a pas de gagnant !";
 

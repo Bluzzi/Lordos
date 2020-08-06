@@ -1,15 +1,22 @@
 const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
 const DISCORD = require("discord.js");
+const COLOR = require("../../../utils/Color");
 
 const PREFIX = "**<TicTacToe>** ";
 
-let emojiNumbers = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣"];
+const EMOJINUMBERS = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣"];
+const CROSS = "❌";
+const CIRCLE = "⭕";
+const RULES = [
+    PREFIX,
+    "\n__Règles :__\n\n*But du jeu :*",
+    "\nLe but est d'aligner 3 des ses pions à l'horizontal, à la verticale ou en diagonale avant votre adversaire.",
+    "\n\n*Jouer un tour :*",
+    "\n Tour à tour, cliquez sur la réaction correspondant à la case sur laquelle vous voulez jouer."
+]
 
 let playersSymbols = {};
-
-let cross = "❌";
-let circle = "⭕";
 
 class TicTacToe extends COMMAND {
 
@@ -17,9 +24,25 @@ class TicTacToe extends COMMAND {
         super("tictactoe", "Faire une partie de TicTacToe contre un autre joueur", "game");
 
         this.setAliases(["ttt"]);
+        this.setUsage("<play | rules>")
     }
 
+    /**
+     * @param {string[]} args 
+     * @param {DISCORD.Message} message 
+     */
     async execute(args, message){
+        switch(args[0]){
+            case "play":
+                return this.game(args, message);
+            case "rules":
+                return EMBED.send(RULES.join(""), message.channel);
+            default:
+                return false;
+        }
+    }
+
+    game(args, message){
         EMBED.send(PREFIX + "Clickez sur la réaction pour affronter <@" + message.author.id + "> en duel !", message.channel).then(msg => {
             // Add reaction for accept the duel :
             msg.react("⚔️");
@@ -55,17 +78,17 @@ class TicTacToe extends COMMAND {
         }
 
         // Send the start message :
-        EMBED.send(PREFIX + "La partie entre <@" + playerOne.id + "> (" + cross + ") et <@" + playerTwo.id + "> (" + circle + ") commence...", channel);
+        EMBED.send(PREFIX + "La partie entre <@" + playerOne.id + "> (" + CROSS + ") et <@" + playerTwo.id + "> (" + CIRCLE + ") commence...", channel);
 
         // Create the grid :
-        let grid = this.createGrid(emojiNumbers);
+        let grid = this.createGrid(EMOJINUMBERS);
 
         // Send the grid :
         let emojisOfGrid = [];
 
         channel.send(grid).then(message => {
             // Add reactions and save emojis of grids :
-            emojiNumbers.forEach(emoji => {
+            EMOJINUMBERS.forEach(emoji => {
                 message.react(emoji);
                 emojisOfGrid.push(emoji);
             });
@@ -74,8 +97,8 @@ class TicTacToe extends COMMAND {
             if(!playersSymbols[channel.guild.id]) playersSymbols[channel.guild.id] = [];
             if(!playersSymbols[channel.guild.id][message.id]) playersSymbols[channel.guild.id][message.id] = []; 
 
-            playersSymbols[channel.guild.id][message.id][playerOne.id] = cross;
-            playersSymbols[channel.guild.id][message.id][playerTwo.id] = circle;
+            playersSymbols[channel.guild.id][message.id][playerOne.id] = CROSS;
+            playersSymbols[channel.guild.id][message.id][playerTwo.id] = CIRCLE;
 
             // Add the message to indicate the player must play :
             EMBED.send(PREFIX + "Au tour de ...", channel).then(subMessage => {
@@ -100,15 +123,15 @@ class TicTacToe extends COMMAND {
             }
 
             // Check if this emoji is a valid number reaction and remove all reaction of this number :
-            if(emojisOfGrid.includes(reaction.emoji.name) && ![cross, circle].includes(reaction.emoji.name)){
+            if(emojisOfGrid.includes(reaction.emoji.name) && ![CROSS, CIRCLE].includes(reaction.emoji.name)){
                 reaction.remove();
             } else {
                 return;
             }
 
             // Edit the grid emojis :
-            for(let key in emojiNumbers){
-                if(reaction.emoji.name === emojiNumbers[key]){
+            for(let key in EMOJINUMBERS){
+                if(reaction.emoji.name === EMOJINUMBERS[key]){
                     emojisOfGrid[key] = playersSymbols[gameMessage.guild.id][gameMessage.id][player.id];
                 }
             }
@@ -121,7 +144,7 @@ class TicTacToe extends COMMAND {
                 let embed = new DISCORD.MessageEmbed();
 
                 embed.setDescription(PREFIX + "Bravo <@" + player.id + "> ! Tu as gagné la partie 👏");
-                embed.setColor(EMBED.COLOR_GREEN);
+                embed.setColor(COLOR.GREEN);
 
                 subMessage.edit(embed);
 
@@ -132,7 +155,7 @@ class TicTacToe extends COMMAND {
             } else {
                 let resteCount = 0;
 
-                emojiNumbers.forEach(emoji => {
+                EMOJINUMBERS.forEach(emoji => {
                     if(emojisOfGrid.includes(emoji)) resteCount += 1;
                 });
 
@@ -141,7 +164,7 @@ class TicTacToe extends COMMAND {
                     let embed = new DISCORD.MessageEmbed();
 
                     embed.setDescription(PREFIX + "Personne n'a gagné.");
-                    embed.setColor(EMBED.COLOR_GREEN);
+                    embed.setColor(COLOR.GREEN);
 
                     subMessage.edit(embed);
                 } else {
@@ -210,7 +233,7 @@ class TicTacToe extends COMMAND {
         let embed = new DISCORD.MessageEmbed();
 
         embed.setDescription(PREFIX + "Au tour de <@" + player.id + "> !");
-        embed.setColor(EMBED.COLOR_GREEN);
+        embed.setColor(COLOR.GREEN);
 
         message.edit(embed);
     }

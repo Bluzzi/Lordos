@@ -1,6 +1,7 @@
 const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
-const WEATHER = require('weather-js');
+const WEATHER = require("weather-js");
+const DISCORD = require("discord.js");
 
 class Weather extends COMMAND {
 
@@ -10,6 +11,10 @@ class Weather extends COMMAND {
         this.setAliases(["meteo", "météo"]);
     }
 
+    /**
+     * @param {string[]} args 
+     * @param {DISCORD.Message} message 
+     */
     execute(args, message) {
         if(!args[0]) {
             return false;

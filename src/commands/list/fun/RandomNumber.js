@@ -1,5 +1,6 @@
 const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
+const DISCORD = require("discord.js");
 
 class RandomNumber extends COMMAND {
 
@@ -10,6 +11,10 @@ class RandomNumber extends COMMAND {
         this.setAliases(["rn"]);
     }
 
+    /**
+     * @param {string[]} args 
+     * @param {DISCORD.Message} message 
+     */
     async execute(args, message){
         if(args.length < 2 || parseInt(args[0]) > parseInt(args[1])) return false;
 

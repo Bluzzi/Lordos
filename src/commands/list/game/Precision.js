@@ -3,15 +3,24 @@ const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
 const FS = require("fs");
 const CANVAS = require("canvas");
+const COLOR = require("../../../utils/Color");
 
 let playingChannels = {};
 
 class Precision extends COMMAND {
 
     constructor(){
-        super("precision", "Un jeu de rapidité ou toutes les personnes présentes dans le salon doivent réecrire le plus rapidement possible des séries de mots.", "game");
+        super(
+            "precision", 
+            "Un jeu de rapidité ou toutes les personnes présentes dans le salon doivent réecrire le plus rapidement possible des séries de mots.", 
+            "game"
+        );
     }
     
+    /**
+     * @param {string[]} args 
+     * @param {DISCORD.Message} message 
+     */
     async execute(args, message){
         if(!playingChannels[message.guild.id]) playingChannels[message.guild.id] = [];
         
@@ -25,7 +34,7 @@ class Precision extends COMMAND {
         playingChannels[message.guild.id].push(message.channel.id);
 
         // Read the french words list :
-        let allWords = FS.readFileSync(__dirname + "/../../../resources/configs/liste_francais.txt", "utf8").split(":");
+        let allWords = FS.readFileSync(__dirname + "/../../../../resources/configs/liste_francais.txt", "utf8").split(":");
 
         // Shuffle all words :
         allWords = allWords.sort(() => Math.random() - 0.5); 
@@ -41,7 +50,7 @@ class Precision extends COMMAND {
 
         let embed = new DISCORD.MessageEmbed();
 
-        embed.setColor(EMBED.COLOR_GREEN);
+        embed.setColor(COLOR.GREEN);
         embed.setDescription(steps.shift());
 
         message.channel.send(embed).then(msg => {
@@ -98,7 +107,7 @@ class Precision extends COMMAND {
         // Add green rectangle in the center :
         let greenRectangle = canvas.getContext("2d");
 
-        greenRectangle.fillStyle = EMBED.COLOR_GREEN;
+        greenRectangle.fillStyle = COLOR.GREEN;
         greenRectangle.fillRect(25, 25, canvas.width - 50, canvas.height - 50);
 
         // Add the text :
