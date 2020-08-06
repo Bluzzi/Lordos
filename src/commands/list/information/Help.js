@@ -83,7 +83,7 @@ class Help extends COMMAND {
 
             MAIN.COMMAND_MANAGER.getCategory(category).forEach(command => {
                 embed.addField(
-                    "``" + prefix + command.getName() + " " + command.getUsage() + "``",
+                    "``" + prefix + command.getName() + (command.getUsage() ? " " + command.getUsage() : "") + "``",
                     command.getDescription()
                 );
             });
