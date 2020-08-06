@@ -13,7 +13,7 @@ function start(){
 
     // COMMAND:
     READER.on("line", async (input) => {
-        let args = input.toLowerCase().split(" ");
+        let args = input.split(" ");
         let commandName = args[0];
         args = args.slice(1, args.length);
         let command = CLIENT.COMMANDMANAGER.get(commandName, true);
