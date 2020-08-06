@@ -5,6 +5,8 @@ const FS = require("fs");
 const CANVAS = require("canvas");
 const COLOR = require("../../../utils/Color");
 
+const PREFIX = "**<Precision>** ";
+
 let playingChannels = {};
 
 class Precision extends COMMAND {
@@ -26,8 +28,7 @@ class Precision extends COMMAND {
         
         // Check if the channel is blocked :
         if(playingChannels[message.guild.id].includes(message.channel.id)){
-            EMBED.send("Une partie est déjà en cours dans ce salon.", message.channel);
-            return;
+            return EMBED.send("Une partie est déjà en cours dans ce salon.", message.channel);
         }
 
         // Blocking the living room for the time of the game :
@@ -48,18 +49,12 @@ class Precision extends COMMAND {
         let steps = ["Début dans 3", "Début dans 2", "Début dans 1", "Go ! Vous devez réécrire ces 3 mots le plus rapidement possible :"];
         let time = 1000;
 
-        let embed = new DISCORD.MessageEmbed();
-
-        embed.setColor(COLOR.GREEN);
-        embed.setDescription(steps.shift());
-
-        message.channel.send(embed).then(msg => {
+        EMBED.send(PREFIX + steps.shift(), message.channel).then(msg => {
             steps.forEach(step => {
                 time += 1000;
 
                 setTimeout(() => {
-                    embed.setDescription(steps.shift());
-                    msg.edit(embed);
+                    EMBED.edit(msg,PREFIX + steps.shift());
                 }, time);
             });
         });
