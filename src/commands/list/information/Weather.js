@@ -9,6 +9,7 @@ class Weather extends COMMAND {
         super("weather", "Donne la météo d'une position", "information");
 
         this.setAliases(["meteo", "météo"]);
+        this.setUsage("<lieu>");
     }
 
     /**
