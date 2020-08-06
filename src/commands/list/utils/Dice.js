@@ -1,6 +1,7 @@
 const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
 const DISCORD = require("discord.js");
+const COLOR = require("../../../utils/Color");
 
 class Dice extends COMMAND {
 
@@ -19,7 +20,7 @@ class Dice extends COMMAND {
         
         let number = parseInt(args[0]) || 1;
 
-        if(number < 1 || number > 20) return EMBED.send("Vous devez entrer un nombre en 1 et 20", message.channel, "RED");
+        if(number < 1 || number > 20) return EMBED.send("Vous devez entrer un nombre en 1 et 20", message.channel, COLOR.RED);
 
         let dices = [];
 

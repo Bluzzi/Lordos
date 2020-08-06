@@ -1,6 +1,7 @@
 const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
 const DISCORD = require("discord.js");
+const COLOR = require("../../../utils/Color");
 
 const PREFIX = "**<Puissance 4>** ";
 
@@ -149,7 +150,7 @@ class Puissance4 extends COMMAND {
                 let embed = new DISCORD.MessageEmbed();
 
                 embed.setDescription(PREFIX + "\n<@" + player + "> n'a pas joué à temps, <@" + waiter + "> est déclaré vainqueur !");
-                embed.setColor(EMBED.COLOR_GREEN);
+                embed.setColor(COLOR.GREEN);
 
                 subMessage.edit(embed);
             }
@@ -165,7 +166,7 @@ class Puissance4 extends COMMAND {
         let embed = new DISCORD.MessageEmbed();
 
         embed.setDescription(PREFIX + "Au tour de <@" + player + "> !");
-        embed.setColor(EMBED.COLOR_GREEN);
+        embed.setColor(COLOR.GREEN);
 
         message.edit(embed);
     }

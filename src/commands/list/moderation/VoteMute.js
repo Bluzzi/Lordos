@@ -1,6 +1,7 @@
 const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
 const DISCORD = require("discord.js");
+const COLOR = require("../../../utils/Color");
 
 var voters = [];
 
@@ -21,14 +22,14 @@ class VoteMute extends COMMAND {
         let member = message.member;
 
         if(!member.roles.cache.map(r => r.name).includes("Noble")){
-            EMBED.send("Cette commande ne peut-être utilisée par un membre du tiers état...", message.channel, "RED");
+            EMBED.send("Cette commande ne peut-être utilisée par un membre du tiers état...", message.channel, COLOR.RED);
         } else {
             if(args[0] === "cancel"){
                 let lastTarget = voters[member.user.id];
 
                 delete voters[member.user.id];
 
-                EMBED.send("Vous avez supprimé votre vote !", message.channel, "RED");
+                EMBED.send("Vous avez supprimé votre vote !", message.channel, COLOR.RED);
                 
                  // UnMute :
                 lastTarget = message.guild.members.cache.get(lastTarget);

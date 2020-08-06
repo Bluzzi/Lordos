@@ -1,6 +1,7 @@
 const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
 const DISCORD = require("discord.js");
+const COLOR = require("../../../utils/Color");
 
 const PREFIX = "**<TicTacToe>** ";
 
@@ -143,7 +144,7 @@ class TicTacToe extends COMMAND {
                 let embed = new DISCORD.MessageEmbed();
 
                 embed.setDescription(PREFIX + "Bravo <@" + player.id + "> ! Tu as gagné la partie 👏");
-                embed.setColor(EMBED.COLOR_GREEN);
+                embed.setColor(COLOR.GREEN);
 
                 subMessage.edit(embed);
 
@@ -163,7 +164,7 @@ class TicTacToe extends COMMAND {
                     let embed = new DISCORD.MessageEmbed();
 
                     embed.setDescription(PREFIX + "Personne n'a gagné.");
-                    embed.setColor(EMBED.COLOR_GREEN);
+                    embed.setColor(COLOR.GREEN);
 
                     subMessage.edit(embed);
                 } else {
@@ -232,7 +233,7 @@ class TicTacToe extends COMMAND {
         let embed = new DISCORD.MessageEmbed();
 
         embed.setDescription(PREFIX + "Au tour de <@" + player.id + "> !");
-        embed.setColor(EMBED.COLOR_GREEN);
+        embed.setColor(COLOR.GREEN);
 
         message.edit(embed);
     }
