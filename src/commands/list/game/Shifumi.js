@@ -72,7 +72,7 @@ class Shifumi extends COMMAND {
                 break;
                 
                 case 2:
-                    text += "Un point de plus pour <@!" + CLIENT.user.id + ">";
+                    text += "Un point de plus pour <@!" + MAIN.CLIENT.user.id + ">";
 
                     score[1] += 1;
                 break;
@@ -178,7 +178,7 @@ class Shifumi extends COMMAND {
 
         if(score[0] > score[1]) return "\n\n<@!" + player.id + "> a gagné la partie !";
 
-        if(score[1] > score[0]) return "\n\n<@!" + CLIENT.user.id + "> a gagné la partie !";
+        if(score[1] > score[0]) return "\n\n<@!" + MAIN.CLIENT.user.id + "> a gagné la partie !";
     }
 }
 

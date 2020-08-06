@@ -12,16 +12,16 @@ class Say extends CLICOMMAND {
             return false;
         }
 
-        var channel = CLIENT.channels.cache.get(ID);
-        var user = CLIENT.users.cache.get(ID)
+        var channel = MAIN.CLIENT.channels.cache.get(ID);
+        var user = MAIN.CLIENT.users.cache.get(ID)
         if(channel){
             channel.send(message.join(" "));
-            CLIENT.LOGGER.cli("Message sent in: " + channel.name);
+            MAIN.LOGGER.cli("Message sent in: " + channel.name);
         } else if(user){
             user.send(message.join(" "));
-            CLIENT.LOGGER.cli("Message sent to: " + user.tag);
+            MAIN.LOGGER.cli("Message sent to: " + user.tag);
         } else {
-            CLIENT.LOGGER.cli("Cannot find channel/user: " + ID);
+            MAIN.LOGGER.cli("Cannot find channel/user: " + ID);
         }
     }
 }

@@ -7,9 +7,9 @@ class Reload extends CLICOMMAND {
     }
 
     execute(args){
-        CLIENT.LOGGER.cli(STYLE.createTitle("RELOAD", "*"));
-        CLIENT.LOGGER.cli(CLIENT.COMMANDMANAGER.reload() + " MODULES RELOADED");
-        CLIENT.LOGGER.cli(STYLE.createTitle("RELOAD COMPLETE", "*"));
+        MAIN.LOGGER.cli(STYLE.createTitle("RELOAD", "*"));
+        MAIN.LOGGER.cli(MAIN.COMMAND_MANAGER.reload() + " MODULES RELOADED");
+        MAIN.LOGGER.cli(STYLE.createTitle("RELOAD COMPLETE", "*"));
     }
 }
 

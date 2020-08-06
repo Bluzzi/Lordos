@@ -25,7 +25,7 @@ class Help extends COMMAND {
 
         // Create collector for updates :
         let collector = message.createReactionCollector(
-            (reaction, user) => CONTROLER.includes(reaction.emoji.name) && user.id !== CLIENT.user.id, 
+            (reaction, user) => CONTROLER.includes(reaction.emoji.name) && user.id != MAIN.CLIENT.user.id, 
             {time: 1000 * 60 * 5}
         );
 
@@ -42,7 +42,7 @@ class Help extends COMMAND {
             message.reactions.resolve(reaction.emoji.name).users.remove(user);
 
             // Get the new page :
-            let categories = CLIENT.COMMANDMANAGER.getCategoryList();
+            let categories = MAIN.COMMAND_MANAGER.getCategoryList();
             let newCategory = category ? categories.indexOf(category) : null;
 
             if(newCategory !== null){
@@ -61,7 +61,7 @@ class Help extends COMMAND {
     }
 
     getHelpEmbed(category = null){
-        let prefix = CLIENT.CONSTANTS.prefix;
+        let prefix = MAIN.CONSTANTS.prefix;
 
         // Create base of embed :
         let embed = new DISCORD.MessageEmbed();
@@ -69,21 +69,21 @@ class Help extends COMMAND {
         embed.setColor(COLOR.GREEN);
         
         // Add content of the first page :
-        if(!category || !CLIENT.COMMANDMANAGER.getCategoryList().includes(category)){
+        if(!category || !MAIN.COMMAND_MANAGER.getCategoryList().includes(category)){
             embed.setTitle("Fonctionnement et liste des catégorie de commande");
 
             embed.setDescription(
                 "Pour utiliser une commande, vous devez écrire ``" + prefix + "`` suivi du nom de la commande.\n\n"
                 + "Pour voir les commandes disponibles, faites ``" + prefix + "help <nom de la catégorie de commande>`` "
                 + "ou utilisé les réactions ci-dessous.\n\n"
-                + "Voici la liste des catégories de commande : ``" + CLIENT.COMMANDMANAGER.getCategoryList().join("``, ``") + "``."
+                + "Voici la liste des catégories de commande : ``" + MAIN.COMMAND_MANAGER.getCategoryList().join("``, ``") + "``."
             );
         } else {
             embed.setTitle("Catégorie " + (category.charAt(0).toUpperCase() + category.slice(1)));
 
-            CLIENT.COMMANDMANAGER.getCategory(category).forEach(command => {
+            MAIN.COMMAND_MANAGER.getCategory(category).forEach(command => {
                 embed.addField(
-                    "``" + prefix + command.getName() + " " + command.getUsage() + "``",
+                    "``" + prefix + command.getName() + (command.getUsage() ? " " + command.getUsage() : "") + "``",
                     command.getDescription()
                 );
             });
@@ -97,7 +97,7 @@ class Help extends COMMAND {
         }
 
         // Add the footer with current page :
-        let categories = CLIENT.COMMANDMANAGER.getCategoryList();
+        let categories = MAIN.COMMAND_MANAGER.getCategoryList();
 
         categories.splice(0, 0, "page d'aide");
 

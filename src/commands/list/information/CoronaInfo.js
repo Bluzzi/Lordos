@@ -36,7 +36,6 @@ class CoronaInfo extends COMMAND {
 
         let information = response.data[Object.entries(response.data).length - 1];
 
-            console.log(response.data)
             let messageInformation = new INFORMATION("Voici les Informations sur le coronavirus")
 
             messageInformation.addInformation("Pays", information.Country);

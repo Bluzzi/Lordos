@@ -60,7 +60,7 @@ class Command {
      */
 
     getUsageDescription(){
-        return "Vous devez faire `" + CLIENT.CONSTANTS.prefix + this.getName() + " " + this.#usage + "` !";
+        return "Vous devez faire `" + MAIN.CONSTANTS.prefix + this.getName() + " " + this.#usage + "` !";
     }
 
     /**

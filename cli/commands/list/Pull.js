@@ -13,10 +13,10 @@ class Pull extends CLICOMMAND {
         let remoteList = await GIT.getRemotes();
 
         if(remoteList.includes(remote)){
-            CLIENT.LOGGER.cli(STYLE.createTitle("PULL"));
+            MAIN.LOGGER.cli(STYLE.createTitle("PULL"));
             await GIT.pull(remote, branch);
         } else {
-            CLIENT.LOGGER.cli("Remote '" + remote + "' does not exist ! Remote list: " + remoteList);
+            MAIN.LOGGER.cli("Remote '" + remote + "' does not exist ! Remote list: " + remoteList);
         }
     }
 }

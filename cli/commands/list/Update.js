@@ -19,14 +19,14 @@ class Update extends CLICOMMAND {
 
         if(remoteList.includes(remote)){
             //PULL :
-            CLIENT.LOGGER.cli(STYLE.createTitle("PULL"));
+            MAIN.LOGGER.cli(STYLE.createTitle("PULL"));
             await GIT.pull(remote, branch);
 
             //PUSH :
-            CLIENT.LOGGER.cli(STYLE.createTitle("PUSH"));
+            MAIN.LOGGER.cli(STYLE.createTitle("PUSH"));
             await GIT.push(commitMessage, remote, branch);
         } else {
-            CLIENT.LOGGER.cli("This remote does not exist, there is the remote list in this project: " + remoteList);
+            MAIN.LOGGER.cli("This remote does not exist, there is the remote list in this project: " + remoteList);
         }
     }
 }
