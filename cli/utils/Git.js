@@ -14,7 +14,7 @@ class Git {
             })
             .catch(error => {
                 resolve([]);
-                CLIENT.LOGGER.warn(error);
+                MAIN.LOGGER.warn(error);
             });
         });
     }
@@ -27,13 +27,13 @@ class Git {
      */
 
     static async pull(remoteName, branchName){
-        let state = await GIT.pull(remoteName, branchName).catch(error => CLIENT.LOGGER.warn(error));    
+        let state = await GIT.pull(remoteName, branchName).catch(error => MAIN.LOGGER.warn(error));    
           
         if(state != undefined){
             if(state.files.length < 1){
-                CLIENT.LOGGER.cli("Already up to date");
+                MAIN.LOGGER.cli("Already up to date");
             } else {
-                CLIENT.LOGGER.cli("Pulled! Updated files: " + "\n-"+state.files.join("\n-"));
+                MAIN.LOGGER.cli("Pulled! Updated files: " + "\n-"+state.files.join("\n-"));
             }
         }
     }
@@ -46,22 +46,22 @@ class Git {
      */
 
     static async push(commitMessage, remoteName, branchName){
-        await GIT.add(".").catch(error => CLIENT.LOGGER.warn(error));
-        CLIENT.LOGGER.cli("Added files!");
+        await GIT.add(".").catch(error => MAIN.LOGGER.warn(error));
+        MAIN.LOGGER.cli("Added files!");
         await GIT.commit(commitMessage).then(async (commit) => {
             if(commit.commit.length > 0){
-                CLIENT.LOGGER.cli("Commited changes ! (ID: " + commit.commit + ")");
+                MAIN.LOGGER.cli("Commited changes ! (ID: " + commit.commit + ")");
                 await GIT.push(remoteName, branchName).then(push => {
                     if(push.pushed){
-                        CLIENT.LOGGER.cli("Pushed changes! Ref: " + push.ref.local);
+                        MAIN.LOGGER.cli("Pushed changes! Ref: " + push.ref.local);
                     } else { 
-                        CLIENT.LOGGER.cli("Error during pushing!");
+                        MAIN.LOGGER.cli("Error during pushing!");
                     }
-                }).catch(error => CLIENT.LOGGER.warn(error));
+                }).catch(error => MAIN.LOGGER.warn(error));
             } else {
-                CLIENT.LOGGER.cli("Nothing to push!");
+                MAIN.LOGGER.cli("Nothing to push!");
             }
-        }).catch(error => CLIENT.LOGGER.warn(error));
+        }).catch(error => MAIN.LOGGER.warn(error));
     }
 }
 

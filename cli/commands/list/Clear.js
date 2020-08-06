@@ -6,10 +6,10 @@ class Clear extends CLICOMMAND {
     }
 
     execute(args){
-        CLIENT.CLI.write("\x1Bc");
-        CLIENT.LOGGER.cli("Cleared!");
-        CLIENT.CLI.setPrompt("> ");
-        CLIENT.CLI.prompt(true);
+        MAIN.CLIENT.CLI.write("\x1Bc");
+        MAIN.LOGGER.cli("Cleared!");
+        MAIN.CLIENT.CLI.setPrompt("> ");
+        MAIN.CLIENT.CLI.prompt(true);
     }
 }
 

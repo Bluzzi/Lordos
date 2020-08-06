@@ -10,7 +10,7 @@ class Config {
      */
     static writeJson(path, data){
         FS.writeFileSync(path, JSON.stringify(data, null, 4, error => { 
-            if(error) CLIENT.LOGGER.warn(error)
+            if(error) MAIN.LOGGER.warn(error)
         }));  
     }
 
@@ -31,13 +31,13 @@ class Config {
      */
     static writeText(path, data){
         FS.open(path, "a", 666, (error, id) => {
-            if(error) CLIENT.LOGGER.warn(error);
+            if(error) MAIN.LOGGER.warn(error);
 
             FS.write(id, data+OS.EOL, null, "utf8", (error) => {
-                if(error) CLIENT.LOGGER.warn(error);
+                if(error) MAIN.LOGGER.warn(error);
 
                 FS.close(id, (error) => {
-                    if(error) CLIENT.LOGGER.warn(error);
+                    if(error) MAIN.LOGGER.warn(error);
                 });
             });
         });

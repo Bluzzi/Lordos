@@ -15,7 +15,7 @@ class Voice {
         var connection = null;
 
         if(voiceChannel instanceof DISCORD.VoiceChannel){
-            await voiceChannel.join().then(conn => connection = conn).catch(error => CLIENT.LOGGER.warn(error));
+            await voiceChannel.join().then(conn => connection = conn).catch(error => MAIN.LOGGER.warn(error));
             
             connections[voiceChannel.guild.id] = connection;
         }

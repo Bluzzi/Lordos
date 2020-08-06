@@ -6,7 +6,7 @@ class Uptime extends CLICOMMAND {
     }
 
     execute(args){
-        CLIENT.LOGGER.cli(this.getUptime());
+        MAIN.LOGGER.cli(this.getUptime());
     }
 
     getUptime(){

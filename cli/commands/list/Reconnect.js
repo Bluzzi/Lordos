@@ -6,10 +6,10 @@ class Info extends CLICOMMAND {
     }
 
     execute(args){
-        CLIENT.destroy();
-        CLIENT.LOGGER.cli("Destroyed DISCORD API connection ! Reconnecting...");
-        CLIENT.login(CLIENT.CONSTANTS.token).then(() => {
-            CLIENT.LOGGER.cli("Reconnected to the DISCORD API !");
+        MAIN.CLIENT.destroy();
+        MAIN.LOGGER.cli("Destroyed DISCORD API connection ! Reconnecting...");
+        MAIN.CLIENT.login(MAIN.CONSTANTS.token).then(() => {
+            MAIN.LOGGER.cli("Reconnected to the DISCORD API !");
         });
     }
 }

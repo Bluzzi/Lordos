@@ -49,7 +49,7 @@ class TicTacToe extends COMMAND {
 
             // Create the reaction collector for get ennemi :
             let filter = (reaction, user) => {
-                return reaction.emoji.name === "⚔️" && ![message.author.id, CLIENT.user.id].includes(user.id);
+                return reaction.emoji.name === "⚔️" && ![message.author.id, MAIN.CLIENT.user.id].includes(user.id);
             }
 
             let collector = msg.createReactionCollector(filter, { time: 1000 * 60 * 5 });

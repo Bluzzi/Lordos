@@ -1,15 +1,15 @@
 const EMBED = require("../utils/Embed");
 const COLOR = require("../utils/Color");
 
-CLIENT.on("message", async (message) => {
+MAIN.CLIENT.on("message", async (message) => {
     if(message.author.bot) return;
     if(message.channel.type == "dm") return;
-    if(!message.content.startsWith(CLIENT.CONSTANTS.prefix)) return;
+    if(!message.content.startsWith(MAIN.CONSTANTS.prefix)) return;
 
     let args = message.content.substring(1).split(" ");
     let commandName = args.shift().toLowerCase();
-    let command = CLIENT.COMMANDMANAGER.get(commandName);
-    let admins = await CLIENT.CONSTANTS.getAdmins();
+    let command = MAIN.COMMAND_MANAGER.get(commandName);
+    let admins = await MAIN.CONSTANTS.getAdmins();
 
     if(command){
         if(command.getPermissions().includes("BOT.ADMINISTRATOR")){
@@ -26,6 +26,6 @@ CLIENT.on("message", async (message) => {
 
         if(execute == false) EMBED.send(command.getUsageDescription(), message.channel, COLOR.RED);
 
-        CLIENT.LOGGER.info(`${message.author.tag} executed command: ${commandName.toLowerCase()}`);
+        MAIN.LOGGER.info(`${message.author.tag} executed command: ${commandName.toLowerCase()}`);
     }
 });

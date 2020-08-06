@@ -20,22 +20,22 @@ class CreateCommand extends CLICOMMAND {
         if(FS.existsSync(categoryPath)){
             await this.#create(name, category);
         } else {
-            CLIENT.LOGGER.cli("Category '" + category + "' does not exist !");
+            MAIN.LOGGER.cli("Category '" + category + "' does not exist !");
             let answer = await this.#ask("Do you want to create a new category named '" + category + "' ? (NO/yes)");
 
             //CREATE A NEW CATEGORY:
             if (["y", "o", "oui", "yes"].includes(answer.toLowerCase())) { 
                 FS.mkdir(categoryPath, async (err) => {
-                    if(err) return CLIENT.LOGGER.warn(err);
+                    if(err) return MAIN.LOGGER.warn(err);
 
-                    CLIENT.CLI.resume();
-                    CLIENT.LOGGER.cli("Sucessfully created category '" + category + "'");
+                    MAIN.CLIENT.CLI.resume();
+                    MAIN.LOGGER.cli("Sucessfully created category '" + category + "'");
                     await this.#create(name, category);
                 });
             } else {
                 //CANCEL:
-                CLIENT.CLI.resume();
-                CLIENT.LOGGER.cli("Aborted!");
+                MAIN.CLIENT.CLI.resume();
+                MAIN.LOGGER.cli("Aborted!");
             }
         }
     }
@@ -46,13 +46,13 @@ class CreateCommand extends CLICOMMAND {
         let path = "./src/commands/list/" + category + "/" + name + ".js";
 
         //CHECK IF THE COMMAND FILE ALREADY EXISTS:
-        if(!FS.existsSync(BASE_PATH)) return CLIENT.LOGGER.cli("Unable to open " + BASE_PATH);
-        if(FS.existsSync(path)) return CLIENT.LOGGER.cli("This command already exists !");
+        if(!FS.existsSync(BASE_PATH)) return MAIN.LOGGER.cli("Unable to open " + BASE_PATH);
+        if(FS.existsSync(path)) return MAIN.LOGGER.cli("This command already exists !");
         
         //CREATE THE COMMAND:
         FS.copyFile(BASE_PATH, "./src/commands/list/" + category + "/" + name + ".js", () => {
             FS.readFile(path, 'utf8', async (err, data) => {
-                if(err) return CLIENT.LOGGER.warn(err);
+                if(err) return MAIN.LOGGER.warn(err);
 
                 //NAME AND CATEGORY:
                 data = data.replace(/{fileName}/g, name);
@@ -75,9 +75,9 @@ class CreateCommand extends CLICOMMAND {
 
                 //CREATE THE COMMAND FILE:
                 FS.writeFile(path, data, (err) => {
-                    if(err) return CLIENT.LOGGER.warn(err);
+                    if(err) return MAIN.LOGGER.warn(err);
     
-                    CLIENT.LOGGER.cli("Created command '" + name + "'");
+                    MAIN.LOGGER.cli("Created command '" + name + "'");
                 });
             });
         });
@@ -87,8 +87,8 @@ class CreateCommand extends CLICOMMAND {
     //ASK PRIVATE METHOD:
     #ask = (question) => {
         return new Promise((resolve, reject) => {
-            CLIENT.LOGGER.cli(question);
-            CLIENT.CLI.question("", (answer) => {
+            MAIN.LOGGER.cli(question);
+            MAIN.CLIENT.CLI.question("", (answer) => {
                 resolve(answer);
             });
         });
