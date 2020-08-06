@@ -2,6 +2,7 @@ const { inspect } = require("util");
 const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
 const DISCORD = require("discord.js");
+const COLOR = require("../../../utils/Color");
 
 class Eval extends COMMAND {
 
@@ -26,9 +27,9 @@ class Eval extends COMMAND {
             try {
                 result = eval(query.join(" "));
                 
-                EMBED.send("```JS\n"+inspect(result)+"```", message.channel, "GREEN");
+                EMBED.send("```JS\n"+inspect(result)+"```", message.channel);
             } catch (err){
-                EMBED.send("ERROR: ```JS\n"+inspect(err)+"```", message.channel, "RED");
+                EMBED.send("ERROR: ```JS\n"+inspect(err)+"```", message.channel, COLOR.RED);
             }
         }
     }

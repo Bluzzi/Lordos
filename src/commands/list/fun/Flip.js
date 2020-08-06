@@ -1,6 +1,7 @@
 const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
 const DISCORD = require("discord.js");
+const COLOR = require("../../../utils/Color");
 
 class Flip extends COMMAND {
 
@@ -18,7 +19,7 @@ class Flip extends COMMAND {
 
         let embed = new DISCORD.MessageEmbed();
 
-        embed.setColor(EMBED.COLOR_GREEN);
+        embed.setColor(COLOR.GREEN);
 
         embed.setDescription("La pièce est tombé sur **" + result.toUpperCase() + "** !");
 

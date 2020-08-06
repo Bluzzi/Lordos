@@ -3,6 +3,7 @@ const EMBED = require("../../../utils/Embed");
 const DISCORD = require("discord.js");
 const COOL_DISCORD_THINGS = require("../../../utils/CoolDiscordThings");
 const DISCORD = require("discord.js");
+const COLOR = require("../../../utils/Color");
 
 class Countdown extends COMMAND {
 
@@ -29,7 +30,7 @@ class Countdown extends COMMAND {
                 
                 if(time == 0) clearInterval(interval);
                 
-                msg.edit(new DISCORD.MessageEmbed().setDescription(text).setColor(EMBED.COLOR_GREEN));
+                msg.edit(new DISCORD.MessageEmbed().setDescription(text).setColor(COLOR.GREEN));
             }, 1000)
         })
     }

@@ -1,8 +1,8 @@
 const COMMAND = require("../../Command");
-const EMBED = require("../../../utils/Embed");
 const DISCORD = require("discord.js");
 const FS = require("fs");
 const DISCORD = require("discord.js");
+const COLOR = require("../../../utils/Color");
 
 const CONTROLER = ["◀️", "▶️", "🚫"];
 
@@ -67,7 +67,7 @@ class Help extends COMMAND {
         // Create base of embed :
         let embed = new DISCORD.MessageEmbed();
 
-        embed.setColor(EMBED.COLOR_GREEN);
+        embed.setColor(COLOR.GREEN);
         
         // Add content of the first page :
         if(!category || !CLIENT.COMMANDMANAGER.getCategoryList().includes(category)){

@@ -3,6 +3,7 @@ const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
 const FS = require("fs");
 const CANVAS = require("canvas");
+const COLOR = require("../../../utils/Color");
 
 let playingChannels = {};
 
@@ -49,7 +50,7 @@ class Precision extends COMMAND {
 
         let embed = new DISCORD.MessageEmbed();
 
-        embed.setColor(EMBED.COLOR_GREEN);
+        embed.setColor(COLOR.GREEN);
         embed.setDescription(steps.shift());
 
         message.channel.send(embed).then(msg => {
@@ -106,7 +107,7 @@ class Precision extends COMMAND {
         // Add green rectangle in the center :
         let greenRectangle = canvas.getContext("2d");
 
-        greenRectangle.fillStyle = EMBED.COLOR_GREEN;
+        greenRectangle.fillStyle = COLOR.GREEN;
         greenRectangle.fillRect(25, 25, canvas.width - 50, canvas.height - 50);
 
         // Add the text :
