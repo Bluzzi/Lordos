@@ -7,7 +7,7 @@ class Embed {
      * @param {string} message message to send
      * @param {DISCORD.Channel} channel a discord channel
      * @param {{color: string, image: string, title: string, attachment: DISCORD.MessageAttachment, thumbnail: string, footer: string}} options embed color
-     * @returns {void} void
+     * @returns {DISCORD.Message} 
      */
     static send(message, channel, options = {color: null, image: null, title: null, attachment: null, thumbnail: null}){
         let embed = new DISCORD.MessageEmbed();
