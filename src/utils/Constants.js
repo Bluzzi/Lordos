@@ -1,24 +1,25 @@
 const SETTINGS = require("../../settings.json");
+const DISCORD = require("discord.js");
 
 class Constants {
+
     /**
-     * @returns {String} prefix
-    */
+     * @returns {string} prefix
+     */
     static get prefix(){
         return SETTINGS.prefix;
     }
 
     /**
-     * @returns {String} token
-    */
+     * @returns {string} token
+     */
     static get token(){
         return SETTINGS.token;
     }
 
     /**
-     * @returns {Array<String>} admin
+     * @returns {string[]} admin
      */
-
     static async getAdmins(){
         let app = await CLIENT.fetchApplication();
         
@@ -26,9 +27,8 @@ class Constants {
     }
 
     /**
-     *@returns {string} key
+     * @returns {string} key
      */
-    
     static get giffy_key(){
         return SETTINGS.giffykey;
     }

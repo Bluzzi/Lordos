@@ -1,5 +1,6 @@
 const COMMAND = require("../../Command");
 const DISCORD = require("discord.js");
+const FS = require("fs");
 const COLOR = require("../../../utils/Color");
 
 const CONTROLER = ["◀️", "▶️", "🚫"];
