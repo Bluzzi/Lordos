@@ -1,6 +1,5 @@
 const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
-const DISCORD = require("discord.js");
 const FS = require("fs");
 const DISCORD = require("discord.js");
 
