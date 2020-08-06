@@ -68,3 +68,4 @@
 > wikirandom : fixer pour les personnes sur téléphone
 > votemute : réadapter la commande pour qu'elle soit fonctionnelle sur tout les serveurs
 > emojiannonce : lance une boucle infini
+> reverse : ajouter la possibilité de mentionné.

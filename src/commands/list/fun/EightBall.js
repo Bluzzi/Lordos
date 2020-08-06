@@ -23,8 +23,6 @@ class EightBall extends COMMAND {
 
         let response = responses[Math.floor(Math.random() * (responses.length - 1))];
 
-        if(question.startsWith("Bluzzi est meilleur que")) response = "Oui"; // :)
-
         EMBED.send(
             "**Question (de " + message.member.displayName + ") : **" + question + 
             "\n**Réponse : **" + response, 

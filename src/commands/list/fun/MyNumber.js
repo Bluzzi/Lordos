@@ -12,11 +12,9 @@ class MyNumber extends COMMAND {
     execute(args, message){
         if(CHOICE_NUMBER.numbers[message.guild.id]){
             if(CHOICE_NUMBER.numbers[message.guild.id][message.author.id]){
-
-                EMBED.send("Votre nombre est : " + CHOICE_NUMBER.numbers[message.guild.id][message.author.id], message.channel);
+                EMBED.send("Votre nombre est : **" + CHOICE_NUMBER.numbers[message.guild.id][message.author.id] + "**", message.channel);
             }
         } else {
-
             EMBED.send("Utilisez la commande ``" + CONSTANTS.prefix + "choicenumber`` pour définir votre nombre !", message.channel);
         }
     }

@@ -12,15 +12,15 @@ class Countdown extends COMMAND {
     }
 
     async execute(args, message){
-        if(isNaN(args[0])){
-            return false;
-        }
+        if(isNaN(args[0])) return false;
+
         let time = args[0];
         let text = "";
-        EMBED.send(COOL_DISCORD_THINGS.numberToDigitEmojis(time), message.channel).then((msg) => {
-            let interval = setInterval(()=>{
-                time -= 1;
+
+        EMBED.send(COOL_DISCORD_THINGS.numberToDigitEmojis(time), message.channel).then(msg => {
+            let interval = setInterval(() => {
                 text = COOL_DISCORD_THINGS.numberToDigitEmojis(time);
+                time -= 1;
                 
                 if(time == 0) clearInterval(interval);
                 
