@@ -4,9 +4,6 @@ node_modules/*
 # The secret token :
 settings.json
 
-# All data without what-is-data.txt :
-resources/configs/*
-
 # Logs :
 log/log.txt
 
