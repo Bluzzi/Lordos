@@ -7,7 +7,7 @@ class Kick extends COMMAND {
     constructor(){
         super("kick", "Kick un joueur du discord.", "moderation");
 
-        this.setUsage("player reason");
+        this.setUsage("<mention <raison>");
         this.setPermissions(["KICK_MEMBERS"]);
     }
 
