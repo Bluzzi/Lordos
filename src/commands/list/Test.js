@@ -1,5 +1,6 @@
 const COMMAND = require("../Command");
 const EMBED = require("../../utils/Embed");
+const DISCORD = require("discord.js");
 
 class Test extends COMMAND {
 
@@ -7,6 +8,10 @@ class Test extends COMMAND {
         super("test", "tkt", "utils");
     }
 
+    /**
+     * @param {string[]} args 
+     * @param {DISCORD.Message} message 
+     */
     execute(args, message){
         message.channel.send("Ceci est un test !");
     }
