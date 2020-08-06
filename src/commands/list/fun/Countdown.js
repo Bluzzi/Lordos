@@ -1,6 +1,5 @@
 const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
-const DISCORD = require("discord.js");
 const COOL_DISCORD_THINGS = require("../../../utils/CoolDiscordThings");
 const DISCORD = require("discord.js");
 const COLOR = require("../../../utils/Color");
