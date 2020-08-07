@@ -2,16 +2,16 @@ const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
 const DISCORD = require("discord.js");
 
-const PREFIX = "**<Calcul mental>** ";
+const PREFIX = "**<Find the calcul>** ";
 
 let playingChannels = {};
 
-class Calculmental extends COMMAND {
+class FindTheCalcul extends COMMAND {
 
     constructor(){
-        super("calculmental", "Un jeu de rapidité ou toutes les personnes présentes dans le salon doivent donner le résultat d'un calcul.", "game");
+        super("findthecalcul", "Un jeu de rapidité ou toutes les personnes présentes dans le salon doivent reconstituer le calcul pour atteindre un résultat donné avec des éléments connus.", "game");
 
-        this.setAliases(["cm"]);
+        this.setAliases(["ftc"]);
         this.setPermissions([]);
     }
 
@@ -48,19 +48,20 @@ class Calculmental extends COMMAND {
 
         setTimeout(() => this.playing(message.channel), 5000);
     }
-    
 
     playing(channel){
-        let signs = [" * "," + "," - "]
-        let calcul = [];
-        for(let i = 0; i < 5; i++){
-            if(i % 2 == 0) calcul.push(Math.floor(Math.random() * (20 - 10 + 1)) + 10);
-            if(i % 2 != 0) calcul.push(signs.sort(() => Math.random() - 0.5).shift());
+        let signs = ["-","+","/","*"]
+        let calcul = [Math.floor((Math.random() * 10) + 1)]
+        for(let i = 0; i < 6; i++){
+            if(i % 2 == 0) calcul.push(signs.sort(() => Math.random() - 0.5).shift());
+            else calcul.push(Math.floor((Math.random() * 10) + 1));
         }
-        EMBED.send(calcul.join("").replace(/\*/g, "x"), channel);
-        
+        console.log(calcul)
+        let calcul2 = calcul;
+        EMBED.send("Nombre à trouver : " + eval(calcul.join(" ")) + "\nElements : " + calcul2.sort(() => Math.random() - 0.5).join(" | "), channel);
+        console.log(calcul);
         // Create message collector :
-        let collector = channel.createMessageCollector(msg => msg.content == eval(calcul.join("")), {time: 60000});
+        let collector = channel.createMessageCollector(msg => eval(msg.content) == eval(calcul.join(" ")), {time: 60000});
 
         // Check for winner :
         collector.on("collect", msg => {
@@ -81,5 +82,4 @@ class Calculmental extends COMMAND {
     }
 }
 
-module.exports.playingChannels = playingChannels;
-module.exports = Calculmental;
+module.exports = FindTheCalcul;
