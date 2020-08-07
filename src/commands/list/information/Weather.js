@@ -20,7 +20,7 @@ class Weather extends COMMAND {
         if(!args[0]) {
             return false;
         } else {
-            let dictionary = {Sunny: "Ensoleillée", Cloudy: "Nuageux", "Mostly Cloudy": "Très Nuageux", Clear: "Ciel dégagé", "Mostly Sunny": "Très ensoleillé", "Thunder": "Orageux", "Rain Showers": "Averses de pluies", "Rainny": "Pluvieux", "Rain": "Pluie"}
+            let dictionary = {Sunny: "Ensoleillée", Cloudy: "Nuageux", "Mostly Cloudy": "Très Nuageux", Clear: "Ciel dégagé", "Mostly Sunny": "Très ensoleillé", "Thunder": "Orageux", "Rain Showers": "Averses de pluies", "Rainny": "Pluvieux", "Rain": "Pluie", "Partly Cloudy": "Partiellement nuageux"}
             let coords = ["coords", "coordonéees", "position", "co"].includes(args.join(" ").split("--")[1]); 
             let position = args.join(" ");
         
