@@ -15,7 +15,6 @@ class {fileName} extends COMMAND {
      * @param {string[]} args 
      * @param {DISCORD.Message} message 
      */
-     
     async execute(args, message){
         
     }
