@@ -25,6 +25,8 @@ class FindNumber extends COMMAND {
 
         let randomNumber = Math.floor(Math.random() * (args[1] - args[0] + 1)) + args[0];
 
+        if(isInt(randomNumber) == false) return EMBED.send(PREFIX + "Veuillez utiliser des nombres", message.channel);
+
         // Send start message :
         EMBED.send(PREFIX + "Soyez le premier a trouver un nombre entre **" + args[0] + "** et **" + args[1] + "**.", message.channel);
 
@@ -38,6 +40,11 @@ class FindNumber extends COMMAND {
             collector.stop();
         });
     }
+}
+function isInt(value) {
+    return !isNaN(value) &&
+        parseInt(Number(value)) == value &&
+        !isNaN(parseInt(value, 10));
 }
 
 module.exports = FindNumber;
