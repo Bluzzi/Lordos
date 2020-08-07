@@ -16,9 +16,12 @@ MAIN.CLIENT.on("message", async (message) => {
             if(!admins.includes(message.author.id)){
                 return EMBED.send("Vous n'avez pas accès à cette commande !\nPermission(s) requise(s) : `" + command.getPermissions().join("`, `") + "`", message.channel, 'RED');
             }
-        } else {
+        } else{
             if(!message.member.permissions.has(command.getPermissions())){
                 return EMBED.send("Vous n'avez pas accès à cette commande !\nPermission(s) requise(s) : `" + command.getPermissions().join("`, `") + "`", message.channel, 'RED');
+            }
+            if(!message.guild.me.hasPermission(command.getPermissions())){
+                return EMBED.send("Je n'ai pas la permission d'utiliser cette commande !\nPermission(s) requise(s) : `" + command.getPermissions().join("`, `") + "`", message.channel, 'RED');
             }
         }
 

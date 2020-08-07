@@ -2,13 +2,13 @@ const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
 const DISCORD = require("discord.js");
 
-class Kick extends COMMAND {
+class Ban extends COMMAND {
 
     constructor(){
-        super("kick", "Kick un joueur du discord.", "moderation");
+        super("ban", "Bannir un joueur du discord.", "moderation");
 
         this.setUsage("<mention> <raison>");
-        this.setPermissions(["KICK_MEMBERS"]);
+        this.setPermissions(["BAN_MEMBERS"]);
     }
 
     /**
@@ -22,19 +22,18 @@ class Kick extends COMMAND {
 
         let user = message.mentions.members.first();
 
-        console.log(user);
         if(!args[0] || !user) return false;
 
         if(user.id === message.author.id){
-            return EMBED.send("**" + author + "**, vous ne pouvez pas vous kick vous-même.", message.channel);
+            return EMBED.send("**" + author + "**, vous ne pouvez pas vous bannir vous-même.", message.channel);
         }
 
-        user.kick(args.join(" ")).catch(() =>{
-            return EMBED.send("**" + author + "**, vous ne pouvez pas kick cet utilisateur.", message.channel);
+        user.ban(args.join(" ")).catch(() =>{
+            return EMBED.send("**" + author + "**, vous ne pouvez pas bannir cet utilisateur.", message.channel);
         });
         
-        EMBED.send("<@!" + user + "> a bien été kick du discord !", message.channel);
+        EMBED.send("<@!" + user + "> a bien été banni du discord !", message.channel);
     }
 }
 
-module.exports = Kick;
+module.exports = Ban;
