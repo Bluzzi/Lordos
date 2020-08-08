@@ -1,7 +1,8 @@
 {
     "token": "YOUR TOKEN",
     "prefix": "YOUR PREFIX",
-    "youtube-key": "YOUR KEY"
+    "youtube-key": "YOUR KEY",
+    "joke-key": "YOUR KEY"
 }
 
 ** DO NOT RENAME THIS FILE **

@@ -21,6 +21,10 @@ class Constants {
         return SETTINGS["youtube-key"];
     }
 
+    static get jokeKey(){
+        return SETTINGS["joke-key"];
+    }
+
     /**
      * @returns {string[]} admin
      */
