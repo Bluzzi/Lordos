@@ -38,6 +38,9 @@ class ServerInfo extends COMMAND {
         // ID of the server :
         information.addInformation("ID du serveur", member.guild.id);
 
+        // Region of guild :
+        information.addInformation("Région", member.guild.region);
+
         // Creation date :
         let dateInfo = {
             "Serveur crée le": new Date(member.guild.createdAt)
@@ -54,10 +57,22 @@ class ServerInfo extends COMMAND {
         }
 
         //Number of members :
-        information.addInformation("Membres", member.guild.memberCount + " membre(s)")
+        information.addInformation("Membres", member.guild.memberCount + " membre(s)");
+
+        //Number of Humans :
+        information.addInformation("Humains", member.guild.members.cache.filter(member => !member.user.bot).size + " humain(s)");
+
+        //Number of Bots : 
+        information.addInformation("Bots", member.guild.members.cache.filter(member => member.user.bot).size + " bot(s)");
+
+        //Number of Channels :
+        information.addInformation("Roles", member.guild.channels.cache.size + " channel(s)")
 
         // All server roles :
         information.addInformation("Roles", member.guild.roles.cache.map(role => role.name).slice(1).join(", "));
+
+        // All server emojis : 
+        information.addInformation("Emojis", member.guild.emojis.cache.map(emoji => "<:" + emoji.name + ":" + emoji + ">").join(" "));
 
         EMBED.send(information.toString(), message.channel, {thumbnail: member.guild.iconURL()});
     }
