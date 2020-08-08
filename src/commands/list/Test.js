@@ -15,6 +15,8 @@ class Test extends COMMAND {
      */
     async execute(args, message){
         console.log(await VOICE.info("https://www.youtube.com/watch?v=tzVJPgCn-Z8"));
+
+        AXIOS.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${escape(args.join(" "))}&key=${API_KEY}`).then(async response => {
     }
 }
 
