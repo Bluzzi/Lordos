@@ -75,7 +75,7 @@ class Help extends COMMAND {
             embed.setDescription(
                 "Pour utiliser une commande, vous devez écrire ``" + prefix + "`` suivi du nom de la commande.\n\n"
                 + "Pour voir les commandes disponibles, faites ``" + prefix + "help <nom de la catégorie de commande>`` "
-                + "ou utilisé les réactions ci-dessous.\n\n"
+                + "ou utilisez les réactions ci-dessous.\n\n"
                 + "Voici la liste des catégories de commande : ``" + MAIN.COMMAND_MANAGER.getCategoryList().join("``, ``") + "``."
             );
         } else {
