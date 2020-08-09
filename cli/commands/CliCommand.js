@@ -4,9 +4,12 @@ class CliCommand {
     #usage;
     #description;
 
-    constructor(name, description = ""){
+    /**
+     * @param {string} name 
+     * @param {string} description 
+     */
+    constructor(name, description){
         this.#name = name;
-        this.#usage = usage;
         this.#description = description;
     }
 
