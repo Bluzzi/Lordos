@@ -10,7 +10,7 @@ class Multikick extends COMMAND {
 
         this.setAliases([]);
         this.setPermissions(["KICK_MEMBERS"]);
-        this.setUsage("<mention> <mention> <...");
+        this.setUsage("<mention> ...[mention]");
     }
 
     /**
@@ -28,6 +28,7 @@ class Multikick extends COMMAND {
                 return EMBED.send("**" + author + "**, vous ne pouvez pas vous kick vous-même.", message.channel);
             }
         }
+
         users.forEach((user)=>{
             user.kick(args.join(" "))
             .then(() => EMBED.send("<@!" + user + "> a bien été kick du discord !", message.channel))

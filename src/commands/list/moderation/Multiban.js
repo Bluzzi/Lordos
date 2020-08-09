@@ -7,7 +7,7 @@ class Multiban extends COMMAND {
     constructor(){
         super("multiban", "Bannir plusieurs joueurs du discord.", "moderation");
 
-        this.setUsage("<mention> <mention> <...");
+        this.setUsage("<mention> ...[mention]");
         this.setPermissions(["BAN_MEMBERS"]);
     }
 
@@ -16,7 +16,6 @@ class Multiban extends COMMAND {
      * @param {DISCORD.Message} message 
      */
     async execute(args, message){
-
         if(!args[0]) return false;
 
         let author = message.author.username;
@@ -27,6 +26,7 @@ class Multiban extends COMMAND {
                 return EMBED.send("**" + author + "**, vous ne pouvez pas vous bannir vous-même.", message.channel);
             }
         }
+
         users.forEach((user)=>{
             user.ban(args.join(" "))
             .then(() => EMBED.send("<@!" + user + "> a bien été banni du discord !", message.channel))
