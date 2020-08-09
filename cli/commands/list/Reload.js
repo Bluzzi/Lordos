@@ -4,7 +4,7 @@ const STYLE = require("../../utils/Style");
 class Reload extends CLICOMMAND {
 
     constructor(){
-        super("reload", "", "Reload all project modules")
+        super("reload", "Reload all project modules");
     }
 
     /**

@@ -1,33 +1,35 @@
 const CLICOMMAND = require("../CliCommand");
 const FS = require("fs");
+
 const BASE_PATH = "./resources/configs/CommandTemplate.txt";
 
 class CreateCommand extends CLICOMMAND {
 
     constructor(){
-        super("createcommand", "<name> <category>", "create a command");
+        super("createcommand", "Create a command");
+
+        this.setUsage("<name> <category>");
     }
 
     /**
      * @param {string[]} args 
      */
     async execute(args){
-        if(args.length < 2){
-            return false;
-        }
+        if(args.length < 2) return false;
 
         var name = args[0];
-        var category = args[1].toLowerCase();
-        var categoryPath = "./src/commands/list/"+category+"/";
 
-        //CHECK IF CATEGORY EXISTS:
+        var category = args[1].toLowerCase();
+        var categoryPath = "./src/commands/list/" + category + "/";
+
+        //CHECK IF CATEGORY EXISTS :
         if(FS.existsSync(categoryPath)){
             await this.#create(name, category);
         } else {
             MAIN.LOGGER.cli("Category '" + category + "' does not exist !");
             let answer = await this.#ask("Do you want to create a new category named '" + category + "' ? (NO/yes)");
 
-            //CREATE A NEW CATEGORY:
+            //CREATE A NEW CATEGORY :
             if (["y", "o", "oui", "yes"].includes(answer.toLowerCase())) { 
                 FS.mkdir(categoryPath, async (err) => {
                     if(err) return MAIN.LOGGER.warn(err);
@@ -37,7 +39,7 @@ class CreateCommand extends CLICOMMAND {
                     await this.#create(name, category);
                 });
             } else {
-                //CANCEL:
+                //CANCEL :
                 MAIN.CLIENT.CLI.resume();
                 MAIN.LOGGER.cli("Aborted!");
             }
@@ -45,7 +47,7 @@ class CreateCommand extends CLICOMMAND {
     }
 
 
-    //CREATE A COMMAND:
+    //CREATE A COMMAND :
     #create = async (name, category) => {
         let path = "./src/commands/list/" + category + "/" + name + ".js";
 
@@ -86,7 +88,6 @@ class CreateCommand extends CLICOMMAND {
             });
         });
     }
-
 
     //ASK PRIVATE METHOD:
     #ask = (question) => {

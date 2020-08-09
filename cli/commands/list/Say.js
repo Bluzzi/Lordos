@@ -3,7 +3,9 @@ const CLICOMMAND = require("../CliCommand");
 class Say extends CLICOMMAND {
 
     constructor(){
-        super("say", "<channelID/userID> <message>", "Send a discord message")
+        super("say", "Send a discord message");
+
+        this.setUsage("<channelID/userID> <message>");
     }
 
     /**
@@ -11,13 +13,14 @@ class Say extends CLICOMMAND {
      */
     async execute(args){
         var ID = args[0];
+
         var message = args.slice(1, args.length);
-        if(!ID || !message){
-            return false;
-        }
+
+        if(!ID || !message) return false;
 
         var channel = MAIN.CLIENT.channels.cache.get(ID);
-        var user = MAIN.CLIENT.users.cache.get(ID)
+        var user = MAIN.CLIENT.users.cache.get(ID);
+
         if(channel){
             channel.send(message.join(" "));
             MAIN.LOGGER.cli("Message sent in: " + channel.name);

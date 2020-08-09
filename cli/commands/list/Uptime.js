@@ -3,7 +3,7 @@ const CLICOMMAND = require("../CliCommand");
 class Uptime extends CLICOMMAND {
 
     constructor(){
-        super("uptime", "", "show the bot uptime")
+        super("uptime", "Show the bot uptime");
     }
 
     /**
@@ -15,10 +15,13 @@ class Uptime extends CLICOMMAND {
 
     getUptime(){
         let time = process.uptime();
-        let min = Math.floor(time/60);
-        let sc = Math.floor(time%60);
-        sc = sc < 9 ? "0"+sc : sc;
-        min = min < 9 ? "0"+min : min;
+
+        let min = Math.floor(time / 60);
+        let sc = Math.floor(time % 60);
+
+        sc = sc < 9 ? "0" + sc : sc;
+        min = min < 9 ? "0" + min : min;
+
         return min + ":" + sc;
     }
 }
