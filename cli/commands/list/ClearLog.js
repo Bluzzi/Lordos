@@ -2,10 +2,14 @@ const CLICOMMAND = require("../CliCommand");
 const FS = require("fs");
 
 class ClearLog extends CLICOMMAND {
+    
     constructor(){
         super("clearlog", "", "Clear log file");
     }
 
+    /**
+     * @param {string[]} args 
+     */
     execute(args){
         if(FS.existsSync("./log/log.txt")) {
             FS.unlinkSync("./log/log.txt", (error) => {

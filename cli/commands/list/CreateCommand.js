@@ -3,10 +3,14 @@ const FS = require("fs");
 const BASE_PATH = "./resources/configs/CommandTemplate.txt";
 
 class CreateCommand extends CLICOMMAND {
+
     constructor(){
         super("createcommand", "<name> <category>", "create a command");
     }
 
+    /**
+     * @param {string[]} args 
+     */
     async execute(args){
         if(args.length < 2){
             return false;

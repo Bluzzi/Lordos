@@ -1,10 +1,14 @@
 const CLICOMMAND = require("../CliCommand");
 
 class Say extends CLICOMMAND {
+
     constructor(){
         super("say", "<channelID/userID> <message>", "Send a discord message")
     }
 
+    /**
+     * @param {string[]} args 
+     */
     async execute(args){
         var ID = args[0];
         var message = args.slice(1, args.length);

@@ -3,10 +3,14 @@ const GIT = require("../../utils/Git");
 const STYLE = require("../../utils/Style");
 
 class Update extends CLICOMMAND {
+
     constructor(){
         super("update", "<remote name> <branch name> <commit message>", "Allow you to update the project (pull & push)");
     }
 
+    /**
+     * @param {string[]} args 
+     */
     async execute(args){
         if(args.length < 3){
             return false;

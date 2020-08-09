@@ -1,10 +1,14 @@
 const CLICOMMAND = require("../CliCommand");
 
 class Uptime extends CLICOMMAND {
+
     constructor(){
         super("uptime", "", "show the bot uptime")
     }
 
+    /**
+     * @param {string[]} args 
+     */
     execute(args){
         MAIN.LOGGER.cli(this.getUptime());
     }
