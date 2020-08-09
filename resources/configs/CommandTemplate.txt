@@ -16,7 +16,7 @@ class {fileName} extends COMMAND {
      * @param {DISCORD.Message} message 
      */
     async execute(args, message){
-        
+        // TODO...
     }
 }
 
