@@ -33,10 +33,10 @@
 
 #### Information :
 - [ ] lordos/bot -> obtenir des informations sur le bot, ses développeurs ainsi que les liens utiles
-- [ ] covidinfo -> obtenir des informations sur le covid via cette API : https://blog.shevarezo.fr/post/2020/03/25/recuperer-statistiques-coronavirus-covid-19-ligne-de-commande-cli
+- [X] covidinfo -> obtenir des informations sur le covid via cette API : https://blog.shevarezo.fr/post/2020/03/25/recuperer-statistiques-coronavirus-covid-19-ligne-de-commande-cli
 
 #### Jeux :
-- [ ] shifumi (pierre, feuille ou ciseaux) -> lancé une partie de shifumi contre le bot
+- [x] shifumi (pierre, feuille ou ciseaux) -> lancé une partie de shifumi contre le bot
 - [ ] pendu (play) -> faire le jeu du pendu avec un ascii-art
 
 #### Générateur de meme :
