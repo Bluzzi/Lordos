@@ -57,7 +57,6 @@
 > help : deplacer les informations précise d'une commande dans une autre commande puis mettre des pages avec les catégories
 > wikirandom : fixer pour les personnes sur téléphone
 > votemute : réadapter la commande pour qu'elle soit fonctionnelle sur tout les serveurs
-> emojiannonce : lance une boucle infini
 > reverse : ajouter la possibilité de mentionné.
 > np : ajouter le temps jouer
 > play : ajouter le support de spotify
