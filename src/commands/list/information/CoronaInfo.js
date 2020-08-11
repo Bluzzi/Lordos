@@ -34,11 +34,11 @@ class CoronaInfo extends COMMAND {
 
         AXIOS.get("https://api.covid19api.com/total/country/" + escape(args.join(" "))).then(response => {
 
-        let information = response.data[Object.entries(response.data).length - 1];
+            let information = response.data[Object.entries(response.data).length - 1];
 
             let messageInformation = new INFORMATION("Voici les Informations sur le coronavirus")
 
-            messageInformation.addInformation("Pays", information.Country);
+            messageInformation.addInformation("Pays", information.Country + " ");
             messageInformation.addInformation("Cas confirmé", this.formatNumber(information.Confirmed) + " personne(s)");
             messageInformation.addInformation("Morts", this.formatNumber(information.Deaths) + " personne(s)");
             messageInformation.addInformation("Rétablis", this.formatNumber(information.Recovered) + " personne(s)");
