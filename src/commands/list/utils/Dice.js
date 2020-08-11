@@ -28,14 +28,17 @@ class Dice extends COMMAND {
 
         let i = 1;
 
-        dices = dices.map(dice => `Dé N°${i++} > **${dice}**`);
+        let total = dices.reduce((accumulator, currentValue) => accumulator + currentValue)
+
+        dices = dices.map(dice => `Dé N°${i++} -> **${dice}**`);
         
-        EMBED.send("Le(s) dé(s) a/ont été lancé !\n"+dices.join("\n"), message.channel);
+        
+        EMBED.send("Le(s) dé(s) a/ont été lancé !\n\n" + dices.join("\n") + "\n\nTotal : **" + total + "**", message.channel);
     }
 }
 
 function roll(){
-    return Math.floor(Math.random()*(6 - 1+1)+1);
+    return Math.floor(Math.random() * (6 - 1 + 1) + 1);
 }
 
 module.exports = Dice;
