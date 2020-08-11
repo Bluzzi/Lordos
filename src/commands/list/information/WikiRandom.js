@@ -15,7 +15,7 @@ class WikiRandom extends COMMAND {
      * @param {DISCORD.Message} message 
      */
     async execute(args, message){
-        EMBED.send("[Découvrir une information !](https://fr.wikipedia.org/wiki/Sp%C3%A9cial:Page_au_hasard)", message.channel)
+        EMBED.send("[Découvrir une information !](https://fr.wikipedia.org/wiki/Wikip%C3%A9dia:Une_page_au_hasard)", message.channel)
     }
 }
 module.exports = WikiRandom;
