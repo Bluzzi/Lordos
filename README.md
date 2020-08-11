@@ -48,13 +48,8 @@
 - [ ] level -> voir son level (il évolue quand on envoie un message)
 - [ ] toplevel -> voir le classement des levels
 
-> help : ranger les commandes via leur catégories
 > url : adapté aux multi serveur
-> eval : ne pas définir de permission mais donner la possibilité de l'utilisé que aux développeurs du bot
 > calul : trouver des failles, amélioré le systeme
-> countdown : ne fonctionne pas
-> choicenumber : l'adapter au multi serveur
-> dice : ajouter le total de tout les dès lancé
 > minecraftquery : ajouter le support des serveurs Java
 > parsecheatcode : changer le nom de la commande
 > votemute : unmute la personne automatiquement après 5 minutes
