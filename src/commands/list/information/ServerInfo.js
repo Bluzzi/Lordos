@@ -66,7 +66,7 @@ class ServerInfo extends COMMAND {
         information.addInformation("Bots", member.guild.members.cache.filter(member => member.user.bot).size + " bot(s)");
 
         //Number of Channels :
-        information.addInformation("Roles", member.guild.channels.cache.size + " channel(s)")
+        information.addInformation("Channels", member.guild.channels.cache.size + " channel(s)")
 
         // All server roles :
         information.addInformation("Roles", member.guild.roles.cache.map(role => role.name).slice(1).join(", "));
