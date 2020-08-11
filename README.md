@@ -12,11 +12,11 @@
 - [ ] giveaway -> ????
 
 #### Modérations :
-- [ ] clear (nombre, par default : 10) -> permet de clear les messages du salon
+- [x] clean (nombre, par default : 10) -> permet de clear les messages du salon
 - [ ] mute
 - [ ] warn
-- [ ] ban
-- [ ] kick 
+- [x] ban
+- [x] kick 
 - [ ] unban
 - [ ] rename (user mention) (new name)
 
