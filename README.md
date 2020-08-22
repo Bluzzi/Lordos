@@ -10,6 +10,7 @@
 - [ ] invite -> ???? (invite manager)
 - [ ] heure (zone géographique) -> obtenir l'heure
 - [ ] giveaway -> ????
+- [ ] ??? -> Permet de corriger une phrase
 
 #### Modérations :
 - [x] clean (nombre, par default : 10) -> permet de clear les messages du salon
