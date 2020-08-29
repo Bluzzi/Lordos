@@ -29,7 +29,6 @@ global.PROJECT = PROJECT;
 MAIN.CLIENT.CLI = CLI.start();
 LOGGER.notice("Started Command Line Interface");
 
-
 // Startup logs:
 LOGGER.notice("Actual version: " + require("./package.json").version);
 LOGGER.notice("External packages list: " + Object.keys(require("./package.json").dependencies).join(", ") + "\nExternal packages count: " + Object.keys(require("./package.json").dependencies).length);
@@ -45,4 +44,3 @@ LOGGER.notice(COMMAND_MANAGER.loadCommands(true) + " CLI commands loaded !");
 
 // Connect the MAIN.CLIENT :
 CLIENT.login(CONSTANTS.token);
-
