@@ -31,7 +31,10 @@ class FindNumber extends COMMAND {
         EMBED.send(PREFIX + "Soyez le premier a trouver un nombre entre **" + args[0] + "** et **" + args[1] + "**.", message.channel);
 
         // Create message collector :
-        let collector = message.channel.createMessageCollector(msg => msg.content == randomNumber, {time: 1000 * 60 * 5});
+        let collector = message.channel.createMessageCollector(
+            msg => msg.content == randomNumber && msg.author.id !== MAIN.CLIENT.user.id, 
+            {time: 1000 * 60 * 5}
+        );
 
         // Collect the messages :
         collector.on("collect", msg => {
