@@ -4,8 +4,7 @@
   "description": "The Discord bot of Royaume server.",
   "main": "Main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node Main.js"
+    "start": "node ."
   },
   "repository": {
     "type": "git",
@@ -38,7 +37,7 @@
     "ping": "^0.2.3",
     "simple-git": "^2.15.0",
     "weather-js": "^2.0.0",
-    "yt-search": "^2.1.8",
+    "yt-search": "^2.3.0",
     "ytdl-core": "^3.1.3",
     "zoro-api": "^0.3.5"
   }
