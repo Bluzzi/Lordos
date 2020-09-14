@@ -18,7 +18,7 @@ class YouTube {
                     if(currentInfo.type === "video") resolve(currentInfo);
                 }    
             });
-        })
+        });
     }
 }
 
