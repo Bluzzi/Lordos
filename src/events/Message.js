@@ -1,10 +1,18 @@
 const EMBED = require("../utils/Embed");
+const DISCORD = require("discord.js");
 
-MAIN.CLIENT.on("message", (message) => {
+/**
+ * @param {DISCORD.Message} message
+ */
+MAIN.CLIENT.on("message", message => {
+    if(message.channel.type !== "text") return;
+
     if(message.author.bot == false) MAIN.LOGGER.info(message.author.username + " : " + message.content);
-    if (message.channel.type == "dm") return;
-    if(!message.mentions.users.get(message.guild.me.id))return;
+    if(message.channel.type == "dm") return;
+    if(!message.mentions.users.get(message.guild.me.id)) return;
     
-    let text = "Salut <@!" + message.author + ">, fais ``"+ MAIN.CONSTANTS.prefix + "help`` pour voir la liste de mes commadndes."
-    EMBED.send(text, message.channel);
+    EMBED.send(
+        "Salut <@!" + message.author + ">, fais ``"+ MAIN.CONSTANTS.prefix + "help`` pour voir la liste de mes commadndes.", 
+        message.channel
+    );
 });
