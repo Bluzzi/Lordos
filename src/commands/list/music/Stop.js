@@ -1,6 +1,7 @@
 const COMMAND = require("../../Command");
 const DISCORD = require("discord.js");
 const VOICE = require("../../../music/Voice");
+const MUSIC_MANAGER = require("../../../music/MusicManager");
 const EMBED = require("../../../utils/Embed");
 
 class Stop extends COMMAND {
