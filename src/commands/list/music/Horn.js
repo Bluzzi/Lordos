@@ -1,5 +1,5 @@
 const COMMAND = require("../../Command");
-const VOICE = require("../../../utils/Voice");
+const VOICE = require("../../../music/Voice");
 const EMBED = require("../../../utils/Embed");
 const DISCORD = require("discord.js");
 
@@ -15,6 +15,7 @@ class Horn extends COMMAND {
      */
     async execute(args, message){
         let voiceChannel = message.member.voice.channel;
+        
         if(voiceChannel){
             let connection = await VOICE.connect(voiceChannel);
 
