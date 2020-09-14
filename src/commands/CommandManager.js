@@ -86,6 +86,7 @@ class CommandManager extends LOADER {
         count += this.clear("./src/commands/list/", "./list/");
         count += this.clear("./src/utils/", "../utils/");
         count += this.clear("./src/events/", "../events/");
+        count += this.clear("./src/music/", "../music/");
         count += this.clear("./cli/commands/list/", "../../cli/commands/list/");
         count += this.clear("./cli/utils/", "../../cli/utils/");
         count += this.clear("./resources/configs/", "../../resources/configs/");
