@@ -1,6 +1,7 @@
 const EMBED = require("../utils/Embed");
 const COLOR = require("../utils/Color");
 const DISCORD = require("discord.js");
+const CONSTANTS = require("../utils/Constants");
 
 /**
  * @param {DISCORD.Message} message
@@ -13,11 +14,11 @@ MAIN.CLIENT.on("message", async (message) => {
     let args = message.content.substring(1).split(" ");
     let commandName = args.shift().toLowerCase();
     let command = MAIN.COMMAND_MANAGER.get(commandName);
-    let admins = await MAIN.CONSTANTS.getAdmins();
+    let admins = await CONSTANTS.getAdmins();
 
     if(command){
         if(command.getPermissions().includes("BOT.ADMINISTRATOR")){
-            if(!admins.includes(message.author.id)){
+            if(!admins.map(teamMember => teamMember.user.id).includes(message.author.id)){
                 return EMBED.send("Vous n'avez pas accès à cette commande !\nPermission(s) requise(s) : `" + command.getPermissions().join("`, `") + "`", message.channel, 'RED');
             }
         } else{
