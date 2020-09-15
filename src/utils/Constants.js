@@ -26,12 +26,12 @@ class Constants {
     }
 
     /**
-     * @returns {string[]} admin
+     * @returns {DISCORD.TeamMember[]} admin
      */
     static async getAdmins(){
         let app = await MAIN.CLIENT.fetchApplication();
         
-        return app.owner.members.map(m => m.id);
+        return app.owner.members;
     }
 }
 
