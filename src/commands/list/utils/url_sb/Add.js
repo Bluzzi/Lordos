@@ -5,47 +5,55 @@ const FS = require("fs");
 class Add {
 
     static execute(args, message, config){
-        
-        if(!args[0]) return;
+        if(!args[0]) return EMBED.send("url add <nom> <url | alias> <multiple alias...", message.channel);
+
+        let subConfig = config[message.guild.id];
+
         // Verify if name is a banned name or not :
         if(args[0].includes(Object.keys[URL.SUB_COMMANDS])){
             EMBED.send("Vous ne pouvez pas enregistrer de lien à ce nom.");
             return;
-        } else 
-        // Verify if name is already use or not :
-        if(config.links[args[0]] && args[1] !== "alias"){
-            EMBED.send(config.usages.exist_name.replace("{v}", args[1]), message.channel);
-            return;
-        } else 
-        // Verify if given url seems like a real website :
-        if((!args[1].startsWith("https://") && !args[1].startsWith("http://")) && args[1] !== "alias"){
-            EMBED.send(config.usages.noturl, message.channel);
-            return;
         }
-        // If equal Alias, only add aliases :
-        if(args[1] != "alias") config.links[args[0]] = args[1];
-        
-        // Add all the given aliases to the given url's name :
-        let error = [];
 
-        if(args.length > 3){
-            let slicedArgs = args.slice(3);
+        if(args[1] !== "alias" && subConfig.links[args[0]]){
+            // Verify if name is already use or not :
+            if(subConfig.links[args[0]]){
+                EMBED.send(config.usages.exist_name.replace("{v}", args[0]), message.channel);
+                return;
+            }
+            // Verify if given url seems like a real website :
+            let pat = /^https?:\/\//i;
+            if (!pat.test(args[1]))
+            {
+                EMBED.send(config.usages.noturl, message.channel);
+                return;
+            }
+            subConfig.links[args[0]] = args[1];
+        }
 
+        // Add aliases
+        if(!subConfig.aliases[args[0]]){
+            subConfig.aliases[args[0]] = [];
+        }
+        let aliases = 0;
+
+        if(args.length >= 3){
+            let slicedArgs = args.slice(2);
             for(var i = 0; i < slicedArgs.length; i++){
-                for(var key in config.aliases) error.push(!config.aliases[key].includes(slicedArgs[i]));
+                if(subConfig.aliases[args[0]][slicedArgs[i]])continue;
 
-                if(error.every((currentValue) => currentValue == true)){
-                    if(!config.aliases[args[0]]) config.aliases[args[0]] = [];
-
-                    config.aliases[args[0]].push(slicedArgs[i]);
-                }
+                subConfig.aliases[args[0]].push(slicedArgs[i]);
+                aliases += 1;
             }
         }
+
+
+        config[message.guild.id] = subConfig;
 
         // Update the config :
         FS.writeFile(__dirname + "/../../../../../resources/configs/url.json", JSON.stringify(config, null, 4), err => { if(err) return console.log(err) });
 
-        EMBED.send("Done with " + error.filter((bool) => !bool).length + " bad alias.", message.channel);
+        EMBED.send("Url registered.\nadd " + aliases + " aliases.", message.channel);
     }
 }
 

@@ -8,34 +8,8 @@
         "noturl": "L'url semble ne pas en être un.",
         "existnot": "Le lien nommé **{v}** n'existe pas."
     },
-    "links": {
-        "codingame": "https://www.codingame.com/multiplayer/clashofcode",
-        "chess": "https://lichess.org/",
-        "werewolf": "https://wolfy.fr/play",
-        "fortnite": "https://1v1.lol/",
-        "skribbl": "https://skribbl.io/",
-        "paper": "https://paper-io.com/",
-        "geoguessr": "https://www.geoguessr.com/",
-        "youtube": "http://youtube.com",
-        "pornhub": "https://pornhub.com/",
-        "atlar": "https://atlar.fr/",
-        "horion": "http://wikipedia*",
-        "youporn": "https://youporn.com",
-        "google": "https://google.com/"
-    },
-    "aliases": {
-        "codingame": [
-            "cg"
-        ],
-        "chess": [
-            "échec"
-        ],
-        "pornhub": [
-            "<@!251006302946328577>",
-            "test"
-        ],
-        "youporn": [
-            "<@!233351173665456129>"
-        ]
+    "732251741999071303": {
+        "links": {},
+        "aliases": {}
     }
 }
