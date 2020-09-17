@@ -1,9 +1,5 @@
 const EMBED = require("../utils/Embed");
-const DISCORD = require("discord.js");
 
-/**
- * @param {DISCORD.Message} message
- */
 MAIN.CLIENT.on("message", message => {
     if(message.channel.type !== "text") return;
 

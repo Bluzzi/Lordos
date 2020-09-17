@@ -1,11 +1,7 @@
 const EMBED = require("../utils/Embed");
 const COLOR = require("../utils/Color");
-const DISCORD = require("discord.js");
 const CONSTANTS = require("../utils/Constants");
 
-/**
- * @param {DISCORD.Message} message
- */
 MAIN.CLIENT.on("message", async (message) => {
     if(message.author.bot) return;
     if(message.channel.type !== "text") return;
