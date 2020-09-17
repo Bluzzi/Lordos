@@ -19,6 +19,7 @@
   "dependencies": {
     "@discordjs/opus": "^0.3.2",
     "ascii-art": "^2.5.0",
+    "axios": "^0.20.0",
     "canvas": "^2.6.1",
     "child_process": "^1.0.2",
     "colors": "^1.4.0",
