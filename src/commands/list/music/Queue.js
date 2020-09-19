@@ -1,5 +1,4 @@
 const COMMAND = require("../../Command");
-const VOICE = require("../../../music/Voice");
 const MUSIC_MANAGER = require("../../../music/MusicManager");
 const EMBED = require("../../../utils/Embed");
 const DISCORD = require("discord.js");
