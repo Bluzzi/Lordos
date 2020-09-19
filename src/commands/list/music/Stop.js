@@ -7,9 +7,9 @@ const EMBED = require("../../../utils/Embed");
 class Stop extends COMMAND {
 
     constructor(){
-        super("stop", "", "music");
+        super("stop", "Arreter la lecture de la musique en cours", "music");
 
-        this.setAliases(["stop", "s"]);
+        this.setAliases(["s"]);
     }
 
     /**
@@ -20,7 +20,7 @@ class Stop extends COMMAND {
         MUSIC_MANAGER.getInstance(message.guild).removeQueue();
         VOICE.getConnection(message.guild).disconnect();
 
-        EMBED.send("Vous avez bien stopper la musique !");
+        EMBED.send("Vous avez bien stopper la musique en cours de lecture !");
     }
 }
 
