@@ -21,7 +21,7 @@ class Clear extends COMMAND {
     async execute(args, message){
         MUSIC_MANAGER.getInstance(message.guild).removeQueue();
 
-        EMBED.send("Vous avez bien supprimer toutes les musiques dans la queue !");
+        EMBED.send("Vous avez bien supprimer toutes les musiques dans la queue !", message.channel);
     }
 }
 
