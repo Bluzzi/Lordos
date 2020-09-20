@@ -28,7 +28,7 @@ class Voice {
     /**
      * Get the connection in a guild
      * @param {DISCORD.Guild} guild
-     * @returns {?DISCORD.VoiceConnection}
+     * @returns {DISCORD.VoiceConnection|null}
      */
     static getConnection(guild){
         return this.getConnections().filter(voiceConnection => voiceConnection.channel.guild.id === guild.id).first();
