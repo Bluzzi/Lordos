@@ -5,6 +5,7 @@ const DISCORD = require("discord.js");
 const YOUTUBE = require("../../../music/YouTube");
 const COLOR = require("../../../utils/Color");
 const MUSIC_MANAGER = require("../../../music/MusicManager");
+const SKIP = require("../../../music/Skip");
 
 class Play extends COMMAND {
 
@@ -54,7 +55,7 @@ class Play extends COMMAND {
         // Play or add the music in queue :
         if(VOICE.getConnection(message.guild) && VOICE.getConnection(message.guild).dispatcher){
             EMBED.send(
-                "**AJOUTER - **[" + videoInfo.title + "](" + videoInfo.url + ")", 
+                "**AJOUTÉE - **[" + videoInfo.title + "](" + videoInfo.url + ")", 
                 message.channel,
                 {image: videoInfo.thumbnail}
             );
@@ -72,6 +73,9 @@ class Play extends COMMAND {
                 message.channel,
                 {image: videoInfo.thumbnail}
             );
+
+            // Start finish checker :
+            new SKIP(message.guild, message.channel);
         }
     }
 }
