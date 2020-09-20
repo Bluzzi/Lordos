@@ -20,7 +20,7 @@ class Stop extends COMMAND {
         MUSIC_MANAGER.getInstance(message.guild).removeQueue();
         VOICE.getConnection(message.guild).disconnect();
 
-        EMBED.send("Vous avez bien stopper la musique en cours de lecture !");
+        EMBED.send("Vous avez bien stopper la musique en cours de lecture !", message.channel);
     }
 }
 
