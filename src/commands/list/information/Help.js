@@ -3,7 +3,7 @@ const DISCORD = require("discord.js");
 const FS = require("fs");
 const COLOR = require("../../../utils/Color");
 
-const CONTROLER = ["◀️", "▶️", "🚫"];
+const CONTROLER = ["◀️", "▶️"]; // "🚫"
 
 class Help extends COMMAND {
 
