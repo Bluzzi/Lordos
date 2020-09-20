@@ -48,24 +48,55 @@ class Lyrics extends COMMAND {
             let data = response.data.data[0];
             let embed = new DISCORD.MessageEmbed();
 
+            // Format embed :
             embed.setColor(COLOR.GREEN);
 
             embed.setTitle(data.artist + " - " + data.name);
             embed.setThumbnail(data.album_art);
 
-            data.lyrics.split("\n\n").forEach(chunk => {
-                for(let i = 0; i < chunk.length; i += 1023){
-                    embed.addField("\u200b", chunk.substr(i, 1023));
-                }
-            });
-
             embed.setFooter("Paroles recherchés par KSoft.si");
 
+            // Format lyrics :
+            let currentContent = "";
+            let globalContentLength = 0;
+            
+            let fieldCount = 0;
+
+            let addField = function (newLine = ""){
+                embed.addField("\u200b", currentContent);
+
+                fieldCount++;
+                globalContentLength += currentContent.length;
+
+                currentContent = newLine;
+            }
+
+            data.lyrics.split("\n\n").every(chunk => {
+                let lines = chunk.split("\n");
+
+                for(let key in lines){
+                    if(lines[key].length + currentContent.length > 1023){
+                        addField(lines[key]);
+                    } else {
+                        currentContent += lines[key] + "\n";
+                    }
+                }
+
+                if(currentContent.length > 0) addField();
+
+                // Max field detection :
+                if(fieldCount >= 24 || globalContentLength > 5000){
+                    embed.addField("\u200b", "Voir les paroles entières : " + data.url);
+                    return false;
+                }
+
+                return true;
+            });
+
+            // Send embed :
             message.channel.send(embed);
         }).catch(error => {
-            if(error.response.status === 404){
-                EMBED.send("Aucunes paroles trouvés pour ce titre.", message.channel, {color: COLOR.RED});
-            }
+            EMBED.send("Aucunes paroles trouvés pour ce titre.", message.channel, {color: COLOR.RED});
         });
     }
 }
