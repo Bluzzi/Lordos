@@ -30,7 +30,11 @@ class NowPlaying extends COMMAND {
 
             // Duration bar :
             for(let i = 1; i <= 20; i++){
-                timeFormatted += Math.round(timePlayed / musicDuration * 20) === i ? "🔵" : "➖";
+                let percent = Math.round(timePlayed / musicDuration * 20);
+
+                if(percent === i) timeFormatted += "🔵";
+                else if(percent > i) timeFormatted += "▬";
+                else if(percent < i) timeFormatted += "➖";
             }
 
             timeFormatted += " ";
