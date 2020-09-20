@@ -7,10 +7,6 @@ class Clear extends COMMAND {
 
     constructor(){
         super("clear", "Supprime toute les musiques de la queue", "music");
-
-        this.setAliases([""]);
-        this.setPermissions([]);
-        this.setUsage("");
     }
 
     /**
@@ -21,7 +17,7 @@ class Clear extends COMMAND {
     async execute(args, message){
         MUSIC_MANAGER.getInstance(message.guild).removeQueue();
 
-        EMBED.send("Vous avez bien supprimer toutes les musiques dans la queue !", message.channel);
+        EMBED.send("Vous avez bien supprimé toutes les musiques dans la queue !", message.channel);
     }
 }
 
