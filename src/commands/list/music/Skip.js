@@ -38,6 +38,13 @@ class Skip extends COMMAND {
 
         // Play the next song :
         MUSIC_MANAGER.getInstance(message.guild).play(VOICE.getConnection(message.guild), nextSong);
+
+        // Information :
+        EMBED.send(
+            "**LECTURE - **[" + nextSong.title + "](" + nextSong.url + ")",
+            message.channel,
+            {image: nextSong.thumbnail}
+        );
     }
 }
 
