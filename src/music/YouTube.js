@@ -1,4 +1,4 @@
-const YT_SEARCH = require("yt-search");
+const YT_SEARCH = require("util").promisify(require("yt-search"));
 
 class YouTube {
 
@@ -7,18 +7,20 @@ class YouTube {
      * @param {string} search 
      * @returns {Object}
      */
-    static searchVideo(search){
-        return new Promise((resolve, reject) => {
-            YT_SEARCH(search, (err, response) => {
-                if(err) reject(err);
-    
-                for(let key in response.videos){
-                    let currentInfo = response.videos[key];
-    
-                    if(currentInfo.type === "video") resolve(currentInfo);
-                }    
-            });
-        });
+    static async searchVideo(search){
+        try {
+            let response = await YT_SEARCH(search);
+
+            for(let key in response.videos){
+                let currentInfo = response.videos[key];
+
+                if(currentInfo.type === "video") return currentInfo;
+            } 
+        } catch {
+            throw new Error("no video found");
+        }
+
+        throw new Error("error");
     }
 }
 
