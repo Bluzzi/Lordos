@@ -44,11 +44,12 @@ class Play extends COMMAND {
         }
         
         // Search youtube musics :
-        let videoInfo = await YOUTUBE.searchVideo(args.join(" ")).catch(err => console.log(err));
+        let videoInfo;
 
-        // Check if no result :
-        if(!videoInfo){
-            EMBED.send("Aucune vidéo n'a été trouver !", message.channel, {color: COLOR.RED});
+        try {
+            videoInfo = await YOUTUBE.searchVideo(args.join(" "));
+        } catch {
+            EMBED.send("Aucune vidéo n'a été trouvée !", message.channel, {color: COLOR.RED});
             return;
         }
 
