@@ -83,6 +83,13 @@ class MusicManager {
     get loop(){
         return this.#loop;
     }
+
+    /**
+     * @param {bool} bool 
+     */
+    setLoop(bool = true){
+        this.#loop = bool;
+    }
 }
 
 module.exports = MusicManager;
