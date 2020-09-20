@@ -12,10 +12,7 @@ class Skip {
     constructor(guild, channel){
         VOICE.getConnection(guild).dispatcher.on("finish", (info) => {
             // Check if a next song exist :
-            if(MUSIC_MANAGER.getInstance(guild).queue.length === 0 && !MUSIC_MANAGER.getInstance(guild).loop){
-                VOICE.getConnection(guild).disconnect();
-                return;
-            }
+            if(MUSIC_MANAGER.getInstance(guild).queue.length === 0 && !MUSIC_MANAGER.getInstance(guild).loop) return;
 
             // Play the next song :
             let nextSong;
