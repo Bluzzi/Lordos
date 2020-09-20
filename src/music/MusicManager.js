@@ -34,7 +34,7 @@ class MusicManager {
     /**
      * Play a youtube music in a voice channel
      * @param {DISCORD.VoiceConnection} connection 
-     * @param {{type: string, title: string, description: string, url: string, videoId: string, duration: {}, author: {name: string, url: string}}} videoInfo  
+     * @param {{type: string, title: string, description: string, url: string, videoId: string, duration: {}, author: {name: string, url: string}, thumbnail: string}} videoInfo  
      * @param {volume: int, seek: int, bitrate: int} options stream options
      * @returns {DISCORD.StreamDispatcher}
      */
@@ -45,7 +45,7 @@ class MusicManager {
     }
 
     /**
-     * @param {{type: string, title: string, description: string, url: string, videoId: string, duration: {}, author: {name: string, url: string}}} videoInfo 
+     * @param {{type: string, title: string, description: string, url: string, videoId: string, duration: {}, author: {name: string, url: string}, thumbnail: string}} videoInfo 
      */
     addToQueue(videoInfo){
         this.#queue.push(videoInfo);
@@ -53,7 +53,7 @@ class MusicManager {
 
     /**
      * @param {int} index
-     * @returns {{type: string, title: string, description: string, url: string, videoId: string, duration: {}, author: {name: string, url: string}}}
+     * @returns {{type: string, title: string, description: string, url: string, videoId: string, duration: {}, author: {name: string, url: string}, thumbnail: string}}
      */
     removeFromQueue(index){
         return this.#queue.splice(index, 1)[0];
@@ -64,14 +64,14 @@ class MusicManager {
     }
 
     /**
-     * @returns {Object[{type: string, title: string, description: string, url: string, videoId: string, duration: {}, author: {name: string, url: string}}]}
+     * @returns {Object[{type: string, title: string, description: string, url: string, videoId: string, duration: {}, author: {name: string, url: string}, thumbnail: string}]}
      */
     get queue(){
         return this.#queue;
     }
 
     /**
-     * @returns {{type: string, title: string, description: string, url: string, videoId: string, duration: {}, author: {name: string, url: string}}|null}
+     * @returns {{type: string, title: string, description: string, url: string, videoId: string, duration: {}, author: {name: string, url: string}, thumbnail: string}|null}
      */
     get nowPlaying(){
         return Object.keys(this.#nowPlaying).length > 0 ? this.#nowPlaying : null;
