@@ -25,7 +25,7 @@ class Loop extends COMMAND {
             return;
         }
 
-        if(VOICE.getConnection(message.guild).voice.channel.id !== message.member.voice.channel.id){
+        if(message.member.voice.channel && VOICE.getConnection(message.guild).voice.channel.id !== message.member.voice.channel.id){
             EMBED.send("Vous devez être dans le même salon vocal que le bot pour faire ça.", message.channel, {color: COLOR.RED});
             return;
         }
