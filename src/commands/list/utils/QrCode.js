@@ -17,9 +17,13 @@ class QrCode extends COMMAND {
     async execute(args, message){
         if(!args[0]) return false;
 
-        message.author.send(`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${escape(args.join(" "))}`).then(
-            msg => EMBED.send("Le qrcode a bien été générer en privé", message.channel)).catch(
-                err => EMBED.send("Je ne peux pas vous envoyé de message privé", message.channel));
+        let qrCodeContent = escape(args.join(" "));
+
+        EMBED.send(
+            "Voici votre QR code :", 
+            message.channel, 
+            {image: "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + qrCodeContent}
+        );
     }
 }
 
