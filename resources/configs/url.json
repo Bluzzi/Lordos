@@ -9,7 +9,13 @@
         "existnot": "Le lien nommé **{v}** n'existe pas."
     },
     "732251741999071303": {
-        "links": {},
-        "aliases": {}
+        "links": {
+            "google": "http://google.com"
+        },
+        "aliases": {
+            "google": [
+                "<@!371298344921726978>"
+            ]
+        }
     }
 }

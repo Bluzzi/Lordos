@@ -10,12 +10,11 @@ class Add {
         let subConfig = config[message.guild.id];
 
         // Verify if name is a banned name or not :
-        if(args[0].includes(Object.keys[URL.SUB_COMMANDS])){
-            EMBED.send("Vous ne pouvez pas enregistrer de lien à ce nom.");
+        if(Object.keys(URL.SUB_COMMANDS).includes(args[0])){
+            EMBED.send("Vous ne pouvez pas enregistrer de lien à ce nom.", message.channel);
             return;
         }
-
-        if(args[1] !== "alias" && subConfig.links[args[0]]){
+        if(args[1] !== "alias" && !subConfig.links[args[0]]){
             // Verify if name is already use or not :
             if(subConfig.links[args[0]]){
                 EMBED.send(config.usages.exist_name.replace("{v}", args[0]), message.channel);
