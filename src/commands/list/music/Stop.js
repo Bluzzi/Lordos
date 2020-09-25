@@ -18,6 +18,8 @@ class Stop extends COMMAND {
      */
     async execute(args, message){
         MUSIC_MANAGER.getInstance(message.guild).removeQueue();
+        MUSIC_MANAGER.getInstance(message.guild).removePlayed();
+        
         VOICE.getConnection(message.guild).disconnect();
 
         EMBED.send("Vous avez bien stopper la musique en cours de lecture !", message.channel);
