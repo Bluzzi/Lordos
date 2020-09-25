@@ -70,6 +70,10 @@ class MusicManager {
         return this.#queue;
     }
 
+    removePlayed(){
+        this.#nowPlaying = {}; 
+    }
+
     /**
      * @returns {{type: string, title: string, description: string, url: string, videoId: string, duration: {}, author: {name: string, url: string}, thumbnail: string}|null}
      */
