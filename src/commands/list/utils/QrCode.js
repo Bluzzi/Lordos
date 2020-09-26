@@ -22,7 +22,7 @@ class QrCode extends COMMAND {
         EMBED.send(
             "Voici votre QR code :", 
             message.channel, 
-            {image: "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + qrCodeContent}
+            {image: "http://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + qrCodeContent}
         );
     }
 }
