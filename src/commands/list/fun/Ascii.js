@@ -18,7 +18,10 @@ class Ascii extends COMMAND {
     async execute(args, message){
         if(!args[0]) return false;
 
-        if(args.join(" ").length >= 23) return EMBED.send("Le nombre de caractère maximal est de 22", message.channel);
+        if(args.join(" ").length >= 23){
+            EMBED.send("Le nombre de caractère maximal est de 22", message.channel);
+            return;
+        }
 
         message.channel.send(COOL_DISCORD_THINGS.messageToAscii(args.join(" ")));
     }
