@@ -38,7 +38,7 @@ class Play extends COMMAND {
         }
 
         // Check if the member is on the same channel with the bot :
-        if(connection && message.member.voice.channel.id !== connection.channel.id){
+        if(MUSIC_MANAGER.getInstance(message.guild).nowPlaying && connection && message.member.voice.channel.id !== connection.channel.id){
             EMBED.send("Vous devez être présent dans le salon ou je me situe actuellement.", message.channel, {color: COLOR.RED});
             return;
         }
