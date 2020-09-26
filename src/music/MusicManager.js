@@ -64,7 +64,7 @@ class MusicManager {
     }
 
     /**
-     * @returns {Object[{type: string, title: string, description: string, url: string, videoId: string, duration: {}, author: {name: string, url: string}, thumbnail: string}]}
+     * @returns {[{type: string, title: string, description: string, url: string, videoId: string, duration: {}, author: {name: string, url: string}, thumbnail: string}]}
      */
     get queue(){
         return this.#queue;
