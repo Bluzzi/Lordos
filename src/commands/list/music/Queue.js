@@ -26,11 +26,15 @@ class Queue extends COMMAND {
         let messageInformation = "";
         let queuePosition = 1;
 
-        queue.forEach(music => {
+        queue.slice(0, 10).forEach(music => {
             messageInformation += queuePosition + " : " + music.title + "\n\n";
 
             queuePosition++;
         });
+
+        if(queuePosition >= 10 && queue.slice(10).length > 0){
+            messageInformation += "... et " + queue.slice(10).length + " titres"; 
+        }
 
         EMBED.send(
             "```" + messageInformation + "```", 
