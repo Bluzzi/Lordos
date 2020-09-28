@@ -1,20 +1,26 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends "base.twig" %}
 
-    <title>Lordos</title>
+{% block title "Acceuil" %}
 
-    <link rel="stylesheet" href="stylesheets/normalize.css">
+{% block stylesheets %}
     <link rel="stylesheet" href="stylesheets/pages/index.css">
-</head>
-<body>
-    <img src="images/wave.svg" id="wave">
+{% endblock %}
 
+{% block body %}
+    <nav>
+        <h1>Lordos</h1>
+
+        <div class="links">
+            <p>Ajouter</p>
+            <p>Discord</p>
+        </div>
+    </nav>
+    
     <header>
 
     </header>
+
+    <img src="images/wave.svg" id="wave">
 
     <section>
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam aliquid inventore facere aperiam expedita qui.</p>
@@ -56,11 +62,10 @@
         <p>Minima aspernatur, eligendi iure voluptatum quibusdam cumque eveniet vitae accusamus repellat, consectetur odit? Voluptate, dolores.</p>
         <p>Repudiandae ex maiores qui numquam nesciunt alias molestiae, pariatur unde dolorum harum odit eveniet odio.</p>
         <p>Atque sequi consequuntur est distinctio, cupiditate suscipit nihil, error quos non corporis ipsum amet nisi.</p>
-        <p>Corporis totam accusamus tenetur soluta ad eligendi veniam, quod quis, modi fugiat voluptas voluptatem illo!</p>*
+        <p>Corporis totam accusamus tenetur soluta ad eligendi veniam, quod quis, modi fugiat voluptas voluptatem illo!</p>
     </section>
 
     <footer>
 
     </footer>
-</body>
-</html>
+{% endblock %}

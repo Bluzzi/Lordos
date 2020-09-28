@@ -15,8 +15,11 @@ server.use(require("morgan")("dev"));
 // Define public folder : 
 server.use(express.static(__dirname + "/public"));
 
-// Setup view engine :
-server.set("view engine", "ejs");
+// Setup view engine and path :
+server.set("views", __dirname + "/views");
+
+server.set("twig", require("twig").renderFile);
+server.set("view engine", "twig");
 
 // Setup sessions and cookies :
 server.use(require("cookie-parser")());
