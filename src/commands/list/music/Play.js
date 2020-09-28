@@ -2,9 +2,10 @@ const COMMAND = require("../../Command");
 const VOICE = require("../../../music/Voice");
 const EMBED = require("../../../utils/Embed");
 const DISCORD = require("discord.js");
-const YOUTUBE = require("../../../music/YouTube");
+const YOUTUBE = require("../../../music/services/YouTube");
 const COLOR = require("../../../utils/Color");
 const MUSIC_MANAGER = require("../../../music/MusicManager");
+const SPOTIFY = require("../../../music/services/Spotify");
 const SKIP = require("../../../music/Skip");
 
 class Play extends COMMAND {
@@ -15,7 +16,7 @@ class Play extends COMMAND {
         this.setUsage("(url ou nom de la musique)");
         this.setAliases(["p"]);
     }
-
+    
     /**
      * @param {string[]} args 
      * @param {DISCORD.Message} message 
@@ -43,41 +44,81 @@ class Play extends COMMAND {
             return;
         }
         
-        // Search youtube musics :
-        let videoInfo;
+        // Search youtube or spotify musics :
+        let search = args.join(" ");
 
-        try {
-            videoInfo = await YOUTUBE.searchVideo(args.join(" "));
-        } catch {
-            EMBED.send("Aucune vidéo n'a été trouvée !", message.channel, {color: COLOR.RED});
+        if(search.includes("open.spotify.com")){
+            let videosInfo = await SPOTIFY.getTracksByLink(search);
+
+            videosInfo = videosInfo.map(music => music.artists[0].name + " " + music.name);
+            
+            this.addOrPlayMusics(videosInfo, message.guild, message.channel, message.member);
+        } else {
+            this.addOrPlayMusics([search], message.guild, message.channel, message.member);
+        }
+    }
+
+    /**
+     * Add or play a music by name
+     * @param {string[]} musicsName 
+     * @param {DISCORD.Guild} guild
+     * @param {DISCORD.Channel} channel
+     * @param {DISCORD.GuildMember} member
+     */
+    async addOrPlayMusics(musicsName, guild, channel, member){
+        // Get all music informations :
+        let videosInfo = [];
+
+        for(let key in musicsName){
+            try {
+                videosInfo.push(await YOUTUBE.searchVideo(musicsName[key]));
+            } catch {}  
+        }
+
+        // Check if no music is find :
+        if(videosInfo.length === 0){
+            EMBED.send("Aucune vidéo n'a été trouvée !", channel, {color: COLOR.RED});
             return;
         }
 
-        // Play or add the music in queue :
-        if(VOICE.getConnection(message.guild) && VOICE.getConnection(message.guild).dispatcher){
-            EMBED.send(
-                "**AJOUTÉE - **[" + videoInfo.title + "](" + videoInfo.url + ")", 
-                message.channel,
-                {image: videoInfo.thumbnail}
-            );
+        // Add to queue or play the song :
+        let addedToQueue = [];
+        let played;
 
-            MUSIC_MANAGER.getInstance(message.guild).addToQueue(videoInfo);
-        } else {
-            // Play :
-            let connection = await VOICE.connect(message.member.voice.channel);
+        for(let key in videosInfo){
+            if(VOICE.getConnection(guild) && VOICE.getConnection(guild).dispatcher){ //TODO...
+                // Add to queue :
+                MUSIC_MANAGER.getInstance(guild).addToQueue(videosInfo[key]);
+    
+                addedToQueue.push(videosInfo[key]);
+            } else {
+                // Play :
+                let connection = await VOICE.connect(member.voice.channel);
+    
+                MUSIC_MANAGER.getInstance(guild).play(connection, videosInfo[key]);
 
-            MUSIC_MANAGER.getInstance(message.guild).play(connection, videoInfo);
-
-            // Send play message :
-            EMBED.send(
-                "**LECTURE - **[" + videoInfo.title + "](" + videoInfo.url + ")",
-                message.channel,
-                {image: videoInfo.thumbnail}
-            );
-
-            // Start finish checker :
-            new SKIP(message.guild, message.channel);
+                played = videosInfo[key];
+    
+                // Start finish checker :
+                new SKIP(guild, channel);
+            }
         }
+
+        // Send confirmation message :
+        if(played){
+            EMBED.send(
+                "**LECTURE - **[" + played.title + "](" + played.url + ")",
+                channel, {image: played.thumbnail}
+            );
+        }
+
+        if(addedToQueue.length > 0){
+            if(addedToQueue.length === 1){
+                EMBED.send("**AJOUTÉE - **[" + addedToQueue[0].title + "](" + addedToQueue[0].url + ")", channel);
+            } else {
+                EMBED.send("**AJOUTÉE - **" + addedToQueue.length + " titres ont ajoutées à la queue !", channel);
+            }
+        }        
     }
 }
 
