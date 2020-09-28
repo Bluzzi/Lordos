@@ -1,0 +1,23 @@
+@import "../variables/color.scss";
+
+/* PLACE BASE ELEMENTS */
+
+body {
+    display: grid;
+
+    grid-template-rows: 100vh auto 100px;
+}
+
+header {
+    grid-row: 1;
+
+    background-color: $black-gray;
+}
+
+#wave {
+    z-index: -1;
+
+    margin-top: 100vh;
+
+    position: absolute;
+}

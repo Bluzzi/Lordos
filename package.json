@@ -4,6 +4,8 @@
   "description": "The Discord bot of Royaume server.",
   "main": "Main.js",
   "scripts": {
+    "web": "nodemon -e js,scss,twig,json ./website/Server.js",
+    "bot": "node ./src/Bot.js",
     "start": "node ."
   },
   "repository": {
@@ -20,11 +22,16 @@
     "@discordjs/opus": "^0.3.2",
     "ascii-art": "^2.5.0",
     "axios": "^0.20.0",
+    "btoa": "^1.2.1",
     "canvas": "^2.6.1",
     "child_process": "^1.0.2",
     "colors": "^1.4.0",
     "conjugation-fr": "^0.1.2",
+    "cookie-parser": "~1.4.4",
     "discord.js": "^12.2.0",
+    "ejs": "^3.1.5",
+    "express": "~4.16.1",
+    "express-session": "^1.17.1",
     "ffmpeg": "0.0.4",
     "ffmpeg-static": "^4.2.6",
     "fluent-ffmpeg": "^2.1.2",
@@ -34,12 +41,20 @@
     "giphy-api": "^2.0.1",
     "html-metadata-parser": "^1.0.3",
     "jimp": "^0.14.0",
+    "morgan": "~1.9.1",
     "opusscript": "0.0.7",
     "ping": "^0.2.3",
+    "query-string": "^6.13.3",
+    "sass": "^1.26.10",
+    "sass-folder-converter": "^1.0.3",
     "simple-git": "^2.15.0",
+    "twig": "^1.15.2",
     "weather-js": "^2.0.0",
     "yt-search": "^2.3.0",
     "ytdl-core": "^3.1.3",
     "zoro-api": "^0.3.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }
