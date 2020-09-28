@@ -3,8 +3,9 @@ const CANVAS = require("canvas");
 const DISCORD = require("discord.js");
 const FS = require("fs");
 const EMBED = require("../../../utils/Embed");
+const PATH = require("path");
 
-CANVAS.registerFont(__dirname + "/../../../../resources/fonts/minecraftia.ttf", {family: "Minecraftia"});
+CANVAS.registerFont(PATH.normalize(__dirname + "/../../../../resources/fonts/minecraftia.ttf"), {family: "Minecraftia"});
 
 const CHARACTER_LIMIT = 28;
 
@@ -37,7 +38,7 @@ class Achievement extends COMMAND {
         // Get the base image from file :
         let image = new CANVAS.Image();
 
-        image.src = FS.readFileSync(__dirname + "/../../../resources/images/achievement.png");
+        image.src = FS.readFileSync(__dirname + "/../../../../resources/images/achievement.png");
 
         // Create the canvas with the same size of the base image :
         let canvas = new CANVAS.Canvas(image.width, image.height);
