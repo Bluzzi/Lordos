@@ -38,7 +38,7 @@ class Lyrics extends COMMAND {
             "https://api.ksoft.si/lyrics/search",
             {
                 headers: {
-                    Authorization: "Bearer 04d1e22cf106d811505fe823d067ee10979b536f"
+                    Authorization: "Bearer 04744c462d4c23f68c22d913156dc712abe281bb"
                 },
                 params: {
                     q: soundName
