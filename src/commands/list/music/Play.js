@@ -6,6 +6,7 @@ const YOUTUBE = require("../../../music/services/YouTube");
 const COLOR = require("../../../utils/Color");
 const MUSIC_MANAGER = require("../../../music/MusicManager");
 const SPOTIFY = require("../../../music/services/Spotify");
+const DEEZER = require("../../../music/services/Deezer");
 const SKIP = require("../../../music/Skip");
 
 class Play extends COMMAND {
@@ -52,6 +53,12 @@ class Play extends COMMAND {
 
             videosInfo = videosInfo.map(music => music.artists[0].name + " " + music.name);
             
+            this.addOrPlayMusics(videosInfo, message.guild, message.channel, message.member);
+        } else if(search.includes("deezer.com")){
+            let videosInfo = await DEEZER.getTracksByLink(search);
+
+            videosInfo = videosInfo.map(music => music.artist.name + " " + music.title);
+
             this.addOrPlayMusics(videosInfo, message.guild, message.channel, message.member);
         } else {
             this.addOrPlayMusics([search], message.guild, message.channel, message.member);
