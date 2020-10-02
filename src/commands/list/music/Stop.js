@@ -20,9 +20,15 @@ class Stop extends COMMAND {
         MUSIC_MANAGER.getInstance(message.guild).removeQueue();
         MUSIC_MANAGER.getInstance(message.guild).removePlayed();
         
-        VOICE.getConnection(message.guild).disconnect();
+        let connection = VOICE.getConnection(message.guild);
 
-        EMBED.send("Vous avez bien stopper la musique en cours de lecture !", message.channel);
+        if(connection){
+            EMBED.send("Vous avez bien stopper la musique en cours de lecture !", message.channel);
+            
+            connection.disconnect();
+        } else {
+            EMBED.send("Le bot ne joue aucune musique !");
+        }
     }
 }
 
