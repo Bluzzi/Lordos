@@ -70,5 +70,5 @@ class Deezer {
 module.exports = Deezer;
 
 Deezer.getTracksByLink("https://www.deezer.com/track/1085907332?utm_source=deezer&utm_content=track-1085907332&utm_term=3910132982_1601675637&utm_medium=web").then(response => {
-    console.log(response);
+    // console.log(response);
 });
