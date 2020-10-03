@@ -5,7 +5,7 @@ node_modules/*
 settings.json
 
 # Logs :
-log/log.txt
+log/*
 
 # Packagelock :
 package-lock.json
