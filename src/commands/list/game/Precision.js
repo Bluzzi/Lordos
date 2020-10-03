@@ -3,7 +3,7 @@ const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
 const FS = require("fs");
 const CANVAS = require("canvas");
-const COLOR = require("../../../utils/Color");
+const COLOR = require("../../../utils/ColorConstants");
 
 const PREFIX = "**<Precision>** ";
 
@@ -34,17 +34,6 @@ class Precision extends COMMAND {
         // Blocking the living room for the time of the game :
         playingChannels[message.guild.id].push(message.channel.id);
 
-        // Read the french words list :
-        let allWords = FS.readFileSync(__dirname + "/../../../../resources/configs/liste_francais.txt", "utf8").split(":");
-
-        // Shuffle all words :
-        allWords = allWords.sort(() => Math.random() - 0.5); 
-
-        // Get 3 random word per turn :
-        let words = [];
-
-        for(let i = 0; i < 3; i++) words.push(allWords.shift());
-
         // Print the 3 2 1 Go :
         let steps = ["Début dans 3", "Début dans 2", "Début dans 1", "Go ! Vous devez réécrire ces 3 mots le plus rapidement possible :"];
         let time = 1000;
@@ -59,14 +48,16 @@ class Precision extends COMMAND {
             });
         });
 
-        setTimeout(() => this.playing(message.channel, words), 5000);
+        setTimeout(() => this.playing(message.channel), 5000);
     }
 
-    playing(channel, words){
-        let sentence = words.join(" ");
-
+    playing(channel){
         // Create and send the image with 3 words :
-        channel.send(this.createImage(sentence));
+        let data = this.createImage();
+
+        channel.send(data[0]);
+
+        let sentence = data[1];
 
         // Create message collector :
         let collector = channel.createMessageCollector(msg => msg.content === sentence, {time: 60000});
@@ -89,7 +80,9 @@ class Precision extends COMMAND {
         });
     }
     
-    createImage(text){
+    createImage(){
+        let text = this.getWords();
+
         // Create the image with the dezired size (width, height) :
         let canvas = new CANVAS.Canvas(1750, 250);
 
@@ -112,6 +105,11 @@ class Precision extends COMMAND {
         
         textContext.font = "100px Arial";
 
+        // Randomize words if too long :
+        while(textContext.measureText(text).width > 1700){
+            text = this.getWords();
+        }
+
         textContext.fillText(
             text, 
             (canvas.width / 2) - (textContext.measureText(text).width / 2), 
@@ -119,7 +117,22 @@ class Precision extends COMMAND {
         );
         
         // Return the image :
-        return new DISCORD.MessageAttachment(canvas.toBuffer(), "precision.png");
+        return [new DISCORD.MessageAttachment(canvas.toBuffer(), "precision.png"), text];
+    }
+
+    getWords() {
+        // Read the french words list :
+        let allWords = FS.readFileSync(__dirname + "/../../../../resources/configs/liste_francais.txt", "utf8").split(":");
+
+        // Shuffle all words :
+        allWords = allWords.sort(() => Math.random() - 0.5); 
+
+        // Get 3 random word per turn :
+        let words = [];
+
+        for(let i = 0; i < 3; i++) words.push(allWords.shift());
+
+        return words.join(" ");
     }
 }
 

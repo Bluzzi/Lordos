@@ -3,7 +3,7 @@ const DISCORD = require("discord.js");
 const MUSIC_MANAGER = require("../../../music/MusicManager");
 const VOICE = require("../../../music/Voice");
 const EMBED = require("../../../utils/Embed");
-const COLOR = require("../../../utils/Color");
+const COLOR = require("../../../utils/ColorConstants");
 
 class Skip extends COMMAND {
 

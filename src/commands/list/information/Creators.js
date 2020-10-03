@@ -1,6 +1,6 @@
 const COMMAND = require("../../Command");
 const DISCORD = require("discord.js");
-const COLOR = require("../../../utils/Color");
+const COLOR = require("../../../utils/ColorConstants");
 const CONSTANTS = require("../../../utils/Constants");
 
 class Creators extends COMMAND {

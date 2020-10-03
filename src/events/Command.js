@@ -1,5 +1,5 @@
 const EMBED = require("../utils/Embed");
-const COLOR = require("../utils/Color");
+const COLOR = require("../utils/ColorConstants");
 const CONSTANTS = require("../utils/Constants");
 
 MAIN.CLIENT.on("message", async (message) => {

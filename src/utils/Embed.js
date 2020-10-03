@@ -1,5 +1,5 @@
 const DISCORD = require("discord.js");
-const COLOR = require("./Color");
+const COLOR = require("./ColorConstants");
 
 class Embed {
 
