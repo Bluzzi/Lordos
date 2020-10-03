@@ -2,7 +2,7 @@ const COMMAND = require("../../Command");
 const DISCORD = require("discord.js");
 const AXIOS = require("axios").default;
 const EMBED = require("../../../utils/Embed");
-const COLOR = require("../../../utils/Color");
+const COLOR = require("../../../utils/ColorConstants");
 const MUSIC_MANAGER = require("../../../music/MusicManager");
 
 class Lyrics extends COMMAND {

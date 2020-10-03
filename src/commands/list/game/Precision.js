@@ -3,7 +3,7 @@ const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
 const FS = require("fs");
 const CANVAS = require("canvas");
-const COLOR = require("../../../utils/Color");
+const COLOR = require("../../../utils/ColorConstants");
 
 const PREFIX = "**<Precision>** ";
 

@@ -1,7 +1,7 @@
 const COMMAND = require("../../Command");
 const DISCORD = require("discord.js");
 const EMBED = require("../../../utils/Embed");
-const COLOR = require("../../../utils/Color");
+const COLOR = require("../../../utils/ColorConstants");
 const MUSIC_MANAGER = require("../../../music/MusicManager");
 const VOICE = require("../../../music/Voice");
 

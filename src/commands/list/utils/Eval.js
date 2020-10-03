@@ -2,7 +2,7 @@ const { inspect } = require("util");
 const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
 const DISCORD = require("discord.js");
-const COLOR = require("../../../utils/Color");
+const COLOR = require("../../../utils/ColorConstants");
 
 class Eval extends COMMAND {
 
