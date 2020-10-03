@@ -7,49 +7,53 @@ class Deezer {
     /**
      * Get a array of all track information by album ID
      * @param {string} albumIdD
-     * @returns {[{album: Object, artists: Object[], href: string, id: string, name: string}]}
+     * @returns {[{id: int, title: string, link: string, artist: [{id: int, name: string}]}]}
      */
     static async getAlbumTracks(albumID) {
         let response = await AXIOS.get(API_LINK + "album/" + albumID);
 
-        return await this.getTracks(response.data.tracks.data.map(item => item.id));
+        return response.data.tracks.data;
     }
 
     /**
      * Get a array of all track information by playlist ID
      * @param {string} playlistID
-     * @returns {[{album: Object, artists: Object[], href: string, id: string, name: string}]}
+     * @returns {[{id: int, title: string, link: string, artist: [{id: int, name: string}]}]}
      */
     static async getPlaylistTracks(playlistID) {
         let response = await AXIOS.get(API_LINK + "playlist/" + playlistID);
         
-        return await this.getTracks(response.data.tracks.data.map(item => item.id));
+        return response.data.tracks.data;
     }
 
     /**
      * Get a array of track information
      * @param {string} trackID 
-     * @returns {[{album: Object, artists: Object[], href: string, id: string, name: string}]}
+     * @returns {[{id: int, title: string, link: string, contributors: [{id: int, name: string}]}]}
      */
     static async getTrack(trackID){
         let response = await AXIOS.get(API_LINK + "track/" + trackID);
 
-        return response.data;
+        return [response.data];
     }
 
     /**
-     * Get 
+     * Get the tracks ...
      * @param {string} link 
+     * @returns {[{id: int, title: string, link: string, author_name: string}]}
      */
     static async getTracksByLink(link) {
+        // Check if it is a good deezer link :
         if(!link.includes("deezer")) return {};
         
+        // Convert partage link to correct link :
         if(link.includes("deezer.page.link")){
             let response = await AXIOS.get("https://deezer.page.link/NfCQe619nnyEa8Lk8");
             
             link =  response.request._redirectable._options.href;
         }
 
+        // Check type (album, playlist or track) and ID :
         let splitedLink = link.split("?")[0].split("/");
 
         let id = splitedLink.pop();
@@ -61,14 +65,25 @@ class Deezer {
             track: ["getTrack", id]
         }
 
+        // Get the tracks :
         let method = methodAndParamsForType[type];
 
-        return await this[method[0]](method[1]);
+        // Get track author :
+        let response = await this[method[0]](method[1]);
+
+        response = response.map(track => {
+            if(track.artist){
+                track.author_name = track.artist.name;
+            } else if(track.contributors){
+                track.author_name = track.contributors.name;
+            }
+
+            return track;
+        });
+
+        // Return the reponse :
+        return response;
     }
 }
 
 module.exports = Deezer;
-
-Deezer.getTracksByLink("https://www.deezer.com/track/1085907332?utm_source=deezer&utm_content=track-1085907332&utm_term=3910132982_1601675637&utm_medium=web").then(response => {
-    // console.log(response);
-});
