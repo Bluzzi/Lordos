@@ -38,7 +38,7 @@ class Deezer {
     }
 
     /**
-     * Get the tracks ...
+     * Get the tracks list by Deezer share link.
      * @param {string} link 
      * @returns {[{id: int, title: string, link: string, author_name: string}]}
      */
