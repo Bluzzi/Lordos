@@ -38,6 +38,7 @@
     "gamedig": "^2.0.21",
     "giphy-api": "^2.0.1",
     "html-metadata-parser": "^1.0.3",
+    "is-color": "^1.0.2",
     "jimp": "^0.14.0",
     "morgan": "~1.9.1",
     "opusscript": "0.0.7",
