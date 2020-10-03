@@ -1,6 +1,7 @@
 const COLORS = require("colors");
 const FS = require("fs");
 const CONFIG = require("./Config");
+const DAY = require("dayjs");
 
 class Logger {
     /**
@@ -45,13 +46,20 @@ class Logger {
     }
 
     #log = function(message, type, color){
-        if(!FS.existsSync("./log")) {
-            FS.mkdirSync("./log");
-            this.notice("Created the LOG directory !");
-        }
+        // Get and format the current date :
+        let date = DAY().format("DD-MM-YYYY");
 
+        // Define the path of logs :
+        let logDir = __dirname + "/../../log/";
+        let logPath = logDir + date + ".md";
+
+        // Create the log dir if does not exist :
+        if(!FS.existsSync(logDir)) FS.mkdirSync(logDir);
+
+        // Format the message :
         let finalMessage = type != 'CLI' ? `[${this.getDate()}][${type}]: ${message}` : message;
 
+        // Display the log in the console :
         MAIN.CLIENT.CLI.setPrompt("");
         MAIN.CLIENT.CLI.prompt(true);
 
@@ -60,7 +68,8 @@ class Logger {
         MAIN.CLIENT.CLI.setPrompt("> ");
         MAIN.CLIENT.CLI.prompt(true);
         
-        CONFIG.writeText("./log/log.txt", finalMessage);
+        // Write the log in a file :
+        CONFIG.writeText(logPath, finalMessage);
     }
 }
 
