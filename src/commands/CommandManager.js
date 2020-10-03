@@ -81,6 +81,7 @@ class CommandManager extends LOADER {
         this.#commands = [];
         this.#cliCommands = [];
         MAIN.CLIENT.removeAllListeners(); //UNREGISTER ALL EVENTS
+        process.removeAllListeners(); //UNREGISTER ALL PROCESS EVENTS
 
         //CLEAR MODULES:
         count += this.clear("./src/commands/list/", "./list/");

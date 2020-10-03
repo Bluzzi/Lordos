@@ -6,6 +6,9 @@ const CONSTANTS = require("./utils/Constants");
 const DISCORD = require("discord.js");
 const CLI = require("../cli/Main.js");
 
+// REMOVE DEFAULT WARNINGS IN CONSOLE:
+process.removeAllListeners("warning");
+
 // Create discord MAIN.CLIENT and save it and others things in a global :
 MAIN = {};
 
