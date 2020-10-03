@@ -31,6 +31,7 @@ class Config {
      */
     static writeText(path, data){
         FS.open(path, "a", 666, (error, id) => {
+            if (!FS.existsSync(path)) FS.writeFileSync(path);
             if(error) MAIN.LOGGER.warn(error);
 
             FS.write(id, data+OS.EOL, null, "utf8", (error) => {

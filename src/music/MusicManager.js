@@ -63,6 +63,10 @@ class MusicManager {
         this.#queue = [];
     }
 
+    shuffleQueue() {
+        this.#queue = this.#queue.sort(() => Math.random() - 0.5);
+    }
+
     /**
      * @returns {[{type: string, title: string, description: string, url: string, videoId: string, duration: {}, author: {name: string, url: string}, thumbnail: string}]}
      */

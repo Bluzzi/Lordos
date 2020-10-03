@@ -1,4 +1,5 @@
 const COLORS = require("colors");
+const FS = require("fs");
 const CONFIG = require("./Config");
 
 class Logger {
@@ -44,6 +45,11 @@ class Logger {
     }
 
     #log = function(message, type, color){
+        if(!FS.existsSync("./log")) {
+            FS.mkdirSync("./log");
+            this.notice("Created the LOG directory !");
+        }
+
         let finalMessage = type != 'CLI' ? `[${this.getDate()}][${type}]: ${message}` : message;
 
         MAIN.CLIENT.CLI.setPrompt("");

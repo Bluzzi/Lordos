@@ -77,8 +77,7 @@ server.use((request, response, next) => {
 fs.readdirSync(__dirname + "/routes/").forEach(fileName => require("./routes/" + fileName));
 
 server.get("*", function(request, response){
-    response.status(404);
-    response.render("error");
+    response.status(404).render("error");
 });
 
 // Listen port :
