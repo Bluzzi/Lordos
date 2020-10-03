@@ -28,6 +28,7 @@
     "colors": "^1.4.0",
     "conjugation-fr": "^0.1.2",
     "cookie-parser": "~1.4.4",
+    "dayjs": "^1.9.1",
     "discord.js": "^12.2.0",
     "ejs": "^3.1.5",
     "express": "~4.16.1",
