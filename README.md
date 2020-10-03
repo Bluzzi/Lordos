@@ -59,5 +59,3 @@
 > wikirandom : fixer pour les personnes sur téléphone
 > votemute : réadapter la commande pour qu'elle soit fonctionnelle sur tout les serveurs
 > reverse : ajouter la possibilité de mentionné.
-> np : ajouter le temps jouer
-> play : ajouter le support de spotify
