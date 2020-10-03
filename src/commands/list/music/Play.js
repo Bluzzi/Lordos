@@ -45,7 +45,7 @@ class Play extends COMMAND {
             return;
         }
         
-        // Search youtube or spotify musics :
+        // Search YouTube, Spotify or Deezer musics :
         let search = args.join(" ");
 
         if(search.includes("open.spotify.com")){
@@ -54,10 +54,10 @@ class Play extends COMMAND {
             videosInfo = videosInfo.map(music => music.artists[0].name + " " + music.name);
             
             this.addOrPlayMusics(videosInfo, message.guild, message.channel, message.member);
-        } else if(search.includes("deezer.com")){
+        } else if(search.includes("deezer")){
             let videosInfo = await DEEZER.getTracksByLink(search);
 
-            videosInfo = videosInfo.map(music => music.artist.name + " " + music.title);
+            videosInfo = videosInfo.map(music => music.author_name + " " + music.title);
 
             this.addOrPlayMusics(videosInfo, message.guild, message.channel, message.member);
         } else {
@@ -73,6 +73,9 @@ class Play extends COMMAND {
      * @param {DISCORD.GuildMember} member
      */
     async addOrPlayMusics(musicsName, guild, channel, member){
+        // If the number of music is greater than 4 then a message is sent to warn that the music is being searched :
+        if(musicsName.length > 4) var awaitMessage = await EMBED.send("Recherche des musiques en cours...", channel);
+
         // Get all music informations :
         let videosInfo = [];
 
@@ -93,7 +96,7 @@ class Play extends COMMAND {
         let played;
 
         for(let key in videosInfo){
-            if(VOICE.getConnection(guild) && VOICE.getConnection(guild).dispatcher){ //TODO...
+            if(VOICE.getConnection(guild) && VOICE.getConnection(guild).dispatcher && MUSIC_MANAGER.getInstance(guild).nowPlaying){
                 // Add to queue :
                 MUSIC_MANAGER.getInstance(guild).addToQueue(videosInfo[key]);
     
@@ -123,9 +126,12 @@ class Play extends COMMAND {
             if(addedToQueue.length === 1){
                 EMBED.send("**AJOUTÉE - **[" + addedToQueue[0].title + "](" + addedToQueue[0].url + ")", channel);
             } else {
-                EMBED.send("**AJOUTÉE - **" + addedToQueue.length + " titres ont ajoutées à la queue !", channel);
+                EMBED.send("**AJOUTÉE - **" + addedToQueue.length + " titres ont été ajouté à la queue !", channel);
             }
-        }        
+        }  
+        
+        // Remove await message :
+        if(awaitMessage) awaitMessage.delete();
     }
 }
 
