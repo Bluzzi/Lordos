@@ -53,17 +53,28 @@ class Probabilities extends COMMAND {
         }
 
         // Create result text :
-        let text = "";
+        let text = "Probabilités pour " + repeat + " tirages entre " + min + " et " + max + ":\n";
         for(let key in numbers){
-            text += "- " + key + ": " + numbers[key] + " fois (" + Number(100*numbers[key]/repeat).toFixed(2) + "%).\n";
+            text += "\n- " + key + ": " + numbers[key] + " fois (" + Number(100*numbers[key]/repeat).toFixed(2) + "%).";
         }
+
+        let values = Object.values(numbers);
+        let keys = Object.keys(numbers);
+
+        max = Math.max(...values);
+        min = Math.min(...values);
+
+        text += "\n\nMax:    " + keys[values.indexOf(max)] + ": " + max + " fois (" + Number(100*max/repeat).toFixed(2) + "%)\n";
+        text += "\nMin:    " + keys[values.indexOf(max)] + ": " + max + " fois (" + Number(100*max/repeat).toFixed(2) + "%)\n";
+        text += "\nTotal: " + repeat;
+
         // Send result :
-        EMBED.send("Les dés sont jetés !\n\n" + text + "\nTotal: " + repeat, message.channel);
+        EMBED.send(text, message.channel);
 
         // Beginning of the cooldown :
         setTimeout(()=>{
             this.timer.splice(this.timer.indexOf(message.guild.id), 1);
-        }, 3000);
+        }, 5000);
     }
 }
 
