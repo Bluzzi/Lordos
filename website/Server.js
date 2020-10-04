@@ -74,7 +74,7 @@ server.use((request, response, next) => {
 });
 
 // Routes and 404 error :
-fs.readdirSync(__dirname + "/routes/").forEach(fileName => require("./routes/" + fileName));
+loadRoutes(__dirname + "/routes/");
 
 server.get("*", function(request, response){
     response.status(404).render("error");
@@ -82,3 +82,13 @@ server.get("*", function(request, response){
 
 // Listen port :
 server.listen(3000);
+
+function loadRoutes(path) {
+    fs.readdirSync(path).forEach(entity => {
+        if(fs.lstatSync(path + "/" + entity).isDirectory()){ //LOAD DIRECTORIES
+            loadRoutes(path + "/" + entity);
+        } else { //LOAD ROUTE
+            require(path + "/" + entity);
+        }
+    });
+}
