@@ -41,7 +41,6 @@
 - [ ] pendu (play) -> faire le jeu du pendu avec un ascii-art
 
 #### Générateur de meme :
-- [ ] bon toutou (pseudo) (couleurs) -> un meme bon toutou avec le pseudo de la personne
 - [ ] compability (mention) (mention, par default : vous) -> créé une image avec les photos de profil des deux personnes séparé par un pourcentage d'amour et une image selon ce pourcentage
 - [ ] trigerred (mention, par default : vous) -> envoie votre photo de profil en mode trigerred
 
@@ -59,5 +58,3 @@
 > wikirandom : fixer pour les personnes sur téléphone
 > votemute : réadapter la commande pour qu'elle soit fonctionnelle sur tout les serveurs
 > reverse : ajouter la possibilité de mentionné.
-> np : ajouter le temps jouer
-> play : ajouter le support de spotify

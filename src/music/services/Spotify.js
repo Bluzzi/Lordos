@@ -90,7 +90,7 @@ class Spotify {
     }
 
     /**
-     * Get 
+     * Get the tracks list by Spotify share link.
      * @param {string} link 
      */
     static async getTracksByLink(link){
