@@ -5,23 +5,50 @@
 body {
     display: grid;
 
-    grid-template-rows: 100vh auto 100px;
+    grid-template-rows: 10vh 90vh auto 20px;
 }
 
-header {
+nav {
     grid-row: 1;
+    background-color: $black-gray;
+    color: $white;
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+nav #items {
+    grid-column: 1;
+    
+}
+
+nav h1 {
+    grid-column: 2;
+    display: flex;
+    justify-content: center;
+}
+
+nav #connexion {
+    grid-column: 3;
+
+}
+
+
+
+header {
+    grid-row: 2;
 
     background-color: $black-gray;
 }
 
-#wave {
-    z-index: -1;
+// #wave {
+//     z-index: -1;
 
-    margin-top: 100vh;
+//     margin-top: 100vh;
 
-    position: absolute;
-}
-
-nav {
-    color: $white;
-}
+//     position: absolute;
+// }
