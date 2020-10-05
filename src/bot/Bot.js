@@ -21,13 +21,6 @@ MAIN.COMMAND_MANAGER = COMMAND_MANAGER;
 
 global.MAIN = MAIN;
 
-// Save MySQL in globals :
-if(typeof SQLConnection === "undefined") require("../MySQL");
-
-SQLConnection.query("INSERT INTO users VALUES ('Bluzzi', 'tgmtgmtgm')", (error, results, fields) => {
-    console.log(error, results, fields);
-});
-
 // Projects global variables :
 PROJECT = {};
 
