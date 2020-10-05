@@ -8,7 +8,7 @@ MAIN.CLIENT.on("message", message => {
     if(!message.mentions.users.get(message.guild.me.id)) return;
     
     EMBED.send(
-        "Salut <@!" + message.author + ">, fais ``"+ MAIN.CONSTANTS.prefix + "help`` pour voir la liste de mes commadndes.", 
+        "Salut <@!" + message.author + ">, fais ``"+ MAIN.CONSTANTS.prefix + "help`` pour voir la liste de mes commandes.", 
         message.channel
     );
 });
