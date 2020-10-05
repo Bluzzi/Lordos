@@ -43,6 +43,7 @@
     "is-color": "^1.0.2",
     "jimp": "^0.14.0",
     "morgan": "~1.9.1",
+    "mysql2": "^2.2.5",
     "opusscript": "0.0.7",
     "ping": "^0.2.3",
     "query-string": "^6.13.3",
