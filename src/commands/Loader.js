@@ -56,7 +56,6 @@ class Loader {
      * @param {String} pathTwo path for require()
      * @returns {Number} count of cleared modules
      */
-
     clear(path, pathTwo){
         let count = 0;
         FS.readdirSync(path).forEach(moduleName => {

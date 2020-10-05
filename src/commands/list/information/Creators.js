@@ -7,6 +7,8 @@ class Creators extends COMMAND {
 
     constructor(){
         super("creators", "Permet d'obtenir la liste des créateurs de ce bot", "information");
+
+        this.setAliases(["owners", "owner", "authors"]);
     }
 
     /**
@@ -18,12 +20,11 @@ class Creators extends COMMAND {
         
         embed.setTitle("Liste des créateurs du bot");
         embed.setColor(COLOR.GREEN);
-
-        let description = "";
+        embed.setThumbnail((await MAIN.CLIENT.fetchApplication()).iconURL());
 
         let admins = await CONSTANTS.getAdmins();
 
-        admins.forEach(teamMember => description += teamMember.user.tag + "\n\n");
+        let description = admins.map(teamMember => "- " + teamMember.user.tag).reverse().join("\n");
 
         embed.setDescription(description);
 
