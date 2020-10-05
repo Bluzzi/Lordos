@@ -40,6 +40,7 @@ class Embed {
      * @returns {void} void
      */
     static edit(messageToEdit, message, options = {color: null, image: null, title: null, thumbnail: null}){
+
         let embed = new DISCORD.MessageEmbed();
 
         embed.setDescription(message);
