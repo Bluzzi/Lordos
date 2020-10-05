@@ -1,8 +1,12 @@
 {
-    "token": "YOUR TOKEN",
-    "prefix": "YOUR PREFIX",
-    "youtube-key": "YOUR KEY",
-    "joke-key": "YOUR KEY"
+    "token": "BOT TOKEN",
+    "prefix": "%",
+    "mysql": {
+        "host": "185.157.247.240",
+        "port": "3306",
+        "user": "lordos",
+        "password": "MYSQL PASSWORD"
+    }
 }
 
 ** DO NOT RENAME THIS FILE **
