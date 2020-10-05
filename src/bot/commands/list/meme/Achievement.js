@@ -5,7 +5,7 @@ const FS = require("fs");
 const EMBED = require("../../../utils/Embed");
 const PATH = require("path");
 
-CANVAS.registerFont(PATH.normalize(__dirname + "/../../../../resources/fonts/minecraftia.ttf"), {family: "Minecraftia"});
+CANVAS.registerFont(PATH.normalize(__dirname + "/../../../../../resources/fonts/minecraftia.ttf"), {family: "Minecraftia"});
 
 const CHARACTER_LIMIT = 28;
 

@@ -4,7 +4,7 @@ const COMMAND_MANAGER = new(require('./commands/CommandManager'))();
 // Packages :
 const CONSTANTS = require("./utils/Constants");
 const DISCORD = require("discord.js");
-const CLI = require("../cli/Main.js");
+const CLI = require("../CLI/Main");
 
 // REMOVE DEFAULT WARNINGS IN CONSOLE:
 process.removeAllListeners("warning");
@@ -21,6 +21,13 @@ MAIN.COMMAND_MANAGER = COMMAND_MANAGER;
 
 global.MAIN = MAIN;
 
+// Save MySQL in globals :
+if(typeof SQLConnection === "undefined") require("../MySQL");
+
+SQLConnection.query("INSERT INTO users VALUES ('Bluzzi', 'tgmtgmtgm')", (error, results, fields) => {
+    console.log(error, results, fields);
+});
+
 // Projects global variables :
 PROJECT = {};
 
@@ -33,8 +40,8 @@ MAIN.CLIENT.CLI = CLI.start();
 LOGGER.notice("Started Command Line Interface");
 
 // Startup logs:
-LOGGER.notice("Actual version: " + require("../package.json").version);
-LOGGER.notice("External packages list: " + Object.keys(require("../package.json").dependencies).join(", ") + "\nExternal packages count: " + Object.keys(require("../package.json").dependencies).length);
+LOGGER.notice("Actual version: " + require("../../package.json").version);
+LOGGER.notice("External packages list: " + Object.keys(require("../../package.json").dependencies).join(", ") + "\nExternal packages count: " + Object.keys(require("../../package.json").dependencies).length);
 
 // Events loader :
 LOGGER.notice(COMMAND_MANAGER.loadEvents() + " events loaded !");

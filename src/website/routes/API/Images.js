@@ -1,5 +1,4 @@
-const FS = require("fs");
-const BASE_PATH = "./resources/images/";
+const BASE_PATH = __dirname + "/../../../../resources/images/";
 
 //C EST DEGEU, OK, MAIS TU PEUX LE REFAIRE SI T4ES PAS CONTENT
 

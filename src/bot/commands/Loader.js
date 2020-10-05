@@ -1,11 +1,11 @@
 const FS = require("fs");
 const COMMAND = require("./Command");
-const CLICOMMAND = require('../../cli/commands/CliCommand');
+const CLICOMMAND = require('../../CLI/commands/CliCommand');
 
 class Loader {
     loadCommands(cli = false, path = null, pathTwo = null){
-        if(path == null) path = cli == false ? "./src/commands/list/" : "./cli/commands/list/";
-        if(pathTwo == null) pathTwo = cli == false ? "./list/" : "../../cli/commands/list/";
+        if(path == null) path = cli == false ? __dirname + "/../commands/list/" : __dirname + "/../../cli/commands/list/";
+        if(pathTwo == null) pathTwo = cli == false ? __dirname + "/list/" : __dirname + "/../../cli/commands/list/";
         let classType = cli == false ? COMMAND : CLICOMMAND;
         let count = 0;
 
@@ -37,12 +37,13 @@ class Loader {
     }
 
     loadEvents(){
-        let path = "./src/events/";
+        let path = __dirname + "/../events/";
         let count = 0;
 
         FS.readdirSync(path).forEach(eventName => {
             if(eventName.split(".").pop() == "js"){
                 require("../events/" + eventName);
+
                 MAIN.LOGGER.notice("Loaded event: " + eventName);
                 count++;
             }

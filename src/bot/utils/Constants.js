@@ -1,4 +1,4 @@
-const SETTINGS = require("../../settings.json");
+const SETTINGS = require("../../../settings.json");
 const DISCORD = require("discord.js");
 
 class Constants {

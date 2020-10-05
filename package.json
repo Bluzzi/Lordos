@@ -4,8 +4,8 @@
   "description": "The Discord bot of Royaume server.",
   "main": "Main.js",
   "scripts": {
-    "web": "nodemon -e js,scss,twig,json ./website/Server.js",
-    "bot": "node ./src/Bot.js",
+    "web": "nodemon -e js,scss,twig,json ./src/website/Server.js",
+    "bot": "node ./src/bot/Bot.js",
     "start": "node ."
   },
   "repository": {

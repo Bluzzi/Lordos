@@ -5,7 +5,7 @@ const PATH = require("path");
 const COLOR = require("../../../utils/Color");
 
 CANVAS.registerFont(
-    PATH.normalize(__dirname + "/../../../../resources/fonts/good-doggie.ttf"), 
+    PATH.normalize(__dirname + "/../../../../../resources/fonts/good-doggie.ttf"), 
     {
         family: "GoodDoggie"
     }
