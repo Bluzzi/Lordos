@@ -50,7 +50,7 @@ class Logger {
         let date = DAY().format("DD-MM-YYYY");
 
         // Define the path of logs :
-        let logDir = __dirname + "/../../log/";
+        let logDir = __dirname + "/../../../log/";
         let logPath = logDir + date + ".md";
 
         // Create the log dir if does not exist :

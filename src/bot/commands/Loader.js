@@ -4,8 +4,8 @@ const CLICOMMAND = require('../../CLI/commands/CliCommand');
 
 class Loader {
     loadCommands(cli = false, path = null, pathTwo = null){
-        if(path == null) path = cli == false ? __dirname + "/../commands/list/" : __dirname + "/../../cli/commands/list/";
-        if(pathTwo == null) pathTwo = cli == false ? __dirname + "/list/" : __dirname + "/../../cli/commands/list/";
+        if(path == null) path = cli == false ? __dirname + "/../commands/list/" : __dirname + "/../../CLI/commands/list/";
+        if(pathTwo == null) pathTwo = cli == false ? __dirname + "/list/" : __dirname + "/../../CLI/commands/list/";
         let classType = cli == false ? COMMAND : CLICOMMAND;
         let count = 0;
 
