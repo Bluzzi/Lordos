@@ -2,7 +2,7 @@
   "name": "lordos",
   "version": "1.1.0",
   "description": "The Discord bot of Royaume server.",
-  "main": "Main.js",
+  "main": "Launcher.js",
   "scripts": {
     "web": "nodemon -e js,scss,twig,json ./src/website/Server.js",
     "bot": "node ./src/bot/Bot.js",
