@@ -1,5 +1,5 @@
 const COMMAND = require("./Command");
-const CLICOMMAND = require("../../cli/commands/CliCommand");
+const CLICOMMAND = require("../../CLI/commands/CliCommand");
 const LOADER = require("./Loader");
 
 class CommandManager extends LOADER {
