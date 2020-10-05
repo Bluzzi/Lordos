@@ -5,7 +5,8 @@
         "host": "185.157.247.240",
         "port": "3306",
         "user": "lordos",
-        "password": "MYSQL PASSWORD"
+        "password": "MYSQL PASSWORD",
+        "database": "lordos"
     }
 }
 
