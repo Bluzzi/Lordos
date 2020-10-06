@@ -17,14 +17,14 @@ class Loader {
                 if(typeof commandClass == "function"){ //prevents 'not a constructor' error
                     commandClass = new commandClass();
                     if(commandClass instanceof classType){ //only register commands
-                        MAIN.LOGGER.notice("Loaded " + type + " command: " + moduleName);
-                        MAIN.COMMAND_MANAGER.add(commandClass, cli);
+                        BOT.LOGGER.notice("Loaded " + type + " command: " + moduleName);
+                        BOT.COMMAND_MANAGER.add(commandClass, cli);
                         count++;
                     } else {
-                        MAIN.LOGGER.warn("Cannot load " + type + " command: " + moduleName + " (not a command instance)");
+                        BOT.LOGGER.warn("Cannot load " + type + " command: " + moduleName + " (not a command instance)");
                     }
                 } else {
-                    MAIN.LOGGER.warn("Cannot load " + type + " command: " + moduleName + " (missing exports?)");
+                    BOT.LOGGER.warn("Cannot load " + type + " command: " + moduleName + " (missing exports?)");
                 }
             } else { //READ DIRECTORIES
                 if(!cli){
@@ -44,7 +44,7 @@ class Loader {
             if(eventName.split(".").pop() == "js"){
                 require("../events/" + eventName);
 
-                MAIN.LOGGER.notice("Loaded event: " + eventName);
+                BOT.LOGGER.notice("Loaded event: " + eventName);
                 count++;
             }
         });
@@ -62,7 +62,7 @@ class Loader {
         FS.readdirSync(path).forEach(moduleName => {
             if(moduleName.split(".").pop() == "js"){
                 delete require.cache[require.resolve(pathTwo+moduleName)];
-                MAIN.LOGGER.notice("Cleared module: " + moduleName);
+                BOT.LOGGER.notice("Cleared module: " + moduleName);
                 count++;
             } else {
                 if(FS.lstatSync(path + moduleName + "/").isDirectory()) count += this.clear(path + moduleName + "/", pathTwo + moduleName + "/");

@@ -10,7 +10,7 @@ class Stop extends CLICOMMAND {
      * @param {string[]} args 
      */
     execute(args){
-        MAIN.LOGGER.cli("Stopped the bot");
+        BOT.LOGGER.cli("Stopped the bot");
 
         process.exit(0);
     }

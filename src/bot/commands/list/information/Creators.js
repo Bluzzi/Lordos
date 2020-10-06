@@ -20,7 +20,7 @@ class Creators extends COMMAND {
         
         embed.setTitle("Liste des créateurs du bot");
         embed.setColor(COLOR.GREEN);
-        embed.setThumbnail((await MAIN.CLIENT.fetchApplication()).iconURL());
+        embed.setThumbnail((await BOT.CLIENT.fetchApplication()).iconURL());
 
         let admins = await CONSTANTS.getAdmins();
 

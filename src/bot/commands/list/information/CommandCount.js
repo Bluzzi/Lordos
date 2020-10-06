@@ -16,7 +16,7 @@ class CommandCount extends COMMAND {
      */
     async execute(args, message){
         let type = args[0] == "cli" ? "cli" : "bot";
-        let commandCount = type == "cli" ? MAIN.COMMAND_MANAGER.all(true).length : MAIN.COMMAND_MANAGER.all().length;
+        let commandCount = type == "cli" ? BOT.COMMAND_MANAGER.all(true).length : BOT.COMMAND_MANAGER.all().length;
         let objective = type == "cli" ? 50 : 200;
         let percent = parseFloat(commandCount/objective*100).toFixed(2);
 

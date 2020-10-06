@@ -10,12 +10,12 @@ class Info extends CLICOMMAND {
      * @param {string[]} args 
      */
     execute(args){
-        MAIN.CLIENT.destroy();
+        BOT.CLIENT.destroy();
         
-        MAIN.LOGGER.cli("Destroyed DISCORD API connection ! Reconnecting...");
+        BOT.LOGGER.cli("Destroyed DISCORD API connection ! Reconnecting...");
 
-        MAIN.CLIENT.login(MAIN.CONSTANTS.token).then(() => {
-            MAIN.LOGGER.cli("Reconnected to the DISCORD API !");
+        BOT.CLIENT.login(BOT.CONSTANTS.token).then(() => {
+            BOT.LOGGER.cli("Reconnected to the DISCORD API !");
         });
     }
 }

@@ -1,3 +1,3 @@
 process.on('warning', async (warning) => {
-    MAIN.LOGGER.warn(warning.message);
+    BOT.LOGGER.warn(warning.message);
 });

@@ -11,9 +11,9 @@ class Reload extends CLICOMMAND {
      * @param {string[]} args 
      */
     execute(args){
-        MAIN.LOGGER.cli(STYLE.createTitle("RELOAD", "*"));
-        MAIN.LOGGER.cli(MAIN.COMMAND_MANAGER.reload() + " MODULES RELOADED");
-        MAIN.LOGGER.cli(STYLE.createTitle("RELOAD COMPLETE", "*"));
+        BOT.LOGGER.cli(STYLE.createTitle("RELOAD", "*"));
+        BOT.LOGGER.cli(BOT.COMMAND_MANAGER.reload() + " MODULES RELOADED");
+        BOT.LOGGER.cli(STYLE.createTitle("RELOAD COMPLETE", "*"));
     }
 }
 

@@ -18,17 +18,17 @@ class Say extends CLICOMMAND {
 
         if(!ID || !message) return false;
 
-        var channel = MAIN.CLIENT.channels.cache.get(ID);
-        var user = MAIN.CLIENT.users.cache.get(ID);
+        var channel = BOT.CLIENT.channels.cache.get(ID);
+        var user = BOT.CLIENT.users.cache.get(ID);
 
         if(channel){
             channel.send(message.join(" "));
-            MAIN.LOGGER.cli("Message sent in: " + channel.name);
+            BOT.LOGGER.cli("Message sent in: " + channel.name);
         } else if(user){
             user.send(message.join(" "));
-            MAIN.LOGGER.cli("Message sent to: " + user.tag);
+            BOT.LOGGER.cli("Message sent to: " + user.tag);
         } else {
-            MAIN.LOGGER.cli("Cannot find channel/user: " + ID);
+            BOT.LOGGER.cli("Cannot find channel/user: " + ID);
         }
     }
 }

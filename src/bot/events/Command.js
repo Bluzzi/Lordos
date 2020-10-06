@@ -2,14 +2,14 @@ const EMBED = require("../utils/Embed");
 const COLOR = require("../utils/ColorConstants");
 const CONSTANTS = require("../utils/Constants");
 
-MAIN.CLIENT.on("message", async (message) => {
+BOT.CLIENT.on("message", async (message) => {
     if(message.author.bot) return;
     if(message.channel.type !== "text") return;
-    if(!message.content.startsWith(MAIN.CONSTANTS.prefix)) return;
+    if(!message.content.startsWith(BOT.CONSTANTS.prefix)) return;
 
     let args = message.content.substring(1).split(" ");
     let commandName = args.shift().toLowerCase();
-    let command = MAIN.COMMAND_MANAGER.get(commandName);
+    let command = BOT.COMMAND_MANAGER.get(commandName);
     let admins = await CONSTANTS.getAdmins();
 
     if(command){
@@ -30,6 +30,6 @@ MAIN.CLIENT.on("message", async (message) => {
 
         if(execute == false) EMBED.send(command.getUsageDescription(), message.channel, COLOR.RED);
 
-        MAIN.LOGGER.info(`${message.author.tag} executed command: ${commandName.toLowerCase()}`);
+        BOT.LOGGER.info(`${message.author.tag} executed command: ${commandName.toLowerCase()}`);
     }
 });

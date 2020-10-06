@@ -9,17 +9,17 @@ const CLI = require("../CLI/Main");
 // REMOVE DEFAULT WARNINGS IN CONSOLE:
 process.removeAllListeners("warning");
 
-// Create discord MAIN.CLIENT and save it and others things in a global :
-MAIN = {};
+// Create discord BOT.CLIENT and save it and others things in a global :
+BOT = {};
 
 const CLIENT = new DISCORD.Client({disableMentions: "true"});
 
-MAIN.CLIENT = CLIENT;
-MAIN.CONSTANTS = CONSTANTS;
-MAIN.LOGGER = LOGGER;
-MAIN.COMMAND_MANAGER = COMMAND_MANAGER;
+BOT.CLIENT = CLIENT;
+BOT.CONSTANTS = CONSTANTS;
+BOT.LOGGER = LOGGER;
+BOT.COMMAND_MANAGER = COMMAND_MANAGER;
 
-global.MAIN = MAIN;
+global.BOT = BOT;
 
 // Projects global variables :
 PROJECT = {};
@@ -29,7 +29,7 @@ PROJECT.WORDS = [];
 global.PROJECT = PROJECT;
 
 // Start CLI:
-MAIN.CLIENT.CLI = CLI.start();
+BOT.CLIENT.CLI = CLI.start();
 LOGGER.notice("Started Command Line Interface");
 
 // Startup logs:
@@ -45,5 +45,5 @@ LOGGER.notice(COMMAND_MANAGER.loadCommands(false) + " bot commands loaded !");
 // Cli commands loader :
 LOGGER.notice(COMMAND_MANAGER.loadCommands(true) + " CLI commands loaded !");
 
-// Connect the MAIN.CLIENT :
+// Connect the BOT.CLIENT :
 CLIENT.login(CONSTANTS.token);

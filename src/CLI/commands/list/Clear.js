@@ -10,10 +10,10 @@ class Clear extends CLICOMMAND {
      * @param {string[]} args 
      */
     execute(args){
-        MAIN.CLIENT.CLI.write("\x1Bc");
-        MAIN.LOGGER.cli("Cleared !");
-        MAIN.CLIENT.CLI.setPrompt("> ");
-        MAIN.CLIENT.CLI.prompt(true);
+        BOT.CLIENT.CLI.write("\x1Bc");
+        BOT.LOGGER.cli("Cleared !");
+        BOT.CLIENT.CLI.setPrompt("> ");
+        BOT.CLIENT.CLI.prompt(true);
     }
 }
 

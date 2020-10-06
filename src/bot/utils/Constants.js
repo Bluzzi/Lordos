@@ -35,7 +35,7 @@ class Constants {
      * @returns {DISCORD.TeamMember[]} admin
      */
     static async getAdmins(){
-        let app = await MAIN.CLIENT.fetchApplication();
+        let app = await BOT.CLIENT.fetchApplication();
         
         return app.owner.members;
     }

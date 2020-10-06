@@ -1,6 +1,6 @@
 const COLORS = require("colors");
 const FS = require("fs");
-const CONFIG = require("./Config");
+const MAIN = require("../../Main");
 const DAY = require("dayjs");
 
 class Logger {
@@ -60,16 +60,16 @@ class Logger {
         let finalMessage = type != 'CLI' ? `[${this.getDate()}][${type}]: ${message}` : message;
 
         // Display the log in the console :
-        MAIN.CLIENT.CLI.setPrompt("");
-        MAIN.CLIENT.CLI.prompt(true);
+        BOT.CLIENT.CLI.setPrompt("");
+        BOT.CLIENT.CLI.prompt(true);
 
         console.log(COLORS[color](finalMessage));
         
-        MAIN.CLIENT.CLI.setPrompt("> ");
-        MAIN.CLIENT.CLI.prompt(true);
+        BOT.CLIENT.CLI.setPrompt("> ");
+        BOT.CLIENT.CLI.prompt(true);
         
         // Write the log in a file :
-        CONFIG.writeText(logPath, finalMessage);
+        MAIN.config.writeText(logPath, finalMessage);
     }
 }
 

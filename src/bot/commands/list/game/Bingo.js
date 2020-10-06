@@ -32,7 +32,7 @@ class FindNumber extends COMMAND {
 
         // Create message collector :
         let collector = message.channel.createMessageCollector(
-            msg => msg.content == randomNumber && msg.author.id !== MAIN.CLIENT.user.id, 
+            msg => msg.content == randomNumber && msg.author.id !== BOT.CLIENT.user.id, 
             {time: 1000 * 60 * 5}
         );
 

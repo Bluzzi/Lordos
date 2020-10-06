@@ -39,7 +39,7 @@ class Voice {
      * @returns {DISCORD.Collection<string, DISCORD.VoiceConnection>}
      */
     static getConnections(){
-        return MAIN.CLIENT.voice.connections;
+        return BOT.CLIENT.voice.connections;
     }
 }
 

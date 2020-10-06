@@ -80,7 +80,7 @@ class CommandManager extends LOADER {
         let count = 0;
         this.#commands = [];
         this.#cliCommands = [];
-        MAIN.CLIENT.removeAllListeners(); //UNREGISTER ALL EVENTS
+        BOT.CLIENT.removeAllListeners(); //UNREGISTER ALL EVENTS
         process.removeAllListeners(); //UNREGISTER ALL PROCESS EVENTS
 
         //CLEAR MODULES:

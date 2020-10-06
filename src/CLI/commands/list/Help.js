@@ -11,8 +11,8 @@ class Help extends CLICOMMAND {
      * @param {string[]} args 
      */
     execute(args){
-        MAIN.LOGGER.cli(
-            STYLE.createTitle("HELP PAGE") + "\n" + MAIN.COMMAND_MANAGER.all(true).map(command => "[" + 
+        BOT.LOGGER.cli(
+            STYLE.createTitle("HELP PAGE") + "\n" + BOT.COMMAND_MANAGER.all(true).map(command => "[" + 
             command.getName() + "] | " + command.getUsage() + " | " + command.getDescription()).join("\n")
         );
     }

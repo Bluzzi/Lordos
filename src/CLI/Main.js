@@ -1,7 +1,7 @@
 const READLINE = require("readline");
 const COLORS = require("colors");
 const COMPLETER = function(line) {
-    let completions = MAIN.COMMAND_MANAGER.all(true).map(command => command.getName());
+    let completions = BOT.COMMAND_MANAGER.all(true).map(command => command.getName());
     let find = completions.filter((c) => c.startsWith(line));
 
     return [find.length ? find : completions, line];
@@ -16,15 +16,15 @@ function start(){
         let args = input.split(" ");
         let commandName = args[0];
         args = args.slice(1, args.length);
-        let command = MAIN.COMMAND_MANAGER.get(commandName, true);
+        let command = BOT.COMMAND_MANAGER.get(commandName, true);
     
         if(command){
             let execute = await command.execute(args);
             if(execute == false){
-                MAIN.LOGGER.cli("Invalid usage, try : " + command.getUsage());
+                BOT.LOGGER.cli("Invalid usage, try : " + command.getUsage());
             }
         } else if(commandName.length > 0) {
-            MAIN.LOGGER.cli("Undefined command, try 'help' or TAB to get the command list");
+            BOT.LOGGER.cli("Undefined command, try 'help' or TAB to get the command list");
         }
 
         initPrompt();

@@ -42,12 +42,12 @@ class VoteMute extends COMMAND {
             } else {
                 // Mute :
                 if(Object.keys(voters).includes(member.user.id)){
-                    return EMBED.send(`Vous avez déjà voté ! Vous pouvez le supprimer avec ${MAIN.CONSTANTS.prefix}votemute cancel`, message.channel, 'RED');
+                    return EMBED.send(`Vous avez déjà voté ! Vous pouvez le supprimer avec ${BOT.CONSTANTS.prefix}votemute cancel`, message.channel, 'RED');
                 }
                 
                 let target = message.mentions.members.first();
 
-                if(!target) return EMBED.send(`Utilisation invalide, essayez  : ${MAIN.CONSTANTS.prefix}votemute <user>`, message.channel, 'RED');
+                if(!target) return EMBED.send(`Utilisation invalide, essayez  : ${BOT.CONSTANTS.prefix}votemute <user>`, message.channel, 'RED');
                 if(!target.voice.channel) return EMBED.send(`**${target.user.username}** n'est pas connecté(e) dans un salon vocal !`, message.channel, 'RED');
               
                 voters[member.user.id] = target.user.id;
