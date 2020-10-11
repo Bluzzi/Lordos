@@ -17,8 +17,10 @@ class Stop extends COMMAND {
      * @param {DISCORD.Message} message 
      */
     async execute(args, message){
-        MUSIC_MANAGER.getInstance(message.guild).removeQueue();
-        MUSIC_MANAGER.getInstance(message.guild).removePlayed();
+        let musicManager = MUSIC_MANAGER.getInstance(message.guild);
+        musicManager.removeQueue();
+        musicManager.removePlayed();
+        musicManager.setLoop(false);
         
         let connection = VOICE.getConnection(message.guild);
 
