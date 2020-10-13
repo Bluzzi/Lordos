@@ -55,7 +55,7 @@ class GoodDoggie extends COMMAND {
         let x, y;
         let can = CANVAS.createCanvas(256, 256);
         let ctx = can.getContext("2d");
-        let imgData = await CANVAS.loadImage(__dirname + "/../../../../resources/images/good-doggie.png");
+        let imgData = await CANVAS.loadImage(__dirname + "/../../../../../resources/images/good-doggie.png");
         
         ctx.drawImage(imgData, 30, 15, can.width, can.height);
         ctx.font = "italic 60px GoodDoggie";

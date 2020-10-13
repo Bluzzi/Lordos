@@ -38,7 +38,7 @@ class Achievement extends COMMAND {
         // Get the base image from file :
         let image = new CANVAS.Image();
 
-        image.src = FS.readFileSync(__dirname + "/../../../../resources/images/achievement.png");
+        image.src = FS.readFileSync(__dirname + "/../../../../../resources/images/achievement.png");
 
         // Create the canvas with the same size of the base image :
         let canvas = new CANVAS.Canvas(image.width, image.height);
