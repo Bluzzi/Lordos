@@ -18,6 +18,7 @@ class Stop extends COMMAND {
      */
     async execute(args, message){
         let musicManager = MUSIC_MANAGER.getInstance(message.guild);
+        
         musicManager.removeQueue();
         musicManager.removePlayed();
         musicManager.setLoop(false);
