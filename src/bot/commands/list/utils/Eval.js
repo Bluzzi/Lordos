@@ -1,8 +1,9 @@
-const { inspect } = require("util");
 const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
 const DISCORD = require("discord.js");
 const COLOR = require("../../../utils/ColorConstants");
+
+const { inspect } = require("util");
 
 class Eval extends COMMAND {
 
@@ -18,19 +19,14 @@ class Eval extends COMMAND {
      * @param {DISCORD.Message} message 
      */
     async execute(args, message){
-        if(!args[0]) {
-            return false;
-        } else {
-            var query = args.slice(0, args.length);
-            var result;
+        if(!args[0]) return false;
 
-            try {
-                result = eval(query.join(" "));
-                
-                EMBED.send("```JS\n"+inspect(result)+"```", message.channel);
-            } catch (err){
-                EMBED.send("ERROR: ```JS\n"+inspect(err)+"```", message.channel, COLOR.RED);
-            }
+        try {
+            let result = inspect(eval(args.join(" "))).substr(0, 2000);
+
+            EMBED.send("**RESULT :** ```JS\n" + result + "```", message.channel);
+        } catch (error){
+            EMBED.send("**ERROR :** ```JS\n" + error + "```", message.channel, COLOR.RED);
         }
     }
 }
