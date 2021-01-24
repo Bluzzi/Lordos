@@ -20,7 +20,7 @@ class CreateCommand extends CLICOMMAND {
         var name = args[0];
 
         var category = args[1].toLowerCase();
-        var categoryPath = "./src/commands/list/" + category + "/";
+        var categoryPath = "./src/bot/commands/list/" + category + "/";
 
         // Check if category exists :
         if(FS.existsSync(categoryPath)){
@@ -56,14 +56,14 @@ class CreateCommand extends CLICOMMAND {
      * @param {string} category 
      */
     #create = async (name, category) => {
-        let path = "./src/commands/list/" + category + "/" + name + ".js";
+        let path = "./src/bot/commands/list/" + category + "/" + name + ".js";
 
         // Check if the command file already exists :
         if(!FS.existsSync(BASE_PATH)) return BOT.LOGGER.cli("Unable to open " + BASE_PATH);
         if(FS.existsSync(path)) return BOT.LOGGER.cli("This command already exists !");
         
         // Create the command :
-        FS.copyFile(BASE_PATH, "./src/commands/list/" + category + "/" + name + ".js", () => {
+        FS.copyFile(BASE_PATH, "./src/bot/commands/list/" + category + "/" + name + ".js", () => {
             FS.readFile(path, "utf8", async (err, data) => {
                 if(err) return BOT.LOGGER.warn(err);
 
