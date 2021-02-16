@@ -1,6 +1,7 @@
 const MYSQL = require("mysql2");
 const IDENTIFIERS = require("../../../settings.json").mysql;
 
+
 class MySQL {
 
     #connection;
@@ -14,6 +15,10 @@ class MySQL {
             password: IDENTIFIERS.password,
 
             database: IDENTIFIERS.database
+        });
+
+        this.#connection.on("error", err => {
+            BOT.LOGGER.warn("MySQL " + err); 
         });
     }
 
