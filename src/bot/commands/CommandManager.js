@@ -80,18 +80,19 @@ class CommandManager extends LOADER {
         let count = 0;
         this.#commands = [];
         this.#cliCommands = [];
+
         BOT.CLIENT.removeAllListeners(); //UNREGISTER ALL EVENTS
         process.removeAllListeners(); //UNREGISTER ALL PROCESS EVENTS
 
         //CLEAR MODULES:
-        count += this.clear("./src/commands/list/", "./list/");
-        count += this.clear("./src/utils/", "../utils/");
-        count += this.clear("./src/events/", "../events/");
-        count += this.clear("./src/music/", "../music/");
-        count += this.clear("./cli/commands/list/", "../../cli/commands/list/");
-        count += this.clear("./cli/utils/", "../../cli/utils/");
+        count += this.clear("./src/bot/commands/list/", "./list/");
+        count += this.clear("./src/bot/utils/", "../utils/");
+        count += this.clear("./src/bot/events/", "../events/");
+        count += this.clear("./src/bot/music/", "../music/");
+        count += this.clear("./src/cli/commands/list/", "../../cli/commands/list/");
+        count += this.clear("./src/cli/utils/", "../../cli/utils/");
         count += this.clear("./resources/configs/", "../../resources/configs/");
-        count += this.clear("./src/objects/", "../objects/");
+        count += this.clear("./src/bot/objects/", "../objects/");
 
         //LOAD COMMANDS:
         this.loadCommands(true);
