@@ -5,10 +5,10 @@ const EMBED = require("../../../utils/Embed");
 const ColorConstants = require("../../../utils/ColorConstants");
 const STOCKX = new STOCKXAPI();
 
-class stockx extends COMMAND {
+class Stockx extends COMMAND {
 
     constructor(){
-        super("stockx", "Donne des infos sur un produit disponible sur StockX", "utils");
+        super("stockx", "Donne des infos sur un produit disponible sur StockX","information");
 
         this.setAliases([]);
         this.setPermissions([]);
@@ -29,7 +29,7 @@ class stockx extends COMMAND {
                 .setAuthor(response[0].name, null, "https://stockx.com/" + response[0].uuid)
                 .addField("Prix retail :", response[0].retail + "€")
                 .addField("Date de sortie :", response[0].releaseDate)
-                .addField("Taille de l'enchère la plus élevée :", response[0].market.highestBidSize + "US (" + response[0].market.highestBid + "€)")
+                .addField("Taille de la demande la plus élevée :", response[0].market.highestBidSize + "US (" + response[0].market.highestBid + "€)")
                 .addField("Taille de l'offre la plus basse :", response[0].market.lowestAskSize + "US (" + response[0].market.lowestAsk + "€)")
                 .addField("Dernière vente :", response[0].market.lastSaleSize + "US (" + response[0].market.lastSale + "€)")
                 .setImage(response[0].image)
@@ -38,4 +38,4 @@ class stockx extends COMMAND {
     }
 }
 
-module.exports = stockx;
+module.exports = Stockx;
