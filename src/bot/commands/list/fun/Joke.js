@@ -8,11 +8,7 @@ class Joke extends COMMAND {
 
     constructor(){
         super("joke", "Vous donne une blague", "fun");
-
-        this.setAliases([]);
-        this.setPermissions([]);
-        this.setUsage("");
-    }
+}
 
     /**
      * @param {string[]} args 
@@ -20,7 +16,15 @@ class Joke extends COMMAND {
      */
      
     async execute(args, message){
-        AXIOS.get("https://www.blagues-api.fr/api/random", {headers: {"Authorization": "Bearer " + CONSTANTS.jokeKey}}).then(response => {
+        AXIOS.get("https://www.blagues-api.fr/api/random",{
+            headers: {
+                "Authorization": "Bearer " + CONSTANTS.jokeKey
+            },
+            params: {
+                dissalow: "limit", 
+                dissalow: "dark"
+            }
+        }).then(response => {
             EMBED.send(response.data.joke + "\n\n||" + response.data.answer + "||", message.channel, {title: "Voici la blague (" + response.data.type + ")"});
         })
     }
