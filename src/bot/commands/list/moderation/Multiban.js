@@ -5,7 +5,7 @@ const DISCORD = require("discord.js");
 class Multiban extends COMMAND {
 
     constructor(){
-        super("multiban", "Bannir plusieurs joueurs du discord.", "moderation");
+        super("multiban", "Bannir plusieurs utilisateur en même temps.", "moderation");
 
         this.setUsage("<mention> ...[mention]");
         this.setPermissions(["BAN_MEMBERS"]);
@@ -27,10 +27,10 @@ class Multiban extends COMMAND {
             }
         }
 
-        users.forEach((user)=>{
+        users.forEach((user) => {
             user.ban(args.join(" "))
-            .then(() => EMBED.send("<@!" + user + "> a bien été banni du discord !", message.channel))
-            .catch(() => EMBED.send("**" + author + "**, vous ne pouvez pas bannir <@!" + user + ">.", message.channel));
+            .then(() => EMBED.send("Je n'ai pas la permission de faire cela.", message.channel), EMBED.send("<@!" + user + "> a bien été banni du discord !", message.channel))
+            .catch(error => {});
         })
     }
 }

@@ -5,7 +5,7 @@ const DISCORD = require("discord.js");
 class Ban extends COMMAND {
 
     constructor(){
-        super("ban", "Bannir un joueur du discord.", "moderation");
+        super("ban", "Bannir un utilisateur.", "moderation");
 
         this.setUsage("<mention> <raison>");
         this.setPermissions(["BAN_MEMBERS"]);
@@ -28,11 +28,9 @@ class Ban extends COMMAND {
             return EMBED.send("**" + author + "**, vous ne pouvez pas vous bannir vous-même.", message.channel);
         }
 
-        user.ban(args.join(" ")).catch(() =>{
-            return EMBED.send("**" + author + "**, vous ne pouvez pas bannir cet utilisateur.", message.channel);
-        });
-        
-        EMBED.send("<@!" + user + "> a bien été banni du discord !", message.channel);
+        user.ban(args.join(" "))
+        .then(() => EMBED.send("<@!" + user + "> a bien été banni du discord !", message.channel), EMBED.send("Je n'ai pas la permission de faire cela.", message.channel))
+        .catch(error => {});
     }
 }
 

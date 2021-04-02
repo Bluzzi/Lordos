@@ -6,7 +6,7 @@ const EMBED = require("../../../utils/Embed");
 class Multikick extends COMMAND {
 
     constructor(){
-        super("multikick", "Kick plusieurs joueurs du discord.", "moderation");
+        super("multikick", "Kick plusieurs utilisateur en même temps.", "moderation");
 
         this.setAliases([]);
         this.setPermissions(["KICK_MEMBERS"]);
@@ -29,10 +29,10 @@ class Multikick extends COMMAND {
             }
         }
 
-        users.forEach((user)=>{
+        users.forEach((user) => {
             user.kick(args.join(" "))
-            .then(() => EMBED.send("<@!" + user + "> a bien été kick du discord !", message.channel))
-            .catch(() => EMBED.send("**" + author + "**, vous ne pouvez pas kick <@!" + user + ">.", message.channel));
+            .then(() => EMBED.send("<@!" + user + "> a bien été kick du discord !", message.channel), EMBED.send("Je n'ai pas la permission de faire cela.", message.channel))
+            .catch(error => {});
         })
     }
 }
