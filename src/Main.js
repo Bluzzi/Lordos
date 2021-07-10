@@ -1,4 +1,4 @@
-const MYSQL = require("./core/database/MySQL");
+//const MYSQL = require("./core/database/MySQL");
 const CONFIG = require("./core/database/Config");
 
 class Main {
@@ -6,9 +6,9 @@ class Main {
     /**
      * @returns {MYSQL}
      */
-    get mysql(){
+    /*get mysql(){
         return MYSQL;
-    }
+    }*/
 
     /**
      * @returns {CONFIG}
