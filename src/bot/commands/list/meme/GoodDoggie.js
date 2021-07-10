@@ -29,7 +29,7 @@ class GoodDoggie extends COMMAND {
      * @param {DISCORD.Message} message 
      */
     async execute(args, message){
-        if(args.length < 2 && args[0].length > 12) return false;
+        if(args.length < 2 || args[0].length > 12) return false;
 
         message.channel.send(await this.generateGoodDoggie(args.shift(), args));
     }
