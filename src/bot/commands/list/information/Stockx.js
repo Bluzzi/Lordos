@@ -1,9 +1,8 @@
 const COMMAND = require("../../Command");
-const DISCORD = require("discord.js");
+const DISCORD = require("discord.js");/*
 const STOCKXAPI = require("stockx-api");
-const EMBED = require("../../../utils/Embed");
 const ColorConstants = require("../../../utils/ColorConstants");
-const STOCKX = new STOCKXAPI();
+const STOCKX = new STOCKXAPI();*/
 
 class Stockx extends COMMAND {
 
@@ -20,7 +19,7 @@ class Stockx extends COMMAND {
      * @param {DISCORD.Message} message 
      */
     async execute(args, message){
-        if(!args[0]) return false;
+        /*if(!args[0]) return false;
         STOCKX.searchProducts(args.join(" "), {
             limit: 1
         }).then(response => {
@@ -34,7 +33,7 @@ class Stockx extends COMMAND {
                 .addField("Dernière vente :", response[0].market.lastSaleSize + "US (" + response[0].market.lastSale + "€)")
                 .setImage(response[0].image)
             message.channel.send(embed);
-        }).catch(error => message.channel.send("Aucun résultat a été trouvé."));
+        }).catch(error => message.channel.send("Aucun résultat a été trouvé."));*/
     }
 }
 
