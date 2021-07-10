@@ -19,7 +19,6 @@
   },
   "homepage": "https://github.com/Royal-Royaume/Lordos#readme",
   "dependencies": {
-    "@discordjs/opus": "^0.5.3",
     "ascii-art": "^2.5.0",
     "axios": "^0.21.1",
     "btoa": "^1.2.1",
