@@ -25,7 +25,7 @@
 - [x] play (titre, lien youtube ou spotify) -> permert de jouer une musique dans le salon vocal
 - [x] stop -> stop la musique dans votre salon
 - [x] nowplaying -> voir le titre, le lien et le temps restant de la musique en cours
-- [ ] skip -> passé à la musique suivante
+- [x] skip -> passé à la musique suivante
 - [x] queue -> voir la liste des musique qui vont être joué
 - [ ] clear -> clear
 
@@ -84,9 +84,11 @@
 > log : améliorer la commande
 > probabilities : rendre la commande plus claire
 > pause, play : impossible de remettre play
-
+> encode : mettre une limite quand la réponse dépasse les 6000 charactere
+> puissance4 : reparer la commande
 
 ### Gestions
 
 - [ ] Mettre les règles des jeux dans un fichier séparé
 - [ ] Système multilangue
+- [ ] Implementer les commandes en /
