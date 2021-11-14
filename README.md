@@ -86,7 +86,7 @@
 > pause, play : impossible de remettre play
 
 
-#### Gestions
+### Gestions
 
 - [ ] Mettre les règles des jeux dans un fichier séparé
 - [ ] Système multilangue
