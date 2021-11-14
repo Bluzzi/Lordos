@@ -21,7 +21,7 @@ class Countdown extends COMMAND {
 
         let time = args[0];
 
-        if(time > 60) return message.channel.send("Le nombre est superieur à 60.");
+        if(time > 60) return EMBED.send("Le nombre est superieur à 60.", message.channel);
         let text = "";
 
         EMBED.send(COOL_DISCORD_THINGS.numberToDigitEmojis(time), message.channel).then(msg => {
@@ -29,11 +29,11 @@ class Countdown extends COMMAND {
                 text = COOL_DISCORD_THINGS.numberToDigitEmojis(time);
                 time -= 1;
                 
-                msg.edit(new DISCORD.MessageEmbed().setDescription(text).setColor(COLOR.GREEN));
+                msg.edit({embeds: [new DISCORD.MessageEmbed().setDescription(text).setColor(COLOR.GREEN)]});
 
                 if(time < 0) {
                     clearInterval(interval);
-                    msg.edit(":boom:")
+                    msg.edit({embeds: [new DISCORD.MessageEmbed().setDescription(":boom:").setColor(COLOR.GREEN)]});
                 } 
             }, 1000)
         })

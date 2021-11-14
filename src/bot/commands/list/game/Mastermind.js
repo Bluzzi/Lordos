@@ -62,7 +62,7 @@ class Mastermind extends COMMAND {
 
             // Create ReactionCollector :
             let filter = (reaction, user) => {return EMOJIS.includes(reaction.emoji.name) && user.id === message.author.id;}
-            let collector = msg.createReactionCollector(filter, {time:1800000}) //temps maximum de 30 minutes
+            let collector = msg.createReactionCollector({filter: filter, time:1800000}) //temps maximum de 30 minutes
 
             // Get Reaction on react, then edit the message :
             collector.on('collect', (reaction, reactionCollector) => {
@@ -142,7 +142,7 @@ class Mastermind extends COMMAND {
 
                     // Edit the EMBED message by sending a new one :
                     let newEmbd = new DISCORD.MessageEmbed().setDescription(text + previousCodes + "__Code actuel :__\n" + currentCode.join("") + "\n" + arrow.join("") + debug);
-                    msg.edit(newEmbd);
+                    msg.edit({embeds: [newEmbd]});
                 }
 
                 // Remove reactions from users :
@@ -153,7 +153,7 @@ class Mastermind extends COMMAND {
             collector.on('end', (collected, reason) => {
                 if(reason != "stop"){
                     let newEmbd = new DISCORD.MessageEmbed().setDescription("**<MASTERMIND>**\n```arm\nLe jeu est fini, vous avez perdu car vous avez passé le temps réglementaire de 30 minutes.```");
-                    msg.edit(newEmbd);
+                    msg.edit({embeds: [newEmbd]});
                 }
             });
         });

@@ -48,7 +48,7 @@ class Shifumi extends COMMAND {
         for(let i of EMOJIS) msg.react(i);
 
         // Create collector :
-        let collector = msg.createReactionCollector((reac, user) => user.id === message.author.id, {time: 60000});
+        let collector = msg.createReactionCollector({filter: (reac, user) => user.id === message.author.id, time: 60000});
 
         collector.on("collect", (reaction, user) => {
             collector.stop();
@@ -106,7 +106,7 @@ class Shifumi extends COMMAND {
             if(reason !== "user"){
                 let newEmbd = new DISCORD.MessageEmbed().setDescription(PREFIX + "\n```yaml\nPartie expirée.```");
 
-                msg.edit(newEmbd);
+                msg.edit({embeds: [newEmbd]});
             }
         });
     }

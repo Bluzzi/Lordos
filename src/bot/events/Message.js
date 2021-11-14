@@ -1,6 +1,6 @@
 const EMBED = require("../utils/Embed");
 
-BOT.CLIENT.on("message", message => {
+BOT.CLIENT.on("messageCreate", message => {
     if(message.channel.type !== "text") return;
 
     if(message.author.bot == false) BOT.LOGGER.info(message.author.username + " : " + message.content);

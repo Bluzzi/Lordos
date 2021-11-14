@@ -28,7 +28,7 @@ class Puissance4 extends COMMAND {
      * @param {string[]} args 
      * @param {DISCORD.Message} message 
      */
-    execute(args, message) {
+    execute(args, message) {/*
         switch(args[0]){
             case "play":
                 return this.game(args, message);
@@ -36,7 +36,7 @@ class Puissance4 extends COMMAND {
                 return EMBED.send(RULES.join(""), message.channel);
             default:
                 return false;
-        }
+        }*/
     }
 
     game(args, message){
@@ -44,7 +44,7 @@ class Puissance4 extends COMMAND {
         EMBED.send(PREFIX + " Clickez sur la réaction pour affronter <@" + message.author + "> en duel !", message.channel).then((msg) => {
             msg.react("⚔️");
 
-            let collector = msg.createReactionCollector((reac) => true, {time: 60000});
+            let collector = msg.createReactionCollector({filter: (reac) => true, time: 60000});
 
             collector.on('collect', (reaction, user) => {
                 // Get the second player :
@@ -60,7 +60,7 @@ class Puissance4 extends COMMAND {
                 if(reason != "stop"){
                     let newEmbd = new DISCORD.MessageEmbed().setDescription(PREFIX +"\n```yaml\nPartie expirée.```");
 
-                    msg.edit(newEmbd);
+                    msg.edit({embeds: [newEmbd]});
                 }
             });
         });
@@ -91,10 +91,10 @@ class Puissance4 extends COMMAND {
         this.editPlayerRoundIndicationMessage(subMessage, player);
 
         // Edit the grid message :
-        message.edit(this.gridToText(grid));
+        message.edit({embeds: [this.gridToText(grid)]});
 
         // Create the reaction collector :
-        let collector = message.createReactionCollector((reaction, user) => [player.id, waiter.id].includes(user.id), {time: 180000});
+        let collector = message.createReactionCollector({filter: (reaction, user) => [player.id, waiter.id].includes(user.id), time: 180000});
 
         collector.on("collect", (reaction, user) => {
             // Verify is the user who react is the current player or not :
@@ -133,7 +133,7 @@ class Puissance4 extends COMMAND {
             // End the game or play a new round :
             if(win == "win"){
                 // Edit the message a last time :
-                message.edit(this.gridToText(grid));
+                message.edit({embeds: [this.gridToText(grid)]});
 
                 // Send victory message :
                 EMBED.edit(subMessage, "<@" + player + "> a gagné la partie contre <@" + waiter + "> !", message.channel);
@@ -152,7 +152,7 @@ class Puissance4 extends COMMAND {
                 embed.setDescription(PREFIX + "\n<@" + player + "> n'a pas joué à temps, <@" + waiter + "> est déclaré vainqueur !");
                 embed.setColor(COLOR.GREEN);
 
-                subMessage.edit(embed);
+                subMessage.edit({embeds: [embed]});
             }
         });
     }

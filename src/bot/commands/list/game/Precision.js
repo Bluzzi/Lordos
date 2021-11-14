@@ -55,12 +55,12 @@ class Precision extends COMMAND {
         // Create and send the image with 3 words :
         let data = this.createImage();
 
-        channel.send(data[0]);
+        channel.send({files: [data[0]]});
 
         let sentence = data[1];
 
         // Create message collector :
-        let collector = channel.createMessageCollector(msg => msg.content === sentence, {time: 60000});
+        let collector = channel.createMessageCollector({filter: msg => msg.content === sentence, time: 60000});
 
         // Check for winner :
         collector.on("collect", msg => {

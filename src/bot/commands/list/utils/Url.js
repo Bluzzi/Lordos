@@ -33,7 +33,7 @@ class URL extends COMMAND {
                 embed.addField(name, link);
             }
 
-            message.channel.send(embed);
+            message.channel.send({embeds: [embed]});
         }*/
     }
 }

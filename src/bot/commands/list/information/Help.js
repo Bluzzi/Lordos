@@ -16,7 +16,7 @@ class Help extends COMMAND {
      * @param {DISCORD.Message} message 
      */
     async execute(args, message){
-        message.channel.send(this.getHelpEmbed(args[0])).then(msg => this.helpUpdater(msg, args[0]));
+        message.channel.send({embeds: [this.getHelpEmbed(args[0])]}).then(msg => this.helpUpdater(msg, args[0]));
     }
 
     helpUpdater(message, category = null){
@@ -24,10 +24,10 @@ class Help extends COMMAND {
         CONTROLER.forEach(emoji => message.react(emoji));
 
         // Create collector for updates :
-        let collector = message.createReactionCollector(
-            (reaction, user) => CONTROLER.includes(reaction.emoji.name) && user.id != BOT.CLIENT.user.id, 
-            {time: 1000 * 60 * 5}
-        );
+        let collector = message.createReactionCollector({
+            filter: (reaction, user) => CONTROLER.includes(reaction.emoji.name) && user.id != BOT.CLIENT.user.id,
+            time: 1000 * 60 * 5}
+        )
 
         collector.on("collect", (reaction, user) => {
             collector.stop();
@@ -52,7 +52,7 @@ class Help extends COMMAND {
             }
 
             // Update the message :
-            message.edit(this.getHelpEmbed(newCategory)).then(msg => this.helpUpdater(msg, newCategory));
+            message.edit({embeds: [this.getHelpEmbed(newCategory)]}).then(msg => this.helpUpdater(msg, newCategory));
         });
 
         collector.on("end", (collection, reason) => {

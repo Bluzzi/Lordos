@@ -24,9 +24,8 @@ class Flip extends COMMAND {
         embed.setDescription("La pièce est tombé sur **" + result.toUpperCase() + "** !");
 
         embed.setImage("attachment://" + result + ".png");
-        embed.attachFiles(new DISCORD.MessageAttachment( __dirname + "/../../../../../resources/images/pile_or_face/" + result + ".png", result + ".png"));
 
-        message.channel.send(embed);
+        message.channel.send({embeds: [embed], files: [__dirname + "/../../../../../resources/images/pile_or_face/" + result + ".png"]});
     }
 }
 

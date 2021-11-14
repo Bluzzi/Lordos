@@ -27,7 +27,7 @@ class Taquin extends COMMAND {
      * @param {string[]} args 
      * @param {DISCORD.Message} message 
      */
-    execute(args, message){
+    execute(args, message){/*
         switch(args[0]){
             case "play":
                 return this.game(args, message);
@@ -35,7 +35,7 @@ class Taquin extends COMMAND {
                 return EMBED.send(RULES.join(""), message.channel);
             default:
                 return false;
-        }
+        }*/
     }
 
     game(args, message){
@@ -51,9 +51,9 @@ class Taquin extends COMMAND {
     }
 
     newRound(message, player, grid){
-        let collector = message.createReactionCollector(
-            (reac, user) => user.id == player.id & ARROWS.includes(reac.emoji.name), {time : 120000}
-        );
+        let collector = message.createReactionCollector({
+            filter: (reac, user) => user.id == player.id & ARROWS.includes(reac.emoji.name), time : 120000
+            });
 
         collector.on("collect", (reaction, user) => {
             let blank = grid.indexOf("🔳");
@@ -91,14 +91,14 @@ class Taquin extends COMMAND {
             collector.stop("stop");
 
             message.reactions.resolve(reaction.emoji.name).users.remove(user);
-            message.edit(this.grid2Text(grid));
+            message.edit({embeds: [this.grid2Text(grid)]});
 
             if(!this.verifyGrid(grid)){
                 this.newRound(message, player, grid);
             } else {
                 grid[8] = "9️⃣";
 
-                message.edit(this.grid2Text(grid));
+                message.edit({embeds: [this.grid2Text(grid)]});
             }
         })
 

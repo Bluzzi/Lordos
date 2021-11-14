@@ -20,15 +20,14 @@ class Creators extends COMMAND {
         
         embed.setTitle("Liste des créateurs du bot");
         embed.setColor(COLOR.GREEN);
-        embed.setThumbnail((await BOT.CLIENT.fetchApplication()).iconURL());
-
+        embed.setThumbnail((await BOT.CLIENT.application.fetch()).iconURL());
         let admins = await CONSTANTS.getAdmins();
-
+        console.log(admins);
         let description = admins.map(teamMember => "- " + teamMember.user.tag).reverse().join("\n");
 
         embed.setDescription(description);
 
-        message.channel.send(embed);    
+        message.channel.send({embeds: [embed]});    
     }
 }
 

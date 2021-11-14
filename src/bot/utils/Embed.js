@@ -30,7 +30,7 @@ class Embed {
             return channel.send({ files: [options.attachment], embed: embed });
         }
         
-        return channel.send(embed);
+        return channel.send({embeds: [embed]});
     }
 
     /**
@@ -56,7 +56,7 @@ class Embed {
         if(options["title"]) embed.setTitle(options["title"]);
         if(options["thumbnail"]) embed.setThumbnail(options["thumbnail"]);
 
-        return messageToEdit.edit(embed);
+        return messageToEdit.edit({embeds: [embed]});
     }
 }
 

@@ -32,7 +32,7 @@ class Stockx extends COMMAND {
                 .addField("Taille de l'offre la plus basse :", response[0].market.lowestAskSize + "US (" + response[0].market.lowestAsk + "€)")
                 .addField("Dernière vente :", response[0].market.lastSaleSize + "US (" + response[0].market.lastSale + "€)")
                 .setImage(response[0].image)
-            message.channel.send(embed);
+            message.channel.send({embeds: [embed]});
         }).catch(error => message.channel.send("Aucun résultat a été trouvé."));*/
     }
 }

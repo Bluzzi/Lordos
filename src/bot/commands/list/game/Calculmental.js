@@ -41,7 +41,7 @@ class Calculmental extends COMMAND {
                 time += 1000;
 
                 setTimeout(() => {
-                    EMBED.edit(msg,PREFIX + steps.shift());
+                    EMBED.edit(msg, PREFIX + steps.shift());
                 }, time);
             });
         });
@@ -60,7 +60,7 @@ class Calculmental extends COMMAND {
         EMBED.send(calcul.join("").replace(/\*/g, "x"), channel);
         
         // Create message collector :
-        let collector = channel.createMessageCollector(msg => msg.content == eval(calcul.join("")), {time: 60000});
+        let collector = channel.createMessageCollector({filter: msg => msg.content == eval(calcul.join("")), time: 60000});
 
         // Check for winner :
         collector.on("collect", msg => {

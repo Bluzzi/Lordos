@@ -2,9 +2,10 @@ const EMBED = require("../utils/Embed");
 const COLOR = require("../utils/ColorConstants");
 const CONSTANTS = require("../utils/Constants");
 
-BOT.CLIENT.on("message", async (message) => {
+BOT.CLIENT.on("messageCreate", async (message) => {
+
     if(message.author.bot) return;
-    if(message.channel.type !== "text") return;
+    if(message.channel.type !== "GUILD_TEXT") return;
     if(!message.content.startsWith(BOT.CONSTANTS.prefix)) return;
 
     let args = message.content.substring(1).split(" ");
@@ -21,7 +22,7 @@ BOT.CLIENT.on("message", async (message) => {
             if(!message.member.permissions.has(command.getPermissions())){
                 return EMBED.send("Vous n'avez pas accès à cette commande !\nPermission(s) requise(s) : `" + command.getPermissions().join("`, `") + "`", message.channel, 'RED');
             }
-            if(!message.guild.me.hasPermission(command.getPermissions())){
+            if(!message.guild.me.permissions.has(command.getPermissions())){
                 return EMBED.send("Je n'ai pas la permission d'utiliser cette commande !\nPermission(s) requise(s) : `" + command.getPermissions().join("`, `") + "`", message.channel, 'RED');
             }
         }

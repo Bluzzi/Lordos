@@ -36,7 +36,7 @@ class WordReact extends COMMAND {
 
         message.channel.messages.fetch(args[0]).then(msg => {
             for(let letter of word) msg.react(LETTERS[letter.charCodeAt(0) - 97]);
-        });
+        }).catch(() => {EMBED.send("Ce message n'existe pas.", message.channel)});
     }
 }
 

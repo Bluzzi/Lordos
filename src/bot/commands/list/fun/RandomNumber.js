@@ -20,7 +20,7 @@ class RandomNumber extends COMMAND {
 
         args = args.map(num => parseInt(num));
 
-        EMBED.send(Math.floor(Math.random() * (args[1] - args[0] + 1)) + args[0], message.channel);
+        EMBED.send(Math.floor((Math.random() * (args[1] - args[0] + 1)) + args[0]).toString(), message.channel);
     }
 }
 
