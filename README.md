@@ -6,7 +6,7 @@
 
 #### Utils :
 - [ ] translate (lang) (phrase) -> traduit une phrase
-- [ ] hash (sha256, md5) (phrase) -> hash une phrase
+- [x] hash (sha256, md5) (phrase) -> hash une phrase
 - [ ] invite -> ???? (invite manager)
 - [ ] heure (zone géographique) -> obtenir l'heure
 - [ ] giveaway -> ????
@@ -48,14 +48,45 @@
 - [ ] level -> voir son level (il évolue quand on envoie un message)
 - [ ] toplevel -> voir le classement des levels
 
-> url : adapté aux multi serveur
+> url : adapté aux multi serveur + reparer la commande en trouvant un stockage des urls
 > calul : trouver des failles, amélioré le systeme
-> minecraftquery : ajouter le support des serveurs Java
+> minecraftquery : ajouter le support des serveurs Java. la commande marche t'elle ?
 > parsecheatcode : changer le nom de la commande
 > votemute : unmute la personne automatiquement après 5 minutes
 > taquin : finir les regles du jeu
 > help : deplacer les informations précise d'une commande dans une autre commande puis mettre des pages avec les catégories
-> wikirandom : fixer pour les personnes sur téléphone
 > votemute : réadapter la commande pour qu'elle soit fonctionnelle sur tout les serveurs
-> reverse : ajouter la possibilité de mentionné.
+> reverse : ajouter la possibilité de mentionné et d'utiliser les emojis.
 > music: reparer la section musique
+> achievement, gooddoggie : fixer le soucis avec le registerfont de canvas
+> coronainfo : améliorer la commande en faisant un graphique et donner des informations plus pertinent
+> mcskin : faire en sorte de pouvoir voir la visualitation 3d du skin
+> weather : Changer l'affichage de l'observation
+> cards : rendre la commande plus comprehensible
+> ascii : réparer la commande
+> choicenumber, mynumber, numbers : utilité ?
+> dice : améliorer les images
+> gif : améliorer la recherche
+> findthecalcul : réparer la commande
+> mastermind : utiliser des boutons
+> pendu : reparer la commande, l'ameliorer et mettre un fond de la couleur de discord
+> precision : potentiellement revoir le style du cadre et mettre quelques lettres en majuscule et/ou rajouter de la ponctuation
+> shifumi : reparer la commande
+> taquin : utiliser de boutons
+> tictactoe : reparer la commande et mettre des boutons
+> help : utiliser des boutons
+> info, serverinfo : ajouter des informations et améliorer la commande
+> stockx : reparer la commande
+> kick, ban, multikick, multiban : reparer les then
+> avatar : afficher les avatars animé
+> conjugaison : reparer la commande et la rendre plus claire
+> decode : reparer la commande. fusionner la commande hash avec celle la
+> log : améliorer la commande
+> probabilities : rendre la commande plus claire
+> pause, play : impossible de remettre play
+
+
+#### Gestions
+
+- [ ] Mettre les règles des jeux dans un fichier séparé
+- [ ] Système multilangue
