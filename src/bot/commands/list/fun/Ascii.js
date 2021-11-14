@@ -15,7 +15,7 @@ class Ascii extends COMMAND {
      * @param {string[]} args 
      * @param {DISCORD.Message} message 
      */
-    async execute(args, message){
+    async execute(args, message){/*
         if(!args[0]) return false;
 
         if(args.join(" ").length >= 23){
@@ -23,7 +23,7 @@ class Ascii extends COMMAND {
             return;
         }
 
-        message.channel.send(COOL_DISCORD_THINGS.messageToAscii(args.join(" ")));
+        message.channel.send(COOL_DISCORD_THINGS.messageToAscii(args.join(" ")));*/
     }
 }
 

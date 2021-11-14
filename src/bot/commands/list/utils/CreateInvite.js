@@ -5,11 +5,11 @@ const EMBED = require("../../../utils/Embed");
 class CreateInvite extends COMMAND {
 
     constructor(){
-        super("createinvite", "Vous genère une invitation de bot", "utils");
+        super("createinvite", "Vous génère une invitation de bot", "utils");
 
         this.setAliases([]);
         this.setPermissions([]);
-        this.setUsage("<id>");
+        this.setUsage("<bot id>");
     }
 
     /**

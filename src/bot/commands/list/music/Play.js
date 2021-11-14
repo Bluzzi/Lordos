@@ -27,7 +27,7 @@ class Play extends COMMAND {
 
         // Check if dispatcher is paused :
         if(connection && connection.dispatcher && connection.dispatcher.paused){
-            connection.dispatcher.resume();
+            connection.dispatcher.resume(); // not work
             return;
         } else {
             if(!args[0]) return false;

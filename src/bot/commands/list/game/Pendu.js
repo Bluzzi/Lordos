@@ -11,11 +11,9 @@ let playingChannels = [];
 
 let sentence = "Vous avez 5 minutes. Go ! Vous devez trouver le mot avant que vous soyez pendu. Tips: Jouer en équipe !";
 
-class Pendu extends COMMAND
-{
+class Pendu extends COMMAND {
 
-    constructor()
-    {
+    constructor() {
 
         super("pendu", "Jouer avec vos amis au pendu contre le bot", "game");
 
@@ -25,8 +23,7 @@ class Pendu extends COMMAND
      * @param {string[]} args 
      * @param {DISCORD.Message} message 
      */
-    async execute(args, message)
-    {
+    async execute(args, message){/*
 
         if(!playingChannels[message.guild.id]) playingChannels[message.guild.id] = [];
         
@@ -50,7 +47,7 @@ class Pendu extends COMMAND
                     else EMBED.edit(msg, PREFIX + start.shift()).then(msgs => {
 
                         // Get all words :
-                        let allWords = FS.readFileSync(__dirname + "/../../../../resources/configs/liste_francais.txt", "utf8").split(":");
+                        let allWords = FS.readFileSync(__dirname + "/../../../../../resources/configs/liste_francais.txt", "utf8").split(":");
 
                         // Shuffle all words :
                         allWords = allWords.sort(() => Math.random() - 0.5); 
@@ -74,7 +71,7 @@ class Pendu extends COMMAND
                     });
                 }, time);
             });
-        });
+        });*/
     }
 
     /**
@@ -83,8 +80,7 @@ class Pendu extends COMMAND
      * @param {string} word
      * @param {array} characters
      */
-    starting(message, channel, word, characters)
-    {
+    /*starting(message, channel, word, characters) {
 
         // Create an array to register the valid characters :
         let valid_characters = [];
@@ -164,7 +160,7 @@ class Pendu extends COMMAND
 
             if(index > -1) playingChannels[channel.guild.id].splice(index, 1);
         });
-    }
+    }*/
 
     /**
      * @param {string} text 
@@ -173,8 +169,7 @@ class Pendu extends COMMAND
      * @param {DISCORD.createMessageCollector | null} collector
      * @returns {DISCORD.MessageAttachment}
      */
-    createImage(text, error = null, channel = null, collector = null)
-    {
+    /*createImage(text, error = null, channel = null, collector = null){
 
         // Create the image with the dezired size (width, height) :
         let canvas = new CANVAS.Canvas(1750, 1000);
@@ -200,7 +195,7 @@ class Pendu extends COMMAND
         if(error && error >= 1){
 
             let image = new CANVAS.Image();
-            image.src = FS.readFileSync(__dirname + "/../../../../resources/images/pendu/pendu_" + error + ".png");
+            image.src = FS.readFileSync(__dirname + "/../../../resources/images/pendu/pendu_" + error + ".png");
             let baseImage = canvas.getContext("2d");
             baseImage.drawImage(image, (canvas.width / 2) - 600, (canvas.height / 2) - 90, image.width * 2, image.height * 2);
 
@@ -210,7 +205,7 @@ class Pendu extends COMMAND
 
             }
         } else return new DISCORD.MessageAttachment(canvas.toBuffer(), "pendu.png");
-    }
+    }*/
 
     /**
      * 
@@ -218,8 +213,7 @@ class Pendu extends COMMAND
      * @param {string | null} msg 
      * @param {array | null} valid_characters 
      */
-    loadText(array, msg = null, valid_characters = null)
-    {
+    /*loadText(array, msg = null, valid_characters = null){
 
         // Create a string to register the count of characters AND :
         let text = "";
@@ -241,7 +235,7 @@ class Pendu extends COMMAND
         // else there is a winner
         else return;
 
-    }
+    }*/
 }
 
 module.exports = Pendu;

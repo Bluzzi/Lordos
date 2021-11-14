@@ -5,7 +5,7 @@ const FS = require("fs");
 const EMBED = require("../../../utils/Embed");
 const PATH = require("path");
 
-CANVAS.registerFont(PATH.normalize(__dirname + "/../../../../../resources/fonts/minecraftia.ttf"), {family: "Minecraftia"});
+/*CANVAS.registerFont(PATH.normalize(__dirname + "/../../../../../resources/fonts/minecraftia.ttf"), {family: "Minecraftia"});*/
 
 const CHARACTER_LIMIT = 28;
 
@@ -21,7 +21,7 @@ class Achievement extends COMMAND {
      * @param {string[]} args 
      * @param {DISCORD.Message} message 
      */
-    async execute(args, message){
+    async execute(args, message){/*
         if(!args[0]) return false;
 
         let text = args.join(" ");
@@ -31,10 +31,10 @@ class Achievement extends COMMAND {
             return;
         }
 
-        message.channel.send(this.createImage(text));
+        message.channel.send(this.createImage(text));*/
     }
 
-    createImage(text){
+    /*createImage(text){
         // Get the base image from file :
         let image = new CANVAS.Image();
 
@@ -60,7 +60,7 @@ class Achievement extends COMMAND {
 
         // Return final image in MessageAttachment instance :
         return new DISCORD.MessageAttachment(canvas.toBuffer(), "achievement.png");
-    };
+    };*/
 }
 
 module.exports = Achievement;

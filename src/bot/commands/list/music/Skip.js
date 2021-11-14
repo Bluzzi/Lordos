@@ -29,7 +29,7 @@ class Skip extends COMMAND {
         }
         
         if(!MUSIC_MANAGER.getInstance(message.guild).queue[0]){
-            EMBED.send("Il n'y à pas de musique dans la queue.", message.channel, {color: COLOR.RED});
+            EMBED.send("Il n'y a plus de musique dans la queue.", message.channel, {color: COLOR.RED});
             return;
         }
 

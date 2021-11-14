@@ -57,14 +57,13 @@ class Info extends COMMAND {
                 info, 
                 daysList[date.getDay()] + " " + date.getDate() + " " + 
                 monthsList[date.getMonth()] + " " + date.getFullYear() + 
-                " à " + date.getHours() + " heure(s) " + date.getMinutes() + 
-                " minute(s) et " + date.getSeconds() + " seconde(s)"
+                " à " + date.getHours() + "h" + date.getMinutes()
             );
         }
 
         // Roles of the member :
         information.addInformation(
-            "Roles",
+            "Rôles",
             member.roles.cache.map(role => role.name).slice(0, -1).join(", ")
         );
 

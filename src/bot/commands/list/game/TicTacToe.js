@@ -32,14 +32,14 @@ class TicTacToe extends COMMAND {
      * @param {DISCORD.Message} message 
      */
     async execute(args, message){
-        switch(args[0]){
+        /*switch(args[0]){
             case "play":
                 return this.game(args, message);
             case "rules":
                 return EMBED.send(RULES.join(""), message.channel);
             default:
                 return false;
-        }
+        }*/
     }
 
     game(args, message){

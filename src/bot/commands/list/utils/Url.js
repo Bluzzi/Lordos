@@ -18,7 +18,7 @@ class URL extends COMMAND {
      * @param {string[]} args 
      * @param {DISCORD.Message} message 
      */
-    async execute(args, message){
+    async execute(args, message){/*
         let results = await MAIN.mysql.query("SELECT urls FROM urls WHERE guild=" + message.guild.id);
 
         if(results.length === 0){
@@ -34,7 +34,7 @@ class URL extends COMMAND {
             }
 
             message.channel.send(embed);
-        }
+        }*/
     }
 }
 

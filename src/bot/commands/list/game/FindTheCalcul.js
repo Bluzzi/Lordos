@@ -20,7 +20,7 @@ class FindTheCalcul extends COMMAND {
      * @param {DISCORD.Message} message 
      */
      
-    async execute(args, message){
+    async execute(args, message){/*
         if(!playingChannels[message.guild.id]) playingChannels[message.guild.id] = [];
         
         // Check if the channel is blocked :
@@ -46,10 +46,10 @@ class FindTheCalcul extends COMMAND {
             });
         });
 
-        setTimeout(() => this.playing(message.channel), 5000);
+        setTimeout(() => this.playing(message.channel), 5000);*/
     }
 
-    playing(channel){
+    /*playing(channel){
         let signs = ["-","+","/","*"]
         let calcul = [Math.floor((Math.random() * 10) + 1)]
         for(let i = 0; i < 6; i++){
@@ -58,7 +58,7 @@ class FindTheCalcul extends COMMAND {
         }
         console.log(calcul)
         let calcul2 = calcul;
-        EMBED.send("Nombre à trouver : " + eval(calcul.join(" ")) + "\nElements : " + calcul2.sort(() => Math.random() - 0.5).join(" | "), channel);
+        EMBED.send("Nombre à trouver : " + eval(calcul.join(" ")) + "\nElements : ``" + calcul2.sort(() => Math.random() - 0.5).join("`` ``") + "``", channel);
         console.log(calcul);
         // Create message collector :
         let collector = channel.createMessageCollector(msg => eval(msg.content) == eval(calcul.join(" ")), {time: 60000});
@@ -79,7 +79,7 @@ class FindTheCalcul extends COMMAND {
 
             if(index > -1) playingChannels[channel.guild.id].splice(index, 1);
         });
-    }
+    }*/
 }
 
 module.exports = FindTheCalcul;

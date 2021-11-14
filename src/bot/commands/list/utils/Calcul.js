@@ -17,9 +17,6 @@ class Calcul extends COMMAND {
      * @param {DISCORD.Message} message 
      */
     execute(args, message){
-        if(CALCUL_MENTAL.playingChannels[message.guild.id]){
-            return EMBED.send("Vous ne pouvez pas utiliser la commande **calcul**\npendant une partie de **<Calcul mental>**.", message.channel);
-        }
         if(!args[0]){
             return false;
         } else {

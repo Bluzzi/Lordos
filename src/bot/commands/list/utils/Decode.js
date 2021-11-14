@@ -5,9 +5,9 @@ const DISCORD = require("discord.js");
 class Encode extends COMMAND {
 
     constructor(){
-        super("decode", "Décode une phrase", "utils");
+        super("decode", "Décode une phrase binaire ou base64", "utils");
 
-        this.setUsage("<texte>");
+        this.setUsage("<binary|base64> <code>");
     }
 
     /**

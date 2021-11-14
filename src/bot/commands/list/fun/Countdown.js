@@ -20,6 +20,8 @@ class Countdown extends COMMAND {
         if(isNaN(args[0])) return false;
 
         let time = args[0];
+
+        if(time > 60) return message.channel.send("Le nombre est superieur à 60.");
         let text = "";
 
         EMBED.send(COOL_DISCORD_THINGS.numberToDigitEmojis(time), message.channel).then(msg => {
@@ -27,9 +29,12 @@ class Countdown extends COMMAND {
                 text = COOL_DISCORD_THINGS.numberToDigitEmojis(time);
                 time -= 1;
                 
-                if(time == 0) clearInterval(interval);
-                
                 msg.edit(new DISCORD.MessageEmbed().setDescription(text).setColor(COLOR.GREEN));
+
+                if(time < 0) {
+                    clearInterval(interval);
+                    msg.edit(":boom:")
+                } 
             }, 1000)
         })
     }

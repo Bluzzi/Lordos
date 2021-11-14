@@ -29,7 +29,7 @@ class Kick extends COMMAND {
         }
 
         user.kick(args.join(" "))
-        .then(() => EMBED.send("<@!" + user + "> a bien été kick du discord !", message.channel) ,EMBED.send("Je n'ai pas la permission de faire cela.", message.channel))
+        .then(() => EMBED.send("<@!" + user + "> a bien été kick du discord !", message.channel), EMBED.send("Je n'ai pas la permission de faire cela.", message.channel))
         .catch(error => {});
     }
 }

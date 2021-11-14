@@ -14,7 +14,7 @@ class Numbers extends COMMAND {
      * @param {string[]} args 
      * @param {DISCORD.Message} message 
      */
-    async execute(args, message){
+    async execute(args, message){/*
         let list = "";
 
         if(CHOICE_NUMBER.numbers[message.guild.id]){
@@ -32,7 +32,7 @@ class Numbers extends COMMAND {
         }
         
 
-        EMBED.send(list, message.channel);
+        EMBED.send(list, message.channel);*/
     }
 }
 

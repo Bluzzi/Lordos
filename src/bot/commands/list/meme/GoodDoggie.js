@@ -4,12 +4,12 @@ const CANVAS = require("canvas");
 const PATH = require("path");
 const COLOR = require("../../../utils/Color");
 
-CANVAS.registerFont(
+/*CANVAS.registerFont(
     PATH.normalize(__dirname + "/../../../../../resources/fonts/good-doggie.ttf"), 
     {
         family: "GoodDoggie"
     }
-);
+);*/
 
 class GoodDoggie extends COMMAND {
 
@@ -28,11 +28,11 @@ class GoodDoggie extends COMMAND {
      * @param {string[]} args 
      * @param {DISCORD.Message} message 
      */
-    async execute(args, message){
+    async execute(args, message){/*
         if(args.length < 2 || args[0].length > 12) return false;
 
         message.channel.send(await this.generateGoodDoggie(args.shift(), args));
-    }
+    }*/
 
     /**
      * Generate Good Doggie meme
@@ -40,7 +40,7 @@ class GoodDoggie extends COMMAND {
      * @param {string[]} colors
      * @returns {DISCORD.MessageAttachment}
      */
-    async generateGoodDoggie(name, colors = ["#4287f5"]){
+    /*async generateGoodDoggie(name, colors = ["#4287f5"]){
         // Check errors :
         if(name.length > 12) throw new Error("Name parameter must be no more than 12 characters");
         
@@ -132,7 +132,7 @@ class GoodDoggie extends COMMAND {
         ctx.fill();
         ctx.stroke();
         
-        return new DISCORD.MessageAttachment(can.toBuffer(), "good-doggie.png");
+        return new DISCORD.MessageAttachment(can.toBuffer(), "good-doggie.png");*/
     }
 }
 

@@ -35,7 +35,7 @@ class Dice extends COMMAND {
         } else {
             let num = this.roll();
 
-            let file = new DISCORD.MessageAttachment(__dirname + "/../../../../resources/images/dices/dice-"+ num + ".jpg", "shifumi.png");
+            let file = new DISCORD.MessageAttachment(__dirname + "/../../../../../resources/images/dices/dice-"+ num + ".jpg", "shifumi.png");
 
             EMBED.send(
                 "Les dés sont jetés !",

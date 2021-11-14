@@ -29,7 +29,7 @@ class Multiban extends COMMAND {
 
         users.forEach((user) => {
             user.ban(args.join(" "))
-            .then(() => EMBED.send("Je n'ai pas la permission de faire cela.", message.channel), EMBED.send("<@!" + user + "> a bien été banni du discord !", message.channel))
+            .then(() => EMBED.send("<@!" + user + "> a bien été banni du discord !", message.channel), EMBED.send("Je n'ai pas la permission de faire cela.", message.channel))
             .catch(error => {});
         })
     }

@@ -5,7 +5,7 @@ const DISCORD = require("discord.js");
 class RandomNumber extends COMMAND {
 
     constructor(){
-        super("random-number", "Générer un nombre aléatoire entre deux valeurs", "fun");
+        super("randomnumber", "Générer un nombre aléatoire entre deux valeurs", "fun");
 
         this.setUsage("<min> <max>");
         this.setAliases(["rn"]);

@@ -18,7 +18,7 @@ class VoteMute extends COMMAND {
      * @param {string[]} args 
      * @param {DISCORD.Message} message 
      */
-    async execute(args, message){
+    async execute(args, message){/*
         let member = message.member;
 
         if(!member.roles.cache.map(r => r.name).includes("Noble")){
@@ -62,7 +62,7 @@ class VoteMute extends COMMAND {
                     EMBED.send(`**${target.user.username}** a été mute !`, message.channel, 'GREEN');
                 }
             }
-        }
+        }*/
     }
 
     getVoteCount(id){

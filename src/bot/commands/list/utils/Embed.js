@@ -2,10 +2,10 @@ const COMMAND = require("../../Command");
 const EMBED = require("../../../utils/Embed");
 const DISCORD = require("discord.js");
 
-class Annonce extends COMMAND {
+class Embed extends COMMAND {
 
     constructor(){
-        super("annonce", "Envoyer une annonce sous forme d'embed", "utils");
+        super("annonce", "Permet d'envoyer votre texte en embed", "utils");
 
         this.setUsage("<texte>");
     }
@@ -22,4 +22,4 @@ class Annonce extends COMMAND {
     }
 }
 
-module.exports = Annonce;
+module.exports = Embed;
