@@ -24,7 +24,7 @@ class McSkin extends COMMAND {
                 message.channel.send("Ca arrive !");
             });
         }).catch(error => {
-            EMBED.send("Ce pseudo n'existe pas !", message.channel);
+            EMBED.reply("Ce pseudo n'existe pas !", message);
         });
     }
 }

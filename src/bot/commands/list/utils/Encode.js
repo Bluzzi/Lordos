@@ -27,12 +27,12 @@ class Encode extends COMMAND {
             case "base64":
                 text = Buffer.from(args.join(" ")).toString("base64");
 
-                EMBED.send(text, message.channel)
+                EMBED.reply(text, message)
             break;
             
             case "binary":
                 text = this.text2Binary(args.join(" "));
-                EMBED.send(text, message.channel)
+                EMBED.reply(text, message)
             break;
             
             default:

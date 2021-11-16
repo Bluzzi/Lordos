@@ -25,11 +25,11 @@ class Ban extends COMMAND {
         if(!args[0] || !user) return false;
 
         if(user.id === message.author.id){
-            return EMBED.send("**" + author + "**, vous ne pouvez pas vous bannir vous-même.", message.channel);
+            return EMBED.reply("**" + author + "**, vous ne pouvez pas vous bannir vous-même.", message);
         }
 
         user.ban(args.join(" "))
-        .then(() => EMBED.send("<@!" + user + "> a bien été banni du discord !", message.channel), EMBED.send("Je n'ai pas la permission de faire cela.", message.channel))
+        .then(() => EMBED.reply("<@!" + user + "> a bien été banni du discord !", message), EMBED.reply("Je n'ai pas la permission de faire cela.", message))
         .catch(error => {});
     }
 }

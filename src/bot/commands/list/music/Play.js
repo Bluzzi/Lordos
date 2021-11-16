@@ -35,13 +35,13 @@ class Play extends COMMAND {
 
         // Check if the member is on a voice channel :
         if(!message.member.voice.channel){
-            EMBED.send("Vous devez être dans un salon vocal.", message.channel, {color: COLOR.RED});
+            EMBED.reply("Vous devez être dans un salon vocal.", message, {color: COLOR.RED});
             return;
         }
 
         // Check if the member is on the same channel with the bot :
         if(MUSIC_MANAGER.getInstance(message.guild).nowPlaying && connection && message.member.voice.channel.id !== connection.channel.id){
-            EMBED.send("Vous devez être présent dans le salon ou je me situe actuellement.", message.channel, {color: COLOR.RED});
+            EMBED.reply("Vous devez être présent dans le salon ou je me situe actuellement.", message, {color: COLOR.RED});
             return;
         }
         
@@ -87,7 +87,7 @@ class Play extends COMMAND {
 
         // Check if no music is find :
         if(videosInfo.length === 0){
-            EMBED.send("Aucune vidéo n'a été trouvée !", channel, {color: COLOR.RED});
+            EMBED.send("Aucune vidéo n'a été trouvée !", channel, {color: COLOR.RED}); // TODO: Update embed to use .reply()
             return;
         }
 

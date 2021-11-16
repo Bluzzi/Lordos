@@ -28,7 +28,7 @@ class Precision extends COMMAND {
         
         // Check if the channel is blocked :
         if(playingChannels[message.guild.id].includes(message.channel.id)){
-            return EMBED.send("Une partie est déjà en cours dans ce salon.", message.channel);
+            return EMBED.reply("Une partie est déjà en cours dans ce salon.", message);
         }
 
         // Blocking the living room for the time of the game :

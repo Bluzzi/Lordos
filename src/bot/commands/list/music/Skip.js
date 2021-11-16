@@ -19,17 +19,17 @@ class Skip extends COMMAND {
      */
     async execute(args, message){
         if(!VOICE.getConnection(message.guild)){
-            EMBED.send("Le bot ne joue aucune musique actuellement.", message.channel, {color: COLOR.RED});
+            EMBED.reply("Le bot ne joue aucune musique actuellement.", message, {color: COLOR.RED});
             return;
         }
 
         if(message.member.voice.channel.id !== VOICE.getConnection(message.guild).voice.channel.id){
-            EMBED.send("Vous devez être dans le même salon que le bot.", message.channel, {color: COLOR.RED});
+            EMBED.reply("Vous devez être dans le même salon que le bot.", message, {color: COLOR.RED});
             return;
         }
         
         if(!MUSIC_MANAGER.getInstance(message.guild).queue[0]){
-            EMBED.send("Il n'y a plus de musique dans la queue.", message.channel, {color: COLOR.RED});
+            EMBED.reply("Il n'y a plus de musique dans la queue.", message, {color: COLOR.RED});
             return;
         }
 
@@ -40,9 +40,9 @@ class Skip extends COMMAND {
         MUSIC_MANAGER.getInstance(message.guild).play(VOICE.getConnection(message.guild), nextSong);
 
         // Information :
-        EMBED.send(
+        EMBED.reply(
             "**LECTURE - **[" + nextSong.title + "](" + nextSong.url + ")",
-            message.channel,
+            message,
             {image: nextSong.thumbnail}
         );
     }

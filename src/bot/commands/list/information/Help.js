@@ -16,7 +16,7 @@ class Help extends COMMAND {
      * @param {DISCORD.Message} message 
      */
     async execute(args, message){
-        message.channel.send({embeds: [this.getHelpEmbed(args[0])]}).then(msg => this.helpUpdater(msg, args[0]));
+        message.reply({embeds: [this.getHelpEmbed(args[0])]}).then(msg => this.helpUpdater(msg, args[0]));
     }
 
     helpUpdater(message, category = null){

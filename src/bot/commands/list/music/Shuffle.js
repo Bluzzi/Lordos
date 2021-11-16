@@ -19,7 +19,7 @@ class Shuffle extends COMMAND {
         let musicManager = MUSIC_MANAGER.getInstance(message.guild);
         musicManager.shuffleQueue();
 
-        EMBED.send("Vous avez bien mélangé la queue !", message.channel);
+        EMBED.reply("Vous avez bien mélangé la queue !", message);
     }
 }
 

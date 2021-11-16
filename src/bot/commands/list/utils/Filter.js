@@ -27,8 +27,8 @@ class Filter extends COMMAND {
         let user = args[1] && message.mentions.users.first() ? 
             message.mentions.users.first() : message.author;
 
-        EMBED.send(
-            "Voici l'avatar de <@" + user.id + "> :", message.channel,
+        EMBED.reply(
+            "Voici l'avatar de <@" + user.id + "> :", message,
             {
                 attachment: new DISCORD.MessageAttachment(
                     await ZORO[args[0]](user.displayAvatarURL().replace(".webp", ".png")), 

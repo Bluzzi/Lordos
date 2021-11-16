@@ -24,7 +24,7 @@ class FindNumber extends COMMAND {
 
         let randomNumber = Math.floor(Math.random() * (args[1] - args[0] + 1)) + args[0];
 
-        if(isInt(randomNumber) == false) return EMBED.send(PREFIX + "Veuillez utiliser des nombres", message.channel);
+        if(isInt(randomNumber) == false) return EMBED.reply(PREFIX + "Veuillez utiliser des nombres", message);
 
         // Send start message :
         EMBED.send(PREFIX + "Soyez le premier a trouver un nombre entre **" + args[0] + "** et **" + args[1] + "**.", message.channel);

@@ -21,7 +21,7 @@ class Conjugaison extends COMMAND {
      */
     execute(args, message){
         if(args[0] == "help"){
-            EMBED.send(this.getUsageDescription() + "\n\nUtilisez le mot anglais !\n\n" + help, message.channel);
+            EMBED.reply(this.getUsageDescription() + "\n\nUtilisez le mot anglais !\n\n" + help, message);
             return;
         } else {
             try {
@@ -30,9 +30,9 @@ class Conjugaison extends COMMAND {
 
                 for(let person of conj) text += "\n -" + person.pronoun + " " + person.verb;
                 
-                EMBED.send(text, message.channel);
+                EMBED.reply(text, message);
             } catch(error){
-                EMBED.send("Vérifiez si le verbe, le mode et le temps existent et correspondent. __>conj help__", message.channel);
+                EMBED.reply("Vérifiez si le verbe, le mode et le temps existent et correspondent. __>conj help__", message);
             }
         }
     }

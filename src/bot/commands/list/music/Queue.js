@@ -19,7 +19,7 @@ class Queue extends COMMAND {
         let queue = MUSIC_MANAGER.getInstance(message.guild).queue;
 
         if(!queue.length){
-            EMBED.send("La queue ne contient aucune musique.", message.channel);
+            EMBED.reply("La queue ne contient aucune musique.", message);
             return;
         }
 
@@ -36,9 +36,9 @@ class Queue extends COMMAND {
             messageInformation += "... et " + queue.slice(10).length + " titres"; 
         }
 
-        EMBED.send(
+        EMBED.reply(
             "```" + messageInformation + "```", 
-            message.channel, 
+            message, 
             {title: "Voici les liste des musiques dans la queue"}
         );
     }

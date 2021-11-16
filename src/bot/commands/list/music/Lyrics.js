@@ -96,7 +96,7 @@ class Lyrics extends COMMAND {
             // Send embed :
             message.channel.send({embeds: [embed]});
         }).catch(error => {
-            EMBED.send("Aucunes paroles trouvés pour ce titre.", message.channel, {color: COLOR.RED});
+            EMBED.reply("Aucunes paroles trouvés pour ce titre.", message, {color: COLOR.RED});
         });
     }
 }

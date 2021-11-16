@@ -22,7 +22,7 @@ class Gif extends COMMAND {
             if(response.data && response.data.url){
                 message.channel.send(response.data.url);
             } else {
-                EMBED.send("Aucun gif n'existe pour votre recherche.", message.channel);
+                EMBED.reply("Aucun gif n'existe pour votre recherche.", message);
             }
         });
     }

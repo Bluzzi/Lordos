@@ -38,7 +38,7 @@ class Cards extends COMMAND {
         args = args.join(" ").split("\n");
 
         // Send help :
-        if(args[0] == "help") return EMBED.send(help, message.channel);
+        if(args[0] == "help") return EMBED.reply(help, message);
 
         // Verify args[0] and type :
         if(!args[0] || !["fire","team","water","psy","lightning","grass","fairy","dark","basic","fighting"].includes(args[0])) return false;
@@ -78,7 +78,7 @@ class Cards extends COMMAND {
         textContext.font = "17px Arial";
         
         if(ctx.measureText(args[1]).width > 117){
-            EMBED.send("Le nom du pokemon est trop long.", message.channel);
+            EMBED.reply("Le nom du pokemon est trop long.", message);
             return;
         }
 
@@ -91,7 +91,7 @@ class Cards extends COMMAND {
         textContext.font = "18px Arial";
         
         if(ctx.measureText(args[3]).width > 200){
-            EMBED.send("Le nom du pokemon est trop long.", message.channel);
+            EMBED.reply("Le nom du pokemon est trop long.", message);
             return;
         }
 
@@ -104,7 +104,7 @@ class Cards extends COMMAND {
          textContext.font = "12px Arial";
          
          if(ctx.measureText(args[4]).width > 680){
-             return EMBED.send("La description de l'attaque est trop longue.", message.channel);
+             return EMBED.reply("La description de l'attaque est trop longue.", message);
          }
          
          let text = []

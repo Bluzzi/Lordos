@@ -41,7 +41,7 @@ class Calcul extends COMMAND {
 
             if(calcul === "") calcul = "null";
 
-            EMBED.send("``" + calcul + "`` = ``" + result + "``", message.channel);
+            EMBED.reply("``" + calcul + "`` = ``" + result + "``", message);
         }
     }
 }

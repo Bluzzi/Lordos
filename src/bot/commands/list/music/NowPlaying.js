@@ -53,12 +53,12 @@ class NowPlaying extends COMMAND {
             timeFormatted += musicDuration.minute + "m ";
             timeFormatted += musicDuration.second + "s ";
 
-            EMBED.send(
+            EMBED.reply(
                 "**EN LECTURE - **[" + musicInfo.title + "](" + musicInfo.url + ")\n\n" + timeFormatted,
-                message.channel
+                message
             );
         } else {
-            EMBED.send("Aucune musique n'es actuellement jouer.", message.channel);
+            EMBED.reply("Aucune musique n'es actuellement jouer.", message);
         }
     }
 }

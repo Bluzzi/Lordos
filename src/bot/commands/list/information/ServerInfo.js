@@ -73,7 +73,7 @@ class ServerInfo extends COMMAND {
         // All server emojis : 
         information.addInformation("Emojis", member.guild.emojis.cache.map(emoji => "<:" + emoji.name + ":" + emoji + ">").join(" "));
 
-        EMBED.send(information.toString(), message.channel, {thumbnail: member.guild.iconURL()});
+        EMBED.reply(information.toString(), message, {thumbnail: member.guild.iconURL()});
     }
 }
 

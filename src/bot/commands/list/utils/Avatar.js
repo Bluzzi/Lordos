@@ -18,8 +18,8 @@ class Avatar extends COMMAND {
         let user = args[0] && message.mentions.users.first() ? 
             message.mentions.users.first() : message.author;
 
-        EMBED.send(
-            "Voici l'avatar de <@" + user.id + "> :", message.channel,
+        EMBED.reply(
+            "Voici l'avatar de <@" + user.id + "> :", message,
             {
                 image: user.displayAvatarURL()
             }

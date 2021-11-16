@@ -27,7 +27,7 @@ class Creators extends COMMAND {
 
         embed.setDescription(description);
 
-        message.channel.send({embeds: [embed]});    
+        message.reply({embeds: [embed]});    
     }
 }
 

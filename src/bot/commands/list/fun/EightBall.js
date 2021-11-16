@@ -28,10 +28,10 @@ class EightBall extends COMMAND {
 
         let response = responses[Math.floor(Math.random() * (responses.length - 1))];
 
-        EMBED.send(
+        EMBED.reply(
             "**Question (de " + message.member.displayName + ") : **" + question + 
             "\n**Réponse : **" + response, 
-            message.channel
+            message
         );
     }
 }

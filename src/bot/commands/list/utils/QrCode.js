@@ -19,9 +19,9 @@ class QrCode extends COMMAND {
 
         let qrCodeContent = escape(args.join(" "));
 
-        EMBED.send(
+        EMBED.reply(
             "Voici votre QR code (contenant : " + args[0] + ") :", 
-            message.channel, 
+            message, 
             {image: "http://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + qrCodeContent}
         );
     }

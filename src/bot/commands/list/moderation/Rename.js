@@ -22,7 +22,7 @@ class Rename extends COMMAND {
 
         let username = args.slice(1).join(" ");
         message.guild.members.cache.get(user.id).setNickname(username)
-        .then(() => EMBED.send("Le pseudo de **" + user.username + "#" + user.discriminator + "** à bien été changé en **\"" + username + "\"**.", message.channel), EMBED.send("Je n'ai pas la permission de faire cela.", message.channel))
+        .then(() => EMBED.reply("Le pseudo de **" + user.username + "#" + user.discriminator + "** à bien été changé en **\"" + username + "\"**.", message.channel), EMBED.reply("Je n'ai pas la permission de faire cela.", message))
         .catch(error => {});
     }
 }

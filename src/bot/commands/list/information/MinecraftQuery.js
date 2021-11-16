@@ -56,9 +56,9 @@ class MinecraftQuery extends COMMAND {
             informationsText += "**" + "Plugins (" + state.raw.bedrock.raw.plugins.split("; ").length 
             + ")" + " :** " + state.raw.bedrock.raw.plugins.replace("; ", ", ") + "\n\n";
             
-            EMBED.send(informationsText, message.channel);
+            EMBED.reply(informationsText, message);
         }).catch((error) => {
-            EMBED.send(`Le serveur \`${address}\` est introuvable !`, message.channel, 'RED');
+            EMBED.reply(`Le serveur \`${address}\` est introuvable !`, message, 'RED');
         });
     }
 }

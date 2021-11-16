@@ -26,11 +26,11 @@ class Stop extends COMMAND {
         let connection = VOICE.getConnection(message.guild);
 
         if(connection){
-            EMBED.send("Vous avez bien stopper la musique en cours de lecture !", message.channel);
+            EMBED.reply("Vous avez bien stopper la musique en cours de lecture !", message);
             
             connection.disconnect();
         } else {
-            EMBED.send("Le bot ne joue aucune musique !");
+            EMBED.reply("Le bot ne joue aucune musique !", message);
         }
     }
 }

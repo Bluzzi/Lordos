@@ -24,19 +24,20 @@ class WordReact extends COMMAND {
 
         for(let letter of word){
             if(letter.charCodeAt(0) < 97 || letter.charCodeAt(0) > 122){
-                EMBED.send("Les caractères ne peuvent être que des lettres sans accents.", message.channel);
+                EMBED.reply("Les caractères ne peuvent être que des lettres sans accents.", message);
                 return;
             }
             
             if(word.split(letter).length > 2){
-                EMBED.send("Une lettre ne peut pas apparaitre deux fois en tant que réaction.", message.channel);
+                EMBED.reply("Une lettre ne peut pas apparaitre deux fois en tant que réaction.", message);
                 return;
             }
         }
 
         message.channel.messages.fetch(args[0]).then(msg => {
             for(let letter of word) msg.react(LETTERS[letter.charCodeAt(0) - 97]);
-        }).catch(() => {EMBED.send("Ce message n'existe pas.", message.channel)});
+            // message.react(":ok_hand");
+        }).catch(() => {EMBED.reply("Ce message n'existe pas.", message)});
     }
 }
 

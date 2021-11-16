@@ -20,7 +20,7 @@ class CommandCount extends COMMAND {
         let objective = type == "cli" ? 50 : 200;
         let percent = parseFloat(commandCount/objective*100).toFixed(2);
 
-        EMBED.send("Il y a actuellement " + commandCount + " commandes de type " + type.toUpperCase(), message.channel);
+        EMBED.reply("Il y a actuellement " + commandCount + " commandes de type " + type.toUpperCase(), message);
 
         if(commandCount > objective){
             EMBED.send("Objectif de " + objective + " atteint ! :tada:", message.channel);

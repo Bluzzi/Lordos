@@ -25,7 +25,7 @@ class Joke extends COMMAND {
                 dissalow: "dark"
             }
         }).then(response => {
-            EMBED.send(response.data.joke + "\n\n||" + response.data.answer + "||", message.channel, {title: "Voici la blague (" + response.data.type + ")"});
+            EMBED.reply(response.data.joke + "\n\n||" + response.data.answer + "||", message, {title: "Voici la blague (" + response.data.type + ")"});
         })
     }
 }

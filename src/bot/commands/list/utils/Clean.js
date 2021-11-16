@@ -20,12 +20,12 @@ class Clean extends COMMAND {
         if (!args[0] || isNaN(args[0])) return false;
 
         if (args[0] > 100) {
-            EMBED.send("Vous pouvez supprimer 100 messages maximum", message.channel);
+            EMBED.reply("Vous pouvez supprimer 100 messages maximum", message);
             return;
         }
 
         message.channel.bulkDelete(parseInt(args[0]) + 1).catch(error => console.log(error));
-        EMBED.send(args[0] + " message(s) supprimé(s)", message.channel).then(message => message.delete({timeout: 4000})).catch(error => console.log(error));
+        EMBED.reply(args[0] + " message(s) supprimé(s)", message).then(message => message.delete({timeout: 4000})).catch(error => console.log(error));
     }
 }
 

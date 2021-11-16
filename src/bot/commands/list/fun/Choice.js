@@ -20,7 +20,7 @@ class Choice extends COMMAND {
         let choice = args[Math.floor(Math.random() * (args.length - 0))];
         let percent = Math.round(1 / args.length * 100);
 
-        EMBED.send("Mon choix est **" + choice + "** ! (" + percent + "%)", message.channel);
+        EMBED.reply("Mon choix est **" + choice + "** ! (" + percent + "%)", message);
     }
 }
 

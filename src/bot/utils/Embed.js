@@ -4,15 +4,15 @@ const COLOR = require("./ColorConstants");
 class Embed {
 
     /**
-     * @param {string} message message to send
-     * @param {DISCORD.Channel} channel a discord channel
+     * @param {string} content message to send
+     * @param {DISCORD.Channel} channel channel where sent
      * @param {{color: string, image: string, title: string, attachment: DISCORD.MessageAttachment, thumbnail: string, footer: string}} options embed color
      * @returns {DISCORD.Message} 
      */
-    static send(message, channel, options = {color: null, image: null, title: null, attachment: null, thumbnail: null}){
+    static send(content, channel, options = {color: null, image: null, title: null, attachment: null, thumbnail: null}){
         let embed = new DISCORD.MessageEmbed();
 
-        embed.setDescription(message);
+        embed.setDescription(content);
 
         // Set default color :
         embed.setColor(COLOR.GREEN);
@@ -32,18 +32,17 @@ class Embed {
         
         return channel.send({embeds: [embed]});
     }
-
+    
     /**
-     * @param {string} message message to send
-     * @param {DISCORD.Channel} channel a discord channel
+     * @param {string} content message content
+     * @param {DISCORD.Message} message message to reply
      * @param {{color: string, image: string, title: string, attachment: DISCORD.MessageAttachment, thumbnail: string, footer: string}} options embed color
-     * @returns {void} void
+     * @returns {DISCORD.Message} 
      */
-    static edit(messageToEdit, message, options = {color: null, image: null, title: null, thumbnail: null}){
-
+    static reply(content, message, options = {color: null, image: null, title: null, attachment: null, thumbnail: null}){
         let embed = new DISCORD.MessageEmbed();
 
-        embed.setDescription(message);
+        embed.setDescription(content);
 
         // Set default color :
         embed.setColor(COLOR.GREEN);
@@ -56,7 +55,38 @@ class Embed {
         if(options["title"]) embed.setTitle(options["title"]);
         if(options["thumbnail"]) embed.setThumbnail(options["thumbnail"]);
 
-        return messageToEdit.edit({embeds: [embed]});
+        if(options["attachment"]){
+            embed.setImage("attachment://" + options.attachment.name);
+            return message.reply({ files: [options.attachment], embed: embed });
+        }
+        
+        return message.reply({embeds: [embed]});
+    }
+
+    /**
+     * @param {DISCORD.Message} message message to edit
+     * @param {string} content message content
+     * @param {{color: string, image: string, title: string, attachment: DISCORD.MessageAttachment, thumbnail: string, footer: string}} options embed color
+     * @returns {void} void
+     */
+    static edit(message, content, options = {color: null, image: null, title: null, thumbnail: null}){
+
+        let embed = new DISCORD.MessageEmbed();
+
+        embed.setDescription(content);
+
+        // Set default color :
+        embed.setColor(COLOR.GREEN);
+
+        // Set options :
+        if(options["title"]) embed.setTitle(options["title"]);
+        if(options["footer"]) embed.setFooter(options["footer"]);
+        if(options["color"]) embed.setColor(options["color"]);
+        if(options["image"]) embed.setImage(options["image"]);
+        if(options["title"]) embed.setTitle(options["title"]);
+        if(options["thumbnail"]) embed.setThumbnail(options["thumbnail"]);
+
+        return message.edit({embeds: [embed]});
     }
 }
 

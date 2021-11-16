@@ -19,7 +19,7 @@ class CreateInvite extends COMMAND {
     async execute(args, message){
         if (!args[0] || args[0].length != 18) return false;
 
-        EMBED.send("**Voici le [lien](https://discord.com/oauth2/authorize?client_id=" + args[0] + "&scope=bot&permissions=2046295295) pour rajouter le bot :**\n\nhttps://discord.com/oauth2/authorize?client_id=" + args[0] + "&scope=bot&permissions=2046295295", message.channel)
+        EMBED.reply("**Voici le [lien](https://discord.com/oauth2/authorize?client_id=" + args[0] + "&scope=bot&permissions=2046295295) pour rajouter le bot :**\n\nhttps://discord.com/oauth2/authorize?client_id=" + args[0] + "&scope=bot&permissions=2046295295", message)
     }
 }
 

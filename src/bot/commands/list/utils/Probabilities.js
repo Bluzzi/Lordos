@@ -19,7 +19,7 @@ class Probabilities extends COMMAND {
 
         // Check if command is in cooldown :
         if(this.timer.includes(message.guild.id)){
-            EMBED.send("Refroidissement de la commande...", message.channel);
+            EMBED.reply("Refroidissement de la commande...", message);
             return;
         };
 
@@ -27,7 +27,7 @@ class Probabilities extends COMMAND {
         if(!args[1])return false;
 
         // Test if args are numbers :
-        if(isNaN(args[0]) || isNaN(args[1]) || (args[2] && isNaN(args[2])))return false;
+        if(isNaN(args[0]) || isNaN(args[1]) || (args[2] && isNaN(args[2]))) return false;
 
         // Set command in cooldown :
         this.timer.push(message.guild.id);
@@ -69,7 +69,7 @@ class Probabilities extends COMMAND {
         text += "\nTotal: " + repeat;
 
         // Send result :
-        EMBED.send(text, message.channel);
+        EMBED.reply(text, message);
 
         // Beginning of the cooldown :
         setTimeout(()=>{

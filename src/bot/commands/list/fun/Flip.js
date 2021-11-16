@@ -25,7 +25,7 @@ class Flip extends COMMAND {
 
         embed.setImage("attachment://" + result + ".png");
 
-        message.channel.send({embeds: [embed], files: [__dirname + "/../../../../../resources/images/pile_or_face/" + result + ".png"]});
+        message.reply({embeds: [embed], files: [__dirname + "/../../../../../resources/images/pile_or_face/" + result + ".png"]});
     }
 }
 

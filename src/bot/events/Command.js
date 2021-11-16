@@ -29,7 +29,7 @@ BOT.CLIENT.on("messageCreate", async (message) => {
 
         let execute = await command.execute(args, message);
 
-        if(execute == false) EMBED.send(command.getUsageDescription(), message.channel, COLOR.RED);
+        if(execute == false) EMBED.reply(command.getUsageDescription(), message, COLOR.RED);
 
         BOT.LOGGER.info(`${message.author.tag} executed command: ${commandName.toLowerCase()}`);
     }

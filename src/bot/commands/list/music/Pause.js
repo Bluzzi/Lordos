@@ -18,7 +18,7 @@ class Pause extends COMMAND {
 
         if(connection && connection.dispatcher){
             connection.dispatcher.pause(true);
-            EMBED.send("Musique mis en pause.", message.channel)
+            EMBED.reply("Musique mis en pause.", message)
         }
     }
 }

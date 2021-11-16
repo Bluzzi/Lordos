@@ -21,19 +21,19 @@ class Loop extends COMMAND {
         let musicManager = MUSIC_MANAGER.getInstance(message.guild);
 
         if(!VOICE.getConnection(message.guild) || !musicManager.nowPlaying){
-            EMBED.send("Le bot ne joue aucune musique actuellement.", message.channel, {color: COLOR.RED});
+            EMBED.reply("Le bot ne joue aucune musique actuellement.", message, {color: COLOR.RED});
             return;
         }
 
         if(message.member.voice.channel && VOICE.getConnection(message.guild).voice.channel.id !== message.member.voice.channel.id){
-            EMBED.send("Vous devez être dans le même salon vocal que le bot pour faire ça.", message.channel, {color: COLOR.RED});
+            EMBED.reply("Vous devez être dans le même salon vocal que le bot pour faire ça.", message, {color: COLOR.RED});
             return;
         }
 
         if(musicManager.loop){
-            EMBED.send("Vous avez bien désactiver la lecture en boucle !", message.channel);
+            EMBED.reply("Vous avez bien désactiver la lecture en boucle !", message);
         } else {
-            EMBED.send("Vous avez bien activer la lecture en boucle !", message.channel);
+            EMBED.reply("Vous avez bien activer la lecture en boucle !", message);
         }
 
         musicManager.setLoop(!musicManager.loop);

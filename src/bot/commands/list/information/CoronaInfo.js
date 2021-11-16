@@ -46,12 +46,12 @@ class CoronaInfo extends COMMAND {
 
             let date = new Date(information.Date);
 
-            EMBED.send(messageInformation.toString(), message.channel, {
+            EMBED.reply(messageInformation.toString(), message, {
                 footer: "Informations datant du " + daysList[date.getDay()] + " " + date.getDate() + " " + monthsList[date.getMonth()] + " " + date.getFullYear()
             })
         
         }).catch(error => {
-            EMBED.send("Le nom du pays est incorect", message.channel);
+            EMBED.reply("Le nom du pays est incorect", message);
         })
     }
 

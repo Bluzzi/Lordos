@@ -21,7 +21,7 @@ class Countdown extends COMMAND {
 
         let time = args[0];
 
-        if(time > 60) return EMBED.send("Le nombre est superieur à 60.", message.channel);
+        if(time > 60) return EMBED.reply("Le nombre est superieur à 60.", message);
         let text = "";
 
         EMBED.send(COOL_DISCORD_THINGS.numberToDigitEmojis(time), message.channel).then(msg => {

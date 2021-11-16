@@ -18,7 +18,7 @@ class Dice extends COMMAND {
         if(args[0]){       
             let number = parseInt(args[0]) || 1;
 
-            if(number < 1 || number > 20) return EMBED.send("Vous devez entrer un nombre en 1 et 20", message.channel, COLOR.RED);
+            if(number < 1 || number > 20) return EMBED.reply("Vous devez entrer un nombre en 1 et 20", message, COLOR.RED);
 
             let dices = [];
 
@@ -31,13 +31,13 @@ class Dice extends COMMAND {
             dices = dices.map(dice => `Dé N°${i++} -> **${dice}**`);
             
             
-            EMBED.send("Les dés sont jetés !\n\n" + dices.join("\n") + "\n\nTotal : **" + total + "**", message.channel);
+            EMBED.reply("Les dés sont jetés !\n\n" + dices.join("\n") + "\n\nTotal : **" + total + "**", message.channel);
         } else {
             let num = this.roll();
 
             let file = new DISCORD.MessageAttachment(__dirname + "/../../../../../resources/images/dices/dice-"+ num + ".jpg", "shifumi.png");
 
-            EMBED.send(
+            EMBED.reply(
                 "Les dés sont jetés !",
                 message.channel, 
                 {attachment: file}

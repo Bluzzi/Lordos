@@ -20,7 +20,7 @@ class Hash extends COMMAND {
     async execute(args, message){
         if(args.length < 2 || !hashs.includes(args[0].toUpperCase())) return false;
 
-        EMBED.send("Voici votre hash : ``" + CRYPTO[args.shift().toUpperCase()](args).toString() + "``", message.channel);
+        EMBED.reply("Voici votre hash : ``" + CRYPTO[args.shift().toUpperCase()](args).toString() + "``", message);
     }
 }
 
